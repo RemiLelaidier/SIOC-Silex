@@ -1,6 +1,6 @@
 <?php
 
-namespace SIOC\DAO;
+namespace SIOC\modeles\DAO;
 
 use Doctrine\DBAL\Connection;
 use SIOC\modeles\donnees\Competence;
