@@ -1,18 +1,60 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace SIOC\DAO;
 
+use Doctrine\DBAL\Connection;
+use SIOC\modeles\donnees\Utilisateur;
+
 /**
- * Description of UtilisateurDAO
+ * Description of ActiviteDAO
  *
- * @author leetspeakv2
+ * @author Remi Lelaidier
  */
-class UtilisateurDAO {
-    //put your code here
+class UtilisateurDAO
+{
+    /**
+     * Database connection
+     *
+     * @var \Doctrine\DBAL\Connection
+     */
+    private $db;
+
+    /**
+     * Constructor
+     *
+     * @param \Doctrine\DBAL\Connection The database connection object
+     */
+    public function __construct(Connection $db) {
+        $this->db = $db;
+    }
+
+    /**
+     * Retourne une liste des utilisateurs trie par date (+recent au -recent).
+     *
+     * @return array A list of all articles.
+     */
+    public function findAll() {
+        $sql = "SELECT * FROM Utilisateur ORDER BY uti_id DESC";
+        $result = $this->db->fetchAll($sql);
+        
+        // Convert query result to an array of domain objects
+        $utilisateurs = array();
+        foreach ($result as $row) {
+            $utilisateurId = $row['uti_id'];
+            $utilisateurs[$utilisateurId] = $this->buildUtilisateur($row);
+        }
+        return $utilisateurs;
+    }
+
+    /**
+     * Creer un objet Utilisateur a partir d'une liste
+     *
+     * @param array $row
+     * @return \SIOC\modeles\donnees\Utilisateur
+     */
+    private function buildUtilisateur(array $row) {
+        $utilisateur = new Utilisateur();
+        $utilisateur->hydrate($row);
+        return $utilisateur;
+    }
 }

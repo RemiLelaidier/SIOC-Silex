@@ -91,17 +91,17 @@ class Promotion extends Exception
 
     public function hydrate(array $datas)
     {
-        if(isset($datas['id']))
+        if(isset($datas['pro_id']))
         {
-            $this->setId($datas['id']);
+            $this->setId($datas['pro_id']);
         }
-        if(isset($datas['libelle']))
+        if(isset($datas['pro_libelle']))
         {
-            $this->setLibelle($datas['libelle']);
+            $this->setLibelle($datas['pro_libelle']);
         }
-        if(isset($datas['annee']))
+        if(isset($datas['pro_annee']))
         {
-            $this->setAnnee($datas['annee']);
+            $this->setAnnee($datas['pro_annee']);
         }
     }
 
