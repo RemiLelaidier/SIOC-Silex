@@ -1,1 +1,53 @@
-{# empty Twig template #}
+{% extends "layout.html.twig" %}
+
+{% block content %}
+<section class="content-header">
+
+    <h1>
+        Compétences
+        <small>liste</small>
+    </h1>
+        </section>
+
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+         <div class="box box-warning">
+          <div class="box-header">
+            <h3 class="box-title">
+                    Voici les competences acquises :  
+            </h3>
+          </div>
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Numero</th>
+                        <th>Reference</th>
+                        <th>Libelle</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for competence in competences %}
+                    <tr>
+                        <th>{{ competence._id }}</th>
+                        <th>{{ competence._reference }}</th>
+                        <th>{{ competence._libelle }}</th>
+                        <th>{{ competence._description }}</th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Numero</th>
+                        <th>Reference</th>
+                        <th>Libelle</th>
+                        <th>Description</th>
+                    </tr>
+                </tfoot>
+            </table>
+          </div>
+         </div>
+        </div>
+    </section>
+{% endblock %}
