@@ -78,7 +78,7 @@ class Activite extends Exception
 
     public function setDebut($data)
     {
-        if(/* TODO */) 
+        if(preg_match('!^(0?\d|[12]\d|3[01])-(0?\d|1[012])-((?:19|20)\d{2})$!', $data)) 
         {
             $this->_debut = $data;
         }
