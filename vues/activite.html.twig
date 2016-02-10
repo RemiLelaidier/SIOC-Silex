@@ -1,1 +1,61 @@
+<!--
+    
+    Ici il faut afficher les activites
 
+-->
+{% extends "layout.html.twig" %}
+
+{% block content %}
+<section class="content-header">
+    <h1>
+        Activites
+        <small>liste</small>
+    </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box box-warning">
+                <div class="box-header">
+                  <h3 class="box-title">Voici les activites realisees</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>Numero</th>
+                        <th>Date debut</th>
+                        <th>Duree</th>
+                        <th>Libelle</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for activite in activites %}
+                          <tr>
+                            <th>{{ activite._id }}</th>
+                            <th>{{ activite._debut }}</th>
+                            <th>{{ activite._duree }}</th>
+                            <th>{{ activite._libelle }}</th>
+                            <th>{{ activite._description }}</th>
+                          </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>Numero</th>
+                        <th>Date debut</th>
+                        <th>Duree</th>
+                        <th>Libelle</th>
+                        <th>Description</th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </section><!-- /.content -->
+{% endblock %}
