@@ -6,7 +6,7 @@ use Doctrine\DBAL\Connection;
 use SIOC\modeles\donnees\Promotion;
 
 /**
- * Description of ActiviteDAO
+ * Description of PromotionDAO
  *
  * @author Remi Lelaidier
  */
