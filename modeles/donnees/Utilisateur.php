@@ -2,6 +2,7 @@
 
 namespace SIOC\modeles\donnees;
 
+use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Created by PhpStorm.
  * User: Remi Lelaidier
@@ -12,16 +13,18 @@ namespace SIOC\modeles\donnees;
  *            -v1.2 : Gestion des exceptions
  * Projet : SIOC
  */
-class Utilisateur extends Exception
+class Utilisateur extends UserInterface
 {
     // Attributs
 
     private $_id;				// Les champs de la BDD sont modelises ici
+    private $_username;
     private $_nom;
     private $_prenom;
     private $_mail;
     private $_password;
-    private $_statut;
+    private $_salt;
+    private $_role;
 
     // Constantes
 
@@ -29,11 +32,7 @@ class Utilisateur extends Exception
     const TAILLE_PRENOM = 45;	// a la taille des champs dans la BDD
     const TAILLE_MAIL = 50;
     const TAILLE_PASSWORD = 45;
-    const STATUT_ELEVE = 1;
-    const STATUT_PROF = 2;
-    const STATUT_VISITEUR = 3;
-    const STATUT_ADMIN = 4;
-
+    const TAILLE_USERNAME = 35;
     // Constructeur
 
     public function __construct()
@@ -43,7 +42,7 @@ class Utilisateur extends Exception
         $this->_prenom = "Prenom";
         $this->_mail = "mail@mailbox.com";
         $this->_password = "password";
-        $this->_statut = 0;
+        $this->_statut = "";
     }
 
     // Accesseurs
@@ -51,6 +50,11 @@ class Utilisateur extends Exception
     public function getId()
     {
         return $this->_id;
+    }
+    
+    public function getUsername()
+    {
+        return $this->_username;
     }
 
     public function getNom()
@@ -72,6 +76,11 @@ class Utilisateur extends Exception
     {
         return $this->_password;
     }
+    
+    public function getSalt()
+    {
+        return $this->_salt;
+    }
 
     public function getStatut()
     {
@@ -84,21 +93,21 @@ class Utilisateur extends Exception
         {
             $this->_id = $id;
         }
-        else
-        {
-            throw new Exception("Utilisateur -> setID -> mauvais type argument");
-        }
     }
 
-    public function setNom($data)
+    public function setUsername($data)
     {
         if(is_string($data) && strlen($data) <= self::TAILLE_NOM)
         {
             $this->_nom = $data;
         }
-        else
+    }
+    
+    public function setNom($data)
+    {
+        if(is_string($data) && strlen($data) <= self::TAILLE_USERNAME)
         {
-            throw new Exception("Utilisateur -> setNom -> mauvais type argument ou trop long");
+            $this->_username = $data;
         }
     }
 
@@ -108,10 +117,6 @@ class Utilisateur extends Exception
         {
             $this->_prenom = $data;
         }
-        else
-        {
-            throw new Exception("Utilisateur -> setPrenom -> mauvais type argument ou trop long");
-        }
     }
 
     public function setMail($data)
@@ -119,10 +124,6 @@ class Utilisateur extends Exception
         if(is_string($data) && strlen($data) <= self::TAILLE_MAIL)
         {
             $this->_mail = $data;
-        }
-        else
-        {
-            throw new Exception("Utilisateur -> setMail -> mauvais type argument ou trop long");
         }
     }
 
@@ -132,21 +133,21 @@ class Utilisateur extends Exception
         {
             $this->_password = $data;
         }
-        else
+    }
+    
+    public function setSalt($data)
+    {
+        if(is_string($data))
         {
-            throw new Exception("Utilisateur -> setPassword -> mauvais type argument ou trop long");
+            $this->_salt = $data;
         }
     }
 
-    public function setStatut($data)
+    public function setRole($data)
     {
-        if(in_array($data, [self::STATUT_ELEVE, self::STATUT_PROF, self::STATUT_VISITEUR, self::STATUT_ADMIN]))
+        if(is_string($data))
         {
-            $this->_statut = $data;
-        }
-        else
-        {
-            throw new Exception("Utilisateur -> setStatut -> mauvais type argument ou hors limite");
+            $this->_role = $data;
         }
     }
 
@@ -174,9 +175,13 @@ class Utilisateur extends Exception
         {
             $this->setPassword($datas['uti_password']);
         }
-        if(isset($datas['uti_statut']))
+        if(isset($datas['uti_salt']))
         {
-            $this->setStatut($datas['uti_statut']);
+            $this->setSalt($datas['uti_salt']);
+        }
+        if(isset($datas['uti_role']))
+        {
+            $this->setRole($datas['uti_role']);
         }
     }
 
@@ -187,7 +192,22 @@ class Utilisateur extends Exception
         $resu .= "Prenom  -> ". $this->getPrenom() ."\r";
         $resu .= "E-mail  -> ". $this->getMail() ."\r";
         $resu .= "Pass    -> ". $this->getPassword() ."\r";
-        $resu .= "Statut  -> ". $this->getStatut();
+        $resu .= "Role    -> ". $this->getRole();
         return $resu;
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function getRoles()
+    {
+        return array($this->getRole());
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function eraseCredentials() {
+        // Nothing to do here
     }
 }

@@ -12,8 +12,27 @@ $app->register(new Silex\Provider\DoctrineServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../vues',
 ));
+$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
+$app->register(new Silex\Provider\SessionServiceProvider());
+$app->register(new Silex\Provider\SecurityServiceProvider(), array(
+    'security.firewalls' => array(
+        'secured' => array(
+            'pattern' => '^/',
+            'anonymous' => false,
+            'logout' => true,
+            'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
+            'users' => $app->share(function () use ($app) {
+                return new SIOC\modeles\DAO\UtilisateurDAO($app['db']);
+            }),
+        ),
+    ),
+));
 
 // Register services.
+$app['dao.user'] = $app->share(function ($app) {
+    return new SIOC\modeles\DAO\UtilisateurDAO($app['db']);
+});            
+
 $app['dao.activite'] = $app->share(function ($app) {
     return new SIOC\modeles\DAO\ActiviteDAO($app['db']);
 });
