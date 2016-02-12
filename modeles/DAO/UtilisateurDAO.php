@@ -6,12 +6,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use Doctrine\DBAL\Connection;
 
 use SIOC\modeles\donnees\Utilisateur;
 
 /**
- * Description of ActiviteDAO
+ * Description of UtilisateurDAO
  *
  * @author Remi Lelaidier
  */
@@ -22,10 +21,10 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      *
      * @param integer $id The user id.
      *
-     * @return \MicroCMS\Domain\User|throws an exception if no matching user is found
+     * @return \SIOC\modeles\donnees\Utilisateur|throws an exception if no matching user is found
      */
     public function find($id) {
-        $sql = "SELECT * FROM Utilisateurs WHERE uti_id=?";
+        $sql = "SELECT * FROM Utilisateur WHERE uti_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row)
@@ -72,18 +71,11 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      * Creates a User object based on a DB row.
      *
      * @param array $row The DB row containing User data.
-     * @return \MicroCMS\Domain\User
+     * @return \SIOC\modeles\donnees\Utilisateur
      */
     protected function buildDomainObject($row) {
         $user = new Utilisateur();
-        $user->setId($row['uti_id']);
-        $user->setMail($row['uti_mail']);
-        $user->setUsername($row['uti_username']);
-        $user->setNom($row['uti_nom']);
-        $user->setPrenom($row['uti_prenom']);
-        $user->setPassword($row['uti_password']);
-        $user->setSalt($row['uti_salt']);
-        $user->setRole($row['uti_role']);
+        $user->hydrate($row);
         return $user;
     }
 }

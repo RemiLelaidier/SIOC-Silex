@@ -159,6 +159,10 @@ class Utilisateur extends UserInterface
         {
             $this->setId($datas['uti_id']);
         }
+        if(isset($datas['uti_username']))
+        {
+            $this->setUsername($datas['uti_username']);
+        }
         if(isset($datas['uti_nom']))
         {
             $this->setNom($datas['uti_nom']);

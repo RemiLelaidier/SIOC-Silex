@@ -2,7 +2,6 @@
 
 namespace SIOC\modeles\DAO;
 
-use Doctrine\DBAL\Connection;
 use SIOC\modeles\donnees\Activite;
 
 /**
@@ -10,41 +9,18 @@ use SIOC\modeles\donnees\Activite;
  *
  * @author Remi Lelaidier
  */
-class ActiviteDAO
+class ActiviteDAO extends DAO
 {
-    /**
-     * Database connection
-     *
-     * @var \Doctrine\DBAL\Connection
-     */
-    private $db;
+    public function find($id) {
+        $sql = "SELECT * FROM Activite WHERE act_id=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
 
-    /**
-     * Constructor
-     *
-     * @param \Doctrine\DBAL\Connection The database connection object
-     */
-    public function __construct(Connection $db) {
-        $this->db = $db;
+        if ($row)
+            return $this->buildDomainObject($row);
+        else
+            throw new \Exception("Aucune activite avec l'id " . $id);
     }
 
-    /**
-     * Retourne une liste d'activite trie par date (+recent au -recent).
-     *
-     * @return array A list of all articles.
-     */
-    public function findAll() {
-        $sql = "SELECT * FROM Activite ORDER BY act_id DESC";
-        $result = $this->db->fetchAll($sql);
-        
-        // Convert query result to an array of domain objects
-        $activites = array();
-        foreach ($result as $row) {
-            $activiteId = $row['act_id'];
-            $activites[$activiteId] = $this->buildActivite($row);
-        }
-        return $activites;
-    }
 
     /**
      * Creer un objet Activite a partir d'une liste
@@ -52,7 +28,7 @@ class ActiviteDAO
      * @param array $row
      * @return \SIOC\modeles\donnees\Activite
      */
-    private function buildActivite(array $row) {
+    private function buildDomainObject(array $row) {
         $activite = new Activite();
         $activite->hydrate($row);
         return $activite;

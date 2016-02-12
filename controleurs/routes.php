@@ -25,3 +25,7 @@ $app->get('/promotion', function () use ($app) {
     $promotions = $app['dao.activite']->findAll();
     return $app['twig']->render('promotion.html.twig', array('promotions' => $promotions));
 });
+
+$app->get('/', function () use($app) {
+    return $app['twig']->render('acceuil.html.twig');
+});
