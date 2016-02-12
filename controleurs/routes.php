@@ -1,5 +1,15 @@
 <?php
 
+use Symfony\Component\HttpFoundation\Request;
+
+// Login form
+$app->get('/login', function(Request $request) use ($app) {
+    return $app['twig']->render('login.html.twig', array(
+        'error'         => $app['security.last_error']($request),
+        'last_username' => $app['session']->get('_security.last_username'),
+    ));
+})->bind('login');
+
 // Home page
 $app->get('/activite', function () use ($app) {
     $activites = $app['dao.activite']->findAll();
@@ -14,4 +24,8 @@ $app->get('/competence', function () use ($app) {
 $app->get('/promotion', function () use ($app) {
     $promotions = $app['dao.activite']->findAll();
     return $app['twig']->render('promotion.html.twig', array('promotions' => $promotions));
+});
+
+$app->get('/', function () use($app) {
+    return $app['twig']->render('acceuil.html.twig');
 });
