@@ -32,7 +32,7 @@
   </head>
   <body class="hold-transition skin-yellow sidebar-mini">
     <div class="wrapper">
-
+    {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
       <header class="main-header">
 
         <!-- Logo -->
@@ -50,7 +50,7 @@
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <li>
-              <a href="#" class="dropdown"> {# Deconnexion #}
+              <a href="{{ path('logout') }}" class="dropdown">
                 <i class="fa fa-power-off"></i>
               </a>
              </li>
@@ -124,7 +124,7 @@
         </section>
         <!-- /.sidebar -->
       </aside>
-
+      {% endif %}
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -135,7 +135,7 @@
         <div class="pull-right hidden-xs">
           <b>SIOC</b> Version 1.0.0
         </div>
-        <strong>Copyright &copy; 2016 <a href="http://www.ufip.eu/">UFIP</a>.</strong> Tous droits reserves.
+        <strong>Copyright &copy; 2016 <a href="http://www.ufip.eu/" target='blank'>UFIP</a>.</strong> Tous droits reserves.
       </footer>
 
       <!-- Control Sidebar -->
