@@ -22,7 +22,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'logout' => true,
             'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
             'users' => $app->share(function () use ($app) {
-                return new SIOC\modeles\DAO\UtilisateurDAO($app['db']);
+                return new \SIOC\modeles\DAO\UtilisateurDAO($app['db']);
             }),
         ),
     ),
