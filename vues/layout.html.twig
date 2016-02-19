@@ -48,9 +48,8 @@
           </a>
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-            
               <li>
-              {% if app.user and is_granted('ROLE_USER') %}
+              {% if app.user %}
                 <a href="{{ path('logout') }}" class="dropdown">
               {% else %}
                 <a href="{{ path('login') }}" class="dropdown">
