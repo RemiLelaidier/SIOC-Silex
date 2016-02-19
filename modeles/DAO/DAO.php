@@ -1,8 +1,8 @@
 <?php
 
-use Doctrine\DBAL\Connection;
+namespace SIOC\DAO;
 
-namespace SIOC\modeles\DAO;
+use Doctrine\DBAL\Connection;
 
 /**
  * Description of DAO
@@ -21,7 +21,7 @@ abstract class DAO
     /**
      * Constructor
      *
-     * @param \Doctrine\DBAL\Connection The database connection object
+     * @param Doctrine\DBAL\Connection The database connection object
      */
     public function __construct(Connection $db) {
         $this->db = $db;
@@ -30,7 +30,7 @@ abstract class DAO
     /**
      * Grants access to the database connection object
      *
-     * @return \Doctrine\DBAL\Connection The database connection object
+     * @return Doctrine\DBAL\Connection The database connection object
      */
     protected function getDb() {
         return $this->db;
