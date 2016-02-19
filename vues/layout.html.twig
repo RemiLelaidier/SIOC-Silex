@@ -32,7 +32,7 @@
   </head>
   <body class="hold-transition skin-yellow sidebar-mini">
     <div class="wrapper">
-    {% if app.user %}
+    {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
       <header class="main-header">
 
         <!-- Logo -->
