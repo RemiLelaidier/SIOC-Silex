@@ -22,7 +22,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'logout' => true,
             'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
             'users' => $app->share(function () use ($app) {
-                return new SIOC\modeles\DAO\UtilisateurDAO($app['db']);
+                return new SIOC\DAO\UtilisateurDAO($app['db']);
             }),
         ),
     ),
@@ -34,17 +34,17 @@ $app['dao.user'] = $app->share(function ($app) {
 });            
 
 $app['dao.activite'] = $app->share(function ($app) {
-    return new SIOC\modeles\DAO\ActiviteDAO($app['db']);
+    return new SIOC\DAO\ActiviteDAO($app['db']);
 });
 
 $app['dao.competence'] = $app->share(function ($app) {
-    return new SIOC\modeles\DAO\CompetenceDAO($app['db']);
+    return new SIOC\DAO\CompetenceDAO($app['db']);
 });
 
 $app['dao.promotion'] = $app->share(function ($app) {
-    return new SIOC\modeles\DAO\PromotionDAO($app['db']);
+    return new SIOC\DAO\PromotionDAO($app['db']);
 });
 
 $app['dao.utilisateur'] = $app->share(function ($app) {
-    return new SIOC\modeles\DAO\UtilisateurDAO($app['db']);
+    return new SIOC\DAO\UtilisateurDAO($app['db']);
 });
