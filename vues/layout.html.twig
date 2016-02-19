@@ -32,7 +32,6 @@
   </head>
   <body class="hold-transition skin-yellow sidebar-mini">
     <div class="wrapper">
-    {# {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %} #}
       <header class="main-header">
 
         <!-- Logo -->
@@ -49,8 +48,13 @@
           </a>
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+            
               <li>
-              {# <a href="{{ path('logout') }}" class="dropdown"> #}
+              {% if app.user and is_granted() %}
+                <a href="{{ path('logout') }}" class="dropdown">
+              {% else %}
+                <a href="{{ path('login') }}" class="dropdown">
+              {% endif %}
                 <i class="fa fa-power-off"></i>
               </a>
              </li>
@@ -124,7 +128,6 @@
         </section>
         <!-- /.sidebar -->
       </aside>
-      {# {% endif %} #}
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
