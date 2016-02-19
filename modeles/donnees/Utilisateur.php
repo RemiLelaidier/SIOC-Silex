@@ -1,6 +1,6 @@
 <?php
 
-namespace SIOC\modeles\donnees;
+namespace SIOC\donnees;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 /**
@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *            -v1.2 : Gestion des exceptions
  * Projet : SIOC
  */
-class Utilisateur extends UserInterface
+class Utilisateur
 {
     // Attributs
 

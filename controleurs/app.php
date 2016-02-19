@@ -30,7 +30,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 
 // Register services.
 $app['dao.user'] = $app->share(function ($app) {
-    return new SIOC\modeles\DAO\UtilisateurDAO($app['db']);
+    return new SIOC\DAO\UtilisateurDAO($app['db']);
 });            
 
 $app['dao.activite'] = $app->share(function ($app) {

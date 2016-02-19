@@ -1,6 +1,6 @@
 <?php
 
-namespace SIOC\modeles\DAO;
+namespace SIOC\DAO;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;

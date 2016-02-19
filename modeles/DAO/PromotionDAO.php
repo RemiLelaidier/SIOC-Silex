@@ -1,8 +1,8 @@
 <?php
 
-namespace SIOC\modeles\DAO;
+namespace SIOC\DAO;
 
-use SIOC\modeles\donnees\Promotion;
+use SIOC\donnees\Promotion;
 
 /**
  * Description of PromotionDAO

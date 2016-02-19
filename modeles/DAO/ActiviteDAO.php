@@ -1,8 +1,8 @@
 <?php
 
-namespace SIOC\modeles\DAO;
+namespace SIOC\DAO;
 
-use SIOC\modeles\donnees\Activite;
+use SIOC\donnees\Activite;
 
 /**
  * Description of ActiviteDAO
@@ -28,7 +28,7 @@ class ActiviteDAO extends DAO
      * @param array $row
      * @return \SIOC\modeles\donnees\Activite
      */
-    private function buildDomainObject(array $row) {
+    protected function buildDomainObject($row) {
         $activite = new Activite();
         $activite->hydrate($row);
         return $activite;
