@@ -7,6 +7,6 @@
         "symfony/security" : "2.7"
     },
      "autoload": {
-        "psr-4": {"SIOC\\": "./"}
+        "psr-4": {"SIOC\\": "./modeles"}
     }
 }
