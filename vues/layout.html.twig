@@ -50,9 +50,9 @@
             <ul class="nav navbar-nav">
               <li>
               {% if app.user %}
-                <a href="{{ path('/logout') }}" class="dropdown">
+                <a href="{{ path('logout') }}" class="dropdown">
               {% else %}
-                <a href="{{ path('/login') }}" class="dropdown">
+                <a href="{{ path('login') }}" class="dropdown">
               {% endif %}
                 <i class="fa fa-power-off"></i>
               </a>
