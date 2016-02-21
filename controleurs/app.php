@@ -18,6 +18,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     'security.firewalls' => array(
         'login' => array(
             'pattern' => '^/login$',
+            'anonymous' => true,
         ),
         'secured' => array(
             'pattern' => '^.*$',
