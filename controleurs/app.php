@@ -16,10 +16,13 @@ $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\SessionServiceProvider());
 $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     'security.firewalls' => array(
+        'login' => array(
+            'pattern' => '^/login$',
+        ),
         'secured' => array(
             'pattern' => '^/',
             'anonymous' => false,
-            'logout' => true,
+            'logout' => array('logout_path' => '/logout'),
             'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
             'users' => $app->share(function () use ($app) {
                 return new SIOC\DAO\UtilisateurDAO($app['db']);
