@@ -19,10 +19,11 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         'login' => array(
             'pattern' => '^/login$',
             'anonymous' => true,
+            'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
         ),
         'secured' => array(
             'pattern' => '^.*$',
-            'anonymous' => true,
+            'anonymous' => false,
             'logout' => array('logout_path' => '/logout'),
             'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
             'users' => $app->share(function () use ($app) {
