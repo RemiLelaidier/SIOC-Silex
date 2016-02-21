@@ -3,7 +3,7 @@
 use Symfony\Component\HttpFoundation\Request;
 
 // Login form
-$app->get('/login', function(Request $request) use ($app) {
+$app->match('/login', function(Request $request) use ($app) {
     return $app['twig']->render('login.html.twig', array(
         'error'         => $app['security.last_error']($request),
         'last_username' => $app['session']->get('_security.last_username'),
