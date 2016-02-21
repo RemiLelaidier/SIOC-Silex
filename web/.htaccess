@@ -1,14 +1,3 @@
-/**
- * Created by PhpStorm.
- * User: Yoken Babel
- * Date: 11/02/2016
- * Time: 1:34
- * Versions : -v1.0 : Version nominale
-              -v1.1 : Ajout de la fonction toString()
- *            -v1.2 : Gestion des exceptions
- */Projet : SIOC
- 
-
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
