@@ -68,54 +68,116 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MENU</li>
+            {% if app.user.eleve %}
             <li class="active treeview">
               <a href="#">
-                <i class="fa fa-group"></i> <span>Clients</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-group"></i> <span>Activités</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="./clientsvue.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./clientsadd.php"><i class="fa fa-plus-square-o"></i> Ajouter</a></li>
-		<!--<li><a href="./clientssup.php"><i class="fa fa-minus-square-o"></i> Supprimer</a></li>-->
+                <li class="active"><a href="./eleveGetActView.php"><i class="fa fa-eye"></i> Voir</a></li>
+                <li><a href="./eleveGetManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
               </ul>
             </li>
             <li class="treeview">
               <a href="#">
-                  <i class="fa fa-usd"></i> <span>Achats</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-usd"></i> <span>Compétences</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../achats/achatsvue.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="../achats/achatsadd.php"><i class="fa fa-plus-square-o"></i> Ajouter</a></li>
-		<!--<li><a href="../achats/achatssup.php"><i class="fa fa-minus-square-o"></i> Supprimer</a></li>-->
+                <li class="active"><a href="./eleveGetSkillView.php"><i class="fa fa-eye"></i> Voir</a></li>
+                <li><a href="./eleveGetSkillManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
               </ul>
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-copyright"></i> <span>Produits</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+            </li>
+            {% elseif app.user.professeur %}
+            <li class="active treeview">
+              <a href="#">
+                <i class="fa fa-group"></i> <span>Activités</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../produits/produitsvue.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="../produits/produitsadd.php"><i class="fa fa-plus-square-o"></i> Ajouter</a></li>
-		<!--<li><a href="../produits/produitssup.php"><i class="fa fa-minus-square-o"></i> Supprimer</a></li>-->
+                <li class="active"><a href="./GetActView.php"><i class="fa fa-eye"></i> Voir</a></li>
+                <li><a href="./GetManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
               </ul>
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-trademark"></i> <span>Marques</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-usd"></i> <span>Compétences</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../marques/marquesvue.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="../marques/marquesadd.php"><i class="fa fa-plus-square-o"></i> Ajouter</a></li>
-		<!--<li><a href="../marques/marquessup.php"><i class="fa fa-minus-square-o"></i> Supprimer</a></li>-->
+                <li class="active"><a href="./GetSkillView.php"><i class="fa fa-eye"></i> Voir</a></li>
+                <li><a href="./GetSkillManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
               </ul>
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-calendar"></i> <span>Rendez Vous</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-usd"></i> <span>Promotions</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../rdv/rdvvue.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="../rdv/rdvadd.php"><i class="fa fa-plus-square-o"></i> Ajouter</a></li>
-		<!--<li><a href="../rdv/rdvsup.php"><i class="fa fa-minus-square-o"></i> Supprimer</a></li>-->
+                <li class="active"><a href="./GetPromoView.php"><i class="fa fa-eye"></i> Voir</a></li>
+                <li><a href="./GetPromoManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-usd"></i> <span>Éleves</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li class="active"><a href="./GetEleveView.php"><i class="fa fa-eye"></i> Voir</a></li>
+                <li><a href="./GetEleveManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+            </li>
+            {% elseif app.user.wasgod %}
+            <li class="active treeview">
+              <a href="#">
+                <i class="fa fa-group"></i> <span>Activités</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li class="active"><a href="./GetActView.php"><i class="fa fa-eye"></i> Voir</a></li>
+                <li><a href="./GetManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-usd"></i> <span>Compétences</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li class="active"><a href="./GetSkillView.php"><i class="fa fa-eye"></i> Voir</a></li>
+                <li><a href="./GetSkillManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-usd"></i> <span>Promotions</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li class="active"><a href="./GetPromoView.php"><i class="fa fa-eye"></i> Voir</a></li>
+                <li><a href="./GetPromoManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-usd"></i> <span>Éleves</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li class="active"><a href="./GetEleveView.php"><i class="fa fa-eye"></i> Voir</a></li>
+                <li><a href="./GetEleveManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-usd"></i> <span>Professeurs</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li class="active"><a href="./GetProfView.php"><i class="fa fa-eye"></i> Voir</a></li>
+                <li><a href="./GetProfManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
               </ul>
             </li>
             <li class="treeview">
