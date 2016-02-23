@@ -68,7 +68,7 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MENU</li>
-            {% if app.user.eleve %}
+            {# TODO : condition eleve #}
             <li class="active treeview">
               <a href="{{ path('activite') }}">
                 <i class="fa fa-group"></i> <span>Activités</span> <i class="fa fa-angle-left pull-right"></i>
@@ -84,97 +84,41 @@
                 <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
-            {% elseif app.user.professeur %}
-            <li class="active treeview">
-              <a href="#">
-                <i class="fa fa-group"></i> <span>Activités</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetActView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
-            </li>
+            {# TODO : condition professeur #}
             <li class="treeview">
-              <a href="#">
-                <i class="fa fa-usd"></i> <span>Compétences</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetSkillView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetSkillManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
+              <a href="{{ path('promotion') }}">
                 <i class="fa fa-usd"></i> <span>Promotions</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetPromoView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetPromoManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
             </li>
             <li class="treeview">
-              <a href="#">
+              <a href="{{ path('eleve') }}">
                 <i class="fa fa-usd"></i> <span>Éleves</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetEleveView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetEleveManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
             </li>
             <li class="treeview">
-              <a href="#">
+              <a href="{{ path('stats') }}">
                 <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
-            {% elseif app.user.wasgod %}
-            <li class="active treeview">
-              <a href="#">
-                <i class="fa fa-group"></i> <span>Activités</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetActView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
-            </li>
+            {# TODO : condition admin #}
             <li class="treeview">
-              <a href="#">
+              <a href={{ path('competence') }}>
                 <i class="fa fa-usd"></i> <span>Compétences</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetSkillView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetSkillManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
             </li>
             <li class="treeview">
-              <a href="#">
+              <a href={{ path('promotion') }}>
                 <i class="fa fa-usd"></i> <span>Promotions</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetPromoView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetPromoManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
             </li>
             <li class="treeview">
-              <a href="#">
+              <a href={{ path('eleve') }}>
                 <i class="fa fa-usd"></i> <span>Éleves</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetEleveView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetEleveManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
             </li>
             <li class="treeview">
-              <a href="#">
+              <a href={{ path('professeur') }}>
                 <i class="fa fa-usd"></i> <span>Professeurs</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetProfView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetProfManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
           </ul>

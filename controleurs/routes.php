@@ -16,6 +16,21 @@ $app->get('/activite', function () use ($app) {
     return $app['twig']->render('activite.html.twig', array('activites' => $activites));
 });
 
+$app->get('/stats', function () use($app) {
+    // TODO  DAO stats
+    return $app['twig']->render('stats.html.twig');
+});
+
+$app->get('/eleve', function () use($app) {
+    // TODO  DAO eleves
+    return $app['twig']->render('eleves.html.twig');
+});
+
+$app->get('/professeur', function () use($app) {
+    // TODO  DAO professeurs
+    return $app['twig']->render('professeurs.html.twig');
+});
+
 $app->get('/competence', function () use ($app) {
     $competences = $app['dao.competence']->findAll();
     return $app['twig']->render('competence.html.twig', array('competences' => $competences));
