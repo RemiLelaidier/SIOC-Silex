@@ -70,25 +70,17 @@
             <li class="header">MENU</li>
             {% if app.user.eleve %}
             <li class="active treeview">
-              <a href="#">
+              <a href="{{ path('activite') }}">
                 <i class="fa fa-group"></i> <span>Activités</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./eleveGetActView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./eleveGetManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
             </li>
             <li class="treeview">
-              <a href="#">
+              <a href="{{ path('competence') }}">
                 <i class="fa fa-usd"></i> <span>Compétences</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./eleveGetSkillView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./eleveGetSkillManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
             </li>
             <li class="treeview">
-              <a href="#">
+              <a href="{{ path('stats') }}">
                 <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
