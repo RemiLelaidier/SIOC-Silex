@@ -54,4 +54,8 @@ $app->get('/competence/new', function () use ($app) {
 $app->post('/competence', function (Request $request) use ($app) {
     var_dump($request);
     die();
+    $request = $request->get('competence');
+    competence('feedback@yoursite.com', '[YourSite] Feedback', $message);
+
+    return new Response('Thank you for your feedback!', 201);
 });
