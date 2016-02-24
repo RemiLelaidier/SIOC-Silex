@@ -1,0 +1,56 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <section class="content-header">
+        <h1>
+            Formulaire d'ajout
+            <small>Utilisateur</small>
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-warning">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Ajout</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    {# Il faut modifier le formulaire pour permettre de rentrer les donnees d'un Utilisateur
+                        Referes toi au champ de la bdd et anlyse le code (ce formulaire est celui de l'ajout de competence)
+                    #}
+                  <form role="form" method="POST" action={{ path('{# route a faire #}') }}>
+                    <!-- text input -->
+                    <div class="form-group">    
+                      <label>Reference</label>
+                      <input type="text" name="reference" class="form-control" placeholder="A.X.X.">
+                      
+                      <label>Libelle</label>
+                      <input type="text" name="libelle" class="form-control" placeholder="Libelle">
+                      
+                      <label>Description</label>
+                      <input type="text" name="description" class="form-control" placeholder="Description">
+                    </div>
+                    
+                    <div class="form-group">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="obligatoire" value="true" checked>
+                          Obligatoire
+                        </label>
+                        <label>
+                          <input type="radio" name="obligatoire" value="false" checked>
+                          Non-obligatoire
+                        </label>      
+                      </div>
+                    </div>
+                    
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+
+                  </form>
+                </div><!-- /.box-body -->
+            </div>
+        </div>
+    </section>
+{% endblock %}
