@@ -7,7 +7,7 @@ use SIOC\donnees\Activite;
 /**
  * Description of ActiviteDAO
  *
- * @author Remi Lelaidier
+ * @author Remi Lelaidier Yoken Babel José Lopes
  */
 class ActiviteDAO extends DAO
 {
