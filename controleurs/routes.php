@@ -1,6 +1,6 @@
 <?php
-
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 // Login form
 $app->get('/login', function(Request $request) use ($app) {
