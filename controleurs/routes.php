@@ -47,4 +47,4 @@ $app->get('/', function () use($app) {
 
 $app->get('/competence/new', function () use ($app) {
     return $app['twig']->render('ajout_competence.html.twig');
-})
+});
