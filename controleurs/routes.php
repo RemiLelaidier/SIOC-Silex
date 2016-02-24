@@ -24,17 +24,17 @@ $app->get('/stats', function () use($app) {
 $app->get('/eleve', function () use($app) {
     $eleves = $app['dao.eleve']->findAll();
     return $app['twig']->render('eleves.html.twig');
-});
+})->bind('eleve');
 
 $app->get('/professeur', function () use($app) {
     $professeurs = $app['dao.professeur']->findAll();
     return $app['twig']->render('professeurs.html.twig');
-});
+})->bind('professeur');
 
 $app->get('/competence', function () use ($app) {
     $competences = $app['dao.competence']->findAll();
     return $app['twig']->render('competence.html.twig', array('competences' => $competences));
-});
+})->bind('competence');
 
 $app->get('/promotion', function () use ($app) {
     $promotions = $app['dao.activite']->findAll();
