@@ -14,20 +14,20 @@ $app->get('/login', function(Request $request) use ($app) {
 $app->get('/activite', function () use ($app) {
     $activites = $app['dao.activite']->findAll();
     return $app['twig']->render('activite.html.twig', array('activites' => $activites));
-});
+})->bind('activite');
 
 $app->get('/stats', function () use($app) {
-    // TODO  DAO stats
+    $stats = $app['dao.stat']->findAll();
     return $app['twig']->render('stats.html.twig');
 });
 
 $app->get('/eleve', function () use($app) {
-    // TODO  DAO eleves
+    $eleves = $app['dao.eleve']->findAll();
     return $app['twig']->render('eleves.html.twig');
 });
 
 $app->get('/professeur', function () use($app) {
-    // TODO  DAO professeurs
+    $professeurs = $app['dao.professeur']->findAll();
     return $app['twig']->render('professeurs.html.twig');
 });
 

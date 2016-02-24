@@ -68,8 +68,8 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MENU</li>
-            {# TODO : condition eleve #}
-            <li class="active treeview">
+            {% if is_granded('ROLE_ELEVE') %}
+              <li class="active treeview">
               <a href="{{ path('activite') }}">
                 <i class="fa fa-group"></i> <span>Activités</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -84,7 +84,7 @@
                 <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
-            {# TODO : condition professeur #}
+            {% elseif is_granded('ROLE_PROF') %}
             <li class="treeview">
               <a href="{{ path('promotion') }}">
                 <i class="fa fa-usd"></i> <span>Promotions</span> <i class="fa fa-angle-left pull-right"></i>
@@ -100,7 +100,7 @@
                 <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
-            {# TODO : condition admin #}
+            {% elseif is_granded('ROLE_ADMIN') %}
             <li class="treeview">
               <a href={{ path('competence') }}>
                 <i class="fa fa-usd"></i> <span>Compétences</span> <i class="fa fa-angle-left pull-right"></i>
@@ -121,6 +121,7 @@
                 <i class="fa fa-usd"></i> <span>Professeurs</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
+            {% endif %}
           </ul>
         </section>
         <!-- /.sidebar -->
