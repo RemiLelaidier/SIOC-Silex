@@ -11,6 +11,8 @@ use SIOC\donnees\Activite;
  */
 class ActiviteDAO extends DAO
 {
+    private $utilisateurDAO;
+    
     public function find($id) {
         $sql = "SELECT * FROM Activite WHERE act_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
@@ -50,9 +52,6 @@ class ActiviteDAO extends DAO
     }
     
     // relations
-    
-    private $utilisateurDAO;
-
     public function setUserDAO(UtilisateurDAO $user){
         $this->utilisateurDAO = $utilisateurDAO;
     }
