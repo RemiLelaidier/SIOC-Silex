@@ -60,7 +60,7 @@ class CompetenceDAO extends DAO
         else {
             $this->getDb()->insert('Competence', $competenceData);
             $id = $this->getDb()->lastInsertId();
-            $comment->setId($id)
+            $comment->setId($id);
         }
     }
 }
