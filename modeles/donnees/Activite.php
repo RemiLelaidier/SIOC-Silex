@@ -21,6 +21,7 @@ class Activite extends Exception
     private $_duree;
     private $_libelle;
     private $_description;
+    private $_competences;
 
     // Constantes
     // Les constantes de taille font references
@@ -62,6 +63,11 @@ class Activite extends Exception
     public function getDescription()
     {
         return $this->_description;
+    }
+    
+    public function getCompetences()
+    {
+        return $this->_competences;
     }
 
     public function setId($id)
@@ -123,6 +129,18 @@ class Activite extends Exception
             throw new Exception("Activite -> setDescription -> mauvais type argument ou trop long");
         }
     }
+    
+    public function setCompetences($data)
+    {
+        if(is_array($data))
+        {
+            $this->_competences = $data;
+        }
+        else
+        {
+            throw new Exception("Activite -> setCompetences -> mauvais type argument");
+        }
+    }
 
     // Methodes
 
@@ -148,14 +166,9 @@ class Activite extends Exception
         {
             $this->setDescription($datas['act_description']);
         }
-    }
-
-    public function toString()
-    {
-        $resu = "ID 	 -> ". $this->getId() ."<br/>";
-        $resu .= "Duree   -> ". $this->getDuree() ."<br/>";
-        $resu .= "Libelle -> ". $this->getLibelle() ."<br/>";
-        $resu .= "Descri  -> ". $this->getDescription();
-        return $resu;
+        if(isset($datas['act_competences']))
+        {
+            $this-setCompetences($datas['act_competences']);
+        }
     }
 }

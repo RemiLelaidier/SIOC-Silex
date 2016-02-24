@@ -15,6 +15,7 @@ class ActiviteDAO extends DAO
     
     private $competenceDAO;
     
+    // TODO
     public function find($id) {
         $sql = "SELECT * FROM Activite WHERE act_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
@@ -25,6 +26,7 @@ class ActiviteDAO extends DAO
             throw new \Exception("Aucune activite avec l'id " . $id);
     }
 
+    // TODO
     // Methode findAll //
     public function findAll()
     {
@@ -35,6 +37,7 @@ class ActiviteDAO extends DAO
         $activites = array();
         foreach ($result as $row) {
             $activiteId = $row['act_id'];
+            foreach ()
             $activites[$activiteId] = $this->buildDomainObject($row);
         }
         return $activites;
@@ -48,7 +51,6 @@ class ActiviteDAO extends DAO
      */
    protected function buildDomainObject($row) {
         $activite = new Activite();
-        $activite->setId($row['act_id']);
         $activite->hydrate($row);
         return $activite;
     }

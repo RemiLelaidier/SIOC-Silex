@@ -6,4 +6,3 @@ CREATE TABLE Associe
     FOREIGN KEY(ass_competence) REFERENCES Competence(com_id),
     FOREIGN KEY(ass_activite) REFERENCES Activite(act_id)
 );
-
