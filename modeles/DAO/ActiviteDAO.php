@@ -34,7 +34,7 @@ class ActiviteDAO extends DAO
         return $activite;
     }
     
-    // José
+    // relations
     
     private $utilisateurDAO;
     
