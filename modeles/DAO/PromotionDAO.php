@@ -12,7 +12,7 @@ use SIOC\donnees\Promotion;
 class PromotionDAO extends DAO
 {
     public function find($id) {
-        $sql = "SELECT * FROM Promotion WHERE pro_id=?";
+        $sql = "SELECT * FROM Promotion WHERE pro_id";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row)
@@ -27,7 +27,7 @@ class PromotionDAO extends DAO
      * @param array $row
      * @return \SIOC\modeles\donnees\Promotion
      */
-    private function buildDomainObject(array $row) {
+    private function buildDomainObject($row) {
         $promotion = new Promotion();
         $promotion->hydrate($row);
         return $promotion;

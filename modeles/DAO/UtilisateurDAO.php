@@ -24,7 +24,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      * @return \SIOC\modeles\donnees\Utilisateur|throws an exception if no matching user is found
      */
     public function find($id) {
-        $sql = "SELECT * FROM Utilisateur WHERE uti_id=?";
+        $sql = "SELECT * FROM Utilisateur WHERE uti_id";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row)
