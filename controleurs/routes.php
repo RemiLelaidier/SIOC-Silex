@@ -45,6 +45,11 @@ $app->get('/', function () use($app) {
     return $app['twig']->render('acceuil.html.twig');
 });
 
+//Création new competence
 $app->get('/competence/new', function () use ($app) {
     return $app['twig']->render('ajout_competence.html.twig');
-});
+})->bind('ajout_competence');
+$app->post('/competence/new', function () use ($app) {
+    var_dump('test');
+    die();
+}
