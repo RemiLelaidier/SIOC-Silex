@@ -76,6 +76,14 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
     protected function buildDomainObject($row) {
         $user = new Utilisateur();
         $user->hydrate($row);
+        $user->setUsername($row['usr_name']);
+        $user->setPassword($row['usr_password']);
+        $user->setSalt($row['usr_salt']);
+        $user->setRole($row['usr_role']);
         return $user;
     }
 }
+
+
+
+
