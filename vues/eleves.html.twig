@@ -1,0 +1,61 @@
+<!--
+    
+    Ici il faut afficher les eleves
+
+-->
+{% extends "layout.html.twig" %}
+
+{% block content %}
+<section class="content-header">
+    <h1>
+        Eleves
+        <small>liste</small>
+    </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box box-warning">
+                <div class="box-header">
+                  <h3 class="box-title">Eleves</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>Promotion</th>
+                        <th>Annee</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for eleve in eleves %}
+                          <tr>
+                            <th>{{ eleve._nom }}</th>
+                            <th>{{ eleve._prenom }}</th>
+                            <th>{{ eleve._email }}</th>
+                            <th>{{ eleve._libelle }}</th>
+                            <th>{{ eleve._annee }}</th>
+                          </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>Promotion</th>
+                        <th>Annee</th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </section><!-- /.content -->
+{% endblock %}

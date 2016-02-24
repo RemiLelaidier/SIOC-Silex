@@ -1,0 +1,55 @@
+<!--
+    
+    Ici il faut afficher les professeurs
+
+-->
+{% extends "layout.html.twig" %}
+
+{% block content %}
+<section class="content-header">
+    <h1>
+        Professeurs
+        <small>liste</small>
+    </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box box-warning">
+                <div class="box-header">
+                  <h3 class="box-title">Professeurs</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for professeur in professeurs %}
+                          <tr>
+                            <th>{{ professeur._nom }}</th>
+                            <th>{{ professeur._prenom }}</th>
+                            <th>{{ professeur._email }}</th>
+                          </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Emil</th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </section><!-- /.content -->
+{% endblock %}
