@@ -26,12 +26,12 @@ class CompetenceDAO extends DAO
     // Methode findAll //
     public function findAll()
     {
-        $sql = "SELECT * FROM Competence ORDER BY com_id=?";
+        $sql = "SELECT * FROM Competence ORDER BY com_id";
         $result = $this->getDb()->fetchAll($sql, array());
 
         // Convertit le resultat de la requete en tableau //
         $competences = array();
-        foreach ($competence as $row) {
+        foreach ($result as $row) {
             $competenceId = $row['com_id'];
             $comptence->setId($row['com_id']);
             $competences[$competenceId] = $this->buildDomainObject($row);
@@ -44,10 +44,23 @@ class CompetenceDAO extends DAO
      * @param array $row
      * @return \SIOC\modeles\donnees\Competence
      */
-    private function buildDomainObject(array $row) {
+    protected function buildDomainObject($row) {
         $competence = new Competence();
         $competence->hydrate($row);
         return $competence;
     }
-    
+ 
+    public function save(Competence $competence) {
+        $competenceData = array(
+            'act_id' => $competence->getCompetence()->getId();
+        );
+        if ($competence->getId()){
+            $this->getDb()->update('com_id', $commentDate, array('com_id' => $comment->getId()));
+        }
+        else {
+            $this->getDb()->insert('Competence', $competenceData);
+            $id = $this->getDb()->lastInsertId();
+            $comment->setId($id)
+        }
+    }
 }
