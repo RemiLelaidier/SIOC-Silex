@@ -12,9 +12,9 @@ $app->register(new Silex\Provider\DoctrineServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../vues',
 ));
-$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
+/$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\SessionServiceProvider());
-$app->register(new Silex\Provider\SecurityServiceProvider(), array(
+/**$app->register(new Silex\Provider\SecurityServiceProvider(), array(
     'security.firewalls' => array(
         'login' => array(
             'pattern' => '^/login$',
@@ -31,7 +31,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             }),
         ),
     ),
-));
+));**/
 
 // Register services.
 $app['dao.user'] = $app->share(function ($app) {
