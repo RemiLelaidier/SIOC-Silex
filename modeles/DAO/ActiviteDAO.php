@@ -22,7 +22,8 @@ class ActiviteDAO extends DAO
     }
 
     // Methode findAll //
-    public function findAll() {
+    public function findAll()
+    {
         $sql = "SELECT * FROM Activite ORDER BY act_id=?";
         $result = $this->getDb()->fetchAll($sql, array($id));
 
@@ -33,8 +34,7 @@ class ActiviteDAO extends DAO
             $activites[$activiteId] = $this->buildDomainObject($row);
         }
         return $activites;
-        /**  */
-
+    }
 
     /**
      * Creer un objet Activite a partir d'une liste
@@ -44,7 +44,7 @@ class ActiviteDAO extends DAO
      */
    protected function buildDomainObject($row) {
         $activite = new Activite();
-    /**    $activite->setId($row['act_id']); */
+        $activite->setId($row['act_id']);
         $activite->hydrate($row);
         return $activite;
     }
