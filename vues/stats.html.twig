@@ -34,12 +34,12 @@
                         {% for activite in activites %}
                           <tr>
                             <th>{{ activite._libelle }}</th>
-                            {% for associe in associes %}
-                                {% if associe._activite == activite._id %}
+                            {% for competence in competences %}
+                                {# if competence._id activite._id #}
                                     <th>X</th>
-                                {% else %}
+                                {# else #}
                                     <th> </th>
-                                {% endif %}
+                                {# endif #}
                             {% endfor %}
                           </tr>
                         {% endfor %}
