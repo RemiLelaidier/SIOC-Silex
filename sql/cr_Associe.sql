@@ -1,4 +1,4 @@
-CREATE Associe
+CREATE TABLE Associe
 (
     ass_competence      INTEGER,
     ass_activite        INTEGER,
