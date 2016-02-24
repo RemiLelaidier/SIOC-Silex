@@ -5,7 +5,7 @@
         "twig/twig" : "1.21.*",
         "twbs/bootstrap" : "3.3.*",
         "symfony/security" : "2.7",
-        "symfony/twig-bridge": "*"
+        "symfony/twig-bridge": "2.7.*"
     },
      "autoload": {
         "psr-4": {"SIOC\\": "modeles"}

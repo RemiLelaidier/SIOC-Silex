@@ -33,4 +33,5 @@ class CompetenceDAO extends DAO
         $competence->hydrate($row);
         return $competence;
     }
+    
 }

@@ -11,6 +11,8 @@ use SIOC\donnees\Activite;
  */
 class ActiviteDAO extends DAO
 {
+    private $utilisateurDAO;
+    
     public function find($id) {
         $sql = "SELECT * FROM Activite WHERE act_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
@@ -21,6 +23,20 @@ class ActiviteDAO extends DAO
             throw new \Exception("Aucune activite avec l'id " . $id);
     }
 
+    // Methode findAll //
+    public function findAll()
+    {
+        $sql = "SELECT * FROM Activite ORDER BY act_id=?";
+        $result = $this->getDb()->fetchAll($sql, array($id));
+
+        // Convertit le resultat de la requete en tableau //
+        $activites = array();
+        foreach ($activite as $row) {
+            $activiteId = $row['act_id'];
+            $activites[$activiteId] = $this->buildDomainObject($row);
+        }
+        return $activites;
+    }
 
     /**
      * Creer un objet Activite a partir d'une liste
@@ -28,9 +44,21 @@ class ActiviteDAO extends DAO
      * @param array $row
      * @return \SIOC\modeles\donnees\Activite
      */
-    protected function buildDomainObject($row) {
+   protected function buildDomainObject($row) {
         $activite = new Activite();
+        $activite->setId($row['act_id']);
         $activite->hydrate($row);
         return $activite;
+    }
+    
+    // relations
+    public function setUserDAO(UtilisateurDAO $user){
+        $this->utilisateurDAO = $utilisateurDAO;
+    }
+    
+    private $competenceDAO;
+    
+    public function setCompetenceDAO(CompetenceDAO $competence){
+        $this->competenceDAO = $competenceDAO;
     }
 }
