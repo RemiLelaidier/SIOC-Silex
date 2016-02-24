@@ -21,6 +21,19 @@ class ActiviteDAO extends DAO
             throw new \Exception("Aucune activite avec l'id " . $id);
     }
 
+    // Methode findAll //
+    public function findAll() {
+        $sql = "SELECT * FROM Activite ORDER BY act_id=?";
+        $result = $this->getDb()->fetchAll($sql);
+
+        // Convertit le resultat de la requete en tableau
+        $activites = array();
+        foreach ($activite as $row) {
+            $activiteId = $row['art_id'];
+            $activites[$activiteId] = $this->buildDomainObject($row);
+        }
+        return $activites;
+
 
     /**
      * Creer un objet Activite a partir d'une liste
@@ -37,7 +50,7 @@ class ActiviteDAO extends DAO
     // relations
     
     private $utilisateurDAO;
-    
+
     public function setUserDAO(UtilisateurDAO $user){
         $this->utilisateurDAO = $utilisateurDAO;
     }
