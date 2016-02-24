@@ -10,5 +10,7 @@ CREATE TABLE Activite
     act_duree               INTEGER,
     act_libelle             VARCHAR(35),
     act_description         VARCHAR(350),
-    PRIMARY KEY(act_id)
+    act_eleve               INTEGER,
+    PRIMARY KEY(act_id),
+    FOREIGN KEY(act_eleve) REFERENCES Utilisateur(uti_id)
 );
