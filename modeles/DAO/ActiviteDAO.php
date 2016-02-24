@@ -33,6 +33,7 @@ class ActiviteDAO extends DAO
             $activites[$activiteId] = $this->buildDomainObject($row);
         }
         return $activites;
+        /**  */
 
 
     /**
