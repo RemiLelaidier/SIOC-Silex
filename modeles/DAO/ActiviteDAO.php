@@ -39,12 +39,12 @@ class ActiviteDAO extends DAO
     private $utilisateurDAO;
     
     public function setUserDAO(UtilisateurDAO $user){
-        $this->utilisateurDAO = $utilisateurDAO
+        $this->utilisateurDAO = $utilisateurDAO;
     }
     
     private $competenceDAO;
     
     public function setCompetenceDAO(CompetenceDAO $competence){
-        $this->competenceDAO = $competenceDAO
+        $this->competenceDAO = $competenceDAO;
     }
 }
