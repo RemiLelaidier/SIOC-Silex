@@ -44,3 +44,8 @@ $app->get('/promotion', function () use ($app) {
 $app->get('/', function () use($app) {
     return $app['twig']->render('acceuil.html.twig');
 });
+
+$app->post('/competence', function (Request $request) {
+    var_dump("test crea competence");
+    die();
+});

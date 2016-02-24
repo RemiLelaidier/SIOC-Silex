@@ -53,3 +53,7 @@ $app['dao.promotion'] = $app->share(function ($app) {
 $app['dao.utilisateur'] = $app->share(function ($app) {
     return new SIOC\DAO\UtilisateurDAO($app['db']);
 });
+
+$app['dao.associe'] = $app->share(function ($app) {
+    return new SIOC\DAO\AssocieDAO($app['db']);
+});
