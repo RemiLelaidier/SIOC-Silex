@@ -54,23 +54,20 @@ $app->get('/activite/new', function () use ($app) {
     return $app['twig']->render('ajout_activite.html.twig');
 })->bind('ajout_activite');
 
-$app->get('/eleve/new', function () use ($app) {
-    return $app['twig']->render('ajout_eleve.html.twig');
-})->bind('ajout_eleve');
+$app->get('/utilisateur/new', function () use ($app) {
+    return $app['twig']->render('ajout_utilisateur.html.twig');
+})->bind('ajout_utilisateur');
 
-$app->get('/professeur/new', function () use ($app) {
-    return $app['twig']->render('ajout_professeur.html.twig');
-})->bind('ajout_professeur');
-
-$app->get('/promotion/new', function () use ($app) {
+$app->get('/promotion/new', function() use ($app)) {
     return $app['twig']->render('ajout_promotion.html.twig');
-})->bind('ajout_promotion');
+})bind('ajout_promotion');
+
 
 
 //POST du formulaire de competence
 $app->post('/competence', function (Request $request) use ($app) {
     $competence = $request->get('competence');
-    //competence->('com_reference','com_libelle','com_description', $competence);
+    Request->('com_reference','com_libelle','com_description', $competence);
     return;
     var_dump($request);
     die();
