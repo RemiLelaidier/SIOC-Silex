@@ -8,8 +8,7 @@
 {% block content %}
 <section class="content-header">
     <h1>
-        Eleves
-        <small>liste</small>
+        Tableau des competences
     </h1>
         </section>
 
@@ -27,7 +26,7 @@
                       <tr>
                         <th>Activites</th>
                         {% for competence in competences %}
-                        <th>{{ competence._reference }} : {{ competence._libelle}}</th>
+                        <th>{{ competence._reference }}</th>
                         {% endfor %}
                       </tr>
                     </thead>
@@ -36,7 +35,7 @@
                           <tr>
                             <th>{{ activite._libelle }}</th>
                             {% for associe in associes %}
-                                {% if associe._id == activite._id %}
+                                {% if associe._activite == activite._id %}
                                     <th>X</th>
                                 {% else %}
                                     <th> </th>
