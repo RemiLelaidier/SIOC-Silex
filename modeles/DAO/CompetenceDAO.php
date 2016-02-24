@@ -22,6 +22,22 @@ class CompetenceDAO extends DAO
         else
             throw new \Exception("Aucune competence avec l'id " . $id);
     }
+
+    // Methode findAll //
+    public function findAll()
+    {
+        $sql = "SELECT * FROM Competence ORDER BY com_id=?";
+        $result = $this->getDb()->fetchAll($sql, array());
+
+        // Convertit le resultat de la requete en tableau //
+        $competences = array();
+        foreach ($result as $row) {
+            $competenceId = $row['com_id'];
+            $comptence->setId($row['com_id']);
+            $competences[$competenceId] = $this->buildDomainObject($row);
+        }
+        return $competences;
+    }
     /**
      * Creer un objet Competence a partir d'une liste
      *

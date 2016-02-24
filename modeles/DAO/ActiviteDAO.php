@@ -7,7 +7,7 @@ use SIOC\donnees\Activite;
 /**
  * Description of ActiviteDAO
  *
- * @author Remi Lelaidier
+ * @author Remi Lelaidier Yoken Babel José Lopes
  */
 class ActiviteDAO extends DAO
 {
@@ -33,7 +33,7 @@ class ActiviteDAO extends DAO
 
         // Convertit le resultat de la requete en tableau //
         $activites = array();
-        foreach ($activite as $row) {
+        foreach ($result as $row) {
             $activiteId = $row['act_id'];
             $activites[$activiteId] = $this->buildDomainObject($row);
         }
