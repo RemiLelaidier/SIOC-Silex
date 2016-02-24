@@ -26,7 +26,7 @@ class ActiviteDAO extends DAO
         $sql = "SELECT * FROM Activite ORDER BY act_id=?";
         $result = $this->getDb()->fetchAll($sql);
 
-        // Convertit le resultat de la requete en tableau
+        // Convertit le resultat de la requete en tableau //
         $activites = array();
         foreach ($activite as $row) {
             $activiteId = $row['act_id'];
@@ -43,6 +43,8 @@ class ActiviteDAO extends DAO
      */
     protected function buildDomainObject($row) {
         $activite = new Activite();
+            $article->setId($row['act_id']);
+            $article->setLib($row['art_lib']);
         $activite->hydrate($row);
         return $activite;
     }
