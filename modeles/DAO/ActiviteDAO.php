@@ -29,7 +29,7 @@ class ActiviteDAO extends DAO
         // Convertit le resultat de la requete en tableau
         $activites = array();
         foreach ($activite as $row) {
-            $activiteId = $row['art_id'];
+            $activiteId = $row['act_id'];
             $activites[$activiteId] = $this->buildDomainObject($row);
         }
         return $activites;
