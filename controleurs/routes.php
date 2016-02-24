@@ -58,9 +58,9 @@ $app->get('/utilisateur/new', function () use ($app) {
     return $app['twig']->render('ajout_utilisateur.html.twig');
 })->bind('ajout_utilisateur');
 
-$app->get('/promotion/new', function() use ($app)) {
-    return $app['twig']->render('ajout_promotion.html.twig');
-})bind('ajout_promotion');
+$app->get('/promotion/new', function() use ($app) {
+return $app['twig']->render('ajout_promotion.html.twig');
+})->bind('ajout_promotion');
 
 
 
