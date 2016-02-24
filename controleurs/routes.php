@@ -45,17 +45,33 @@ $app->get('/', function () use($app) {
     return $app['twig']->render('acceuil.html.twig');
 });
 
-//Création new competence
+//Création nouveaux champs
 $app->get('/competence/new', function () use ($app) {
     return $app['twig']->render('ajout_competence.html.twig');
 })->bind('ajout_competence');
 
-//Validation du formulaire de competence
+$app->get('/activite/new', function () use ($app) {
+    return $app['twig']->render('ajout_activite.html.twig');
+})->bind('ajout_activite');
+
+$app->get('/utilisateur/new', function () use ($app) {
+    return $app['twig']->render('ajout_utilisateur.html.twig');
+})->bind('ajout_utilisateur');
+
+$app->get('/promotion/new', function() use ($app) {
+return $app['twig']->render('ajout_promotion.html.twig');
+})->bind('ajout_promotion');
+
+
+
+//POST du formulaire de competence
 $app->post('/competence', function (Request $request) use ($app) {
+    $competence = $request->get('competence');
+    // Request->('com_reference','com_libelle','com_description', $competence);
+    return;
     var_dump($request);
     die();
-    $request = $request->get('competence');
-    competence('feedback@yoursite.com', '[YourSite] Feedback', $message);
-
-    return new Response('Thank you for your feedback!', 201);
 });
+
+//Creer route utilisateur
+//Prevoir route eleve ses activités
