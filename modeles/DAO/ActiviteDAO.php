@@ -44,7 +44,7 @@ class ActiviteDAO extends DAO
      */
    protected function buildDomainObject($row) {
         $activite = new Activite();
-        $activite->setId($row['act_id']);
+    /**    $activite->setId($row['act_id']); */
         $activite->hydrate($row);
         return $activite;
     }
