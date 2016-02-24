@@ -50,12 +50,13 @@ $app->get('/competence/new', function () use ($app) {
     return $app['twig']->render('ajout_competence.html.twig');
 })->bind('ajout_competence');
 
-//Validation du formulaire de competence
+//POST du formulaire de competence
 $app->post('/competence', function (Request $request) use ($app) {
+    $competence = $request->get('competence');
+    mail('com_reference','com_libelle','com_description', $message);
     var_dump($request);
     die();
-    $request = $request->get('competence');
-    competence('feedback@yoursite.com', '[YourSite] Feedback', $message);
-
-    return new Response('Thank you for your feedback!', 201);
+    return new Response('Compétence ajoutée!', 201);
 });
+
+//Creer route utilisateur
