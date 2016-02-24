@@ -1,6 +1,6 @@
 <!--
     
-    Ici il faut afficher les eleves
+    Ici il faut afficher le tableau des competences et des activites
 
 -->
 {% extends "layout.html.twig" %}
@@ -35,8 +35,8 @@
                         {% for activite in activites %}
                           <tr>
                             <th>{{ activite._libelle }}</th>
-                            {% for competence in competences %}
-                                {% if %}
+                            {% for associe in associes %}
+                                {% if associe._id == activite._id %}
                                     <th>X</th>
                                 {% else %}
                                     <th> </th>

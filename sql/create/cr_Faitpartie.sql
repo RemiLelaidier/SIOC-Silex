@@ -1,4 +1,4 @@
-CREATE Faitpartie
+CREATE TABLE Faitpartie
 (
     fap_eleve       INTEGER,
     fap_promo       INTEGER,
