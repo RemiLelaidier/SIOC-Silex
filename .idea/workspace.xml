@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7e052a7c-16eb-43a2-9431-677ca7b0f2fe" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vues/layout.html.twig" afterPath="$PROJECT_DIR$/vues/layout.html.twig" />
     </list>
     <ignored path="SIOC-Silex.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -323,7 +322,13 @@
       <option name="project" value="LOCAL" />
       <updated>1456304586411</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Debug Layout modif granded granted">
+      <created>1456304669509</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1456304669509</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -386,7 +391,8 @@
     <MESSAGE value="Debug Layout et  -&gt;bind('article')" />
     <MESSAGE value="Debug Layout et  -&gt;bind('article') with $id" />
     <MESSAGE value="Debug Layout essais sans autentification" />
-    <option name="LAST_COMMIT_MESSAGE" value="Debug Layout essais sans autentification" />
+    <MESSAGE value="Debug Layout modif granded granted" />
+    <option name="LAST_COMMIT_MESSAGE" value="Debug Layout modif granded granted" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
