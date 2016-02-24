@@ -11,7 +11,7 @@ $app->get('/login', function(Request $request) use ($app) {
 })->bind('login');
 
 // Home page
-$app->get('/activite', function () use ($app) {
+$app->get('/activite', function ($id) use ($app) {
     $activites = $app['dao.activite']->findAll();
     return $app['twig']->render('activite.html.twig', array('activites' => $activites));
 })->bind('activite');
