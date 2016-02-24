@@ -13,6 +13,8 @@ class ActiviteDAO extends DAO
 {
     private $utilisateurDAO;
     
+    private $competenceDAO;
+    
     public function find($id) {
         $sql = "SELECT * FROM Activite WHERE act_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
@@ -27,7 +29,7 @@ class ActiviteDAO extends DAO
     public function findAll()
     {
         $sql = "SELECT * FROM Activite ORDER BY act_id=?";
-        $result = $this->getDb()->fetchAll($sql, array($id));
+        $result = $this->getDb()->fetchAll($sql, array());
 
         // Convertit le resultat de la requete en tableau //
         $activites = array();
@@ -55,8 +57,6 @@ class ActiviteDAO extends DAO
     public function setUserDAO(UtilisateurDAO $user){
         $this->utilisateurDAO = $utilisateurDAO;
     }
-    
-    private $competenceDAO;
     
     public function setCompetenceDAO(CompetenceDAO $competence){
         $this->competenceDAO = $competenceDAO;
