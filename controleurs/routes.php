@@ -54,8 +54,10 @@ $app->get('/competence/new', function () use ($app) {
 $app->post('/competence', function (Request $request) use ($app) {
     $competence = $request->get('competence');
     mail('com_reference','com_libelle','com_description', $competence);
+    return;
     //var_dump($request);
     //die();
 });
 
 //Creer route utilisateur
+//Prevoir route eleve ses activités
