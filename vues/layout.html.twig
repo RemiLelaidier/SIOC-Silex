@@ -83,7 +83,6 @@
                 <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
-            {% elseif is_granted('ROLE_PROF') %}
             <li class="treeview">
               <a href="{{ path('promotion') }}">
                 <i class="fa fa-usd"></i> <span>Promotions</span> <i class="fa fa-angle-left pull-right"></i>
@@ -99,7 +98,6 @@
                 <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
-            {% elseif is_granted('ROLE_ADMIN') %}
             <li class="treeview">
               <a href={{ path('competence') }}>
                 <i class="fa fa-usd"></i> <span>Compétences</span> <i class="fa fa-angle-left pull-right"></i>
@@ -120,7 +118,6 @@
                 <i class="fa fa-usd"></i> <span>Professeurs</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
-            {% endif %}
           </ul>
         </section>
         <!-- /.sidebar -->
