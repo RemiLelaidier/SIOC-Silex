@@ -27,7 +27,7 @@ class ActiviteDAO extends DAO
     public function findAll()
     {
         $sql = "SELECT * FROM Activite ORDER BY act_id=?";
-        $result = $this->getDb()->fetchAll($sql, array($id));
+        $result = $this->getDb()->fetchAll($sql, array());
 
         // Convertit le resultat de la requete en tableau //
         $activites = array();
