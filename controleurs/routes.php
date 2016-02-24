@@ -19,7 +19,7 @@ $app->get('/activite', function () use ($app) {
 $app->get('/stats', function () use($app) {
     $stats = $app['dao.stat']->findAll();
     return $app['twig']->render('stats.html.twig');
-});
+})->bind('stats');
 
 $app->get('/eleve', function () use($app) {
     $eleves = $app['dao.eleve']->findAll();
@@ -39,7 +39,7 @@ $app->get('/competence', function () use ($app) {
 $app->get('/promotion', function () use ($app) {
     $promotions = $app['dao.activite']->findAll();
     return $app['twig']->render('promotion.html.twig', array('promotions' => $promotions));
-});
+})->bind('promotion');
 
 $app->get('/', function () use($app) {
     return $app['twig']->render('acceuil.html.twig');

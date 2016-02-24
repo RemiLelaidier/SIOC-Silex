@@ -33,4 +33,18 @@ class ActiviteDAO extends DAO
         $activite->hydrate($row);
         return $activite;
     }
+    
+    // relations
+    
+    private $utilisateurDAO;
+    
+    public function setUserDAO(UtilisateurDAO $user){
+        $this->utilisateurDAO = $utilisateurDAO
+    }
+    
+    private $competenceDAO;
+    
+    public function setCompetenceDAO(CompetenceDAO $competence){
+        $this->competenceDAO = $competenceDAO
+    }
 }
