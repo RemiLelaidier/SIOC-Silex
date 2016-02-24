@@ -52,7 +52,7 @@ class CompetenceDAO extends DAO
  
     public function save(Competence $competence) {
         $competenceData = array(
-            'act_id' => $competence->getCompetence()->getId();
+            'com_id' => $competence->getCompetence()->getId()
         );
         if ($competence->getId()){
             $this->getDb()->update('com_id', $commentDate, array('com_id' => $comment->getId()));
