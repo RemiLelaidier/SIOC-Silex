@@ -3,239 +3,179 @@
 -->
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SIOC</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="{{ app.request.basepath }}/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{ app.request.basepath }}/plugins/datatables/dataTables.bootstrap.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ app.request.basepath }}/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="{{ app.request.basepath }}/dist/css/skins/_all-skins.min.css">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>SIOC</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.5 -->
+  <link rel="stylesheet" href="{{ app.request.basepath }}/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ app.request.basepath }}/plugins/datatables/dataTables.bootstrap.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ app.request.basepath }}/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="{{ app.request.basepath }}/dist/css/skins/_all-skins.min.css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body class="hold-transition skin-yellow sidebar-mini">
-    <div class="wrapper">
-      <header class="main-header">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="hold-transition skin-yellow sidebar-mini">
+<div class="wrapper">
+  <header class="main-header">
 
-        <!-- Logo -->
-        <a href="#" class="logo">  {# Retour acceuil #}
-          <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>S</b>IOC</span>
-          <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>SIO</b>Competence</span>
-        </a>
-	<nav class="navbar navbar-static-top" role="navigation">
-          <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Navigation On/Off</span>
-          </a>
-          <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-              <li>
-              {% if app.user %}
-                <a href="{{ path('logout') }}" class="dropdown">
+    <!-- Logo -->
+    <a href="#" class="logo">  {# Retour acceuil #}
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>S</b>IOC</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>SIO</b>Competence</span>
+    </a>
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Navigation On/Off</span>
+      </a>
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <li>
+            {% if app.user %}
+            <a href="{{ path('logout') }}" class="dropdown">
               {% else %}
-                <a href="{{ path('login') }}" class="dropdown">
-              {% endif %}
+              <a href="{{ path('login') }}" class="dropdown">
+                {% endif %}
                 <i class="fa fa-power-off"></i>
               </a>
-             </li>
-            </ul>
-          </div>
-	</nav>
-      </header>
-      <!-- Left side column. contains the logo and sidebar -->
-      <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-          <!-- sidebar menu: : style can be found in sidebar.less -->
-          <ul class="sidebar-menu">
-            <li class="header">MENU</li>
-            {% if app.user.eleve %}
-            <li class="active treeview">
-              <a href="#">
-                <i class="fa fa-group"></i> <span>Activités</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./eleveGetActView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./eleveGetManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-usd"></i> <span>Compétences</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./eleveGetSkillView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./eleveGetSkillManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-            </li>
-            {% elseif app.user.professeur %}
-            <li class="active treeview">
-              <a href="#">
-                <i class="fa fa-group"></i> <span>Activités</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetActView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-usd"></i> <span>Compétences</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetSkillView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetSkillManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-usd"></i> <span>Promotions</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetPromoView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetPromoManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-usd"></i> <span>Éleves</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetEleveView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetEleveManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-            </li>
-            {% elseif app.user.wasgod %}
-            <li class="active treeview">
-              <a href="#">
-                <i class="fa fa-group"></i> <span>Activités</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetActView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-usd"></i> <span>Compétences</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetSkillView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetSkillManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-usd"></i> <span>Promotions</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetPromoView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetPromoManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-usd"></i> <span>Éleves</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetEleveView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetEleveManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-usd"></i> <span>Professeurs</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./GetProfView.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./GetProfManage.php"><i class="fa fa-plus-square-o"></i> Gerer</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-            </li>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+        <li class="header">MENU</li>
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-group"></i> <span>Activites</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="{{ activite.html.twig }}">{{ activite }}</a></li>
+            <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+            <!--<li><a href="./clientssup.php"><i class="fa fa-minus-square-o"></i> Supprimer</a></li>-->
           </ul>
-        </section>
-        <!-- /.sidebar -->
-      </aside>
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        {% block content %}
-        {% endblock %}
-      </div><!-- /.content-wrapper -->
-      <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>SIOC</b> Version 1.0.0
-        </div>
-        <strong>Copyright &copy; 2016 <a href="http://www.ufip.eu/" target='blank'>UFIP</a>.</strong> Tous droits reserves.
-      </footer>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-usd"></i> <span>Competences</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ competence.html.twig }}">{{ /competence }}</a></li>
+            <li><a href="../achats/achatsadd.php"><i class="fa fa-plus-square-o"></i> Ajouter</a></li>
+            <!--<li><a href="../achats/achatssup.php"><i class="fa fa-minus-square-o"></i> Supprimer</a></li>-->
+          </ul>
+        </li>
+        {% if is_granted('ROLE_PROF') %}
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-trademark"></i> <span>Promotions</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ promotion.html.twig }}">{{ /promotion }}</a></li>
+              <li><a href="../marques/marquesadd.php"><i class="fa fa-plus-square-o"></i> Ajouter</a></li>
+              <!--<li><a href="../marques/marquessup.php"><i class="fa fa-minus-square-o"></i> Supprimer</a></li>-->
+            </ul>
+          </li><li class="treeview">
+          <a href="#">
+            <i class="fa fa-copyright"></i> <span>Eleves</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../produits/produitsvue.php"><i class="fa fa-eye"></i> Voir</a></li>
+            <li><a href="../produits/produitsadd.php"><i class="fa fa-plus-square-o"></i> Ajouter</a></li>
+            <!--<li><a href="../produits/produitssup.php"><i class="fa fa-minus-square-o"></i> Supprimer</a></li>-->
+          </ul>
+        </li>
+        {% elseif is_granded('ROLE_ADMIN') %}
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-calendar"></i> <span>Professeurs</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="../rdv/rdvvue.php"><i class="fa fa-eye"></i> Voir</a></li>
+              <li><a href="../rdv/rdvadd.php"><i class="fa fa-plus-square-o"></i> Ajouter</a></li>
+              <!--<li><a href="../rdv/rdvsup.php"><i class="fa fa-minus-square-o"></i> Supprimer</a></li>-->
+            </ul>
+          </li>
+        {% endif %}
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    {% block content %}
+    {% endblock %}
+  </div><!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>SIOC</b> Version 1.0.0
+    </div>
+    <strong>Copyright &copy; 2016 <a href="http://www.ufip.eu/" target='blank'>UFIP</a>.</strong> Tous droits reserves.
+  </footer>
 
-      <!-- Control Sidebar -->
-      <!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
-      <div class="control-sidebar-bg"></div>
-    </div><!-- ./wrapper -->
+  <!-- Control Sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div><!-- ./wrapper -->
 
-    <!-- jQuery 2.1.4 -->
-    <script src="{{ app.request.basepath }}/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="{{ app.request.basepath }}/bootstrap/js/bootstrap.min.js"></script>
-    <!-- DataTables -->
-    <script src="{{ app.request.basepath }}/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{ app.request.basepath }}/plugins/datatables/dataTables.bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="{{ app.request.basepath }}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="{{ app.request.basepath }}/plugins/fastclick/fastclick.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ app.request.basepath }}/dist/js/app.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ app.request.basepath }}/dist/js/demo.js"></script>
-    <!-- page script -->
-    <script>
-      $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
-      });
-    </script>
-  </body>
+<!-- jQuery 2.1.4 -->
+<script src="{{ app.request.basepath }}/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="{{ app.request.basepath }}/bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="{{ app.request.basepath }}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{ app.request.basepath }}/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="{{ app.request.basepath }}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="{{ app.request.basepath }}/plugins/fastclick/fastclick.min.js"></script>
+<!-- AdminLTE App -->
+<script src="{{ app.request.basepath }}/dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ app.request.basepath }}/dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>
+</body>
 </html>
