@@ -27,7 +27,7 @@ class PromotionDAO extends DAO
      * @param array $row
      * @return \SIOC\modeles\donnees\Promotion
      */
-    private function buildDomainObject(array $row) {
+    private function buildDomainObject($row) {
         $promotion = new Promotion();
         $promotion->hydrate($row);
         return $promotion;

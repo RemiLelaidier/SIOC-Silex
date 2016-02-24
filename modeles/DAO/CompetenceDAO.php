@@ -44,7 +44,7 @@ class CompetenceDAO extends DAO
      * @param array $row
      * @return \SIOC\modeles\donnees\Competence
      */
-    protected function buildDomainObject(array $row) {
+    protected function buildDomainObject($row) {
         $competence = new Competence();
         $competence->hydrate($row);
         return $competence;
