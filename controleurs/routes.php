@@ -19,7 +19,7 @@ $app->get('/activite', function () use ($app) {
 $app->get('/stats', function () use($app) {
     $stats = $app['dao.stat']->findAll();
     return $app['twig']->render('stats.html.twig');
-});
+})->bind('stats');
 
 $app->get('/eleve', function () use($app) {
     $eleves = $app['dao.eleve']->findAll();
