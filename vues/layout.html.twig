@@ -67,6 +67,7 @@
         <section class="sidebar">
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
+            <!--  {% if is_granted('ROLE_ELEVE') %} -->
             <li class="header">MENU</li>
               <li class="active treeview">
               <a href="{{ path('activite') }}">
@@ -83,7 +84,7 @@
                 <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
-            {% elseif is_granded('ROLE_PROF') %}
+            {% elseif is_granted('ROLE_PROF') %}
             <li class="treeview">
               <a href="{{ path('promotion') }}">
                 <i class="fa fa-usd"></i> <span>Promotions</span> <i class="fa fa-angle-left pull-right"></i>
@@ -99,7 +100,7 @@
                 <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
-            {% elseif is_granded('ROLE_ADMIN') %}
+            {% elseif is_granted('ROLE_ADMIN') %}
             <li class="treeview">
               <a href={{ path('competence') }}>
                 <i class="fa fa-usd"></i> <span>Compétences</span> <i class="fa fa-angle-left pull-right"></i>
