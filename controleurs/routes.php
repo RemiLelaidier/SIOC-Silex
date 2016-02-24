@@ -53,7 +53,7 @@ $app->get('/competence/new', function () use ($app) {
 //POST du formulaire de competence
 $app->post('/competence', function (Request $request) use ($app) {
     $competence = $request->get('competence');
-    competence('com_reference','com_libelle','com_description', $competence);
+    $this->('com_reference','com_libelle','com_description', $competence);
     return;
     var_dump($request);
     die();
