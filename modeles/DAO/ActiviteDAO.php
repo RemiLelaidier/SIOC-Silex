@@ -41,7 +41,7 @@ class ActiviteDAO extends DAO
      * @param array $row
      * @return \SIOC\modeles\donnees\Activite
      */
-    public function buildDomainObject($row) {
+    protected function buildDomainObject($row) {
         $activite = new Activite();
         $activite->hydrate($row);
         return $activite;
