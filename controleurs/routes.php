@@ -53,10 +53,10 @@ $app->get('/competence/new', function () use ($app) {
 //POST du formulaire de competence
 $app->post('/competence', function (Request $request) use ($app) {
     $competence = $request->get('competence');
-    mail('com_reference','com_libelle','com_description', $competence);
+    competence('com_reference','com_libelle','com_description', $competence);
     return;
-    //var_dump($request);
-    //die();
+    var_dump($request);
+    die();
 });
 
 //Creer route utilisateur
