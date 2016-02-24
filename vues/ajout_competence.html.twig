@@ -1,0 +1,59 @@
+<!--
+    
+    Ici il faut afficher le formulaire d'ajout des competences
+
+-->
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <section class="content-header">
+        <h1>
+            Formulaire d'ajout
+            <small>Competences</small>
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-warning">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Ajout</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <form role="form">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Reference</label>
+                      <input type="text" class="form-control" placeholder="A.X.X.">
+                      
+                      <label>Libelle</label>
+                      <input type="text" class="form-control" placeholder="Libelle">
+                      
+                      <label>Description</label>
+                      <input type="text" class="form-control" placeholder="Description">
+                    </div>
+                    
+                    <!-- checkbox -->
+                    <div class="form-group">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" value="true" checked>
+                          Obligatoire
+                        </label>
+                        <label>
+                          <input type="radio" value="false" checked>
+                          Non-obligatoire
+                        </label>
+                      </div>
+                    </div>
+                    
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+
+                  </form>
+                </div><!-- /.box-body -->
+            </div>
+        </div>
+    </section>
+{% endblock %}

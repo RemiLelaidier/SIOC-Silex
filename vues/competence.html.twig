@@ -25,6 +25,7 @@
                         <th>Reference</th>
                         <th>Libelle</th>
                         <th>Description</th>
+                        <th>Obligatoire</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +35,11 @@
                         <th>{{ competence._reference }}</th>
                         <th>{{ competence._libelle }}</th>
                         <th>{{ competence._description }}</th>
+                        {% if competence._obligatoire == TRUE %}
+                            <th> X </th>
+                        {% else %}
+                            <th>   </th>
+                        {% endif %}
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -43,6 +49,7 @@
                         <th>Reference</th>
                         <th>Libelle</th>
                         <th>Description</th>
+                        <th>Obligatoire</th>
                     </tr>
                 </tfoot>
             </table>
