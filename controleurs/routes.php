@@ -45,10 +45,27 @@ $app->get('/', function () use($app) {
     return $app['twig']->render('acceuil.html.twig');
 });
 
-//Création new competence
+//Création nouveaux champs
 $app->get('/competence/new', function () use ($app) {
     return $app['twig']->render('ajout_competence.html.twig');
 })->bind('ajout_competence');
+
+$app->get('/activite/new', function () use ($app) {
+    return $app['twig']->render('ajout_activite.html.twig');
+})->bind('ajout_activite');
+
+$app->get('/eleve/new', function () use ($app) {
+    return $app['twig']->render('ajout_eleve.html.twig');
+})->bind('ajout_eleve');
+
+$app->get('/professeur/new', function () use ($app) {
+    return $app['twig']->render('ajout_professeur.html.twig');
+})->bind('ajout_professeur');
+
+$app->get('/promotion/new', function () use ($app) {
+    return $app['twig']->render('ajout_promotion.html.twig');
+})->bind('ajout_promotion');
+
 
 //POST du formulaire de competence
 $app->post('/competence', function (Request $request) use ($app) {
