@@ -34,18 +34,27 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 ));
 
 'security.access_rules' => array(
-    array('^/.+$', 'ROLE_USER'), // url accessible par USER
-    array('^/.+$', 'ROLE_ELEVE'), // url accessible par USER
-    array('^/.+$', 'ROLE_PROF'), // url accessible par USER
-    array('^/.+$', 'ROLE_ADMIN'), // url accessible par USER
-    array('^/foo$', ''), // Cette url est accessible en mode non connecté
+    array('^/acceuil', 'ROLE_USER'),
+    array('^/layout', 'ROLE_USER'),
+    array('^/layout', 'ROLE_ELEVE'),
+    array('^/activite/', 'ROLE_ELEVE'),
+    array('^/activite/new', 'ROLE_ELEVE'),
+    array('^/competence/', 'ROLE_ELEVE'),
+    array('^/competence/new', 'ROLE_ELEVE'),
+    array('^/layout', 'ROLE_PROF'),
+    array('^/competence/.*$', 'ROLE_PROF'),
+    array('^/activite/.*$', 'ROLE_PROF'),
+    array('^/eleves/.*$', 'ROLE_PROF'),
+    array('^/promotion/.*$', 'ROLE_PROF'),
+    array('^/competence/.*$', 'ROLE_ADMIN'),
+    array('^/activite/.*$', 'ROLE_ADMIN'),
+    array('^/layout', 'ROLE_ADMIN'),
+    array('^/eleves/.*$', 'ROLE_ADMIN'),
+    array('^/promotion/.*$', 'ROLE_ADMIN'),
+    array('^/professeurs/.*$', 'ROLE_ADMIN'),
+    array('^/', ''), // Cette url est accessible en mode non connecté
+    array('^/login', ''),
 )
-
-      'security.access_rules' => array(
-    array('^/api/brand/get', 'ROLE_ADMIN'),
-    array('^/api/account/get', 'ROLE_ADMIN'),
-    array('^/.+$', 'ROLE_USER'),
-    array('^/', '')
 
 // Register services.
 $app['dao.user'] = $app->share(function ($app) {
