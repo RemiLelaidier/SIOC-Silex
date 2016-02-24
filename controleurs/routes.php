@@ -49,7 +49,9 @@ $app->get('/', function () use($app) {
 $app->get('/competence/new', function () use ($app) {
     return $app['twig']->render('ajout_competence.html.twig');
 })->bind('ajout_competence');
-$app->post('/competence/new', function () use ($app) {
-    var_dump('test');
+
+//Validation du formulaire de competence
+$app->post('/competence', function (Request $request) use ($app) {
+    var_dump($request);
     die();
-}
+});
