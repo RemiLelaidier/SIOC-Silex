@@ -46,7 +46,7 @@ class CompetenceDAO extends DAO
                 . "WHERE A.ass_competence = C.com_id "
                 . "AND A.ass_activite = ? "
                 . "ORDER BY com_id";
-        $result = $this->getDb()-fetchAll($sql, array($activiteId));
+        $result = $this->getDb()->fetchAll($sql, array($activiteId));
                 
         $competences = array();
         foreach ($result as $row) {
