@@ -32,8 +32,8 @@ class CompetenceDAO extends DAO
         // Convertit le resultat de la requete en tableau //
         $competences = array();
         foreach ($result as $row) {
-            $competenceId = $row['com_id'];
-            $competences[$competenceId] = $this->buildDomainObject($row);
+            //$competenceId = $row['com_id'];
+            //$competences[$competenceId] = $this->buildDomainObject($row);
         }
         return $competences;
     }
@@ -62,7 +62,7 @@ class CompetenceDAO extends DAO
      * @return \SIOC\modeles\donnees\Competence
      */
     protected function buildDomainObject($row) {
-        $competence = new Competence($this->getDb());
+        $competence = new Competence();
         $competence->hydrate($row);
         return $competence;
     }
