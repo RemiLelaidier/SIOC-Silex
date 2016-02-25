@@ -12,7 +12,7 @@ namespace SIOC\donnees;
  *            -v1.2 : Gestion des exceptions
  * Projet : SIOC
  */
-class Activite extends Exception
+class Activite
 {
     // Attributs
 

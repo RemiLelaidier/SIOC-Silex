@@ -4,6 +4,7 @@ namespace SIOC\DAO;
 
 use SIOC\donnees\Activite;
 use SIOC\DAO\CompetenceDAO;
+use SIOC\DAO\UtilisateurDAO;
 
 /**
  * Description of ActiviteDAO

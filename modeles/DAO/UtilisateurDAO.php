@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 
-use SIOC\modeles\donnees\Utilisateur;
+use SIOC\donnees\Utilisateur;
 
 /**
  * Description of UtilisateurDAO
