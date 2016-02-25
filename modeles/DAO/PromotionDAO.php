@@ -3,6 +3,7 @@
 namespace SIOC\DAO;
 
 use SIOC\donnees\Promotion;
+use SIOC\DAO\UtilisateurDAO;
 
 /**
  * Description of PromotionDAO
@@ -17,6 +18,8 @@ class PromotionDAO extends DAO
 
         if ($row)
         {
+            $eleves = new UtilisateurDAO($this->getDb());
+            $row['pro_eleves'] = $eleves->findbyPromotion($id);
             return $this->buildDomainObject($row);
         }
     }
@@ -28,8 +31,9 @@ class PromotionDAO extends DAO
         
         $promotions = array();
         foreach ($result as $row) {
-            echo $row['pro_id'];
             $promotionId = $row['pro_id'];
+            $eleves = new UtilisateurDAO($this->getDb());
+            $row['pro_eleves'] = $eleves->findbyPromotion($promotionId);
             $promotions[$promotionId] = $this->buildDomainObject($row);
         }
         return $promotions;

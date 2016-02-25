@@ -19,6 +19,7 @@ class Promotion
     private $_id;				// Les champs de la BDD sont modelises ici
     private $_libelle;
     private $_annee;
+    private $_eleves;
 
     // Constantes
 
@@ -50,6 +51,11 @@ class Promotion
     {
         return $this->_annee;
     }
+    
+    public function getEleves()
+    {
+        return $this->_eleves;
+    }
 
     public function setId($data)
     {
@@ -74,6 +80,14 @@ class Promotion
             $this->_annee = $data;
         }
     }
+    
+    public function setEleves($data)
+    {
+        if(is_array($data))
+        {
+            $this->_eleves = $data;
+        }
+    }
 
     // Methodes
 
@@ -91,13 +105,9 @@ class Promotion
         {
             $this->setAnnee($datas['pro_annee']);
         }
-    }
-
-    public function toString()
-    {
-        $resu = "ID 	 -> ". $this->getId() ."\r";
-        $resu .= "Libelle -> ". $this->getLibelle() ."\r";
-        $resu .= "Annee   -> ". $this->getAnnee();
-        return $resu;
+        if(isset($datas['pro_eleves']))
+        {
+            $this->setEleves($datas['pro_eleves']);
+        }
     }
 }
