@@ -18,9 +18,9 @@ class CompetenceDAO extends DAO
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row)
+        {
             return $this->buildDomainObject($row);
-        else
-            throw new \Exception("Aucune competence avec l'id " . $id);
+        }
     }
 
     // Methode findAll //
