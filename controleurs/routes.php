@@ -70,5 +70,30 @@ $app->post('/competence', function (Request $request) use ($app) {
     die();
 });
 
+$app->post('/activite', function (Request $request) use ($app) {
+    var_dump($request->request);
+    die();
+});
+
+$app->post('/eleve', function (Request $request) use ($app) {
+    var_dump($request->request);
+    die();
+});
+
+$app->post('/professeur', function (Request $request) use ($app) {
+    var_dump($request->request);
+    die();
+});
+
+$app->post('/stats', function (Request $request) use ($app) {
+    var_dump($request->request);
+    die();
+});
+
+$app->post('/promotion', function (Request $request) use ($app) {
+    var_dump($request->request);
+    die();
+});
+
 //Creer route utilisateur
 //Prevoir route eleve ses activités
