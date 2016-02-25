@@ -1,6 +1,6 @@
 <?php
 use Symfony\Component\HttpFoundation\Request;
-//use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 // Login form
 $app->get('/login', function(Request $request) use ($app) {
@@ -75,7 +75,7 @@ $app->post('/competence', function (Request $request) use ($app) {
 });
 
 
-// instancier objet dao pour recuperer array)
+// instancier objet dao pour recuperer array
 
 $app->post('/activite', function (Request $request) use ($app) {
     var_dump($request->request);
@@ -105,3 +105,4 @@ $app->post('/promotion', function (Request $request) use ($app) {
 
 //Creer route utilisateur
 //Prevoir route eleve ses activités
+fun

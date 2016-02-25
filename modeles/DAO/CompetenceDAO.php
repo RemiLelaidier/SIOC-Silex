@@ -8,7 +8,7 @@ use SIOC\donnees\Competence;
 /**
  * Description of CompetenceDAO
  *
- * @author Remi Lelaidier
+ * @author Remi Lelaidier 1er
  */
 class CompetenceDAO extends DAO
 {
@@ -59,7 +59,7 @@ class CompetenceDAO extends DAO
      * Creer un objet Competence a partir d'une liste
      *
      * @param array $row
-     * @return \SIOC\modeles\donnees\Competence
+     * @return \SIOC\donnees\Competence
      */
     protected function buildDomainObject($row) {
         $competence = new Competence();
