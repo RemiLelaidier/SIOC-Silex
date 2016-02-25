@@ -32,8 +32,7 @@ class CompetenceDAO extends DAO
         // Convertit le resultat de la requete en tableau //
         $competences = array();
         foreach ($result as $row) {
-            echo $row;
-            //$competenceId = $row['com_id'];
+            $competenceId = $row['com_id'];
             //$competences[$competenceId] = $this->buildDomainObject($row);
         }
         return $competences;
