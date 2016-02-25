@@ -57,10 +57,6 @@ class Promotion
         {
             $this->_id = $data;
         }
-        else
-        {
-            throw new Exception("Promotion -> setID -> mauvais type argument");
-        }
     }
 
     public function setLibelle($data)
@@ -69,10 +65,6 @@ class Promotion
         {
             $this->_libelle = $data;
         }
-        else
-        {
-            throw new Exception("Promotion -> setLibelle -> mauvais type argument ou trop long");
-        }
     }
 
     public function setAnnee($data)
@@ -80,10 +72,6 @@ class Promotion
         if(is_int($data) && $data >= self::MIN_ANNEE)
         {
             $this->_annee = $data;
-        }
-        else
-        {
-            throw new Exception("Promotion -> setAnnee -> mauvais type argument ou trop petit");
         }
     }
 

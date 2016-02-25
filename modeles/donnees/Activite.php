@@ -82,10 +82,6 @@ class Activite
         {
             $this->_id = $id;
         }
-        else
-        {
-            throw new Exception("Activite -> setID -> mauvais type argument");
-        }
     }
 
     public function setDebut($data)
@@ -93,10 +89,6 @@ class Activite
         if(preg_match('!^(0?\d|[12]\d|3[01])-(0?\d|1[012])-((?:19|20)\d{2})$!', $data)) 
         {
             $this->_debut = $data;
-        }
-        else
-        {
-            throw new Exception("Activite -> setDebut -> mauvais type argument");
         }
     }
     
@@ -118,10 +110,6 @@ class Activite
         {
             $this->_libelle = $data;
         }
-        else
-        {
-            throw new Exception("Activite -> setLibelle -> mauvais type argument ou trop long");
-        }
     }
 
     public function setDescription($data)
@@ -129,10 +117,6 @@ class Activite
         if(is_string($data) && strlen($data) <= self::TAILLE_DESCRIPTION)
         {
             $this->_description = $data;
-        }
-        else
-        {
-            throw new Exception("Activite -> setDescription -> mauvais type argument ou trop long");
         }
     }
     
@@ -142,10 +126,6 @@ class Activite
         {
             $this->_competences = $data;
         }
-        else
-        {
-            throw new Exception("Activite -> setCompetences -> mauvais type argument");
-        }
     }
     
     public function setUtilisateur($data)
@@ -153,10 +133,6 @@ class Activite
         if(is_a($data, 'Utilisateur'))
         {
             $this->_utilisateur = $data;
-        }
-        else
-        {
-            throw new Exception("Activite -> setUtilisateur -> mauvais type argument");
         }
     }
 
