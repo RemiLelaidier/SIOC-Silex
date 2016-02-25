@@ -4,6 +4,7 @@ namespace SIOC\DAO;
 
 use Doctrine\DBAL\Connection;
 use SIOC\donnees\Competence;
+use Symfony\Component\Security\Acl\Exception;
 
 /**
  * Description of CompetenceDAO
