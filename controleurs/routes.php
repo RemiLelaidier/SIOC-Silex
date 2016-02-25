@@ -82,7 +82,6 @@ $app->post('/activite', function (Request $request) use ($app) {
     die();
 });
 
-
 $app->post('/eleve', function (Request $request) use ($app) {
     var_dump($request->request);
     die();
@@ -105,4 +104,3 @@ $app->post('/promotion', function (Request $request) use ($app) {
 
 //Creer route utilisateur
 //Prevoir route eleve ses activités
-fun
