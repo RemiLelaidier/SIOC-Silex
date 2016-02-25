@@ -28,7 +28,7 @@ class ActiviteDAO extends DAO
         }
         else
         {
-            throw new Exception("Aucune activite avec l'id " . $id);
+            throw new \Exception("Aucune activite avec l'id " . $id);
         }
     }
 
