@@ -160,9 +160,9 @@ class Activite
         {
             $this->setCompetences($datas['act_competences']);
         }
-        if(isset($datas['act_utilisateur']))
+        if(isset($datas['act_eleve']))
         {
-            $this->setUtilisateur($datas['act_utilisateur']);
+            $this->setUtilisateur($datas['act_eleve']);
         }
     }
 }
