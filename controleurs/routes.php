@@ -86,10 +86,10 @@ $app->post('/competence', function (Request $request) use ($app) {
 // instancier objet dao pour recuperer array
 
 $app->post('/activite', function (Request $request) use ($app) {
-    $ = $request->get('');
-    $ = $request->get('');
-    $ = $request->get('');
-    $ = $request->get('');
+//    $ = $request->get('');
+//    $ = $request->get('');
+//    $ = $request->get('');
+//    $ = $request->get('');
     var_dump($request->request);
     die();
 });
