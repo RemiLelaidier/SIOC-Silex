@@ -21,9 +21,15 @@ class ActiviteDAO extends DAO
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row)
+        {
+            $competences = new CompetenceDAO($this->getDb());
+            $row['act_competences'] = $competences->findAllbyActivite($id);
             return $this->buildDomainObject($row);
+        }
         else
+        {
             throw new \Exception("Aucune activite avec l'id " . $id);
+        }
     }
 
     // TODO
