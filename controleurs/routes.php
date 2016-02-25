@@ -70,7 +70,7 @@ $app->post('/competence', function (Request $request) use ($app) {
     $libelle = $request->get('libelle');
     $description = $request->get('description');
     $obligation = $request->get('obligation');
-    var_dump($reference; $libelle, $description);
+    var_dump($reference, $libelle, $description, $obligation);
     die();
 });
 
