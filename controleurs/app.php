@@ -52,8 +52,8 @@ $app['security.role_hierarchy'] = array(
 //    array('^/eleves/.*$', 'ROLE_PROF'),
 //    array('^/promotion/.*$', 'ROLE_PROF'),
 //    array('^/professeurs/.*$', 'ROLE_ADMIN'),
-//    array('^/', ''), // Cette url est accessible en mode non connecté
-//    array('^/login', ''),
+//    array('^/', 'ROLE_USER'),
+//    array('^/login', ''), //Cette url est accessible en mode non connecté
 //);
 
 // Register services.
