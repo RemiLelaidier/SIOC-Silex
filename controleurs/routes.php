@@ -18,17 +18,17 @@ $app->get('/activite', function () use ($app) {
 
 $app->get('/stats', function () use($app) {
     $stats = $app['dao.stat']->findAll();
-    return $app['twig']->render('stats.html.twig');
+    return $app['twig']->render('stats.html.twig', array('stats' => $stats));
 })->bind('stats');
 
 $app->get('/eleve', function () use($app) {
     $eleves = $app['dao.eleve']->findAll();
-    return $app['twig']->render('eleves.html.twig');
+    return $app['twig']->render('eleves.html.twig', array('eleve' => $eleve));
 })->bind('eleve');
 
 $app->get('/professeur', function () use($app) {
     $professeurs = $app['dao.professeur']->findAll();
-    return $app['twig']->render('professeurs.html.twig');
+    return $app['twig']->render('professeurs.html.twig', array('professeurs' => $professeurs));
 })->bind('professeur');
 
 $app->get('/competence', function () use ($app) {
