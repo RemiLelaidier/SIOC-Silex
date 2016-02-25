@@ -1,6 +1,6 @@
 <?php
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+//use Symfony\Component\HttpFoundation\Response;
 
 // Login form
 $app->get('/login', function(Request $request) use ($app) {
@@ -66,9 +66,15 @@ return $app['twig']->render('ajout_promotion.html.twig');
 
 //POST du formulaire de competence
 $app->post('/competence', function (Request $request) use ($app) {
+//   $competence = $request->get('competence')
+//    ???????('com_reference','com_libelle','com_description', $competence);
     var_dump($request->request);
     die();
 });
+
+//$competence = array(
+//    'com_reference'
+//)
 
 $app->post('/activite', function (Request $request) use ($app) {
     var_dump($request->request);
