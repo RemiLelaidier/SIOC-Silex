@@ -28,9 +28,9 @@
                     <tbody>
                         {% for promotion in promotions %}
                           <tr>
-                            <th>{{ promtion._id }}</th>
-                            <th>{{ promotion._annee }}</th>
-                            <th>{{ promotion._libelle }}</th>
+                            <th>{{ promtion.getId() }}</th>
+                            <th>{{ promotion.getAnnee() }}</th>
+                            <th>{{ promotion.getLibelle() }}</th>
                           </tr>
                         {% endfor %}
                     </tbody>

@@ -31,12 +31,12 @@
                     <tbody>
                         {% for activite in activites %}
                           <tr>
-                            <th>{{ activite._id }}</th>
-                            <th>{{ activite._debut }}</th>
-                            <th>{{ activite._duree }}</th>
-                            <th>{{ activite._libelle }}</th>
-                            <th>{{ activite._description }}</th>
-                            <th>{% activite._competences %}</th>
+                            <th>{{ activite.getId() }}</th>
+                            <th>{{ activite.getDebut() }}</th>
+                            <th>{{ activite.getDuree() }}</th>
+                            <th>{{ activite.getLibelle() }}</th>
+                            <th>{{ activite.getDescription() }}</th>
+                            <th>{% activite.getCompetences() %}</th>
                           </tr>
                         {% endfor %}
                     </tbody>
