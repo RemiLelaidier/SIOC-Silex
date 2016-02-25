@@ -62,7 +62,7 @@ class CompetenceDAO extends DAO
      * @return \SIOC\modeles\donnees\Competence
      */
     protected function buildDomainObject($row) {
-        $competence = new Competence();
+        $competence = new Competence($this->getDb());
         $competence->hydrate($row);
         return $competence;
     }
