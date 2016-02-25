@@ -41,6 +41,8 @@ class ActiviteDAO extends DAO
         $activites = array();
         foreach ($result as $row) {
             $activiteId = $row['act_id'];
+            $utilisateur = new UtilisateurDAO($this->getDb());
+            $row['act_utilisateur'] = $utilisateur->findbyActivite($activiteId);
             $competences = new CompetenceDAO($this->getDb());
             $row['act_competences'] = $competences->findAllbyActivite($activiteId);
             $activites[$activiteId] = $this->buildDomainObject($row);

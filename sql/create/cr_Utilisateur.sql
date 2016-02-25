@@ -13,5 +13,5 @@ CREATE TABLE Utilisateur
     uti_password    VARCHAR(45),
     uti_salt        VARCHAR(25),
     uti_role        VARCHAR(20),
-    PRIMARy KEY(uti_id)
+    PRIMARY KEY(uti_id)
 );
