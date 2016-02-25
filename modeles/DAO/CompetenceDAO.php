@@ -39,12 +39,13 @@ class CompetenceDAO extends DAO
     }
     
     // Methode findAllbyActivite
-    public function finAllbyActivite($activiteId)
+    public function findAllbyActivite($activiteId)
     {
         $sql = "SELECT C.com_id, C.com_reference, C.com_libelle, C.com_description, C.com_obligatoire "
                 . "FROM Competence AS C, Associe AS A "
                 . "WHERE A.ass_competence = C.com_id "
-                . "AND A.ass_activite = ?";
+                . "AND A.ass_activite = ? "
+                . "ORDER BY com_id";
         $result = $this->getDb()-fetchAll($sql, array($activiteId));
                 
         $competences = array();
