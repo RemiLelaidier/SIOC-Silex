@@ -23,7 +23,7 @@ $app->get('/stats', function () use($app) {
 
 $app->get('/eleve', function () use($app) {
     $eleves = $app['dao.eleve']->findAll();
-    return $app['twig']->render('eleves.html.twig', array('eleve' => $eleve));
+    return $app['twig']->render('eleves.html.twig', array('eleves' => $eleves));
 })->bind('eleve');
 
 $app->get('/professeur', function () use($app) {
