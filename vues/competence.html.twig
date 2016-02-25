@@ -6,11 +6,6 @@
     <h1>
         Compétences
         <small>liste</small>
-            <form method="get" action="/new">
-                <button type="button" style="float:right;margin:0px;" class="btn bg-orange btn-flat margin"  >
-                    Ajouter
-                </button>
-            </form>
 
     </h1>
         </section>
@@ -38,10 +33,10 @@
                 <tbody>
                     {% for competence in competences %}
                     <tr>
-                        <th>{{ competence._id }}</th>
-                        <th>{{ competence._reference }}</th>
-                        <th>{{ competence._libelle }}</th>
-                        <th>{{ competence._description }}</th>
+                        <th>{{ competence.getId() }}</th>
+                        <th>{{ competence.getReference() }}</th>
+                        <th>{{ competence.getLibelle() }}</th>
+                        <th>{{ competence.getDescription() }}</th>
                         {% if competence._obligatoire == TRUE %}
                             <th> X </th>
                         {% else %}
