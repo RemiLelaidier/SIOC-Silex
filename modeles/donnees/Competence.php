@@ -32,7 +32,11 @@ class Competence
 
     public function __construct()
     {
-       
+        $this->_id = NULL;
+        $this->_reference = NULL;
+        $this->_libelle = "Competence x";
+        $this->_description = "description";
+        $this->_obligatoire = FALSE;
     }
 
     // Accesseurs
