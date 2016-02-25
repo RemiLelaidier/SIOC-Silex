@@ -24,13 +24,13 @@ class PromotionDAO extends DAO
     public function findAll()
     {
         $sql = "SELECT * FROM Promotion ORDER BY pro_id";
-        $result = $this->getDb()->fetchAssoc($sql, array());
+        $result = $this->getDb()->fetchAll($sql, array());
         
         $promotions = array();
         foreach ($result as $row) {
             echo $row['pro_id'];
-            //$promotionId = $row['pro_id'];
-            //$promotions[$promotionId] = $this->buildDomainObject($row);
+            $promotionId = $row['pro_id'];
+            $promotions[$promotionId] = $this->buildDomainObject($row);
         }
         return $promotions;
     }
