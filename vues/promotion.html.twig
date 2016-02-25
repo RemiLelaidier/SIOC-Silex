@@ -4,7 +4,7 @@
 <section class="content-header">
     <h1>
         Competences
-        <small>ajout</small><button type="button" style="float:right, margin:0px" class="btn bg-orange btn-flat margin" action="/new" > Ajouter</button>
+        <small>ajout</small><button type="button" style="float:right; margin:0px" class="btn bg-orange btn-flat margin" action="/new" > Ajouter</button>
     </h1>
         </section>
 
@@ -28,7 +28,7 @@
                     <tbody>
                         {% for promotion in promotions %}
                           <tr>
-                            <th>{{ promtion.getId() }}</th>
+                            <th>{{ promotion.getId() }}</th>
                             <th>{{ promotion.getAnnee() }}</th>
                             <th>{{ promotion.getLibelle() }}</th>
                           </tr>
