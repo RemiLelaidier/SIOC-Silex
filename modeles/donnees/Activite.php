@@ -12,7 +12,7 @@ namespace SIOC\donnees;
  *            -v1.2 : Gestion des exceptions
  * Projet : SIOC
  */
-class Activite extends Exception
+class Activite
 {
     // Attributs
 
@@ -22,6 +22,7 @@ class Activite extends Exception
     private $_libelle;
     private $_description;
     private $_competences;
+    private $_utilisateur;
 
     // Constantes
     // Les constantes de taille font references
@@ -68,6 +69,11 @@ class Activite extends Exception
     public function getCompetences()
     {
         return $this->_competences;
+    }
+    
+    public function getUtilisateur()
+    {
+        return $this->_utilisateur;
     }
 
     public function setId($id)
@@ -141,6 +147,18 @@ class Activite extends Exception
             throw new Exception("Activite -> setCompetences -> mauvais type argument");
         }
     }
+    
+    public function setUtilisateur($data)
+    {
+        if(is_a($data, 'Utilisateur'))
+        {
+            $this->_utilisateur = $data;
+        }
+        else
+        {
+            throw new Exception("Activite -> setUtilisateur -> mauvais type argument");
+        }
+    }
 
     // Methodes
 
@@ -168,7 +186,11 @@ class Activite extends Exception
         }
         if(isset($datas['act_competences']))
         {
-            $this-setCompetences($datas['act_competences']);
+            $this->setCompetences($datas['act_competences']);
+        }
+        if(isset($datas['act_utilisateur']))
+        {
+            $this->setUtilisateur($datas['act_utilisateur']);
         }
     }
 }

@@ -3,7 +3,7 @@
 namespace SIOC\DAO;
 
 use Doctrine\DBAL\Connection;
-use SIOC\modeles\donnees\Competence;
+use SIOC\donnees\Competence;
 
 /**
  * Description of CompetenceDAO
@@ -18,9 +18,9 @@ class CompetenceDAO extends DAO
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row)
+        {
             return $this->buildDomainObject($row);
-        else
-            throw new \Exception("Aucune competence avec l'id " . $id);
+        }
     }
 
     // Methode findAll //
@@ -42,9 +42,9 @@ class CompetenceDAO extends DAO
     public function findAllbyActivite($activiteId)
     {
         $sql = "SELECT C.com_id, C.com_reference, C.com_libelle, C.com_description, C.com_obligatoire "
-                . "FROM Competence AS C, Associe AS A "
-                . "WHERE A.ass_competence = C.com_id "
-                . "AND A.ass_activite = ?";
+                . " FROM Competence AS C, Associe AS A "
+                . " WHERE A.ass_competence = C.com_id "
+                . " AND A.ass_activite = ?";
         $result = $this->getDb()->fetchAll($sql, array($activiteId));
                 
         $competences = array();

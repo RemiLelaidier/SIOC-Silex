@@ -4,6 +4,7 @@ namespace SIOC\DAO;
 
 use SIOC\donnees\Activite;
 use SIOC\DAO\CompetenceDAO;
+use SIOC\DAO\UtilisateurDAO;
 
 /**
  * Description of ActiviteDAO
@@ -18,13 +19,11 @@ class ActiviteDAO extends DAO
 
         if ($row)
         {
+            $utilisateur = new UtilisateurDAO($this->getDb());
+            $row['act_utilisateur'] = $utilisateur->findbyActivite($id);
             $competences = new CompetenceDAO($this->getDb());
             $row['act_competences'] = $competences->findAllbyActivite($id);
             return $this->buildDomainObject($row);
-        }
-        else
-        {
-            throw new \Exception("Aucune activite avec l'id " . $id);
         }
     }
 
@@ -39,6 +38,8 @@ class ActiviteDAO extends DAO
         $activites = array();
         foreach ($result as $row) {
             $activiteId = $row['act_id'];
+            $utilisateur = new UtilisateurDAO($this->getDb());
+            $row['act_utilisateur'] = $utilisateur->findbyActivite($activiteId);
             $competences = new CompetenceDAO($this->getDb());
             $row['act_competences'] = $competences->findAllbyActivite($activiteId);
             $activites[$activiteId] = $this->buildDomainObject($row);

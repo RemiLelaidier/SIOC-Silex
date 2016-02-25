@@ -26,16 +26,16 @@
                       <tr>
                         <th>Activites</th>
                         {% for competence in competences %}
-                        <th>{{ competence._reference }}</th>
+                        <th>{{ competence.getReference() }}</th>
                         {% endfor %}
                       </tr>
                     </thead>
                     <tbody>
                         {% for activite in activites %}
                           <tr>
-                            <th>{{ activite._libelle }}</th>
+                            <th>{{ activite.getLibelle() }}</th>
                             {% for competence in competences %}
-                                {# if competence._id activite._id #}
+                                {# if competence.getId() activite.getId() #}
                                     <th>X</th>
                                 {# else #}
                                     <th> </th>

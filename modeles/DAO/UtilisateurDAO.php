@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 
-use SIOC\modeles\donnees\Utilisateur;
+use SIOC\donnees\Utilisateur;
 
 /**
  * Description of UtilisateurDAO
@@ -28,9 +28,23 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row)
+        {
             return $this->buildDomainObject($row);
-        else
-            throw new \Exception("Aucun utilisateur avec l'id " . $id);
+        }
+    }
+    
+    public function findbyActivite($id)
+    {
+        $sql = "SELECT U.uti_id, U.uti_mail, U.uti_username, U.uti_nom,"
+                . " U.uti_prenom, U.uti_password, U.uti_password, U.uti_salt, U.uti_role"
+                . " FROM Utilisateur AS U, Activite AS A"
+                . " WHERE U.uti_id = A.act_eleve"
+                . " AND A.act_id = ?";
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
+        if($row)
+        {
+            return $this->buildDomainObject($row);
+        }
     }
 
     /**
@@ -42,9 +56,13 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         $row = $this->getDb()->fetchAssoc($sql, array($username));
 
         if ($row)
+        {
             return $this->buildDomainObject($row);
+        }
         else
+        {
             throw new UsernameNotFoundException(sprintf('Utilisateur "%s" non trouve.', $username));
+        }
     }
 
     /**
