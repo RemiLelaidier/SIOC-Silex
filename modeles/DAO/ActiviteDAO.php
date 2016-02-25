@@ -18,6 +18,8 @@ class ActiviteDAO extends DAO
 
         if ($row)
         {
+            $utilisateur = new UtilisateurDAO($this->getDb());
+            $row['act_utilisateur'] = $utilisateur->findbyActivite($id);
             $competences = new CompetenceDAO($this->getDb());
             $row['act_competences'] = $competences->findAllbyActivite($id);
             return $this->buildDomainObject($row);
