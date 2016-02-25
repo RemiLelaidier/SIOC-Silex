@@ -95,8 +95,8 @@ $app->post('/activite', function (Request $request) use ($app) {
     $activite -> setDuree($request -> get('duree'));
     $activite -> setLibelle($request -> get('libelle'));
     $activite -> setDescription($request->get('description'));
-    $activite -> setCompetences($request->get('competences'))
-//    $activite -> setUtilisateur($request->get('utilisateur'));
+    $activite -> setCompetences($request->get('competences'));
+    $activite -> setUtilisateur($request->get('utilisateur'));
     $app['dao.activite']->save($activite);
 });
 
