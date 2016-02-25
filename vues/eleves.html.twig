@@ -35,11 +35,11 @@
                     <tbody>
                         {% for eleve in eleves %}
                           <tr>
-                            <th>{{ eleve._nom }}</th>
-                            <th>{{ eleve._prenom }}</th>
-                            <th>{{ eleve._email }}</th>
-                            <th>{{ eleve._libelle }}</th>
-                            <th>{{ eleve._annee }}</th>
+                            <th>{{ eleve.getNom() }}</th>
+                            <th>{{ eleve.getPrenom() }}</th>
+                            <th>{{ eleve.getEmail() }}</th>
+                            <th>{{ eleve.getLibelle() }}</th>
+                            <th>{{ eleve.getAnnee() }}</th>
                           </tr>
                         {% endfor %}
                     </tbody>
