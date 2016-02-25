@@ -77,8 +77,12 @@ $app->post('/competence', function (Request $request) use ($app) {
     $libelle = $request->get('libelle');
     $description = $request->get('description');
     $obligation = $request->get('obligation');
-    $lololol = array('reference', 'libelle', 'description', 'obligation');
-    var_dump($lololol);
+    $competence = array(
+        'com_reference' => $reference,
+        'com_libelle' => $libelle,
+        'com_description' => $description,
+        'com_obligation' => $obligation);
+    var_dump($competence);
     die();
 });
 
