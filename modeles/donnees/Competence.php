@@ -72,10 +72,6 @@ class Competence extends Exception
         {
             $this->_id = $id;
         }
-        else
-        {
-            throw new Exception("Competence -> setID -> mauvais type argument");
-        }
     }
 
     public function setReference($data)
@@ -83,10 +79,6 @@ class Competence extends Exception
         if(is_string($data) && strlen($data) <= self::TAILLE_REFERENCE)
         {
             $this->_reference = $data;
-        }
-        else
-        {
-            throw new Exception("Competence -> setReference -> mauvais type argument ou trop long");
         }
     }
 
@@ -96,10 +88,6 @@ class Competence extends Exception
         {
             $this->_libelle = $data;
         }
-        else
-        {
-            throw new Exception("Competence -> setLibelle -> mauvais type argument ou trop long");
-        }
     }
 
     public function setDescription($data)
@@ -108,20 +96,13 @@ class Competence extends Exception
         {
             $this->_description = $data;
         }
-        else
-        {
-            throw new Exception("Competence -> setDescription -> mauvais type argument ou trop long");
-        }
     }
+    
     public function setObligatoire($data)
     {
         if(is_bool($data))
         {
             $this->_obligatoire = $data;
-        }
-        else
-        {
-            throw new Exception("Competence -> setObligatoire -> mauvais type argument");
         }
     }
 
