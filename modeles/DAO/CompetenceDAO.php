@@ -33,7 +33,7 @@ class CompetenceDAO extends DAO
         $competences = array();
         foreach ($result as $row) {
             $competenceId = $row['com_id'];
-            //$competences[$competenceId] = $this->buildDomainObject($row);
+            $competences[$competenceId] = $this->buildDomainObject($row);
         }
         return $competences;
     }
