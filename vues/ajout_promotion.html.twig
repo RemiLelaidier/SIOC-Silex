@@ -4,7 +4,7 @@
     <section class="content-header">
         <h1>
             Formulaire d'ajout
-            <small>Activites</small>
+            <small>Promotion</small>
         </h1>
     </section>
     <section class="content">
@@ -15,23 +15,15 @@
                   <h3 class="box-title">Ajout</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                    {#1#}
-                  <form role="form" method="POST" action={{ path('activite/new') }}> {#2}
+                  <form role="form" method="POST" action={{ path('promotion/new') }}>
                     <!-- text input -->
-                    <div class="form-group">    
-                      <label>Date de Debut</label>
-                      <input type="date" name="reference" class="form-co ntrol" placeholder="jj / mm / aa">
-                      
-                      <label>Duree</label>
-                      <input type="text" name="duree" class="form-control" placeholder="jours/semaines/mois/années">
+                    <div class="form-group">
+                      <label>Annee Scolaire</label>
+                      <input type="text" name="annee" class="form-control" placeholder="20xx-20xx">
                       
                       <label>Libelle</label>
-                      <input type="text" name="libelle" class="form-control" placeholder="libelle">
-                        
-                      <label>Description</label>
-                      <input type="text" name="description" class="form-control" placeholder="Description">    
+                      <input type="text" name="libelle" class="form-control" placeholder="Libelle">
                     </div>
-            
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
                     </div>

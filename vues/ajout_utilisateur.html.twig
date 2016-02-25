@@ -15,37 +15,40 @@
                   <h3 class="box-title">Ajout</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                    {# Il faut modifier le formulaire pour permettre de rentrer les donnees d'un Utilisateur
-                        Referes toi au champ de la bdd et anlyse le code (ce formulaire est celui de l'ajout de competence)
-                    #}
-                  <form role="form" method="POST" action={{ path('{# route a faire #}') }}>
+                  <form role="form" method="POST" action={{ path('utilisateur/new') }}>
                     <!-- text input -->
                     <div class="form-group">    
+                      <label>Pseudo</label>
+                      <input type="text" name="username" class="form-control" placeholder="Pseudo">
+                    
+                      <label>Mot de Passe</label>
+                      <input type="password" name="motdepasse" class="form-control" placeholder="password">
+                        
                       <label>Nom</label>
-                      <input type="text" name="reference" class="form-control" placeholder="A.X.X.">
+                      <input type="text" name="nom" class="form-control" placeholder="Nom">
                       
                       <label>Prénom</label>
-                      <input type="text" name="libelle" class="form-control" placeholder="Libelle">
+                      <input type="text" name="prenom" class="form-control" placeholder="Prénom">
                       
                       <label>E-mail</label>
-                      <input type="text" name="description" class="form-control" placeholder="Description">
+                      <input type="text" name="email" class="form-control" placeholder="email">
                         
                       
                     </div>
                     
                     <div class="form-group">
                       <div class="radio">
-                        <label>Vous etes ?</label>
+                        <label>Statut</label>
                         <label>
-                          <input type="radio" name="obligatoire" value="true" checked>
-                          Un(e) Eleve
+                          <input type="radio" name="eleve" value="true" checked>
+                          Un(e) Élève
                         </label>
                         <label>
-                          <input type="radio" name="obligatoire" value="false" checked>
+                          <input type="radio" name="professeur" value="false" checked>
                           Un Professeur
                         </label>
                         <label>
-                          <input type="radio" name="obligatoire" value="false" checked>
+                          <input type="radio" name="visiteur" value="false" checked>
                           Un Visiteur
                         </label> 
                       </div>
