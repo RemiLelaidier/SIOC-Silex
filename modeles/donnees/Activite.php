@@ -98,10 +98,6 @@ class Activite
         {
             $this->_duree = $data;
         }
-        else
-        {
-            throw new Exception("Activite -> setDuree -> mauvais type argument");
-        }
     }
 
     public function setLibelle($data)
