@@ -66,20 +66,19 @@ return $app['twig']->render('ajout_promotion.html.twig');
 
 //POST du formulaire de competence
 $app->post('/competence', function (Request $request) use ($app) {
-//   $competence = $request->get('competence')
-//    ???????('com_reference','com_libelle','com_description', $competence);
-    var_dump($request->request);
+   $competence = $request->get('reference');
+    var_dump($competence);
     die();
 });
 
-//$competence = array(
-//    'com_reference'
-//)
+
+// instancier objet dao pour recuperer array)
 
 $app->post('/activite', function (Request $request) use ($app) {
     var_dump($request->request);
     die();
 });
+
 
 $app->post('/eleve', function (Request $request) use ($app) {
     var_dump($request->request);
