@@ -3,6 +3,7 @@
 namespace SIOC\DAO;
 
 use SIOC\donnees\Activite;
+use SIOC\DAO\CompetenceDAO;
 
 /**
  * Description of ActiviteDAO
@@ -11,11 +12,6 @@ use SIOC\donnees\Activite;
  */
 class ActiviteDAO extends DAO
 {
-    private $utilisateurDAO;
-    
-    private $competenceDAO;
-    
-    // TODO
     public function find($id) {
         $sql = "SELECT * FROM Activite WHERE act_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
@@ -28,7 +24,7 @@ class ActiviteDAO extends DAO
         }
         else
         {
-            throw new Exception("Aucune activite avec l'id " . $id);
+            throw new \Exception("Aucune activite avec l'id " . $id);
         }
     }
 
@@ -36,7 +32,7 @@ class ActiviteDAO extends DAO
     // Methode findAll //
     public function findAll()
     {
-        $sql = "SELECT * FROM Activite ORDER BY act_id";
+        $sql = "SELECT * FROM Activite";
         $result = $this->getDb()->fetchAll($sql, array());
 
         // Convertit le resultat de la requete en tableau //
@@ -60,14 +56,5 @@ class ActiviteDAO extends DAO
         $activite = new Activite();
         $activite->hydrate($row);
         return $activite;
-    }
-    
-    // relations
-    public function setUserDAO(UtilisateurDAO $user){
-        $this->utilisateurDAO = $user;
-    }
-    
-    public function setCompetenceDAO(CompetenceDAO $competence){
-        $this->competenceDAO = $competence;
     }
 }
