@@ -28,8 +28,9 @@ class PromotionDAO extends DAO
         
         $promotions = array();
         foreach ($result as $row) {
-            $promotionId = $row['pro_id'];
-            $promotions[$promotionId] = $this->buildDomainObject($row);
+            echo $row['pro_id'];
+            //$promotionId = $row['pro_id'];
+            //$promotions[$promotionId] = $this->buildDomainObject($row);
         }
         return $promotions;
     }
