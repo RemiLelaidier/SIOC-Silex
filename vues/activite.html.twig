@@ -38,7 +38,7 @@
                             <th>{{ activite.getDescription() }}</th>
                             <th>{% for competence in activite.getCompetences() %}
                                  {{  competence.getReference() }}
-                              {%  endforeach %}
+                              {%  endfor %}
                             </th>
                           </tr>
                         {% endfor %}
