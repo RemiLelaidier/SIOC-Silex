@@ -72,13 +72,30 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
     
     public function findAllEleve()
     {
-        //TODO
+        $sql = "SELECT * FROM Utilisateur"
+                . " WHERE uti_role = 'ROLE_ELEVE'";
+        $result = $this->getDb()->fetchAssoc($sql, array());
+        $eleves = array();
+        foreach($result as $row)
+        {
+            $eleveId = $row['uti_id'];
+            $eleves[$eleveId] = $this->buildDomainObject($row);
+        }
     }
 
     public function findAllProfesseur()
     {
-        //TODO
+        $sql = "SELECT * FROM Utilisateur"
+                . " WHERE uti_role = 'ROLE_PROF'";
+        $result = $this->getDb()->fetchAssoc($sql, array());
+        $professeurs = array();
+        foreach($result as $row)
+        {
+            $professeurId = $row['uti_id'];
+            $professeurs[$professeurId] = $this->buildDomainObject($row);
+        }
     }
+    
     /**
      * {@inheritDoc}
      */
