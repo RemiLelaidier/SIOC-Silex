@@ -57,9 +57,6 @@ $app['security.role_hierarchy'] = array(
 //);
 
 // Register services.
-$app['dao.user'] = $app->share(function ($app) {
-    return new SIOC\DAO\UtilisateurDAO($app['db']);
-});            
 
 $app['dao.activite'] = $app->share(function ($app) {
     return new SIOC\DAO\ActiviteDAO($app['db']);

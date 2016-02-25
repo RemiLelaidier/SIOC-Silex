@@ -16,18 +16,18 @@ $app->get('/activite', function () use ($app) {
     return $app['twig']->render('activite.html.twig', array('activites' => $activites));
 })->bind('activite');
 
-$app->get('/stats', function () use($app) {
-    $stats = $app['dao.stat']->findAll();
-    return $app['twig']->render('stats.html.twig', array('stats' => $stats));
-})->bind('stats');
+$app->get('/utilisateur', function () use($app) {
+    $utilisateurs = $app['dao.utilisateur']->findAll();
+    return $app['twig']->render('utilisateur.html.twig', array('utilisateurs' => $utilisateurs));
+})->bind('utilisateur');
 
 $app->get('/eleve', function () use($app) {
-    $eleves = $app['dao.eleve']->findAll();
+    $eleves = $app['dao.utilisateur']->findAll();
     return $app['twig']->render('eleves.html.twig', array('eleves' => $eleves));
 })->bind('eleve');
 
 $app->get('/professeur', function () use($app) {
-    $professeurs = $app['dao.professeur']->findAll();
+    $professeurs = $app['dao.utilisateur']->findAll();
     return $app['twig']->render('professeurs.html.twig', array('professeurs' => $professeurs));
 })->bind('professeur');
 
@@ -37,7 +37,7 @@ $app->get('/competence', function () use ($app) {
 })->bind('competence');
 
 $app->get('/promotion', function () use ($app) {
-    $promotions = $app['dao.activite']->findAll();
+    $promotions = $app['dao.promotion']->findAll();
     return $app['twig']->render('promotion.html.twig', array('promotions' => $promotions));
 })->bind('promotion');
 
