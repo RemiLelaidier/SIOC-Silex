@@ -15,7 +15,7 @@
                   <h3 class="box-title">Ajout</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <form role="form" method="POST" action={{ path('{# route a faire #}') }}>
+                  <form role="form" method="POST" action={{ path('utilisateur/new') }}>
                     <!-- text input -->
                     <div class="form-group">    
                       <label>Pseudo</label>
@@ -41,7 +41,7 @@
                         <label>Statut</label>
                         <label>
                           <input type="radio" name="eleve" value="true" checked>
-                          Un(e) Eleve
+                          Un(e) Élève
                         </label>
                         <label>
                           <input type="radio" name="professeur" value="false" checked>
