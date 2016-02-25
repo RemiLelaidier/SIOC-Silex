@@ -33,6 +33,29 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     ),
 ));
 
+$app['security.role_hierarchy'] = array(
+    'ROLE_ADMIN'    => array('ROLE_PROF', 'ROLE_ELEVE', 'ROLE_USER'),
+    'ROLE_PROF'    => array('ROLE_ELEVE', 'ROLE_USER'),
+    'ROLE_ELEVE'    => array('ROLE_USER')
+);
+
+// Definition des rôles utilisateurs
+//'security.access_rules' => array(
+//    array('^/acceuil', 'ROLE_USER'),
+//    array('^/layout', 'ROLE_USER'),
+//    array('^/activite/', 'ROLE_ELEVE'),
+//    array('^/activite/new', 'ROLE_ELEVE'),
+//    array('^/competence/', 'ROLE_ELEVE'),
+//    array('^/competence/new', 'ROLE_ELEVE'),
+//    array('^/competence/.*$', 'ROLE_PROF'),
+//    array('^/activite/.*$', 'ROLE_PROF'),
+//    array('^/eleves/.*$', 'ROLE_PROF'),
+//    array('^/promotion/.*$', 'ROLE_PROF'),
+//    array('^/professeurs/.*$', 'ROLE_ADMIN'),
+//    array('^/', ''), // Cette url est accessible en mode non connecté
+//    array('^/login', ''),
+//);
+
 // Register services.
 $app['dao.user'] = $app->share(function ($app) {
     return new SIOC\DAO\UtilisateurDAO($app['db']);
@@ -52,8 +75,4 @@ $app['dao.promotion'] = $app->share(function ($app) {
 
 $app['dao.utilisateur'] = $app->share(function ($app) {
     return new SIOC\DAO\UtilisateurDAO($app['db']);
-});
-
-$app['dao.associe'] = $app->share(function ($app) {
-    return new SIOC\DAO\AssocieDAO($app['db']);
 });
