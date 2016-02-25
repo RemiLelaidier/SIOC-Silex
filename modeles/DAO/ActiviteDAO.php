@@ -12,11 +12,6 @@ use SIOC\DAO\CompetenceDAO;
  */
 class ActiviteDAO extends DAO
 {
-    private $utilisateurDAO;
-    
-    private $competenceDAO;
-    
-    // TODO
     public function find($id) {
         $sql = "SELECT * FROM Activite WHERE act_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
@@ -61,14 +56,5 @@ class ActiviteDAO extends DAO
         $activite = new Activite();
         $activite->hydrate($row);
         return $activite;
-    }
-    
-    // relations
-    public function setUserDAO(UtilisateurDAO $user){
-        $this->utilisateurDAO = $user;
-    }
-    
-    public function setCompetenceDAO(CompetenceDAO $competence){
-        $this->competenceDAO = $competence;
     }
 }
