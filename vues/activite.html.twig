@@ -36,7 +36,10 @@
                             <th>{{ activite.getDuree() }}</th>
                             <th>{{ activite.getLibelle() }}</th>
                             <th>{{ activite.getDescription() }}</th>
-                            <th>{{ activite.getCompetences() }}</th>
+                            <th>{% foreach competence in activite.getCompetences() %}
+                                 {{  competence.getReference() }}
+                              {%  endforeach %}
+                            </th>
                           </tr>
                         {% endfor %}
                     </tbody>
