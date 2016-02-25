@@ -3,7 +3,7 @@
 namespace SIOC\DAO;
 
 use Doctrine\DBAL\Connection;
-use SIOC\modeles\donnees\Competence;
+use SIOC\donnees\Competence;
 
 /**
  * Description of CompetenceDAO
