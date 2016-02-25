@@ -76,16 +76,15 @@ $app->post('/competence', function (Request $request) use ($app) {
     $reference = $request->get('reference');
     $libelle = $request->get('libelle');
     $description = $request->get('description');
-    $obligation = $request->get('obligation');
+    $obligatoire = $request->get('obligatoire');
     $competence = array(
         'com_reference' => $reference,
         'com_libelle' => $libelle,
         'com_description' => $description,
-        'com_obligation' => $obligation);
+        'com_obligation' => $obligatoire);
     var_dump($competence);
     die();
 });
-
 
 // instancier objet dao pour recuperer array
 
