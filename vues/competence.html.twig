@@ -37,7 +37,7 @@
                         <th>{{ competence.getReference() }}</th>
                         <th>{{ competence.getLibelle() }}</th>
                         <th>{{ competence.getDescription() }}</th>
-                        {% if competence._obligatoire == TRUE %}
+                        {% if competence.getObligatoire() == TRUE %}
                             <th> X </th>
                         {% else %}
                             <th>   </th>
