@@ -66,9 +66,11 @@ return $app['twig']->render('ajout_promotion.html.twig');
 
 //POST du formulaire de competence
 $app->post('/competence', function (Request $request) use ($app) {
-   $reference = $request->get('reference');
+    $reference = $request->get('reference');
     $libelle = $request->get('libelle');
-    var_dump($libelle);
+    $description = $request->get('description');
+    $obligation = $request->get('obligation');
+    var_dump($reference, $libelle, $description, $obligation);
     die();
 });
 
