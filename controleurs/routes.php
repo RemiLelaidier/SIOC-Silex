@@ -44,8 +44,12 @@ $app->get('/promotion', function () use ($app) {
 })->bind('promotion');
 
 $app->get('/stats', function () use ($app) {
-    $stats = $app['dao.stats']->findAll();
-    return $app['twig']->render('stats.html.twig', array('stats' => $stats));
+    $token = $app['security.token_storage']->getToken();
+    var_dump($token);
+    die();
+    $stats = $app['dao.activite']->findAllbyUtilisateur($token);
+    $competences = $app['dao.competence']->findAll();
+    return $app['twig']->render('stats.html.twig', array('stats' => $stats, 'competences' => $competences));
 })->bind('stats');
 
 $app->get('/', function () use($app) {
@@ -63,7 +67,7 @@ $app->get('/', function () use($app) {
 //})->bind('utilisateur');
 
 $app->get('/activite', function () use ($app) {
-    $competence = $app['dao.competence']->findAll();
+    $competences = $app['dao.competence']->findAll();
     return $app['twig']->render('activite.html.twig', array('competences' => $competences));
 })->bind('competence');
 
