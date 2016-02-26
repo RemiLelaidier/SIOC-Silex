@@ -103,14 +103,14 @@
                 <i class="fa fa-users"></i> <span>Promotions</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
-            <!-- Affiche Eleve (Prof) -->
+            <!--  Affiche Eleve (Prof)  -->
             {{ {form.professeur_fiels is fedined ? form_widget{form.admin_field}}}}
             <li class="treeview">
               <a href="{{ path('eleve') }}">
                 <i class="fa fa-user"></i> <span>Élèves</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
-            <!-- Afficher Prof & Eleve (Admin)-->
+            <!--  Afficher Prof & Eleve (Admin) -->
             {{ {% form.admin_field is defined ? form_widget(form.admin_field)}}
             <li class="treeview">
               <a href="{{ path('professeur') }}">
