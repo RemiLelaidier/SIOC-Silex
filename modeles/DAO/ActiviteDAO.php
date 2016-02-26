@@ -93,4 +93,28 @@ class ActiviteDAO extends DAO
         $activite->hydrate($row);
         return $activite;
     }
+    
+    /**
+     * Sauvegarde/MAJ d'une Activite
+     *
+     * @param \SIOC\donnees\Activite
+     * @return none
+     * 
+     * TOFINISH
+     */
+    public function save(Activite $activite) {
+        $activiteData = array(
+            'pro_libelle'  => $activite->getLibelle(),
+            'pro_annee'    => $activite->getAnnee()
+        );
+        
+        if ($activite->getId()){
+            $this->getDb()->update('Activite', $activiteData, array('act_id' => $activite->getId()));
+        }
+        else {
+            $this->getDb()->insert('Activite', $activiteData);
+            $id = $this->getDb()->lastInsertId();
+            $activite->setId($id);
+        }
+    }
 }

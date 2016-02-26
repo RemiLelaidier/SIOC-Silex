@@ -40,7 +40,7 @@ $app['security.role_hierarchy'] = array(
 );
 
 // Definition des rôles utilisateurs
-//'security.access_rules' => array(
+//$app['security.access_rules'] = array(
 //    array('^/login', ''), //Cette url est accessible en mode non connecté
 //    array('^/acceuil', 'ROLE_USER'),
 //    array('^/layout', 'ROLE_USER'),
