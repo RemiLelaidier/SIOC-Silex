@@ -1,5 +1,7 @@
 <?php
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 
 // Login form
 $app->get('/login', function(Request $request) use ($app) {
@@ -53,6 +55,12 @@ $app->get('/stats', function () use ($app) {
 $app->get('/', function () use($app) {
     return $app['twig']->render('acceuil.html.twig');
 });
+
+
+//envois ressources aux pages
+
+
+
 
 //Ajout de competences
 

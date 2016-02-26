@@ -24,7 +24,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      */
     public function find($id) {
         $sql = "SELECT * FROM Utilisateur WHERE uti_id";
-        $row = $this->getDb()->fetchAssoc($sql, array($id));
+        $row = $this->getDb()->fetchAll($sql, array($id));
 
         if ($row)
         {
@@ -45,7 +45,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
                 . " FROM Utilisateur AS U, Activite AS A"
                 . " WHERE U.uti_id = A.act_eleve"
                 . " AND A.act_id = ?";
-        $row = $this->getDb()->fetchAssoc($sql, array($id));
+        $row = $this->getDb()->fetchAll($sql, array($id));
         if($row)
         {
             return $this->buildDomainObject($row);
@@ -65,7 +65,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
                 . " FROM Utilisateur AS U, Faitpartie AS F"
                 . " WHERE U.uti_id = F.fap_eleve"
                 . " AND F.fap_promo = ?";
-        $result = $this->getDb()->fetchAssoc($sql, array($id));
+        $result = $this->getDb()->fetchAll($sql, array($id));
         $eleves = array();
         foreach($result as $row)
         {
