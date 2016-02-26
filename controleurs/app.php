@@ -33,11 +33,11 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     ),
 ));
 
-//$app['security.role_hierarchy'] = array(
-//    'ROLE_ADMIN'    => array('ROLE_PROF', 'ROLE_ELEVE', 'ROLE_USER'),
-//    'ROLE_PROF'    => array('ROLE_ELEVE', 'ROLE_USER'),
-//    'ROLE_ELEVE'    => array('ROLE_USER')
-//);
+$app['security.role_hierarchy'] = array(
+    'ROLE_ADMIN'    => array('ROLE_PROF', 'ROLE_ELEVE', 'ROLE_USER'),
+    'ROLE_PROF'    => array('ROLE_ELEVE', 'ROLE_USER'),
+    'ROLE_ELEVE'    => array('ROLE_USER')
+);
 
 // Definition des rôles utilisateurs
 //'security.access_rules' => array(
@@ -54,7 +54,6 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 //    array('^/promotion/.*$', 'ROLE_PROF'),
 //    array('^/professeurs/.*$', 'ROLE_ADMIN'),
 //    array('^/', 'ROLE_USER'),
-//    array('^/login', ''), //Cette url est accessible en mode non connecté
 //);
 
 // Register services.

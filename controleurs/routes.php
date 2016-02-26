@@ -59,29 +59,23 @@ $app->get('/', function () use($app) {
 
 //envois ressources aux pages
 
-//$app->get('/utilisateur', function () use ($app) {
-//    $promotion = $app['dao.promotion']->findAll();
-//    return $app['twig']->render('utilisateur.html.twig', foreach ($promotions as list) {
-//        array('promotions' => $promotion);
-//});
-//})->bind('utilisateur');
 
-//$app->get('/activite', function () use ($app) {
-//    $competences = $app['dao.competence']->findAll();
-//    return $app['twig']->render('activite.html.twig', array('competences' => $competences));
-//})->bind('competence');
+
 
 //Ajout de competences
+
 $app->get('/competence/new', function () use ($app) {
     return $app['twig']->render('ajout_competence.html.twig');
 })->bind('ajout_competence');
 
 $app->get('/activite/new', function () use ($app) {
-    return $app['twig']->render('ajout_activite.html.twig');
+    $competences = $app['dao.competence']->findAll();
+    return $app['twig']->render('ajout_activite.html.twig', array('competences' => $competences));
 })->bind('ajout_activite');
 
 $app->get('/utilisateur/new', function () use ($app) {
-    return $app['twig']->render('ajout_utilisateur.html.twig');
+    $promotions = $app['dao.promotion']->findAll();
+    return $app['twig']->render('ajout_utilisateur.html.twig', array('promotions' => $promotions));
 })->bind('ajout_utilisateur');
 
 $app->get('/promotion/new', function() use ($app) {
@@ -111,30 +105,6 @@ $app->post('/activite', function (Request $request) use ($app) {
     $app['dao.activite']->save($activite);
 });
 
-$app->post('/eleve', function (Request $request) use ($app) {
-    $eleve = new \SIOC\donnees\Utilisateur();
-    $eleve -> setUsername($request->get('username'));
-    $eleve -> setNom($request -> get('nom'));
-    $eleve -> setPrenom($request -> get('prenom'));
-    $eleve -> setMail($request->get('mail'));
-    $eleve -> setPassword($request->get('password'));
-    $eleve -> setSalt($request->get('salt'));
-    $eleve -> setStatut($request->get('statut'));
-    $app['dao.utilisateur']->save($eleve);
-});
-
-$app->post('/professeur', function (Request $request) use ($app) {
-    $professeur = new \SIOC\donnees\Utilisateur();
-    $professeur -> setUsername($request->get('username'));
-    $professeur -> setNom($request -> get('nom'));
-    $professeur -> setPrenom($request -> get('prenom'));
-    $professeur -> setMail($request->get('mail'));
-    $professeur -> setPassword($request->get('password'));
-    $professeur -> setSalt($request->get('salt'));
-    $professeur -> setStatut($request->get('statut'));
-    $app['dao.utilisateur']->save($professeur);
-});
-
 $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur = new \SIOC\donnees\Utilisateur();
     $utilisateur->setUsername($request->get('username'));
@@ -143,7 +113,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setMail($request->get('mail'));
     $utilisateur->setPassword($request->get('password'));
     $utilisateur->setSalt($request->get('salt'));
-    $utilisateur->setStatut($request->get('statut'));
+    $utilisateur->setRole($request->get('statut'));
     $app['dao.utilisateur']->save($utilisateur);
 });
 
