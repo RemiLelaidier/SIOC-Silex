@@ -24,12 +24,12 @@ $app->get('/utilisateur', function () use($app) {
 })->bind('utilisateur');
 
 $app->get('/eleve', function () use($app) {
-    $eleves = $app['dao.utilisateur']->findAllEleve();
+    $eleves = $app['dao.utilisateur']->findAll();
     return $app['twig']->render('eleves.html.twig', array('eleves' => $eleves));
 })->bind('eleve');
 
 $app->get('/professeur', function () use($app) {
-    $professeurs = $app['dao.utilisateur']->findAllProfesseur();
+    $professeurs = $app['dao.utilisateur']->findAll();
     return $app['twig']->render('professeurs.html.twig', array('professeurs' => $professeurs));
 })->bind('professeur');
 
@@ -66,10 +66,10 @@ $app->get('/', function () use($app) {
 //});
 //})->bind('utilisateur');
 
-$app->get('/activite', function () use ($app) {
-    $competences = $app['dao.competence']->findAll();
-    return $app['twig']->render('activite.html.twig', array('competences' => $competences));
-})->bind('competence');
+//$app->get('/activite', function () use ($app) {
+//    $competences = $app['dao.competence']->findAll();
+//    return $app['twig']->render('activite.html.twig', array('competences' => $competences));
+//})->bind('competence');
 
 //Ajout de competences
 $app->get('/competence/new', function () use ($app) {

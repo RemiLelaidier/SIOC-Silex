@@ -40,22 +40,22 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 //);
 
 // Definition des rôles utilisateurs
-'security.access_rules' => array(
-    array('^/login', ''), //Cette url est accessible en mode non connecté
-    array('^/acceuil', 'ROLE_USER'),
-    array('^/layout', 'ROLE_USER'),
-    array('^/activite/', 'ROLE_ELEVE'),
-    array('^/activite/new', 'ROLE_ELEVE'),
-    array('^/competence/', 'ROLE_ELEVE'),
-    array('^/competence/new', 'ROLE_ELEVE'),
-    array('^/competence/.*$', 'ROLE_PROF'),
-    array('^/activite/.*$', 'ROLE_PROF'),
-    array('^/eleves/.*$', 'ROLE_PROF'),
-    array('^/promotion/.*$', 'ROLE_PROF'),
-    array('^/professeurs/.*$', 'ROLE_ADMIN'),
-    array('^/', 'ROLE_USER'),
-    array('^/login', ''), //Cette url est accessible en mode non connecté
-);
+//'security.access_rules' => array(
+//    array('^/login', ''), //Cette url est accessible en mode non connecté
+//    array('^/acceuil', 'ROLE_USER'),
+//    array('^/layout', 'ROLE_USER'),
+//    array('^/activite/', 'ROLE_ELEVE'),
+//    array('^/activite/new', 'ROLE_ELEVE'),
+//    array('^/competence/', 'ROLE_ELEVE'),
+//    array('^/competence/new', 'ROLE_ELEVE'),
+//    array('^/competence/.*$', 'ROLE_PROF'),
+//    array('^/activite/.*$', 'ROLE_PROF'),
+//    array('^/eleves/.*$', 'ROLE_PROF'),
+//    array('^/promotion/.*$', 'ROLE_PROF'),
+//    array('^/professeurs/.*$', 'ROLE_ADMIN'),
+//    array('^/', 'ROLE_USER'),
+//    array('^/login', ''), //Cette url est accessible en mode non connecté
+//);
 
 // Register services.
 
