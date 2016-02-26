@@ -42,7 +42,7 @@ class ActiviteDAO extends DAO
     public function findAll()
     {
         $sql = "SELECT * FROM Activite";
-        $result = $this->getDb()->fetchAll($sql, array());
+        $result = $this->getDb()->fetchAssoc($sql, array());
 
         // Convertit le resultat de la requete en tableau //
         $activites = array();
