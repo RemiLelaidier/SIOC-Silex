@@ -45,6 +45,8 @@ $app->get('/promotion', function () use ($app) {
 
 $app->get('/stats', function () use ($app) {
     $token = $app['security.token_storage']->getToken();
+    var_dump($token);
+    die();
     $stats = $app['dao.activite']->findAllbyUtilisateur($token);
     $competences = $app['dao.competence']->findAll();
     return $app['twig']->render('stats.html.twig', array('stats' => $stats, 'competences' => $competences));
