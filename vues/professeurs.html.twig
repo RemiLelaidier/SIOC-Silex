@@ -33,9 +33,9 @@
                     <tbody>
                         {% for professeur in professeurs %}
                           <tr>
-                            <th>{{ professeur._nom }}</th>
-                            <th>{{ professeur._prenom }}</th>
-                            <th>{{ professeur._email }}</th>
+                            <th>{{ professeur.getNom }}</th>
+                            <th>{{ professeur.getPrenom }}</th>
+                            <th>{{ professeur.getEmail }}</th>
                           </tr>
                         {% endfor %}
                     </tbody>
@@ -43,7 +43,7 @@
                       <tr>
                         <th>Nom</th>
                         <th>Prenom</th>
-                        <th>Emil</th>
+                        <th>Email</th>
                       </tr>
                     </tfoot>
                   </table>
