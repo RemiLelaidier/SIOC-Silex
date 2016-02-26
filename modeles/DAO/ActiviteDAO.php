@@ -104,8 +104,11 @@ class ActiviteDAO extends DAO
      */
     public function save(Activite $activite) {
         $activiteData = array(
-            'pro_libelle'  => $activite->getLibelle(),
-            'pro_annee'    => $activite->getAnnee()
+            'act_debut'         => $activite->getDebut(),
+            'act_duree'         => $activite->getDuree(),
+            'act_libelle'       => $activite->getLibelle(),
+            'act_description'   => $activite->getDescription(),
+            'act_eleve'         => $activite->getUtilisateur()
         );
         
         if ($activite->getId()){
