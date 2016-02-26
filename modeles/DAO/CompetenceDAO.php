@@ -67,15 +67,30 @@ class CompetenceDAO extends DAO
         return $competence;
     }
  
-    // TODO
+    /**
+     * Sauvegarde une competence
+     *
+     * @param \SIOC\donnees\Competence
+     * @return none
+     */
     protected function save(Competence $competence) {
-        if ($competence->getId()){
-            $this->getDb()->update('com_id', $commentDate, array('com_id' => $comment->getId()));
+        $competenceData = array(
+            'com_reference'   => $competence->getReference(),
+            'com_libelle'     => $competence->getLibelle(),
+            'com_description' => $competence->getDescription(),
+            'com_obligatoire' => $competence->getObligatoire()
+        );
+        
+        $this->getDb()->insert('Competence', $competenceData);
+        $id = $this->getDb()->lastInsertId();
+        $competence->setId($id);
+        
+        // TODO
+        /*if ($competence->getId()){
+            $this->getDb()->update('Competence', $competenceData, array('com_id' => $competence->getId()));
         }
         else {
-            $this->getDb()->insert('Competence', $competenceData);
-            $id = $this->getDb()->lastInsertId();
-            $comment->setId($id);
-        }
+            
+        }*/
     }
 }
