@@ -24,7 +24,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      */
     public function find($id) {
         $sql = "SELECT * FROM Utilisateur WHERE uti_id";
-        $row = $this->getDb()->fetchAssoc($sql, array($id));
+        $row = $this->getDb()->fetchAll($sql, array($id));
 
         if ($row)
         {
@@ -45,7 +45,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
                 . " FROM Utilisateur AS U, Activite AS A"
                 . " WHERE U.uti_id = A.act_eleve"
                 . " AND A.act_id = ?";
-        $row = $this->getDb()->fetchAssoc($sql, array($id));
+        $row = $this->getDb()->fetchAll($sql, array($id));
         if($row)
         {
             return $this->buildDomainObject($row);
@@ -85,7 +85,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
     {
         $sql = "SELECT * FROM Utilisateur"
                 . " WHERE uti_role = 'ROLE_ELEVE'";
-        $result = $this->getDb()->fetchAll($sql);
+        $result = $this->getDb()->fetchAssoc($sql);
         $eleves = array();
         foreach($result as $row)
         {
@@ -105,7 +105,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
     {
         $sql = "SELECT * FROM Utilisateur"
                 . " WHERE uti_role = 'ROLE_PROF'";
-        $result = $this->getDb()->fetchAll($sql);
+        $result = $this->getDb()->fetchAssoc($sql);
         $professeurs = array();
         foreach($result as $row)
         {
