@@ -69,7 +69,7 @@ class PromotionDAO extends DAO
      * @param \SIOC\donnees\Promotion
      * @return none
      */
-    protected function save(Promotion $promotion) {
+    public function save(Promotion $promotion) {
         $promotionData = array(
             'pro_libelle'  => $promotion->getLibelle(),
             'pro_annee'    => $promotion->getAnnee()
