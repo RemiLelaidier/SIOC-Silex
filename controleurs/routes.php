@@ -92,6 +92,9 @@ $app->post('/competence', function (Request $request) use ($app) {
     $competence -> setDescription($request -> get('description'));
     $competence -> setObligatoire($request->get('obligatoire'));
     $app['dao.competence']->save($competence);
+    $competences = $app['dao.competence']->findAll();
+    return $app['twig'] -> render('competence.html.twig', array('competences' => $competences,
+    ));
 });
 
 $app->post('/activite', function (Request $request) use ($app) {
@@ -124,15 +127,6 @@ $app->post('/promotion', function (Request $request) use ($app) {
     $app['dao.promotion']->save($promotion);
 });
 
-// Useless \o/
-//$app->post('/stats', function (Request $request) use ($app) {
-//    $stats = new \SIOC\donnees\stats();
-//    $stats -> setReference($request->get('reference'));
-//    $stats -> setLibelle($request -> get('libelle'));
-//    $stats -> setDescription($request -> get('description');
-//    $stats -> setObligatoire($request->get('obligatoire');
-//    $app['dao.stats']->save($stats);
-//});
 
 //Creer route utilisateur
 //Prevoir route eleve ses activités
