@@ -104,6 +104,7 @@
               </a>
             </li>
             <!--  Affiche Eleve (Prof)  -->
+            {{{%form.admin_field is defined ? form_widget (form.admin_field) }}}
             <li class="treeview">
               <a href="{{ path('eleve') }}">
                 <i class="fa fa-user"></i> <span>Élèves</span> <i class="fa fa-angle-left pull-right"></i>
