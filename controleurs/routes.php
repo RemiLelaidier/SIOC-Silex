@@ -44,8 +44,10 @@ $app->get('/promotion', function () use ($app) {
 })->bind('promotion');
 
 $app->get('/stats', function () use ($app) {
-    $stats = $app['dao.activite']->findAll();
-    return $app['twig']->render('stats.html.twig', array('stats' => $stats));
+    $token = $app['security.token_storage']->getToken();
+    $stats = $app['dao.activite']->findAllbyUtilisateur($token);
+    $competences = $app['dao.competence']->findAll();
+    return $app['twig']->render('stats.html.twig', array('stats' => $stats, 'competences' => $competences));
 })->bind('stats');
 
 $app->get('/', function () use($app) {
@@ -53,12 +55,19 @@ $app->get('/', function () use($app) {
 });
 
 
-//Renvoi ressources aux pages
-$app->get('/activite', function () use ($app) {
-    $competence = $app['dao.competence']->findAll();
-    return $app['twig']->render('activite.html.twig', array('competence' => $competence));
-})->bind('stats');
+//envois ressources aux pages
 
+//$app->get('/utilisateur', function () use ($app) {
+//    $promotion = $app['dao.promotion']->findAll();
+//    return $app['twig']->render('utilisateur.html.twig', foreach ($promotions as list) {
+//        array('promotions' => $promotion);
+//});
+//})->bind('utilisateur');
+
+$app->get('/activite', function () use ($app) {
+    $competences = $app['dao.competence']->findAll();
+    return $app['twig']->render('activite.html.twig', array('competences' => $competences));
+})->bind('competence');
 
 //Ajout de competences
 $app->get('/competence/new', function () use ($app) {
