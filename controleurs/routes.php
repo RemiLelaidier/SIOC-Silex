@@ -127,7 +127,7 @@ $app->post('/promotion', function (Request $request) use ($app) {
     $promotion -> setAnnee($request -> get('annee'));
     $app['dao.promotion']->save($promotion);
     $promotions = $app['dao.promotion']->findAll();
-    return $app['twig'] -> render('promotions.html.twig', array('promotions' => $promotions,
+    return $app['twig'] -> render('promotion.html.twig', array('promotions' => $promotions,
     ));
 });
 
