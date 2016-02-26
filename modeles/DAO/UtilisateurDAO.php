@@ -169,8 +169,10 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      *
      * @param \SIOC\donnees\Utilisateur
      * @return none
+     * 
+     * TOFINISH
      */
-    protected function save(Utilisateur $utilisateur) {
+    public function save(Utilisateur $utilisateur) {
         $utilisateurData = array(
             'uti_username'  => $utilisateur->getUsername(),
             'uti_nom'       => $utilisateur->getNom(),

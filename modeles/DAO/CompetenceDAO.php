@@ -86,7 +86,7 @@ class CompetenceDAO extends DAO
      * @param \SIOC\donnees\Competence
      * @return none
      */
-    protected function save(Competence $competence) {
+    public function save(Competence $competence) {
         $competenceData = array(
             'com_reference'   => $competence->getReference(),
             'com_libelle'     => $competence->getLibelle(),
