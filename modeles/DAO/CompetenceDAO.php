@@ -69,9 +69,6 @@ class CompetenceDAO extends DAO
  
     // TODO
     protected function save(Competence $competence) {
-        $competenceData = array(
-            'com_id' => $competence->getCompetence()->getId()
-        );
         if ($competence->getId()){
             $this->getDb()->update('com_id', $commentDate, array('com_id' => $comment->getId()));
         }

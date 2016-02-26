@@ -20,7 +20,7 @@ class ActiviteDAO extends DAO
         if ($row)
         {
             $utilisateur = new UtilisateurDAO($this->getDb());
-            $row['act_utilisateur'] = $utilisateur->findbyActivite($id);
+            $row['act_eleve'] = $utilisateur->findbyActivite($id);
             $competences = new CompetenceDAO($this->getDb());
             $row['act_competences'] = $competences->findAllbyActivite($id);
             return $this->buildDomainObject($row);
@@ -39,12 +39,30 @@ class ActiviteDAO extends DAO
         foreach ($result as $row) {
             $activiteId = $row['act_id'];
             $utilisateur = new UtilisateurDAO($this->getDb());
-            $row['act_utilisateur'] = $utilisateur->findbyActivite($activiteId);
+            $row['act_eleve'] = $utilisateur->findbyActivite($activiteId);
             $competences = new CompetenceDAO($this->getDb());
             $row['act_competences'] = $competences->findAllbyActivite($activiteId);
             $activites[$activiteId] = $this->buildDomainObject($row);
         }
         return $activites;
+    }
+    
+    public function findAllbyUtilisateur($utilisateurId)
+    {
+        $sql = "SELECT A.act_id, A.act_debut, A.act_duree, A.act_libelle, A.act_description"
+                . " FROM Activite AS A, Utilisateur AS U"
+                . " WHERE A.act_eleve = U.uti_id"
+                . " AND U.uti_id = ?";
+        $result = $this->getDb()->fetchAssoc($sql, array($utilisateurId));
+        $activites = array();
+        foreach($result as $row) {
+            $activiteId = $row['act_id'];
+            $utilisateur = new UtilisateurDAO($this->getDb());
+            $row['act_eleve'] = $utilisateur->findbyActivite($activiteId);
+            $competences = new CompetenceDAO($this->getDb());
+            $row['act_competences'] = $competences->findAllbyActivite($activiteId);
+            $activites[$activiteId] = $this->buildDomainObject($row);
+        }
     }
 
     /**
