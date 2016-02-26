@@ -81,16 +81,13 @@ class CompetenceDAO extends DAO
             'com_obligatoire' => $competence->getObligatoire()
         );
         
-        $this->getDb()->insert('Competence', $competenceData);
-        $id = $this->getDb()->lastInsertId();
-        $competence->setId($id);
-        
-        // TODO
-        /*if ($competence->getId()){
+        if ($competence->getId()){
             $this->getDb()->update('Competence', $competenceData, array('com_id' => $competence->getId()));
         }
         else {
-            
-        }*/
+            $this->getDb()->insert('Competence', $competenceData);
+            $id = $this->getDb()->lastInsertId();
+            $competence->setId($id);  
+        }
     }
 }
