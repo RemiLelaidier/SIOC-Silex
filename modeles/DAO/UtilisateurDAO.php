@@ -163,4 +163,31 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         $user->hydrate($row);
         return $user;
     }
+    
+    /**
+     * Sauvegarde/MAJ d'un Utilisateur
+     *
+     * @param \SIOC\donnees\Utilisateur
+     * @return none
+     */
+    protected function save(Utilisateur $utilisateur) {
+        $utilisateurData = array(
+            'uti_username'  => $utilisateur->getUsername(),
+            'uti_nom'       => $utilisateur->getNom(),
+            'uti_prenom'    => $utilisateur->getPrenom(),
+            'uti_mail'      => $utilisateur->getMail(),
+            'uti_password'  => $utilisateur->getPassword(),
+            'uti_salt'      => $utilisateur->getSalt(),
+            'uti_role'      => $utilisateur->getRole()
+        );
+        
+        if ($utilisateur->getId()){
+            $this->getDb()->update('Utilisateur', $utilisateurData, array('uti_id' => $utilisateur->getId()));
+        }
+        else {
+            $this->getDb()->insert('Utilisateur', $utilisateurData);
+            $id = $this->getDb()->lastInsertId();
+            $utilisateur->setId($id);
+        }
+    }
 }

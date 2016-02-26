@@ -62,4 +62,26 @@ class PromotionDAO extends DAO
         $promotion->hydrate($row);
         return $promotion;
     }
+    
+    /**
+     * Sauvegarde/MAJ d'une Promotion
+     *
+     * @param \SIOC\donnees\Promotion
+     * @return none
+     */
+    protected function save(Promotion $promotion) {
+        $promotionData = array(
+            'pro_libelle'  => $promotion->getLibelle(),
+            'pro_annee'    => $promotion->getAnnee()
+        );
+        
+        if ($promotion->getId()){
+            $this->getDb()->update('Promotion', $promotionData, array('pro_id' => $promotion->getId()));
+        }
+        else {
+            $this->getDb()->insert('Promotion', $promotionData);
+            $id = $this->getDb()->lastInsertId();
+            $promotion->setId($id);
+        }
+    }
 }

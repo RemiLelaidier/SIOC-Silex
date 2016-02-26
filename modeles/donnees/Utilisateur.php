@@ -82,9 +82,9 @@ class Utilisateur
         return $this->_salt;
     }
 
-    public function getStatut()
+    public function getRole()
     {
-        return $this->_statut;
+        return $this->_role;
     }
 
     public function setId($id)
