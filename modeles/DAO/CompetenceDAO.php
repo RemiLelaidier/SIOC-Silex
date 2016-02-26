@@ -35,7 +35,7 @@ class CompetenceDAO extends DAO
     public function findAll()
     {
         $sql = "SELECT * FROM Competence ORDER BY com_id";
-        $result = $this->getDb()->fetchAll($sql, array());
+        $result = $this->getDb()->fetchAll($sql);
 
         // Convertit le resultat de la requete en tableau //
         $competences = array();
