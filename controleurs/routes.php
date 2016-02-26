@@ -92,6 +92,9 @@ $app->post('/competence', function (Response $response) use ($app) {
     $competence -> setDescription($response -> get('description'));
     $competence -> setObligatoire($response->get('obligatoire'));
     $app['dao.competence']->save($competence);
+    $competences = $app['dao.competence']->findAll();
+    return $app['twig'] -> render('competence.html.twig', array('competences' => $competences,
+    ));
 });
 
 $app->post('/activite', function (Response $response) use ($app) {
