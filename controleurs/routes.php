@@ -24,12 +24,12 @@ $app->get('/utilisateur', function () use($app) {
 })->bind('utilisateur');
 
 $app->get('/eleve', function () use($app) {
-    $eleves = $app['dao.utilisateur']->findAll();
+    $eleves = $app['dao.utilisateur']->findAllEleve();
     return $app['twig']->render('eleves.html.twig', array('eleves' => $eleves));
 })->bind('eleve');
 
 $app->get('/professeur', function () use($app) {
-    $professeurs = $app['dao.utilisateur']->findAll();
+    $professeurs = $app['dao.utilisateur']->findAllProfesseur();
     return $app['twig']->render('professeurs.html.twig', array('professeurs' => $professeurs));
 })->bind('professeur');
 
