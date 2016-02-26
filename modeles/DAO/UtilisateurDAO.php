@@ -85,7 +85,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
     {
         $sql = "SELECT * FROM Utilisateur"
                 . " WHERE uti_role = 'ROLE_ELEVE'";
-        $result = $this->getDb()->fetchAssoc($sql);
+        $result = $this->getDb()->fetchAll($sql);
         $eleves = array();
         foreach($result as $row)
         {
@@ -105,7 +105,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
     {
         $sql = "SELECT * FROM Utilisateur"
                 . " WHERE uti_role = 'ROLE_PROF'";
-        $result = $this->getDb()->fetchAssoc($sql);
+        $result = $this->getDb()->fetchAll($sql);
         $professeurs = array();
         foreach($result as $row)
         {
