@@ -106,6 +106,7 @@ $app->post('/activite', function (Request $request) use ($app) {
     $activite -> setCompetences($request->get('competences'));
     $activite -> setUtilisateur($request->get('utilisateur'));
     $app['dao.activite']->save($activite);
+ //   $activites['twig'] -> render('activite')
 });
 
 $app->post('/utilisateur', function (Request $request) use ($app) {
@@ -125,6 +126,9 @@ $app->post('/promotion', function (Request $request) use ($app) {
     $promotion -> setLibelle($request->get('libelle'));
     $promotion -> setAnnee($request -> get('annee'));
     $app['dao.promotion']->save($promotion);
+    $promotions = $app['dao.promotion']->findAll();
+    return $app['twig'] -> render('promotion.html.twig', array('promotions' => $promotions,
+    ));
 });
 
 
