@@ -9,10 +9,16 @@ use SIOC\DAO\UtilisateurDAO;
 /**
  * Description of ActiviteDAO
  *
- * @author Remi Lelaidier Yoken Babel José Lopes
+ * @author SIO PTFQ
  */
 class ActiviteDAO extends DAO
 {
+    /**
+     * Trouve l'activite a l'id corrspondante
+     *
+     * @param integer $id
+     * @return \SIOC\donnees\Activite
+     */
     public function find($id) {
         $sql = "SELECT * FROM Activite WHERE act_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
@@ -27,8 +33,12 @@ class ActiviteDAO extends DAO
         }
     }
 
-    // TODO
-    // Methode findAll //
+    /**
+     * Trouve toutes les activites
+     *
+     * @param none
+     * @return array(\SIOC\donnees\Activite)
+     */
     public function findAll()
     {
         $sql = "SELECT * FROM Activite";
@@ -47,6 +57,12 @@ class ActiviteDAO extends DAO
         return $activites;
     }
     
+    /**
+     * Trouve toutes les activites a l'utilisateur associe
+     *
+     * @param integer $utilisateurId
+     * @return array(\SIOC\donnees\Activite)
+     */
     public function findAllbyUtilisateur($utilisateurId)
     {
         $sql = "SELECT A.act_id, A.act_debut, A.act_duree, A.act_libelle, A.act_description"
@@ -63,13 +79,14 @@ class ActiviteDAO extends DAO
             $row['act_competences'] = $competences->findAllbyActivite($activiteId);
             $activites[$activiteId] = $this->buildDomainObject($row);
         }
+        return $activites;
     }
 
     /**
-     * Creer un objet Activite a partir d'une liste
+     * Creer un objet Activite a partir d'un tuple
      *
      * @param array $row
-     * @return \SIOC\modeles\donnees\Activite
+     * @return \SIOC\donnees\Activite
      */
    protected function buildDomainObject($row) {
         $activite = new Activite();

@@ -2,17 +2,21 @@
 
 namespace SIOC\DAO;
 
-use Doctrine\DBAL\Connection;
 use SIOC\donnees\Competence;
 
 /**
- * Description of CompetenceDAO
+ * Description de CompetenceDAO
  *
- * @author Remi Lelaidier 1er
+ * @author SIO PTFQ
  */
 class CompetenceDAO extends DAO
 {
-
+    /**
+     * Trouve une competence
+     *
+     * @param integer $id
+     * @return array(\SIOC\donnees\Competence)
+     */
     public function find($id) {
         $sql = "SELECT * FROM Competence WHERE com_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
@@ -22,8 +26,12 @@ class CompetenceDAO extends DAO
             return $this->buildDomainObject($row);
         }
     }
-
-    // Methode findAll //
+    /**
+     * Trouve toutes les competences
+     *
+     * @param none
+     * @return array(\SIOC\donnees\Competence)
+     */
     public function findAll()
     {
         $sql = "SELECT * FROM Competence ORDER BY com_id";
@@ -38,7 +46,12 @@ class CompetenceDAO extends DAO
         return $competences;
     }
     
-    // Methode findAllbyActivite
+    /**
+     * Trouve toutes les competences associees a une activite
+     *
+     * @param integer $activiteId
+     * @return array(\SIOC\donnees\Competence)
+     */
     public function findAllbyActivite($activiteId)
     {
         $sql = "SELECT C.com_id, C.com_reference, C.com_libelle, C.com_description, C.com_obligatoire "
@@ -56,7 +69,7 @@ class CompetenceDAO extends DAO
     }
     
     /**
-     * Creer un objet Competence a partir d'une liste
+     * Creer une competence a partir d'un tuple
      *
      * @param array $row
      * @return \SIOC\donnees\Competence
@@ -68,7 +81,7 @@ class CompetenceDAO extends DAO
     }
  
     /**
-     * Sauvegarde une competence
+     * Sauvegarde/MAJ d'une competence
      *
      * @param \SIOC\donnees\Competence
      * @return none

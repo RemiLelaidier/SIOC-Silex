@@ -17,10 +17,9 @@ use SIOC\donnees\Utilisateur;
 class UtilisateurDAO extends DAO implements UserProviderInterface
 {
     /**
-     * Returns a user matching the supplied id.
+     * Retourne l'Utilisateur avec l'id correspondante
      *
-     * @param integer $id The user id.
-     *
+     * @param integer $id
      * @return \SIOC\modeles\donnees\Utilisateur
      */
     public function find($id) {
@@ -33,15 +32,12 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         }
     }
     
-    /*
-     * Renvoie l'utilisateur associe a l'activite[id]
-     * 
-     * 
-     * @param integer $id l'id de l'activite
+    /**
+     * Trouve l'utilisateur associe a l'activite
      *
-     * @return \SIOC\modeles\donnees\Utilisateur
-     * 
-     * */
+     * @param integer $id
+     * @return \SIOC\donnees\Utilisateur
+     */
     public function findbyActivite($id)
     {
         $sql = "SELECT U.uti_id, U.uti_mail, U.uti_username, U.uti_nom,"
@@ -56,20 +52,35 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         }
     }
     
-    public function findbyPromotion($id)
+    /**
+     * Trouve les utilisateurs associes a une promotion
+     *
+     * @param integer $id
+     * @return array(\SIOC\donnees\Utilisateur)
+     */
+    public function findAllbyPromotion($id)
     {
         $sql = "SELECT U.uti_id, U.uti_mail, U.uti_username, U.uti_nom,"
                 . " U.uti_prenom, U.uti_password, U.uti_salt, U.uti_role"
                 . " FROM Utilisateur AS U, Faitpartie AS F"
                 . " WHERE U.uti_id = F.fap_eleve"
                 . " AND F.fap_promo = ?";
-        $row = $this->getDb()->fetchAssoc($sql, array($id));
-        if($row)
+        $result = $this->getDb()->fetchAssoc($sql, array($id));
+        $eleves = array();
+        foreach($result as $row)
         {
-            return $this->buildDomainObject($row);
+            $eleveId = $row['uti_id'];
+            $eleves[$eleveId] = $this->buildDomainObject($row);
         }
+        return $eleves;
     }
     
+    /**
+     * Trouve les utilisateurs qui sont des eleves
+     *
+     * @param none
+     * @return array(\SIOC\donnees\Utilisateur)
+     */
     public function findAllEleve()
     {
         $sql = "SELECT * FROM Utilisateur"
@@ -81,8 +92,15 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
             $eleveId = $row['uti_id'];
             $eleves[$eleveId] = $this->buildDomainObject($row);
         }
+        return $eleves;
     }
 
+    /**
+     * Trouve les utilisateurs qui sont des professeurs
+     *
+     * @param none
+     * @return array(\SIOC\donnees\Utilisateur)
+     */
     public function findAllProfesseur()
     {
         $sql = "SELECT * FROM Utilisateur"
@@ -135,10 +153,10 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
     }
 
     /**
-     * Creates a User object based on a DB row.
+     * Cree un Utilisateur avec un tuple.
      *
-     * @param array $row The DB row containing User data.
-     * @return \SIOC\modeles\donnees\Utilisateur
+     * @param array $row 
+     * @return \SIOC\donnees\Utilisateur
      */
     protected function buildDomainObject($row) {
         $user = new Utilisateur();
