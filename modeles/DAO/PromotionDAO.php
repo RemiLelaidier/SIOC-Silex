@@ -8,10 +8,16 @@ use SIOC\DAO\UtilisateurDAO;
 /**
  * Description of PromotionDAO
  *
- * @author Remi Lelaidier
+ * @author SIO PTFQ
  */
 class PromotionDAO extends DAO
 {
+    /**
+     * Trouve la promotion a l'id corrspondante
+     *
+     * @param integer $id
+     * @return \SIOC\donnees\Promotion
+     */
     public function find($id) {
         $sql = "SELECT * FROM Promotion WHERE pro_id = ?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
@@ -24,6 +30,12 @@ class PromotionDAO extends DAO
         }
     }
     
+    /**
+     * Trouve toutes les promotions
+     *
+     * @param none
+     * @return array(\SIOC\donnees\Promotion)
+     */
     public function findAll()
     {
         $sql = "SELECT * FROM Promotion ORDER BY pro_id";
@@ -33,14 +45,14 @@ class PromotionDAO extends DAO
         foreach ($result as $row) {
             $promotionId = $row['pro_id'];
             $eleves = new UtilisateurDAO($this->getDb());
-            $row['pro_eleves'] = $eleves->findbyPromotion($promotionId);
+            $row['pro_eleves'] = $eleves->findAllbyPromotion($promotionId);
             $promotions[$promotionId] = $this->buildDomainObject($row);
         }
         return $promotions;
     }
 
     /**
-     * Creer un objet Promotion a partir d'une liste
+     * Creer une Promotion a partir d'un tuple
      *
      * @param array $row
      * @return \SIOC\donnees\Promotion
