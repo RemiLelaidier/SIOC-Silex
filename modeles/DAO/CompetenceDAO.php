@@ -58,7 +58,7 @@ class CompetenceDAO extends DAO
                 . " FROM Competence AS C, Associe AS A "
                 . " WHERE A.ass_competence = C.com_id "
                 . " AND A.ass_activite = ?";
-        $result = $this->getDb()->fetchAll($sql, array($activiteId));
+        $result = $this->getDb()->fetchAssoc($sql, array($activiteId));
                 
         $competences = array();
         foreach ($result as $row) {
