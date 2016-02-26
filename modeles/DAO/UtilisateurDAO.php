@@ -65,7 +65,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
                 . " FROM Utilisateur AS U, Faitpartie AS F"
                 . " WHERE U.uti_id = F.fap_eleve"
                 . " AND F.fap_promo = ?";
-        $result = $this->getDb()->fetchAssoc($sql, array($id));
+        $result = $this->getDb()->fetchAll($sql, array($id));
         $eleves = array();
         foreach($result as $row)
         {
