@@ -66,10 +66,10 @@ $app->get('/', function () use($app) {
 //});
 //})->bind('utilisateur');
 
-$app->get('/activite', function () use ($app) {
-    $competences = $app['dao.competence']->findAll();
-    return $app['twig']->render('activite.html.twig', array('competences' => $competences));
-})->bind('competence');
+//$app->get('/activite', function () use ($app) {
+//    $competences = $app['dao.competence']->findAll();
+//    return $app['twig']->render('activite.html.twig', array('competences' => $competences));
+//})->bind('competence');
 
 //Ajout de competences
 $app->get('/competence/new', function () use ($app) {
