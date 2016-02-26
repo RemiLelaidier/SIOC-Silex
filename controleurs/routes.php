@@ -106,7 +106,9 @@ $app->post('/activite', function (Request $request) use ($app) {
     $activite -> setCompetences($request->get('competences'));
     $activite -> setUtilisateur($request->get('utilisateur'));
     $app['dao.activite']->save($activite);
- //   $activites['twig'] -> render('activite')
+    $activites = $app['dao.activite']->findAll();
+    return $app['twig'] -> render('activite.html.twig', array('activites' => $activites,
+    ));
 });
 
 $app->post('/utilisateur', function (Request $request) use ($app) {
@@ -119,6 +121,9 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setSalt($request->get('salt'));
     $utilisateur->setRole($request->get('statut'));
     $app['dao.utilisateur']->save($utilisateur);
+    $utilisateurs = $app['dao.utilisateur']->findAll();
+    return $app['twig'] -> render('utilisateur.html.twig', array('utilisateurs' => $utilisateurs,
+    ));
 });
 
 $app->post('/promotion', function (Request $request) use ($app) {
