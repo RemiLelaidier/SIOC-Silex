@@ -85,57 +85,48 @@ return $app['twig']->render('ajout_promotion.html.twig');
 
 
 //POST du formulaire d'ajout
-$app->post('/competence', function (Response $response) use ($app) {
+$app->post('/competence', function (Request $request) use ($app) {
     $competence = new \SIOC\donnees\Competence();
-    $competence -> setReference($response->get('reference'));
-    $competence -> setLibelle($response -> get('libelle'));
-    $competence -> setDescription($response -> get('description'));
-    $competence -> setObligatoire($response->get('obligatoire'));
+    $competence -> setReference($request->get('reference'));
+    $competence -> setLibelle($request -> get('libelle'));
+    $competence -> setDescription($request -> get('description'));
+    $competence -> setObligatoire($request->get('obligatoire'));
     $app['dao.competence']->save($competence);
     $competences = $app['dao.competence']->findAll();
     return $app['twig'] -> render('competence.html.twig', array('competences' => $competences,
     ));
 });
 
-$app->post('/activite', function (Response $response) use ($app) {
+$app->post('/activite', function (Request $request) use ($app) {
     $activite = new \SIOC\donnees\Activite();
-    $activite -> setDebut($response->get('debut'));
-    $activite -> setDuree($response -> get('duree'));
-    $activite -> setLibelle($response -> get('libelle'));
-    $activite -> setDescription($response->get('description'));
-    $activite -> setCompetences($response->get('competences'));
-    $activite -> setUtilisateur($response->get('utilisateur'));
+    $activite -> setDebut($request->get('debut'));
+    $activite -> setDuree($request -> get('duree'));
+    $activite -> setLibelle($request -> get('libelle'));
+    $activite -> setDescription($request->get('description'));
+    $activite -> setCompetences($request->get('competences'));
+    $activite -> setUtilisateur($request->get('utilisateur'));
     $app['dao.activite']->save($activite);
 });
 
-$app->post('/utilisateur', function (Response $response) use ($app) {
+$app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur = new \SIOC\donnees\Utilisateur();
-    $utilisateur->setUsername($response->get('username'));
-    $utilisateur->setNom($response->get('nom'));
-    $utilisateur->setPrenom($response->get('prenom'));
-    $utilisateur->setMail($response->get('mail'));
-    $utilisateur->setPassword($response->get('password'));
-    $utilisateur->setSalt($response->get('salt'));
-    $utilisateur->setRole($response->get('statut'));
+    $utilisateur->setUsername($request->get('username'));
+    $utilisateur->setNom($request->get('nom'));
+    $utilisateur->setPrenom($request->get('prenom'));
+    $utilisateur->setMail($request->get('mail'));
+    $utilisateur->setPassword($request->get('password'));
+    $utilisateur->setSalt($request->get('salt'));
+    $utilisateur->setRole($request->get('statut'));
     $app['dao.utilisateur']->save($utilisateur);
 });
 
-$app->post('/promotion', function (Response $response) use ($app) {
+$app->post('/promotion', function (Request $request) use ($app) {
     $promotion = new \SIOC\donnees\Promotion();
-    $promotion -> setLibelle($response->get('libelle'));
-    $promotion -> setAnnee($response -> get('annee'));
+    $promotion -> setLibelle($request->get('libelle'));
+    $promotion -> setAnnee($request -> get('annee'));
     $app['dao.promotion']->save($promotion);
 });
 
-// Useless \o/
-//$app->post('/stats', function (Request $request) use ($app) {
-//    $stats = new \SIOC\donnees\stats();
-//    $stats -> setReference($request->get('reference'));
-//    $stats -> setLibelle($request -> get('libelle'));
-//    $stats -> setDescription($request -> get('description');
-//    $stats -> setObligatoire($request->get('obligatoire');
-//    $app['dao.stats']->save($stats);
-//});
 
 //Creer route utilisateur
 //Prevoir route eleve ses activités
