@@ -105,6 +105,7 @@ $app->post('/activite', function (Request $request) use ($app) {
 
 $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur = new \SIOC\donnees\Utilisateur();
+    $promotion = new \SIOC\donees\Promotion();
     $utilisateur->setUsername($request->get('username'));
     $utilisateur->setNom($request->get('nom'));
     $utilisateur->setPrenom($request->get('prenom'));
@@ -112,7 +113,11 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setPassword($request->get('password'));
     $utilisateur->setSalt($request->get('salt'));
     $utilisateur->setRole($request->get('statut'));
-    $app['dao.utilisateur']->save($utilisateur);
+    if($utilisateur-getRole() == 'ROLE_ELEVE')
+    {
+        $promotion-setId($request->get('promo'));
+    }
+    $app['dao.utilisateur']->save($utilisateur, $promotion);
     $utilisateurs = $app['dao.utilisateur']->findAll();
     return $app['twig'] -> render('utilisateur.html.twig', array('utilisateurs' => $utilisateurs,
     ));
