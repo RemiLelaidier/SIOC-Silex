@@ -3,18 +3,21 @@
 
 {% block content %}
     <section class="content-header">
-        </section>
+        <div class="col-xs-12">
+            <h1>Bienvenue</h1><h2></h2>
+        </div>
+    </section>
 
         <!-- Main content -->
-        <section class="content">
+    <section class="content">
           <div class="row">
             <div class="col-xs-12">
                 <h1>Bienvenue</h1><h2></h2>
             </div>
-              <div class="row">
-                <div class="col-lg-4 col-xs-6">
-                    <!-- Nbre d'activités -->
-                    <div class="small-box bg-green">
+          <div class="row">
+             <div class="col-lg-4 col-xs-6">
+                 <!-- Nbre d'activités -->
+                 <div class="small-box bg-green">
                     <div class="inner">
                         <h3>1337 Activités</h3>
                         <p>Bounce Rate</p>
@@ -26,34 +29,32 @@
                         Pour savoir plus <i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
-                </div>
-                <div class="col-lg-4 col-xs-6">
-                      <!-- Competences "%" -->
-                      <div class="small-box bg-red">
-                          <div class="inner">
-                              <h3>100<sup style="font-size: 20px">%</sup></h3>
-                              <p>Unique Visitors</p>
-                          </div>
-                          <div class="icon">
-                              <i class="ion ion-pie-graph"></i>
-                          </div>
-                          <a href="/activite" class="small-box-footer">
+             </div>
+             <div class="col-lg-4 col-xs-6">
+                 <!-- Competences "%" -->
+                 <div class="small-box bg-red">
+                     <div class="inner">
+                         <h3>100<sup style="font-size: 20px">%</sup></h3>
+                         <p>Unique Visitors</p>
+                     </div>
+                     <div class="icon">
+                         <i class="ion ion-pie-graph"></i>
+                     </div>
+                        <a href="/activite" class="small-box-footer">
                               Pour voir toutes les activités <i class="fa fa-arrow-circle-right"></i>
-                          </a>
+                        </a>
                       </div>
-                </div>
+             </div>
 
 
-              </div>
+          </div>
               <div class="row">
 
-                  <!-- Recentes Activites  -->
+                  <!-- Recent Activities  -->
                   <div class="col-md-6">
                       <div class="nav-tabs-custom">
                           <ul class="nav nav-tabs">
-                              <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
-                              <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-                              <li><a href="#settings" data-toggle="tab">Settings</a></li>
+                              <li class="active">Activités Recentes</li>
                           </ul>
                           <div class="tab-content">
                               <div class="active tab-pane" id="activity">
@@ -255,6 +256,6 @@
                   </div>
               </div>
 
-            </div><!-- /.col -->
-        </section><!-- /.content -->
+          </div><!-- /.col -->
+    </section><!-- /.content -->
 {% endblock %}
