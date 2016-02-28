@@ -35,7 +35,7 @@
                             <select class="form-control">
 
                                 {% for competence in competences %}
-                                    <option> {{competence.getLibelle()}} - {{competence.getReference()}}</option>
+                                    <option>{{competence.getReference()}} - {{competence.getLibelle()}}</option>
                                 {% endfor %}
 
                             </select>
