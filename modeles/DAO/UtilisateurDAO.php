@@ -83,8 +83,11 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      */
     public function findAllEleve()
     {
-        $sql = "SELECT * FROM Utilisateur"
-                . " WHERE uti_role = 'ROLE_ELEVE'";
+        $sql = "SELECT U.uti_nom, U.uti_prenom, U.uti_mail, P.pro_libelle, P.pro_annee"
+                . " FROM Utilisateur AS U, Promotion AS P, Faitpartie AS F"
+                . " WHERE uti_role = 'ROLE_ELEVE'"
+                . " AND F.fap_eleve = U.uti_id"
+                . " AND F.fap_promo = P.pro_id";
         $result = $this->getDb()->fetchAll($sql);
         $eleves = array();
         foreach($result as $row)
@@ -167,12 +170,13 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
     /**
      * Sauvegarde/MAJ d'un Utilisateur
      *
-     * @param \SIOC\donnees\Utilisateur
+     * @params \SIOC\donnees\Utilisateur
+     *         \SIOC\donnees\Promotion
      * @return none
      * 
-     * TOFINISH
+     * TOTEST
      */
-    public function save(Utilisateur $utilisateur) {
+    public function save(Utilisateur $utilisateur, Promotion $promotion) {
         $utilisateurData = array(
             'uti_username'  => $utilisateur->getUsername(),
             'uti_nom'       => $utilisateur->getNom(),
@@ -185,11 +189,30 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         
         if ($utilisateur->getId()){
             $this->getDb()->update('Utilisateur', $utilisateurData, array('uti_id' => $utilisateur->getId()));
+            if( $utilisateur->getRole() == 'ROLE_ELEVE')
+            {
+                $promotionData = array(
+                    'fap_eleve'     => $utilisateur->getId(),
+                    'fap_promo'     => $promotion->getId()
+                );
+                $this->getDb()->update('Faitpartie', $promotionData, array(
+                    'fap_eleve'     => $utilisateur->getId(),
+                    'fap_promo'     => $promotion->getId()
+                ));
+            }
         }
         else {
             $this->getDb()->insert('Utilisateur', $utilisateurData);
             $id = $this->getDb()->lastInsertId();
             $utilisateur->setId($id);
+            if( $utilisateur->getRole() == 'ROLE_ELEVE')
+            {
+                $promotionData = array(
+                    'fap_eleve'     => $utilisateur->getId(),
+                    'fap_promo'     => $promotion->getId()
+                );
+                $this->getDb()->insert('Faitpartie', $promotionData);
+            }
         }
     }
 }

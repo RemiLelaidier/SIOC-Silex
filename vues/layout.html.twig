@@ -11,6 +11,8 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="{{ app.request.basepath }}/bootstrap/css/bootstrap.min.css">
+    <!-- Editors & Fonts [ Email ] -->
+    <link rel="stylesheet" href="{{ app.request.basepath }}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -70,34 +72,40 @@
             <li class="header">MENU</li>
             <li class="treeview">
               <a href="{{ path('activite') }}">
-                <i class="fa fa-wrench"></i> <span>Activités</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-wrench"></i> <span>Activités</span></i>
               </a>
             </li>
             <li class="treeview">
               <a href="{{ path('competence') }}">
-                <i class="fa fa-graduation-cap"></i> <span>Compétences</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-graduation-cap"></i> <span>Compétences</span></i>
               </a>
             </li>
             <li class="treeview">
               <a href="{{ path('stats') }}">
-                <i class="fa fa-pie-chart"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-pie-chart"></i> <span>Statistiques</span></i>
               </a>
             </li>
             <li class="treeview">
               <a href="{{ path('promotion') }}">
-                <i class="fa fa-users"></i> <span>Promotions</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-users"></i> <span>Promotions</span>
               </a>
             </li>
             <!--  Affiche Eleve (Prof)  -->
             <li class="treeview">
               <a href="{{ path('eleve') }}">
-                <i class="fa fa-user"></i> <span>Élèves</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-user"></i> <span>Élèves</span>
               </a>
             </li>
             <!--  Afficher Prof & Eleve (Admin) -->
             <li class="treeview">
               <a href="{{ path('professeur') }}">
-                <i class="fa fa-user"></i> <span>Professeurs</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-user"></i> <span>Professeurs</span>
+              </a>
+            </li>
+            <!-- Ajouter des membres -->
+            <li class="treeview">
+              <a href="utilisateur/new">
+                <i class="fa fa-user-secret"></i><span>Administration</span>
               </a>
             </li>
           </ul>

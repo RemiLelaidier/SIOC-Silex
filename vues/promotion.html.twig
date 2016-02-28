@@ -14,7 +14,7 @@
             <div class="col-xs-12">
               <div class="box box-warning">
                 <div class="box-header">
-                  <h3 class="box-title">Voici les differentes Promotions</h3>
+                  <h3 class="box-title">Voici les différentes Promotions</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table id="example1" class="table table-bordered table-striped">
@@ -32,7 +32,7 @@
                             <th>{{ promotion.getId() }}</th>
                             <th>{{ promotion.getAnnee() }}</th>
                             <th>{{ promotion.getLibelle() }}</th>
-                            <th></th>
+                            <th>{{ promotion.getnbEleve }}</th>
                           </tr>
                         {% endfor %}
                     </tbody>

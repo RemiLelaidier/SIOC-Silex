@@ -100,7 +100,7 @@ class ActiviteDAO extends DAO
      * @param \SIOC\donnees\Activite
      * @return none
      * 
-     * TOFINISH
+     * TOTEST
      */
     public function save(Activite $activite) {
         $activiteData = array(
@@ -113,11 +113,31 @@ class ActiviteDAO extends DAO
         
         if ($activite->getId()){
             $this->getDb()->update('Activite', $activiteData, array('act_id' => $activite->getId()));
+            foreach ( $activite->getCompetences() as $competence )
+            {
+                $competenceData = array(
+                    'ass_competence'    => $competence->getId(),
+                    'ass_activite'      => $activite->getId()
+                );
+                $this->getDb()->update('Associe', $competenceData, array(
+                    'ass_competence' => $competence->getId(),
+                    'ass_activite'   => $activite->getId()
+                        ));
+            }
+            
         }
         else {
             $this->getDb()->insert('Activite', $activiteData);
             $id = $this->getDb()->lastInsertId();
             $activite->setId($id);
+            foreach ( $activite->getCompetences() as $competence )
+            {
+                $competenceData = array(
+                    'ass_competence'    => $competence->getId(),
+                    'ass_activite'      => $activite->getId()
+                );
+                $this->getDb()->insert('Associe', $competenceData);
+            }
         }
     }
 }
