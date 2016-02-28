@@ -7,37 +7,39 @@
             <small>Utilisateur</small>
         </h1>
     </section>
-
-        <div class="box-group" id="accordion">
-            <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-        <div class="panel box box-primary">
-            <div class="box-header with-border">
-                <h4 class="box-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" class="collapsed">
-                        Admin
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                <div class="box-body">
-                    <form role="form" method="POST" action={{ path('utilisateur') }}>
-                        <!-- text input -->
-                        <div class="form-group">
-                            <label>Pseudo</label>
-                            <input type="text" id="username" name="username" class="form-control" placeholder="Pseudo">
-
-                            <label>Mot de Passe</label>
-                            <input type="password" id="password" name="password" class="form-control" placeholder="password">
-
-                            <label>Nom</label>
-                            <input type="text" name="nom" class="form-control" placeholder="Nom">
-
-                            <label>Prénom</label>
-                            <input type="text" name="prenom" class="form-control" placeholder="Prénom">
-
-                            <label>E-mail</label>
-                            <input type="text" name="email" class="form-control" placeholder="email">
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box-group" id="accordion">
+                <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                    <div class="panel box box-primary">
+                        <div class="box-header with-border">
+                            <h4 class="box-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" class="collapsed">
+                                Admin
+                                </a>
+                            </h4>
                         </div>
+                        <div id="collapseOne" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                            <div class="box-body">
+                                <form role="form" method="POST" action={{ path('utilisateur') }}>
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Pseudo</label>
+                                    <input type="text" id="username" name="username" class="form-control" placeholder="Pseudo">
+
+                                    <label>Mot de Passe</label>
+                                    <input type="password" id="password" name="password" class="form-control" placeholder="password">
+
+                                    <label>Nom</label>
+                                    <input type="text" name="nom" class="form-control" placeholder="Nom">
+
+                                    <label>Prénom</label>
+                                    <input type="text" name="prenom" class="form-control" placeholder="Prénom">
+
+                                    <label>E-mail</label>
+                                    <input type="text" name="email" class="form-control" placeholder="email">
+                                </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Enregistrer</button>
                         </div>
@@ -90,13 +92,9 @@
                 </h4>
             </div>
             <div id="collapseThree" class="panel-collapse collapse in" aria-expanded="true">
-                <div class="box-body">
-                    <section class="content">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="box box-warning">
-                                    <div class="box-body">
-                                        <form role="form" method="POST" action={{ path('utilisateur') }}>
+                        <div class="box-body">
+                            <div class="box box-warning">
+                                    <form role="form" method="POST" action={{ path('utilisateur') }}>
                                             <!-- text input -->
                                             <div class="form-group">
                                                 <label>Pseudo</label>
@@ -117,16 +115,13 @@
                                             <div class="box-footer">
                                                 <button type="submit" class="btn btn-primary">Enregistrer</button>
                                             </div>
-
-                                        </form>
-                                    </div><!-- /.box-body -->
+                                    </form>
                                 </div><!-- box -->
-                            </div><!-- col -->
-                        </div> <!-- row -->
-                    </section>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
+                            </div><!-- -->
+                        </div><!-- -->
+                    </div><!-- panel.box -->
+                </div><!-- accordion.box -->
+            </div><!-- col -->
+        </div><!-- row -->
+    </section>
 {% endblock %}
