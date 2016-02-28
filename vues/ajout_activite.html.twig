@@ -29,6 +29,18 @@
                         
                       <label>Description</label>
                       <input type="text" id="description" name="description" class="form-control" placeholder="Description">
+
+                      <div class="form-group">
+                          <label>Competence(s) Associé(e)(s)</label>
+                            <select class="form-control">
+
+                                {% for competence in competences %}
+                                    <option> {{ competences.getNom || competences.getReference }}</option>
+                                {% endfor %}
+
+                            </select>
+                      </div>
+
                     </div>
             
                     <div class="box-footer">
