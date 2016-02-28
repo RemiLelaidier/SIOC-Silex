@@ -100,7 +100,7 @@ class ActiviteDAO extends DAO
      * @param \SIOC\donnees\Activite
      * @return none
      * 
-     * TOFINISH
+     * TOTEST
      */
     public function save(Activite $activite) {
         $activiteData = array(
