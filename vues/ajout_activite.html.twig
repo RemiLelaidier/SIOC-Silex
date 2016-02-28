@@ -35,7 +35,7 @@
                             <select class="form-control">
 
                                 {% for competence in competences %}
-                                    <option> {{ competences.getNom() }}||{{ competences.getReference() }}</option>
+                                    <option> {{ competences.getNom() }} - {{ competences.getReference() }}</option>
                                 {% endfor %}
 
                             </select>
