@@ -170,12 +170,13 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
     /**
      * Sauvegarde/MAJ d'un Utilisateur
      *
-     * @param \SIOC\donnees\Utilisateur
+     * @params \SIOC\donnees\Utilisateur
+     *         \SIOC\donnees\Promotion
      * @return none
      * 
-     * TOFINISH
+     * TOTEST
      */
-    public function save(Utilisateur $utilisateur) {
+    public function save(Utilisateur $utilisateur, Promotion $promotion) {
         $utilisateurData = array(
             'uti_username'  => $utilisateur->getUsername(),
             'uti_nom'       => $utilisateur->getNom(),
@@ -188,11 +189,30 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         
         if ($utilisateur->getId()){
             $this->getDb()->update('Utilisateur', $utilisateurData, array('uti_id' => $utilisateur->getId()));
+            if( $utilisateur->getRole() == 'ROLE_ELEVE')
+            {
+                $promotionData = array(
+                    'fap_eleve'     => $utilisateur->getId(),
+                    'fap_promo'     => $promotion->getId()
+                );
+                $this->getDb()->update('Faitpartie', $promotionData, array(
+                    'fap_eleve'     => $utilisateur->getId(),
+                    'fap_promo'     => $promotion->getId()
+                ));
+            }
         }
         else {
             $this->getDb()->insert('Utilisateur', $utilisateurData);
             $id = $this->getDb()->lastInsertId();
             $utilisateur->setId($id);
+            if( $utilisateur->getRole() == 'ROLE_ELEVE')
+            {
+                $promotionData = array(
+                    'fap_eleve'     => $utilisateur->getId(),
+                    'fap_promo'     => $promotion->getId()
+                );
+                $this->getDb()->insert('Faitpartie', $promotionData);
+            }
         }
     }
 }
