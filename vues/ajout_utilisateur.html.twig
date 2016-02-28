@@ -43,9 +43,11 @@
                                             <div class="form-group">
                                                 <label>Promotion</label>
                                                 <select class="form-control">
-                                                    <option>SIO 1</option>
-                                                    <option>SIO 2</option>
-                                                    <option>SIO PTFQ</option>
+
+                                                    {% for promotion in promotions %}
+                                                        <option> {{ promotion.getId }}</option>
+                                                    {% endfor %}
+
                                                 </select>
                                             </div>
                                         </div>
