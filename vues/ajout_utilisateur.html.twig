@@ -7,56 +7,91 @@
             <small>Utilisateur</small>
         </h1>
     </section>
-    <section class="content">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="box box-warning">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Ajouter un Nouveau Utilisateur</h3>
-                </div><!-- /.box-header -->
+    <div class="box-group" id="accordion">
+        <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+        <div class="panel box box-primary">
+            <div class="box-header with-border">
+                <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" class="collapsed">
+                        Collapsible Group Item #1
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                 <div class="box-body">
-                  <form role="form" method="POST" action={{ path('utilisateur') }}>
-                    <!-- text input -->
-                    <div class="form-group">    
-                      <label>Pseudo</label>
-                      <input type="text" id="username" name="username" class="form-control" placeholder="Pseudo">
-                    
-                      <label>Mot de Passe</label>
-                      <input type="password" id="" name="motdepasse" class="form-control" placeholder="password">
-                        
-                      <label>Nom</label>
-                      <input type="text" name="nom" class="form-control" placeholder="Nom">
-                      
-                      <label>Prénom</label>
-                      <input type="text" name="prenom" class="form-control" placeholder="Prénom">
-                      
-                      <label>E-mail</label>
-                      <input type="text" name="email" class="form-control" placeholder="email">
-                        
-                      
-                    </div>
-                    
-                    <div class="form-group">
-                      <div class="radio">
-                        <label>Statut : </label>
-                        <label>
-                          <input type="radio" name="eleve" value="false" checked>
-                          Un(e) Élève
-                        </label>
-                        <label>
-                          <input type="radio" name="professeur" value="false" checked>
-                          Un Professeur
-                        </label>
-                      </div>
-                    </div>
-                    
-                    <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Enregistrer</button>
-                    </div>
 
-                  </form>
-                </div><!-- /.box-body -->
+                </div>
             </div>
         </div>
-    </section>
+        <div class="panel box box-danger">
+            <div class="box-header with-border">
+                <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed" aria-expanded="false">
+                        Collapsible Group Danger
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                <div class="box-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
+                    wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+                    eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
+                    assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+                    nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                    labore sustainable VHS.
+                </div>
+            </div>
+        </div>
+        <div class="panel box box-success">
+            <div class="box-header with-border">
+                <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="" aria-expanded="true">
+                        Collapsible Group Success
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse in" aria-expanded="true">
+                <div class="box-body">
+                    <section class="content">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="box box-warning">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Ajouter un Nouveau Utilisateur</h3>
+                                    </div><!-- /.box-header -->
+                                    <div class="box-body">
+                                        <form role="form" method="POST" action={{ path('utilisateur') }}>
+                                            <!-- text input -->
+                                            <div class="form-group">
+                                                <label>Pseudo</label>
+                                                <input type="text" id="username" name="username" class="form-control" placeholder="Pseudo">
+
+                                                <label>Mot de Passe</label>
+                                                <input type="password" id="password" name="password" class="form-control" placeholder="password">
+
+                                                <label>Nom</label>
+                                                <input type="text" name="nom" class="form-control" placeholder="Nom">
+
+                                                <label>Prénom</label>
+                                                <input type="text" name="prenom" class="form-control" placeholder="Prénom">
+
+                                                <label>E-mail</label>
+                                                <input type="text" name="email" class="form-control" placeholder="email">
+                                            </div>
+                                            <div class="box-footer">
+                                                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                            </div>
+
+                                        </form>
+                                    </div><!-- /.box-body -->
+                                </div><!-- box -->
+                            </div><!-- col -->
+                        </div> <!-- row -->
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 {% endblock %}
