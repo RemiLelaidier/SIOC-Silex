@@ -34,8 +34,8 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 ));
 
 $app['security.role_hierarchy'] = array(
-    'ROLE_ADMIN'    => array('ROLE_PROF', 'ROLE_ELEVE', 'ROLE_USER'),
-    'ROLE_PROF'    => array('ROLE_ELEVE', 'ROLE_USER'),
+    'ROLE_ADMIN'    => array('ROLE_PROF'),
+    'ROLE_PROF'    => array('ROLE_ELEVE'),
     'ROLE_ELEVE'    => array('ROLE_USER')
 );
 
@@ -53,7 +53,7 @@ $app['security.access_rules'] = array(
     array('^/activite/.*$', 'ROLE_PROF'),
     array('^/eleves/.*$', 'ROLE_PROF'),
     array('^/promotion/.*$', 'ROLE_PROF'),
-    array('^/professeurs/.*$', 'ROLE_ADMIN'),
+    array('^/professeurs/.*$', 'ROLE_ADMIN')
 );
 
 // Register services.
