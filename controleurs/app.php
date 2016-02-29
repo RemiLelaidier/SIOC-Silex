@@ -16,16 +16,16 @@ $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\SessionServiceProvider());
 $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     'security.firewalls' => array(
-//        'login' => array(
-//            'pattern' => '^/login$',
-//            'anonymous' => true,
-//            'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
+        'login' => array(
+            'pattern' => '^/login$',
+            'anonymous' => true,
+            'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
         ),
         'secured' => array(
             'pattern' => '^.*$',
             'anonymous' => false, // A modifier
             'logout' => array('logout_path' => '/logout'),
-            'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
+         //   'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
             'users' => $app->share(function () use ($app) {
                 return new SIOC\DAO\UtilisateurDAO($app['db']);
             }),
@@ -41,7 +41,7 @@ $app['security.role_hierarchy'] = array(
 
 // Definition des rôles utilisateurs
 $app['security.access_rules'] = array(
-    array('^/.*$', 'IS_AUTHENTICATED_ANONYMOUSLY'),
+//    array('^/.*$', 'IS_AUTHENTICATED_ANONYMOUSLY'),
     array('^/login', 'IS_AUTHENTICATED_ANONYMOUSLY'),
     array('^/acceuil', 'ROLE_USER'),
     array('^/layout', 'ROLE_USER'),
