@@ -18,8 +18,8 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     'security.firewalls' => array(
         'login' => array(
             'pattern' => '^/login$',
-            'anonymous' => true,
-            'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
+         //   'anonymous' => true,
+         //   'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
         ),
         'secured' => array(
             'pattern' => '^.*$',
@@ -41,19 +41,19 @@ $app['security.role_hierarchy'] = array(
 
 // Definition des rôles utilisateurs
 $app['security.access_rules'] = array(
-//    array('^/.*$', 'IS_AUTHENTICATED_ANONYMOUSLY'),
+    array('^/.*$', 'ROLE_ADMIN'),
     array('^/login', 'IS_AUTHENTICATED_ANONYMOUSLY'),
-    array('^/acceuil', 'ROLE_USER'),
-    array('^/layout', 'ROLE_USER'),
-    array('^/activite/', 'ROLE_ELEVE'),
-    array('^/activite/new', 'ROLE_ELEVE'),
-    array('^/competence/', 'ROLE_ELEVE'),
-    array('^/competence/new', 'ROLE_ELEVE'),
-    array('^/competence/.*$', 'ROLE_PROF'),
-    array('^/activite/.*$', 'ROLE_PROF'),
-    array('^/eleves/.*$', 'ROLE_PROF'),
-    array('^/promotion/.*$', 'ROLE_PROF'),
-    array('^/professeurs/.*$', 'ROLE_ADMIN')
+//    array('^/acceuil', 'ROLE_USER'),
+//    array('^/layout', 'ROLE_USER'),
+//    array('^/activite/', 'ROLE_ELEVE'),
+//    array('^/activite/new', 'ROLE_ELEVE'),
+//    array('^/competence/', 'ROLE_ELEVE'),
+//    array('^/competence/new', 'ROLE_ELEVE'),
+//    array('^/competence/.*$', 'ROLE_PROF'),
+//    array('^/activite/.*$', 'ROLE_PROF'),
+//    array('^/eleves/.*$', 'ROLE_PROF'),
+//    array('^/promotion/.*$', 'ROLE_PROF'),
+//    array('^/professeurs/.*$', 'ROLE_ADMIN')
 );
 
 // Register services.
