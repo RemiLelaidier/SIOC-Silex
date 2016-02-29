@@ -41,7 +41,7 @@ $app['security.role_hierarchy'] = array(
 
 // Definition des rôles utilisateurs
 $app['security.access_rules'] = array(
-    array('^/.*$', 'ROLE_ADMIN'),
+    array('^/.*$', 'IS_AUTHENTICATED_ANONYMOUSLY'),
     array('^/login', 'IS_AUTHENTICATED_ANONYMOUSLY'),
     array('^/acceuil', 'ROLE_USER'),
     array('^/layout', 'ROLE_USER'),
