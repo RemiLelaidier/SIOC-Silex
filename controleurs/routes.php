@@ -23,7 +23,7 @@ $app->get('/login', function(Request $request) use ($app) {
  */
 $app->get('/activite', function () use ($app) {
     $activites = $app['dao.activite']->findAll();
-    return $app['twig']->render('activite.html.twig', array('activites' => $activites));
+    return $app['twig']->render('activite.html.twig', array('activites' => $activites, 'competences' => $competences));
 })->bind('activite');
 
 /**
@@ -63,6 +63,7 @@ $app->get('/competence', function () use ($app) {
  */
 $app->get('/promotion', function () use ($app) {
     $promotions = $app['dao.promotion']->findAll();
+    //TODO NB ELEVE
     return $app['twig']->render('promotion.html.twig', array('promotions' => $promotions));
 })->bind('promotion');
 
