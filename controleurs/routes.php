@@ -157,7 +157,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     {
         $promotion-setId($request->get('promo'));
     }
-    $app['dao.utilisateur']->save($utilisateur); // à remettre:     $app['dao.utilisateur']->save($utilisateur, $promotion);
+    $app['dao.utilisateur']->save($utilisateur); // à remettre: $app['dao.utilisateur']->save($utilisateur, $promotion);
     $utilisateurs = $app['dao.utilisateur']->findAll();
     return $app['twig'] -> render('utilisateur.html.twig', array('utilisateurs' => $utilisateurs,
     ));
