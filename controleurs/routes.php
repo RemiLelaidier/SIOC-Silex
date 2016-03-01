@@ -125,7 +125,7 @@ $app->post('/competence', function (Request $request) use ($app) {
 });
 
 /**
- * Route reponse activite
+ * Route activite
  */
 $app->post('/activite', function (Request $request) use ($app) {
     $activite = new \SIOC\donnees\Activite();
@@ -142,11 +142,11 @@ $app->post('/activite', function (Request $request) use ($app) {
 });
 
 /**
- * Route reponse utilisateur
+ * Route utilisateur
  */
 $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur = new \SIOC\donnees\Utilisateur();
-    $promotion = new \SIOC\donees\Promotion();
+    $promotion = new \SIOC\donnees\Promotion();
     $utilisateur->setUsername($request->get('username'));
     $utilisateur->setNom($request->get('nom'));
     $utilisateur->setPrenom($request->get('prenom'));
@@ -154,8 +154,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setPassword($request->get('password'));
     $utilisateur->setSalt($request->get('salt'));
     $utilisateur->setRole($request->get('statut'));
-    if($utilisateur-getRole() == 'ROLE_ELEVE')
-    {
+    if($utilisateur->getRole() == 'ROLE_ELEVE'){
         $promotion-setId($request->get('promo'));
     }
     $app['dao.utilisateur']->save($utilisateur, $promotion);
@@ -165,7 +164,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
 });
 
 /**
- * Route reponse promotion
+ * Route promotion
  */
 $app->post('/promotion', function (Request $request) use ($app) {
     $promotion = new \SIOC\donnees\Promotion();
@@ -178,5 +177,4 @@ $app->post('/promotion', function (Request $request) use ($app) {
 });
 
 
-//Creer route utilisateur
 //Prevoir route eleve ses activités
