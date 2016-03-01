@@ -8,6 +8,7 @@ use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 
 use SIOC\donnees\Utilisateur;
+use SIOC\donnees\Promotion;
 
 /**
  * Description of UtilisateurDAO
