@@ -153,11 +153,10 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setPassword($request->get('password'));
     $utilisateur->setSalt($request->get('salt'));
     $utilisateur->setRole($request->get('statut'));
-    if($utilisateur->getRole() == 'ROLE_ELEVE')
-    {
+    if($utilisateur->getRole() == 'ROLE_ELEVE'){
         $promotion-setId($request->get('promo'));
     }
-    $app['dao.utilisateur']->save($utilisateur); // à remettre: $app['dao.utilisateur']->save($utilisateur, $promotion);
+    $app['dao.utilisateur']->save($utilisateur, $promotion);
     $utilisateurs = $app['dao.utilisateur']->findAll();
     return $app['twig'] -> render('utilisateur.html.twig', array('utilisateurs' => $utilisateurs,
     ));
