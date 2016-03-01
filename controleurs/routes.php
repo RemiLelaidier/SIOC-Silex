@@ -23,7 +23,7 @@ $app->get('/login', function(Request $request) use ($app) {
  */
 $app->get('/activite', function () use ($app) {
     $activites = $app['dao.activite']->findAll();
-    return $app['twig']->render('activite.html.twig', array('activites' => $activites, 'competences' => $competences));
+    return $app['twig']->render('activite.html.twig', array('activites' => $activites));
 })->bind('activite');
 
 /**
@@ -106,7 +106,7 @@ $app->get('/utilisateur/new', function () use ($app) {
  * Route page ajout promotion
  */
 $app->get('/promotion/new', function() use ($app) {
-return $app['twig']->render('ajout_promotion.html.twig');
+    return $app['twig']->render('ajout_promotion.html.twig');
 })->bind('ajout_promotion');
 
 /**
@@ -120,8 +120,7 @@ $app->post('/competence', function (Request $request) use ($app) {
     $competence -> setObligatoire($request->get('obligatoire'));
     $app['dao.competence']->save($competence);
     $competences = $app['dao.competence']->findAll();
-    return $app['twig'] -> render('competence.html.twig', array('competences' => $competences,
-    ));
+    return $app['twig'] -> render('competence.html.twig', array('competences' => $competences));
 });
 
 /**
@@ -137,8 +136,7 @@ $app->post('/activite', function (Request $request) use ($app) {
     $activite -> setUtilisateur($request->get('utilisateur'));
     $app['dao.activite']->save($activite);
     $activites = $app['dao.activite']->findAll();
-    return $app['twig'] -> render('activite.html.twig', array('activites' => $activites,
-    ));
+    return $app['twig'] -> render('activite.html.twig', array('activites' => $activites));
 });
 
 /**
@@ -159,8 +157,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     }
     $app['dao.utilisateur']->save($utilisateur, $promotion);
     $utilisateurs = $app['dao.utilisateur']->findAll();
-    return $app['twig'] -> render('utilisateur.html.twig', array('utilisateurs' => $utilisateurs,
-    ));
+    return $app['twig'] -> render('utilisateur.html.twig', array('utilisateurs' => $utilisateurs));
 });
 
 /**
@@ -172,8 +169,7 @@ $app->post('/promotion', function (Request $request) use ($app) {
     $promotion -> setAnnee($request -> get('annee'));
     $app['dao.promotion']->save($promotion);
     $promotions = $app['dao.promotion']->findAll();
-    return $app['twig'] -> render('promotion.html.twig', array('promotions' => $promotions,
-    ));
+    return $app['twig'] -> render('promotion.html.twig', array('promotions' => $promotions));
 });
 
 
