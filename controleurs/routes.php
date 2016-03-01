@@ -145,7 +145,7 @@ $app->post('/activite', function (Request $request) use ($app) {
  */
 $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur = new \SIOC\donnees\Utilisateur();
-    $promotion = new \SIOC\donees\Promotion();
+    $promotion = new \SIOC\donnees\Promotion();
     $utilisateur->setUsername($request->get('username'));
     $utilisateur->setNom($request->get('nom'));
     $utilisateur->setPrenom($request->get('prenom'));
