@@ -5,6 +5,9 @@ use Symfony\Component\HttpFoundation\Request;
  * Route page d'acceuil
  */
 $app->get('/', function () use($app) {
+    // TODO
+    // Des trucs DAO a appeller pour l'affichage des stats
+    //
     return $app['twig']->render('acceuil.html.twig');
 });
 
