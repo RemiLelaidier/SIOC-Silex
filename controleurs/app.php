@@ -18,14 +18,14 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     'security.firewalls' => array(
         'login' => array(
             'pattern' => '^/login$',
-            'anonymous' => false, //(Y: re  true)
+            'anonymous' => true,
             'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
         ),
         'secured' => array(
             'pattern' => '^.*$',
             'anonymous' => true, // A modifier
             'logout' => array('logout_path' => '/logout'),
-////            'form' => array('login_path' => '/login', 'check_path' => '/login_check'), Bug double redirection
+//            'form' => array('login_path' => '/login', 'check_path' => '/login_check'), Bug double redirection
             'users' => $app->share(function () use ($app) {
                 return new SIOC\DAO\UtilisateurDAO($app['db']);
             }),
