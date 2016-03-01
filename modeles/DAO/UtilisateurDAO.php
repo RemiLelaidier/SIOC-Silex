@@ -8,6 +8,7 @@ use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 
 use SIOC\donnees\Utilisateur;
+use SIOC\donnees\Promotion;
 
 /**
  * Description of UtilisateurDAO
@@ -30,6 +31,25 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         {
             return $this->buildDomainObject($row);
         }
+    }
+    
+    /**
+     * Retourne tous les utilisateurs
+     *
+     * @param none
+     * @return array(\SIOC\donnees\Utilisateur)
+     */
+    public function findAll()
+    {
+        $sql = "SELECT * FROM Utilisateur";
+        $result = $this->getDb()->fetchAll($sql);
+        $utilisateurs = array();
+        foreach($result as $row)
+        {
+            $utilisateurId = $row['uti_id'];
+            $utilisateurs[$utilisateurId] = $this->buildDomainObject($row);
+        }
+        return $utilisateurs;
     }
     
     /**
