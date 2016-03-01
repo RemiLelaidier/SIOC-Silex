@@ -34,6 +34,25 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
     }
     
     /**
+     * Retourne tous les utilisateurs
+     *
+     * @param none
+     * @return array(\SIOC\donnees\Utilisateur)
+     */
+    public function findAll()
+    {
+        $sql = "SELECT * FROM Utilisateur";
+        $result = $this->getDb()->fetchAll($sql);
+        $utilisateurs = array();
+        foreach($result as $row)
+        {
+            $utilisateurId = $row['uti_id'];
+            $utilisateurs[$utilisateurId] = $this->buildDomainObject($row);
+        }
+        return $utilisateurs;
+    }
+    
+    /**
      * Trouve l'utilisateur associe a l'activite
      *
      * @param integer $id
