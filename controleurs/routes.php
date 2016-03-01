@@ -124,7 +124,7 @@ $app->post('/competence', function (Request $request) use ($app) {
 });
 
 /**
- * Route reponse activite
+ * Route activite
  */
 $app->post('/activite', function (Request $request) use ($app) {
     $activite = new \SIOC\donnees\Activite();
@@ -141,7 +141,7 @@ $app->post('/activite', function (Request $request) use ($app) {
 });
 
 /**
- * Route reponse utilisateur
+ * Route utilisateur
  */
 $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur = new \SIOC\donnees\Utilisateur();
@@ -157,14 +157,14 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     {
         $promotion-setId($request->get('promo'));
     }
-    $app['dao.utilisateur']->save($utilisateur, $promotion);
+    $app['dao.utilisateur']->save($utilisateur); // à remettre:     $app['dao.utilisateur']->save($utilisateur, $promotion);
     $utilisateurs = $app['dao.utilisateur']->findAll();
     return $app['twig'] -> render('utilisateur.html.twig', array('utilisateurs' => $utilisateurs,
     ));
 });
 
 /**
- * Route reponse promotion
+ * Route promotion
  */
 $app->post('/promotion', function (Request $request) use ($app) {
     $promotion = new \SIOC\donnees\Promotion();
@@ -177,5 +177,4 @@ $app->post('/promotion', function (Request $request) use ($app) {
 });
 
 
-//Creer route utilisateur
 //Prevoir route eleve ses activités
