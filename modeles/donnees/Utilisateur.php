@@ -37,12 +37,7 @@ class Utilisateur implements UserInterface
 
     public function __construct()
     {
-        $this->_id = NULL;
-        $this->_nom = "Nom";
-        $this->_prenom = "Prenom";
-        $this->_mail = "mail@mailbox.com";
-        $this->_password = "password";
-        $this->_statut = "";
+        
     }
 
     // Accesseurs
