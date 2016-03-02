@@ -142,7 +142,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      */
     public function loadUserByUsername($username)
     {
-        $sql = "SELECT * FROM Utilisateurs WHERE uti_username=?";
+        $sql = "SELECT * FROM Utilisateur WHERE uti_username=?";
         $row = $this->getDb()->fetchAssoc($sql, array($username));
 
         if ($row)
