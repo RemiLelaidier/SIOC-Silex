@@ -33,12 +33,28 @@ $app->get('/login', function(Request $request) use ($app) {
 })->bind('login');
 
 /**
+ * Route post login
+ */
+//$app->post('/login', function (Request $request) use ($app) {
+//    $promotion = new \SIOC\donnees\Promotion();
+//    $promotion -> setLibelle($request->get('libelle'));
+//    $promotion -> setAnnee($request -> get('annee'));
+//    $app['dao.promotion']->save($promotion);
+//    $promotions = $app['dao.promotion']->findAll();
+//    return $app['twig'] -> render('promotion.html.twig', array('promotions' => $promotions));
+//});
+
+/**
  * Route vers la verification de login
  *  TODO   comparaison mot de passe -> BDD
  */
 
-$app->get('/login_check', function() use ($app) {
-})->bind('acceuil');
+$app->post('/login_check', function(Request $request) use ($app) {
+    $utilisateur = new \SIOC\donnees\Utilisateur();
+    $utilisateur->setUsername($request->get('username'));
+    $utilisateur->setPassword($request->get('pass'));
+//    $app['dao.utilisateur']->Compare($utilisateur);
+})->bind('');
 
 /**
  * Route page activite
