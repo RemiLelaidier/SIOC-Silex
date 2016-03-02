@@ -207,13 +207,13 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
 $app->get('/login', function () use ($app) {
     $username = $app['request']->server->get('PHP_AUTH_USER', false);
     $password = $app['request']->server->get('PHP_AUTH_PW');
+    var_dump($username, $password);
+    die();
     if ('_username' === $username && '_password' === $password) {
         $app['session']->set('user', array('username' => $username));
         return $app->redirect('/acceuil');
     }
     $reponse = new Response();
-    var_dump($reponse);
-    die();
     $reponse->headers->set('WWW-Authenticate', sprintf('Basic realm="%s"', 'site_login'));
     $reponse->setStatusCode(401, 'Merci de vous connecter.');
     return $reponse;
