@@ -26,6 +26,7 @@ class CompetenceDAO extends DAO
             return $this->buildDomainObject($row);
         }
     }
+    
     /**
      * Trouve toutes les competences
      *
@@ -66,6 +67,22 @@ class CompetenceDAO extends DAO
             $competences[$competenceId] = $this->buildDomainObject($row);
         }
         return $competences;
+    }
+    
+    /**
+     * Renvoie le nb de competences valides par l'utilisateur
+     *
+     * @param integer $id
+     * @return integer $nbComp
+     */
+    public function findNbByEleve($id)
+    {
+        $sql = "SELECT COUNT(DISTINCT ass.ass_competence)"
+                . " FROM Associe AS ass, Activite AS act"
+                . " WHERE ass.ass_activite = act.act_id"
+                . " AND act.act_eleve = ?";
+        $nbComp = $this->getDb()-fetchAll($sql, array($id));
+        return $nbComp;
     }
     
     /**
