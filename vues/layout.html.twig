@@ -58,6 +58,7 @@
               {% endif %}
                 <i class="fa fa-power-off"></i>
               </a>
+              </a>
              </li>
             </ul>
           </div>
@@ -70,6 +71,11 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MENU</li>
+              <li class="treeview">
+                  <a href="/">
+                      <i class="fa fa-home"></i> <span>Accueil</span></i>
+                  </a>
+              </li>
             <li class="treeview">
               <a href="{{ path('activite') }}">
                 <i class="fa fa-wrench"></i> <span>Activités</span></i>
@@ -93,27 +99,14 @@
             <!--  Affiche Eleve (Prof)  -->
 
             <!-- Ajouter des membres -->
-            <li class="treeview">
-                <i class="fa fa-user-secret"></i><span>Administration</span>
-                <ul class="treeview-menu" style="display: none;">
-                    <li class="treeview">
-                        <a href="utilisateur/new">
-                            <i class="fa fa-user"></i> <span>Ajouter</span>
-                        </a>
-                    </li>
-                    <li class="treeview">
-                        <a href="{{ path('eleve') }}">
-                            <i class="fa fa-user"></i> <span>Élèves</span>
-                        </a>
-                    </li>
-            <!--  Afficher Prof & Eleve (Admin) -->
-                    <li class="treeview">
-                        <a href="{{ path('professeur') }}">
-                            <i class="fa fa-user"></i> <span>Professeurs</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+              <li class="treeview">
+                  <a href=""><i class="fa fa-user-secret"></i><span>Administration</span> <i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
+                      <li><a href="utilisateur/new"><i class="fa fa-user-plus"></i>Ajouter</a></li>
+                      <li><a href=" {{ path ('eleve') }} "><i class="fa fa-group"></i>Eleves</a></li>
+                      <li><a href=" {{ path ('professeur') }} "><i class="fa fa-user"></i>Professeurs</a></li>
+                  </ul>
+              </li>
           </ul>
         </section>
         <!-- /.sidebar -->
