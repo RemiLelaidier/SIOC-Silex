@@ -45,18 +45,6 @@ $app->get('/login', function(Request $request) use ($app) {
 //});
 
 /**
- * Route vers la verification de login
- *  TODO   comparaison mot de passe -> BDD
- */
-
-$app->post('/login_check', function(Request $request) use ($app) {
-    $utilisateur = new \SIOC\donnees\Utilisateur();
-    $utilisateur->setUsername($request->get('username'));
-    $utilisateur->setPassword($request->get('pass'));
-//    $app['dao.utilisateur']->Compare($utilisateur);
-})->bind('');
-
-/**
  * TEST
  */
 $app->get('/test', function() use ($app){
