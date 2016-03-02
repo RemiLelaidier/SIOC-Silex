@@ -93,21 +93,20 @@
             <!--  Affiche Eleve (Prof)  -->
 
             <!-- Ajouter des membres -->
-            <li class="treeview">
-                <i class="fa fa-user-secret"></i><span>Administration</span>
+            <li class="treeview"><a href=""><i class="fa fa-user-secret"></i><span>Administration</span><i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu" style="display: none;">
-                    <li class="treeview">
+                    <li>
                         <a href="utilisateur/new">
                             <i class="fa fa-user"></i> <span>Ajouter</span>
                         </a>
                     </li>
-                    <li class="treeview">
+                    <li>
                         <a href="{{ path('eleve') }}">
                             <i class="fa fa-user"></i> <span>Élèves</span>
                         </a>
                     </li>
             <!--  Afficher Prof & Eleve (Admin) -->
-                    <li class="treeview">
+                    <li>
                         <a href="{{ path('professeur') }}">
                             <i class="fa fa-user"></i> <span>Professeurs</span>
                         </a>
