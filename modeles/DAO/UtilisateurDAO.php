@@ -235,4 +235,17 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
             }
         }
     }
+    
+    /**
+     * Suppression de l'Utilisateur
+     *
+     * @params integer $id
+     * @return none
+     * 
+     * TOTEST
+     */
+    public function erase($id)
+    {
+        
+    }
 }
