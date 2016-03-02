@@ -44,8 +44,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
  * Hierarchie des utilisateurs
  */
 $app['security.role_hierarchy'] = array(
-    'ROLE_ADMIN'    => array('ROLE_PROF'),
-    'ROLE_PROF'    => array('ROLE_ELEVE'),
+    'ROLE_ADMIN'    => array('ROLE_ELEVE')
 );
 /**
  * Definition des rôles utilisateurs
@@ -53,15 +52,15 @@ $app['security.role_hierarchy'] = array(
 
 $app['security.access_rules'] = array(
     array('^/professeurs/.*$', 'ROLE_ADMIN'),
-    array('^/promotion/.*$', 'ROLE_PROF'),// array('^/professeurs/.*$', 'ROLE_ADMIN')
-    array('^/eleves/.*$', 'ROLE_PROF'),
-    array('^/activite/.*$', 'ROLE_PROF'),
-    array('^/competence/.*$', 'ROLE_PROF'),
+    array('^/promotion/.*$', 'ROLE_ADMIN'),// array('^/professeurs/.*$', 'ROLE_ADMIN')
+    array('^/eleves/.*$', 'ROLE_ADMIN'),
+    array('^/activite/.*$', 'ROLE_ADMIN'),
+    array('^/competence/.*$', 'ROLE_ADMIN'),
     array('^/competence/new', 'ROLE_ELEVE'),
     array('^/competence/', 'ROLE_ELEVE'),
     array('^/activite/new', 'ROLE_ELEVE'),
-    array('^/activite/', 'ROLE_ELEVE'),
-    array('^/login', 'IS_AUTHENTICATED_ANONYMOUSLY'),
+    array('^/activite/', 'ROLE_ELEVE')
+//    array('^/login', 'IS_AUTHENTICATED_ANONYMOUSLY')
 );
 
 /**
