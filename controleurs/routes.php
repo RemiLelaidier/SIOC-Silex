@@ -193,7 +193,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setNom($request->request->get('nom'));
     $utilisateur->setPrenom($request->request->get('prenom'));
     $utilisateur->setMail($request->request->get('email'));
-    $utilisateur->setPassword($app['security.encoder.digest']->encodePassword($utilisateur, $request->request->get('password')));
+    $utilisateur->setPassword($app['security.encoder.digest']->encodePassword($request->request->get('password'),''));
     var_dump($utilisateur->getPassword());
     $utilisateur->setSalt($request->request->get('salt'));
     $utilisateur->setRole($request->request->get('statut'));
