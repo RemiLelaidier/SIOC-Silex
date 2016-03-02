@@ -8,15 +8,17 @@ use Symfony\Component\HttpFoundation\Request;
  */
 $app->get('/', function (Request $request) use($app) {
     $professeurs = $app['dao.utilisateur']->findAllProfesseur();
-//    $activites = $app['dao.activite']->findAllbyUtilisateur();
+    $activites = $app['dao.activite']->findAllbyUtilisateur($id);
     $competences = $app['dao.competence']->findAll();
-//    $promotion = $app['dao.promotion']->find();
+    $nbComp = $app['dao.competence']->findNbByEleve($id);
+    $promotion = $app['dao.promotion']->findByEleve($id);
 
     return $app['twig']->render('acceuil.html.twig', array(
         'professeurs' => $professeurs,
-//        'activites' => $activites,
+        'activites' => $activites,
         'competences' => $competences,
-//        'promotion' => $promotion
+        'nbComp' => $nbComp,
+        'promotion' => $promotion
     ));
 });
 
@@ -99,10 +101,11 @@ $app->get('/promotion', function () use ($app) {
  * Route page stats
  */
 $app->get('/stats', function () use ($app) {
-    $token = $app['security.token_storage']->getToken();
-    var_dump($token);
+    $id = $app['security.token_storage']->getToken();
+    $id->getUsername();
+    var_dump($id);
     die();
-    $stats = $app['dao.activite']->findAllbyUtilisateur($token);
+    $stats = $app['dao.activite']->findAllbyUtilisateur($id);
     $competences = $app['dao.competence']->findAll();
     return $app['twig']->render('stats.html.twig', array('stats' => $stats, 'competences' => $competences));
 })->bind('stats');
