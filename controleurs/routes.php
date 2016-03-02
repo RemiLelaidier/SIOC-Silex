@@ -45,16 +45,13 @@ $app->get('/login', function(Request $request) use ($app) {
 //});
 
 /**
- * Route vers la verification de login
- *  TODO   comparaison mot de passe -> BDD
+ * TEST
  */
-
-$app->post('/login_check', function(Request $request) use ($app) {
-    $utilisateur = new \SIOC\donnees\Utilisateur();
-    $utilisateur->setUsername($request->get('username'));
-    $utilisateur->setPassword($request->get('pass'));
-//    $app['dao.utilisateur']->Compare($utilisateur);
-})->bind('');
+$app->get('/test', function() use ($app){
+    //echo $app['security.encoder.digest']->encodePassword('0000', '0000');
+    var_dump($app['routes']->all('login_check'));
+    die();
+});
 
 /**
  * Route page activite
