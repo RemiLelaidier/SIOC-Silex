@@ -43,10 +43,10 @@ $app->get('/login/check', function() use ($app) {
  */
 $app->get('/activite', function () use ($app) {
     $activites = $app['dao.activite']->findAll();
-    $activitesEleve = $app['dao.activite']->findAllbyUtilisateur();
+//    $activitesEleve = $app['dao.activite']->findAllbyUtilisateur($id);
     return $app['twig']->render('activite.html.twig', array(
         'activites' => $activites,
-        'activiteEleve' => $activitesEleve
+//        'activiteEleve' => $activitesEleve
     ));
 })->bind('activite');
 
