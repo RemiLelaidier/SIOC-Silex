@@ -4,18 +4,25 @@ use Symfony\Component\Debug\ErrorHandler;
 use Symfony\Component\Debug\ExceptionHandler;
 
 
-
-// Register global error and exception handlers
+/**
+ * Register global error and exception handlers
+ */
 ErrorHandler::register();
 ExceptionHandler::register();
 
-// Register service providers.
+/**
+ * Register service providers.
+ */
 $app->register(new Silex\Provider\DoctrineServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../vues',
 ));
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\SessionServiceProvider());
+
+/**
+ * Sécurisation de l'application, identification et redirection login
+ */
 $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     'security.firewalls' => array(
 //        'login' => array(
@@ -38,13 +45,18 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     ),
 ));
 
+/**
+ * Hierarchie des utilisateurs
+ */
 $app['security.role_hierarchy'] = array(
     'ROLE_ADMIN'    => array('ROLE_PROF'),
     'ROLE_PROF'    => array('ROLE_ELEVE'),
     'ROLE_ELEVE'    => array('ROLE_USER')
 );
+/**
+ * Definition des rôles utilisateurs
+ */
 
-// Definition des rôles utilisateurs
 $app['security.access_rules'] = array(
     array('^/login', 'IS_AUTHENTICATED_ANONYMOUSLY'),
 //    array('^/acceuil', 'ROLE_USER'),
@@ -60,7 +72,9 @@ $app['security.access_rules'] = array(
 //    array('^/professeurs/.*$', 'ROLE_ADMIN')
 );
 
-// Register services.
+/**
+ * Service de BDD
+ */
 $app['dao.activite'] = $app->share(function ($app) {
     return new SIOC\DAO\ActiviteDAO($app['db']);
 });
