@@ -1,6 +1,7 @@
 <?php
 use Symfony\Component\HttpFoundation\Request;
 
+
 /**
  * Route page d'acceuil
  * TOCHECK
