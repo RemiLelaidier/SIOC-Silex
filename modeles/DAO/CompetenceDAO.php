@@ -120,4 +120,17 @@ class CompetenceDAO extends DAO
             $competence->setId($id);  
         }
     }
+    
+    /**
+     * Suppression de la Competence
+     *
+     * @params integer $id
+     * @return none
+     * 
+     * TOTEST
+     */
+    public function erase($id)
+    {
+        
+    }
 }

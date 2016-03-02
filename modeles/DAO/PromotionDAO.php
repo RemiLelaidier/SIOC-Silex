@@ -106,4 +106,17 @@ class PromotionDAO extends DAO
             $promotion->setId($id);
         }
     }
+    
+    /**
+     * Suppression de la Promotion
+     *
+     * @params integer $id
+     * @return none
+     * 
+     * TOTEST
+     */
+    public function erase($id)
+    {
+        
+    }
 }

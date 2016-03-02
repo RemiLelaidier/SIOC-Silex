@@ -140,4 +140,17 @@ class ActiviteDAO extends DAO
             }
         }
     }
+    
+    /**
+     * Suppression de l'Activite
+     *
+     * @params integer $id
+     * @return none
+     * 
+     * TOTEST
+     */
+    public function erase($id)
+    {
+        
+    }
 }
