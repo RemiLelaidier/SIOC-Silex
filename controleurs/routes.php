@@ -46,10 +46,10 @@ $app->get('/login_check', function() use ($app) {
  */
 $app->get('/activite', function () use ($app) {
     $activites = $app['dao.activite']->findAll();
-    $activitesEleve = $app['dao.activite']->findAllbyUtilisateur($id);
+//    $activitesEleve = $app['dao.activite']->findAllbyUtilisateur($id);
     return $app['twig']->render('activite.html.twig', array(
         'activites' => $activites,
-        'activiteEleve' => $activitesEleve
+//        'activiteEleve' => $activitesEleve
     ));
 })->bind('activite');
 
@@ -101,10 +101,11 @@ $app->get('/promotion', function () use ($app) {
  * Route page stats
  */
 $app->get('/stats', function () use ($app) {
-    $token = $app['security.token_storage']->getToken()->getUser();
-    var_dump($token);
+    $id = $app['security.token_storage']->getToken();
+    $id->getUsername();
+    var_dump($id);
     die();
-    $stats = $app['dao.activite']->findAllbyUtilisateur($token);
+    $stats = $app['dao.activite']->findAllbyUtilisateur($id);
     $competences = $app['dao.competence']->findAll();
     return $app['twig']->render('stats.html.twig', array('stats' => $stats, 'competences' => $competences));
 })->bind('stats');
