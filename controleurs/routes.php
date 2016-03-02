@@ -3,12 +3,13 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Route page d'acceuil
+ * TOCHECK
  */
-$app->get('/', function () use($app) {
-    // TODO
-    // Des trucs DAO a appeller pour l'affichage des stats
-    //
-    return $app['twig']->render('acceuil.html.twig');
+$app->get('/', function (Request $request) use($app) {
+    $professeurs = $app['dao.utilisateur']->findAllProfesseur();
+    return $app['twig']->render('acceuil.html.twig', array(
+        'professeur' => $professeurs
+    ));
 });
 
 /**
@@ -22,11 +23,23 @@ $app->get('/login', function(Request $request) use ($app) {
 })->bind('login');
 
 /**
+ * Route vers la verification de login
+ *  TODO   comparaison mot de passe -> BDD
+ */
+
+$app->get('/login/check', function() use ($app) {
+})->bind('acceuil');
+
+/**
  * Route page activite
+ * TOCHECK
  */
 $app->get('/activite', function () use ($app) {
     $activites = $app['dao.activite']->findAll();
-    return $app['twig']->render('activite.html.twig', array('activites' => $activites));
+    $activiteEleve = $app['dao.utilisateur']->findAllbyUtilisateur();
+    return $app['twig']->render('activite.html.twig', array(
+        'activites' => $activites,
+        'activiteEleve' => $activiteEleve));
 })->bind('activite');
 
 /**
@@ -63,11 +76,16 @@ $app->get('/competence', function () use ($app) {
 
 /**
  * Route page promotion
+ * TOCHECK
  */
 $app->get('/promotion', function () use ($app) {
     $promotions = $app['dao.promotion']->findAll();
+//    $nbEleves = $app['dao.utilisateur']->findNbEleve();
     //TODO NB ELEVE
-    return $app['twig']->render('promotion.html.twig', array('promotions' => $promotions));
+    return $app['twig']->render('promotion.html.twig', array(
+        'promotions' => $promotions,
+//        'nbEleves' => $nbEleves
+    ));
 })->bind('promotion');
 
 /**
@@ -152,7 +170,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setNom($request->get('nom'));
     $utilisateur->setPrenom($request->get('prenom'));
     $utilisateur->setMail($request->get('mail'));
-    $utilisateur->setPassword($request->get('password'));
+    $utilisateur->setPassword(sha1($request->get('password')));
     $utilisateur->setSalt($request->get('salt'));
     $utilisateur->setRole($request->get('statut'));
     if($utilisateur->getRole() == 'ROLE_ELEVE'){
