@@ -193,7 +193,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setNom($request->get('nom'));
     $utilisateur->setPrenom($request->get('prenom'));
     $utilisateur->setMail($request->get('mail'));
-    $utilisateur->setPassword(sha1($request->get('password')));
+    $utilisateur->setPassword($app['security.encoder.digest']->encodePassword($request->get('password'),''));
     $utilisateur->setSalt($request->get('salt'));
     $utilisateur->setRole($request->get('statut'));
     if($utilisateur->getRole() == 'ROLE_ELEVE'){
