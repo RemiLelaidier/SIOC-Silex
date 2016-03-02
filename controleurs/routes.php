@@ -5,19 +5,12 @@ use Symfony\Component\HttpFoundation\Request;
  * Route page d'acceuil
  * TOCHECK
  */
-//$app->get('/', function (Request $request) use($app) {
-//    $nbPromotions = $app['dao.promotion']->findAll(); // findNbPromotions
-//    $nbActivites = $app['dao.utilisateur']->find();
-//    $competencesEleves = $app['dao.competence']->find();
-//     TODO
-//     Des trucs DAO a appeller pour l'affichage des stats
-//
-//    return $app['twig']->render('acceuil.html.twig', array(
-//        'promotions' => $nbPromotions,
-//        'activites' => $nbActivites,
-//        'competences' => $competencesEleves,
-//    ));
-//});
+$app->get('/', function (Request $request) use($app) {
+    $professeurs = $app['dao.utilisateur']->findAllProfesseur();
+    return $app['twig']->render('acceuil.html.twig', array(
+        'professeur' => $professeurs
+    ));
+});
 
 /**
  * Route page de connexion

@@ -62,9 +62,9 @@ $app['security.access_rules'] = array(
 
 $app['security.encoder.digest'] = $app->share(function ($app) {
     return new MessageDigestPasswordEncoder('sha1', false, 1);
+});
 
 // Register services.
-
 $app['dao.activite'] = $app->share(function ($app) {
     return new SIOC\DAO\ActiviteDAO($app['db']);
 });
