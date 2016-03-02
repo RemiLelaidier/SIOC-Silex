@@ -60,7 +60,8 @@ $app->post('/login_check', function(Request $request) use ($app) {
  * TEST
  */
 $app->get('/test', function() use ($app){
-    echo $app['security.encoder.digest']->encodePassword('0000', '');
+    echo $app['security.encoder.digest']->encodePassword('0000', '0000');
+
 });
 
 /**
