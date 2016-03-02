@@ -28,7 +28,7 @@
                         <th>Libelle</th>
                         <th>Description</th>
                         <th>Obligatoire</th>
-                        <th>Modifier</th>
+                        <th style="width:30px;">Modifier</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,9 +43,11 @@
                         {% else %}
                             <th>   </th>
                         {% endif %}
-                        <th>
+                        <th style="width:30px;" >
+                            <div class="btn-group">
                                 <button type="button" class="btn btn-warning btn-flat"><i class="fa fa-eraser"></i></button>
-                            </th>
+                            </div>
+                        </th>
                     </tr>
                     {% endfor %}
                 </tbody>
