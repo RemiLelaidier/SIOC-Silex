@@ -215,7 +215,7 @@ $app->get('/login', function () use ($app) {
     $reponse->headers->set('WWW-Authenticate', sprintf('Basic realm="%s"', 'site_login'));
     $reponse->setStatusCode(401, 'Merci de vous connecter.');
     return $reponse;
-});
+})->bind('login');
 
 //$app->get('/acceuil', function () use ($app) {
 //    if (null === $user = $app['session']->get('user')) {
