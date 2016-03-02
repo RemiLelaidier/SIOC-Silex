@@ -8,8 +8,6 @@ use Symfony\Component\Debug\ExceptionHandler;
 ErrorHandler::register();
 ExceptionHandler::register();
 
-// Encodeur de mot de passe
-use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 // Register service providers.
 $app->register(new Silex\Provider\DoctrineServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
@@ -34,8 +32,6 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             }),
         ),
     ),
-//    'security.encoder.digest' => $app->share(function ($app) {
-//        return new MySQLPasswordEncoder(false);
 ));
 
 $app['security.role_hierarchy'] = array(
@@ -59,10 +55,6 @@ $app['security.access_rules'] = array(
 //    array('^/promotion/.*$', 'ROLE_PROF'),//
 //    array('^/professeurs/.*$', 'ROLE_ADMIN')
 );
-
-$app['security.encoder.digest'] = $app->share(function ($app) {
-    return new MessageDigestPasswordEncoder('sha1', false, 1);
-});
 
 // Register services.
 $app['dao.activite'] = $app->share(function ($app) {
