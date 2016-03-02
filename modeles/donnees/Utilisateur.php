@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *            -v1.2 : Gestion des exceptions
  * Projet : SIOC
  */
-class Utilisateur
+class Utilisateur implements UserInterface
 {
     // Attributs
 
