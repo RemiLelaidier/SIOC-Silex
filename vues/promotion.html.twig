@@ -24,6 +24,7 @@
                         <th>Annee</th>
                         <th>Libelle</th>
                         <th>Nb d'eleves</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -33,6 +34,12 @@
                             <th>{{ promotion.getAnnee() }}</th>
                             <th>{{ promotion.getLibelle() }}</th>
                             <th>{{ promotion.getEleves|length }}</th>
+                            <th style="width:60px; text-align:center;" >
+                                  <div class="btn-group">
+                                      <button type="button" title="Modifier" class="btn btn-warning btn-flat" style="margin-right:5px;"><i class="fa fa-eraser" style="width:10px;"></i></button>
+                                      <button type="button" title="Supprimer"  class="btn btn-danger btn-flat"><i class="fa fa-times"></i></button>
+                                  </div>
+                            </th>
                           </tr>
                         {% endfor %}
                     </tbody>
@@ -42,6 +49,7 @@
                         <th>Annee</th>
                         <th>Libelle</th>
                         <th>Nb d'eleves</th>
+                        <th>Action</th>
                       </tr>
                     </tfoot>
                   </table>
