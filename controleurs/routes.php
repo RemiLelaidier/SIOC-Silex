@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
  * Route page d'acceuil
  * TOCHECK
  */
-$app->get('/', function (Request $request) use($app) {
+$app->get('/', function () use($app) {
     $professeurs = $app['dao.utilisateur']->findAllProfesseur();
 //    $activites = $app['dao.activite']->findAllbyUtilisateur($id);
     $competences = $app['dao.competence']->findAll();
@@ -158,10 +158,10 @@ $app->get('/promotion/new', function() use ($app) {
  */
 $app->post('/competence', function (Request $request) use ($app) {
     $competence = new \SIOC\donnees\Competence();
-    $competence -> setReference($request->get('reference'));
-    $competence -> setLibelle($request -> get('libelle'));
-    $competence -> setDescription($request -> get('description'));
-    $competence -> setObligatoire($request->get('obligatoire'));
+    $competence -> setReference($request->request->get('reference'));
+    $competence -> setLibelle($request->request->get('libelle'));
+    $competence -> setDescription($request->request->get('description'));
+    $competence -> setObligatoire($request->request->get('obligatoire'));
     $app['dao.competence']->save($competence);
     $competences = $app['dao.competence']->findAll();
     return $app['twig'] -> render('competence.html.twig', array('competences' => $competences));
@@ -187,19 +187,18 @@ $app->post('/activite', function (Request $request) use ($app) {
  * Route utilisateur
  */
 $app->post('/utilisateur', function (Request $request) use ($app) {
-    $pass = $request->get('password');
     $utilisateur = new \SIOC\donnees\Utilisateur();
     $promotion = new \SIOC\donnees\Promotion();
-    $utilisateur->setUsername($request->get('username'));
-    $utilisateur->setNom($request->get('nom'));
-    $utilisateur->setPrenom($request->get('prenom'));
-    $utilisateur->setMail($request->get('mail'));
-    $utilisateur->setPassword($app['security.encoder.digest']->encodePassword($pass,''));
+    $utilisateur->setUsername($request->request->get('username'));
+    $utilisateur->setNom($request->request->get('nom'));
+    $utilisateur->setPrenom($request->request->get('prenom'));
+    $utilisateur->setMail($request->request->get('mail'));
+    $utilisateur->setPassword($app['security.encoder.digest']->encodePassword($request->request->get('password'),''));
     var_dump($utilisateur->getPassword());
-    $utilisateur->setSalt($request->get('salt'));
-    $utilisateur->setRole($request->get('statut'));
+    $utilisateur->setSalt($request->request->get('salt'));
+    $utilisateur->setRole($request->request->get('statut'));
     if($utilisateur->getRole() == 'ROLE_ELEVE'){
-        $promotion-setId($request->get('promo'));
+        $promotion-setId($request->request->get('promo'));
     }
     $app['dao.utilisateur']->save($utilisateur, $promotion);
     $utilisateurs = $app['dao.utilisateur']->findAll();
