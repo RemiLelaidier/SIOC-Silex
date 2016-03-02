@@ -32,7 +32,7 @@
                             <th>{{ promotion.getId() }}</th>
                             <th>{{ promotion.getAnnee() }}</th>
                             <th>{{ promotion.getLibelle() }}</th>
-                            <th>{{ promotion.getnbEleve }}</th>
+                            <th>{{ promotion.getEleves|length }}</th>
                           </tr>
                         {% endfor %}
                     </tbody>
