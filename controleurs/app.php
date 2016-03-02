@@ -38,8 +38,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
                  }),
             ),
         ),
-    ),
-));
+    ));
 
 /**
  * Hierarchie des utilisateurs
