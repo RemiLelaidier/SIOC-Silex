@@ -187,13 +187,14 @@ $app->post('/activite', function (Request $request) use ($app) {
  * Route utilisateur
  */
 $app->post('/utilisateur', function (Request $request) use ($app) {
+    $pass = $request->get('password');
     $utilisateur = new \SIOC\donnees\Utilisateur();
     $promotion = new \SIOC\donnees\Promotion();
     $utilisateur->setUsername($request->get('username'));
     $utilisateur->setNom($request->get('nom'));
     $utilisateur->setPrenom($request->get('prenom'));
     $utilisateur->setMail($request->get('mail'));
-    $utilisateur->setPassword($app['security.encoder.digest']->encodePassword($request->get('password'),''));
+    $utilisateur->setPassword($app['security.encoder.digest']->encodePassword($pass,''));
     $utilisateur->setSalt($request->get('salt'));
     $utilisateur->setRole($request->get('statut'));
     if($utilisateur->getRole() == 'ROLE_ELEVE'){
