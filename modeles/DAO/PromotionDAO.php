@@ -52,6 +52,28 @@ class PromotionDAO extends DAO
     }
 
     /**
+     * Trouve la promotion d'un eleve passe en Id
+     *
+     * @param integer $id
+     * @return array(\SIOC\donnees\Promotion)
+     */
+    public function findByEleve($id)
+    {
+        $sql = "SELECT P.pro_id, P.pro_libelle, P.pro_annee"
+                . " FROM Promotion AS P, Faitpartie AS F"
+                . " WHERE F.fap_promo = P.pro_id"
+                . " AND F.fap_eleve = ?";
+        $row = $this->getDb()->fetchAll($sql, array($id));
+        if ($row)
+        {
+            $promotionId = $row['pro_id'];
+            $eleves = new UtilisateurDAO($this->getDb());
+            $row['pro_eleves'] = $eleves->findAllbyPromotion($promotionId);
+            return $this->buildDomainObject($row);
+        }
+    }
+    
+    /**
      * Creer une Promotion a partir d'un tuple
      *
      * @param array $row
