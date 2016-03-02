@@ -9,7 +9,7 @@ ErrorHandler::register();
 ExceptionHandler::register();
 
 // Encodeur de mot de passe
-//use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
+use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 // Register service providers.
 $app->register(new Silex\Provider\DoctrineServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
