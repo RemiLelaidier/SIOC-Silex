@@ -195,6 +195,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setPrenom($request->get('prenom'));
     $utilisateur->setMail($request->get('mail'));
     $utilisateur->setPassword($app['security.encoder.digest']->encodePassword($pass,''));
+    var_dump($utilisateur->getPassword());
     $utilisateur->setSalt($request->get('salt'));
     $utilisateur->setRole($request->get('statut'));
     if($utilisateur->getRole() == 'ROLE_ELEVE'){
