@@ -7,7 +7,7 @@ use Doctrine\DBAL\Connection;
 /**
  * Description of DAO
  *
- * @author leetspeakv2
+ * @author SIO PTFQ
  */
 abstract class DAO 
 {

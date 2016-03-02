@@ -117,6 +117,6 @@ class PromotionDAO extends DAO
      */
     public function erase($id)
     {
-        
+        $this->getDb()->delete('Promotion', $id);
     }
 }
