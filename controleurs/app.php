@@ -58,7 +58,7 @@ $app['security.role_hierarchy'] = array(
 
 $app['security.access_rules'] = array(
     array('^/professeurs/.*$', 'ROLE_ADMIN'),
-    array('^/promotion/.*$', 'ROLE_PROF'),
+    array('^/promotion/.*$', 'ROLE_PROF'),// array('^/professeurs/.*$', 'ROLE_ADMIN')
     array('^/eleves/.*$', 'ROLE_PROF'),
     array('^/activite/.*$', 'ROLE_PROF'),
     array('^/competence/.*$', 'ROLE_PROF'),
@@ -66,7 +66,7 @@ $app['security.access_rules'] = array(
     array('^/competence/', 'ROLE_ELEVE'),
     array('^/activite/new', 'ROLE_ELEVE'),
     array('^/activite/', 'ROLE_ELEVE'),
-    array('^/login', ''),
+    array('^/login', 'IS_AUTHENTICATED_ANONYMOUSLY'),
 );
 
 /**
