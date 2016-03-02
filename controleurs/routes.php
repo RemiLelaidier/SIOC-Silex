@@ -1,6 +1,6 @@
 <?php
 use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 /**
  * Route page d'acceuil
@@ -187,13 +187,14 @@ $app->post('/activite', function (Request $request) use ($app) {
  * Route utilisateur
  */
 $app->post('/utilisateur', function (Request $request) use ($app) {
+    $encoder = new MessageDigestPasswordEncoder();
     $utilisateur = new \SIOC\donnees\Utilisateur();
     $promotion = new \SIOC\donnees\Promotion();
     $utilisateur->setUsername($request->request->get('username'));
     $utilisateur->setNom($request->request->get('nom'));
     $utilisateur->setPrenom($request->request->get('prenom'));
     $utilisateur->setMail($request->request->get('email'));
-    $utilisateur->setPassword($app['security.encoder.digest']->encodePassword($request->request->get('password'),''));
+    $utilisateur->setPassword($encoder->encodePassword($request->request->get('password'),''));
     var_dump($utilisateur->getPassword());
     $utilisateur->setSalt($request->request->get('salt'));
     $utilisateur->setRole($request->request->get('statut'));
