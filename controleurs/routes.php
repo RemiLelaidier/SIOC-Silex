@@ -212,6 +212,8 @@ $app->get('/login', function () use ($app) {
         return $app->redirect('/acceuil');
     }
     $reponse = new Response();
+    var_dump(Response);
+    die();
     $reponse->headers->set('WWW-Authenticate', sprintf('Basic realm="%s"', 'site_login'));
     $reponse->setStatusCode(401, 'Merci de vous connecter.');
     return $reponse;
