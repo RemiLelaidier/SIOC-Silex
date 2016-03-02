@@ -28,6 +28,7 @@
                         <th>Libelle</th>
                         <th>Description</th>
                         <th>Obligatoire</th>
+                        <th style="width:60px;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,6 +43,12 @@
                         {% else %}
                             <th>   </th>
                         {% endif %}
+                        <th style="width:60px; text-align:center;" >
+                            <div class="btn-group">
+                                <button type="button" title="Modifier" class="btn btn-warning btn-flat" style="margin-right:5px;"><i class="fa fa-eraser" style="width:10px;"></i></button>
+                                <button type="button" title="Supprimer"  class="btn btn-danger btn-flat"><i class="fa fa-times"></i></button>
+                            </div>
+                        </th>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -51,7 +58,8 @@
                         <th>Reference</th>
                         <th>Libelle</th>
                         <th>Description</th>
-                        <th>Obligatoire</th>
+                        <th >Obligatoire</th>
+                        <th style="width:30px; text-align:center;">Action</th>
                     </tr>
                 </tfoot>
             </table>

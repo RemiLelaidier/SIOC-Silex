@@ -1,14 +1,22 @@
 <?php
 use Symfony\Component\HttpFoundation\Request;
 
+
 /**
  * Route page d'acceuil
  * TOCHECK
  */
 $app->get('/', function (Request $request) use($app) {
     $professeurs = $app['dao.utilisateur']->findAllProfesseur();
+//    $activites = $app['dao.activite']->findAllbyUtilisateur();
+    $competences = $app['dao.competence']->findAll();
+//    $promotion = $app['dao.promotion']->find();
+
     return $app['twig']->render('acceuil.html.twig', array(
-        'professeurs' => $professeurs
+        'professeurs' => $professeurs,
+//        'activites' => $activites,
+        'competences' => $competences,
+//        'promotion' => $promotion
     ));
 });
 
@@ -27,7 +35,7 @@ $app->get('/login', function(Request $request) use ($app) {
  *  TODO   comparaison mot de passe -> BDD
  */
 
-$app->get('/login/check', function() use ($app) {
+$app->get('/login_check', function() use ($app) {
 })->bind('acceuil');
 
 /**
@@ -36,10 +44,11 @@ $app->get('/login/check', function() use ($app) {
  */
 $app->get('/activite', function () use ($app) {
     $activites = $app['dao.activite']->findAll();
-    $activiteEleve = $app['dao.utilisateur']->findAllbyUtilisateur();
+//    $activitesEleve = $app['dao.activite']->findAllbyUtilisateur($id);
     return $app['twig']->render('activite.html.twig', array(
         'activites' => $activites,
-        'activiteEleve' => $activiteEleve));
+//        'activiteEleve' => $activitesEleve
+    ));
 })->bind('activite');
 
 /**
@@ -76,15 +85,13 @@ $app->get('/competence', function () use ($app) {
 
 /**
  * Route page promotion
- * TOCHECK
  */
 $app->get('/promotion', function () use ($app) {
     $promotions = $app['dao.promotion']->findAll();
-//    $nbEleves = $app['dao.utilisateur']->findNbEleve();
-    //TODO NB ELEVE
+    $nbEleves = $app['dao.utilisateur']->findAllEleve();
     return $app['twig']->render('promotion.html.twig', array(
         'promotions' => $promotions,
-//        'nbEleves' => $nbEleves
+        'nbEleves' => $nbEleves
     ));
 })->bind('promotion');
 
@@ -93,7 +100,7 @@ $app->get('/promotion', function () use ($app) {
  */
 $app->get('/stats', function () use ($app) {
     $token = $app['security.token_storage']->getToken();
-    var_dump($token);
+    var_dump($_SESSION);
     die();
     $stats = $app['dao.activite']->findAllbyUtilisateur($token);
     $competences = $app['dao.competence']->findAll();
