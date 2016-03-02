@@ -100,7 +100,7 @@ $app->get('/promotion', function () use ($app) {
  */
 $app->get('/stats', function () use ($app) {
     $token = $app['security.token_storage']->getToken();
-    var_dump('session');
+    var_dump($_SESSION);
     die();
     $stats = $app['dao.activite']->findAllbyUtilisateur($token);
     $competences = $app['dao.competence']->findAll();
