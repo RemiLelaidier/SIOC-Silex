@@ -25,12 +25,12 @@ $app->get('/', function () use($app) {
 /**
  * Route page de connexion
  */
-$app->get('/login', function(Request $request) use ($app) {
-    return $app['twig']->render('login.html.twig', array(
-        'error'         => $app['security.last_error']($request),
-        'last_username' => $app['session']->get('_security.last_username'),
-    ));
-})->bind('login');
+//$app->get('/login', function(Request $request) use ($app) {
+//    return $app['twig']->render('login.html.twig', array(
+//        'error'         => $app['security.last_error']($request),
+//        'last_username' => $app['session']->get('_security.last_username'),
+//    ));
+//})->bind('login');
 
 /**
  * TEST
@@ -207,8 +207,6 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
 $app->get('/login', function () use ($app) {
     $username = $app['request']->server->get('PHP_AUTH_USER', false);
     $password = $app['request']->server->get('PHP_AUTH_PW');
-    var_dump($username, $password);
-    die();
     if ('_username' === $username && '_password' === $password) {
         $app['session']->set('user', array('username' => $username));
         return $app->redirect('/acceuil');
