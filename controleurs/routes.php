@@ -7,13 +7,13 @@ use Symfony\Component\HttpFoundation\Request;
  */
 $app->get('/', function (Request $request) use($app) {
     $professeurs = $app['dao.utilisateur']->findAllProfesseur();
-    $activites = $app['dao.activite']->findAllbyUtilisateur();
+//    $activites = $app['dao.activite']->findAllbyUtilisateur();
     $competences = $app['dao.competence']->findAll();
     $promotion = $app['dao.promotion']->find();
 
     return $app['twig']->render('acceuil.html.twig', array(
         'professeurs' => $professeurs,
-        'activites' => $activites,
+//        'activites' => $activites,
         'competences' => $competences,
         'promotion' => $promotion
     ));
