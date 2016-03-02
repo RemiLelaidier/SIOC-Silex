@@ -7,8 +7,15 @@ use Symfony\Component\HttpFoundation\Request;
  */
 $app->get('/', function (Request $request) use($app) {
     $professeurs = $app['dao.utilisateur']->findAllProfesseur();
+    $activites = $app['dao.activite']->findAllbyUtilisateur();
+    $competences = $app['dao.competence']->findAll();
+    $promotion = $app['dao.promotion']->find();
+
     return $app['twig']->render('acceuil.html.twig', array(
-        'professeurs' => $professeurs
+        'professeurs' => $professeurs,
+        'activites' => $activites,
+        'competences' => $competences,
+        'promotion' => $promotion
     ));
 });
 
@@ -36,10 +43,11 @@ $app->get('/login/check', function() use ($app) {
  */
 $app->get('/activite', function () use ($app) {
     $activites = $app['dao.activite']->findAll();
-    $activiteEleve = $app['dao.utilisateur']->findAllbyUtilisateur();
+    $activitesEleve = $app['dao.activite']->findAllbyUtilisateur();
     return $app['twig']->render('activite.html.twig', array(
         'activites' => $activites,
-        'activiteEleve' => $activiteEleve));
+        'activiteEleve' => $activitesEleve
+    ));
 })->bind('activite');
 
 /**
@@ -76,15 +84,13 @@ $app->get('/competence', function () use ($app) {
 
 /**
  * Route page promotion
- * TOCHECK
  */
 $app->get('/promotion', function () use ($app) {
     $promotions = $app['dao.promotion']->findAll();
-//    $nbEleves = $app['dao.utilisateur']->findNbEleve();
-    //TODO NB ELEVE
+    $nbEleves = $app['dao.utilisateur']->findAllEleve();
     return $app['twig']->render('promotion.html.twig', array(
         'promotions' => $promotions,
-//        'nbEleves' => $nbEleves
+        'nbEleves' => $nbEleves
     ));
 })->bind('promotion');
 
