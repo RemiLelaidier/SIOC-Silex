@@ -56,9 +56,13 @@ $app->post('/login_check', function(Request $request) use ($app) {
 //    $app['dao.utilisateur']->Compare($utilisateur);
 })->bind('');
 
+/**
+ * TEST
+ */
 $app->get('/test', function() use ($app){
-    echo $app['security.encode.digest']->encodePassword('0000', '');
+    echo $app['security.encoder.digest']->encodePassword('0000', '');
 });
+
 /**
  * Route page activite
  * TOCHECK
