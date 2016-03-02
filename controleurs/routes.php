@@ -33,18 +33,6 @@ $app->get('/login', function(Request $request) use ($app) {
 })->bind('login');
 
 /**
- * Route post login
- */
-//$app->post('/login', function (Request $request) use ($app) {
-//    $promotion = new \SIOC\donnees\Promotion();
-//    $promotion -> setLibelle($request->get('libelle'));
-//    $promotion -> setAnnee($request -> get('annee'));
-//    $app['dao.promotion']->save($promotion);
-//    $promotions = $app['dao.promotion']->findAll();
-//    return $app['twig'] -> render('promotion.html.twig', array('promotions' => $promotions));
-//});
-
-/**
  * TEST
  */
 $app->get('/test', function() use ($app){
@@ -173,8 +161,8 @@ $app->post('/competence', function (Request $request) use ($app) {
 $app->post('/activite', function (Request $request) use ($app) {
     $activite = new \SIOC\donnees\Activite();
     $activite -> setDebut($request->get('debut'));
-    $activite -> setDuree($request -> get('duree'));
-    $activite -> setLibelle($request -> get('libelle'));
+    $activite -> setDuree($request->get('duree'));
+    $activite -> setLibelle($request->get('libelle'));
     $activite -> setDescription($request->get('description'));
     $activite -> setCompetences($request->get('competences'));
     $activite -> setUtilisateur($request->get('utilisateur'));
@@ -196,6 +184,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setMail($request->request->get('email'));
     $utilisateur->setPassword($encoder->encodePassword($request->request->get('password'),''));
     var_dump($utilisateur->getPassword());
+    die();
     $utilisateur->setSalt($request->request->get('salt'));
     $utilisateur->setRole($request->request->get('statut'));
     if($utilisateur->getRole() == 'ROLE_ELEVE'){
@@ -205,6 +194,35 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateurs = $app['dao.utilisateur']->findAll();
     return $app['twig'] -> render('utilisateur.html.twig', array('utilisateurs' => $utilisateurs));
 });
+
+/**
+ * Route post login
+ */
+//$app->post('/login', function (Request $request) use ($app) {
+//    $decoder =
+//    $utilisateur = $app['dao.utilisateur']->loadUserByUsername('_username');
+//    $utilisateur->setPassword($decoder->decodePassword($request->request->get('_password'),''));
+//    $utilisateur->setUsername($request->request->get('username'));
+//});
+$app->get('/login', function () use ($app) {
+    $username = $app['request']->server->get('PHP_AUTH_USER', false);
+    $password = $app['request']->server->get('PHP_AUTH_PW');
+    if ('_username' === $username && '_password' === $password) {
+        $app['session']->set('user', array('username' => $username));
+        return $app->redirect('/acceuil');
+    }
+    $reponse = new Response();
+    $reponse->headers->set('WWW-Authenticate', sprintf('Basic realm="%s"', 'site_login'));
+    $reponse->setStatusCode(401, 'Merci de vous connecter.');
+    return $reponse;
+});
+
+//$app->get('/acceuil', function () use ($app) {
+//    if (null === $user = $app['session']->get('user')) {
+//        return $app->redirect('/login');
+//    }
+//    return "Welcome {$user['username']}!";
+//});
 
 /**
  * Route promotion
