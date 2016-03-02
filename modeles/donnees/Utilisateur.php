@@ -37,12 +37,7 @@ class Utilisateur implements UserInterface
 
     public function __construct()
     {
-        $this->_id = NULL;
-        $this->_nom = "Nom";
-        $this->_prenom = "Prenom";
-        $this->_mail = "mail@mailbox.com";
-        $this->_password = "password";
-        $this->_statut = "";
+        
     }
 
     // Accesseurs
@@ -97,7 +92,7 @@ class Utilisateur implements UserInterface
 
     public function setUsername($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_NOM)
+        if(is_string($data))
         {
             $this->_nom = $data;
         }
@@ -105,7 +100,7 @@ class Utilisateur implements UserInterface
     
     public function setNom($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_USERNAME)
+        if(is_string($data))
         {
             $this->_username = $data;
         }
@@ -113,7 +108,7 @@ class Utilisateur implements UserInterface
 
     public function setPrenom($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_PRENOM)
+        if(is_string($data))
         {
             $this->_prenom = $data;
         }
@@ -121,7 +116,7 @@ class Utilisateur implements UserInterface
 
     public function setMail($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_MAIL)
+        if(is_string($data))
         {
             $this->_mail = $data;
         }
@@ -129,7 +124,7 @@ class Utilisateur implements UserInterface
 
     public function setPassword($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_PASSWORD)
+        if(is_string($data))
         {
             $this->_password = $data;
         }
