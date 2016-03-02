@@ -48,7 +48,9 @@ $app->get('/login', function(Request $request) use ($app) {
  * TEST
  */
 $app->get('/test', function() use ($app){
-    echo $app['security.encoder.digest']->encodePassword('0000', '0000');
+    //echo $app['security.encoder.digest']->encodePassword('0000', '0000');
+    var_dump($app['routes']->all());
+    die();
 
 });
 
