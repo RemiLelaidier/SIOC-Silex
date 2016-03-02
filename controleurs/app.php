@@ -34,11 +34,10 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'logout' => array('logout_path' => '/logout'),
             'form' => array('login_path' => 'login', 'check_path' => 'login_check'), //Bug double redirection // mlol
             'users' => array(
-                'admin' => array('ROLE_ADMIN', '5FZ2Z8QIkA7UTZ4BYkoC+GsReLf569mSKDsfods6LYQ8t+a8EW9oaircfMpmaLbPBh4FOBiiFyLfuZmTSUwzZg=='),
+                'users' => $app->share(function () use ($app) {
+                    return new SIOC\DAO\UtilisateurDAO($app['db']);
+                 }),
             ),
-//            'users' => $app->share(function () use ($app) {
-//                return new SIOC\DAO\UtilisateurDAO($app['db']);
-           // }),
         ),
     ),
 ));
