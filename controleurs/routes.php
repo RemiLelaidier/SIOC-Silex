@@ -34,7 +34,7 @@ $app->get('/login', function(Request $request) use ($app) {
  *  TODO   comparaison mot de passe -> BDD
  */
 
-$app->get('/login/check', function() use ($app) {
+$app->get('/login_check', function() use ($app) {
 })->bind('acceuil');
 
 /**
