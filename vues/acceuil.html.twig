@@ -71,7 +71,11 @@
                         <form action="#" method="post">
                             <!-- Destinataire -->
                             <div class="form-group">
-                                <input type="email" class="form-control" name="emailto" placeholder="Envoyé à :">
+                                <select class="form-control">
+                                    {% for professeur in professeurs %}
+                                        <option value="{{ professeur.getMail }}">{{ professeur.getNom - professeur.getPrenom }}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
                             <!-- Objet -->
                             <div class="form-group">

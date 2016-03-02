@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 $app->get('/', function (Request $request) use($app) {
     $professeurs = $app['dao.utilisateur']->findAllProfesseur();
     return $app['twig']->render('acceuil.html.twig', array(
-        'professeur' => $professeurs
+        'professeurs' => $professeurs
     ));
 });
 
