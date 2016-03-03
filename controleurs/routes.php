@@ -26,12 +26,12 @@ $app->get('/', function () use($app) {
 /**
  * Route page de connexion
  */
-$app->get('/login', function(Request $request) use ($app) {
-    return $app['twig']->render('login.html.twig', array(
-        'error'         => $app['security.last_error']($request),
-        'last_username' => $app['session']->get('_security.last_username'),
-    ));
-})->bind('login');
+//$app->get('/login', function(Request $request) use ($app) {
+//    return $app['twig']->render('login.html.twig', array(
+//        'error'         => $app['security.last_error']($request),
+//        'last_username' => $app['session']->get('_security.last_username'),
+//    ));
+//})->bind('login');
 
 /**
  * TEST
@@ -200,10 +200,10 @@ $app->get('/login', function () use ($app) {
         $app['session']->set('user', array('username' => $username));
         return $app->redirect('/');
     }
-    $reponse = new Response();
-    $reponse->headers->set('WWW-Authenticate', sprintf('Basic realm="%s"', 'site_login'));
-    $reponse->setStatusCode(401, 'Merci de vous connecter.');
-    return $reponse;
+ //   $reponse = new Response();
+ //   $reponse->headers->set('WWW-Authenticate', sprintf('Basic realm="%s"', 'site_login'));
+ //   $reponse->setStatusCode(401, 'Merci de vous connecter.');
+ //   return $reponse;
 })->bind('login');
 
 //$app->get('/acceuil', function () use ($app) {
