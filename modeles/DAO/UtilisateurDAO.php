@@ -142,13 +142,17 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      */
     public function loadUserByUsername($username)
     {
-        $stmt = $this->conn->executeQuery('SELECT * FROM Utilisateur WHERE uti_username = ?', array(strtolower($username)));
+        $sql = "SELECT * FROM Utilisateur WHERE uti_username=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($username));
 
-        if (!$user = $stmt->fetch()) {
-            throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));
+        if ($row)
+        {
+            return $this->buildDomainObject($row);
         }
-
-        return new Utilisateur($user['username'], $user['password'], explode(',', $user['roles']), true, true, true, true);
+        else
+        {
+            throw new UsernameNotFoundException(sprintf('Utilisateur "%s" non trouve.', $username));
+        }
     }
 
     /**
