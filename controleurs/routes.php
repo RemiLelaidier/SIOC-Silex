@@ -25,12 +25,12 @@ $app->get('/', function () use($app) {
 /**
  * Route page de connexion
  */
-//$app->get('/login', function(Request $request) use ($app) {
-//    return $app['twig']->render('login.html.twig', array(
-//        'error'         => $app['security.last_error']($request),
-//        'last_username' => $app['session']->get('_security.last_username'),
-//    ));
-//})->bind('login');
+$app->get('/login', function(Request $request) use ($app) {
+    return $app['twig']->render('login.html.twig', array(
+        'error'         => $app['security.last_error']($request),
+        'last_username' => $app['session']->get('_security.last_username'),
+    ));
+})->bind('login');
 
 /**
  * TEST
