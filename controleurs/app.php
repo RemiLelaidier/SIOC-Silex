@@ -50,17 +50,17 @@ $app['security.role_hierarchy'] = array(
  * Definition des rôles utilisateurs
  */
 
-//$app['security.access_rules'] = array(
-//    array('^/professeurs/.*$', 'ROLE_ADMIN'),
-//    array('^/promotion/.*$', 'ROLE_ADMIN'),// array('^/professeurs/.*$', 'ROLE_ADMIN')
-//    array('^/eleves/.*$', 'ROLE_ADMIN'),
-//    array('^/activite/.*$', 'ROLE_ADMIN'),
-//    array('^/competence/.*$', 'ROLE_ADMIN'),
-//    array('^/competence/new', 'ROLE_ELEVE'),
-//    array('^/competence/', 'ROLE_ELEVE'),
-//    array('^/activite/new', 'ROLE_ELEVE'),
-//    array('^/activite/', 'ROLE_ELEVE')
-//    array('^/login', 'IS_AUTHENTICATED_ANONYMOUSLY')
+$app['security.access_rules'] = array(
+    array('^/professeurs/.*$' => 'ROLE_ADMIN'),
+    array('^/promotion/.*$' => 'ROLE_ADMIN'),// array('^/professeurs/.*$', 'ROLE_ADMIN')
+    array('^/eleves/.*$' => 'ROLE_ADMIN'),
+    array('^/activite/.*$' => 'ROLE_ADMIN'),
+    array('^/competence/.*$' => 'ROLE_ADMIN'),
+    array('^/competence/new' => 'ROLE_ELEVE'),
+    array('^/competence/' => 'ROLE_ELEVE'),
+    array('^/activite/new' => 'ROLE_ELEVE'),
+    array('^/activite/' => 'ROLE_ELEVE')
+    array('^/login' => 'IS_AUTHENTICATED_ANONYMOUSLY')
 );
 
 /**
