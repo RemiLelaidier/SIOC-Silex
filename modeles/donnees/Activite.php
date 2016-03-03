@@ -29,16 +29,6 @@ class Activite
     const TAILLE_LIBELLE = 35;			// a la taille des champs dans la BDD
     const TAILLE_DESCRIPTION = 350;		//TODO
 
-    // Constructeur
-
-    public function __construct()
-    {
-        $this->_id = NULL;
-        $this->_duree = NULL;
-        $this->_libelle = "Activites x";
-        $this->_description = "description";
-    }
-
     // Accesseurs
 
     public function getId()
