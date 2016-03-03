@@ -184,7 +184,7 @@ $app->post('/activite', function (Request $request) use ($app) {
  * Route utilisateur
  */
 $app->post('/utilisateur', function (Request $request) use ($app) {
-    $salt = "Zd87=udhgksH";
+    $salt = "Zd 87=udhgksH";
     $encoder = new MessageDigestPasswordEncoder();
     $utilisateur = new \SIOC\donnees\Utilisateur();
     $promotion = new \SIOC\donnees\Promotion();
@@ -193,7 +193,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setPrenom($request->request->get('prenom'));
     $utilisateur->setMail($request->request->get('email'));
     $utilisateur->setSalt($salt);
-    $utilisateur->setPassword($salt->encodePassword($request->request->get('password'),$utilisateur->getSalt()));
+    $utilisateur->setPassword($encoder->encodePassword($request->request->get('password'),$utilisateur->getSalt()));
     $utilisateur->setRole($request->request->get('statut'));
     if($utilisateur->getRole() == 'ROLE_ELEVE'){
         $promotion-setId($request->request->get('promo'));
