@@ -192,18 +192,18 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
 /**
  * Route post login
  */
-//$app->get('/login', function () use ($app) {
-//    $username = $app['request']->server->get('PHP_AUTH_USER', false);
-//    $password = $app['request']->server->get('PHP_AUTH_PW');
-//    if ('_username' === $username && '_password' === $password) {
-//        $app['session']->set('user', array('username' => $username));
-//        return $app->redirect('/acceuil');
-//    }
-//    $reponse = new Response();
-//    $reponse->headers->set('WWW-Authenticate', sprintf('Basic realm="%s"', 'site_login'));
-//    $reponse->setStatusCode(401, 'Merci de vous connecter.');
-//    return $reponse;
-//})->bind('login');
+$app->get('/login', function () use ($app) {
+    $username = $app['request']->server->get('PHP_AUTH_USER', false);
+    $password = $app['request']->server->get('PHP_AUTH_PW');
+    if ('_username' === $username && '_password' === $password) {
+        $app['session']->set('user', array('username' => $username));
+        return $app->redirect('/');
+    }
+    $reponse = new Response();
+    $reponse->headers->set('WWW-Authenticate', sprintf('Basic realm="%s"', 'site_login'));
+    $reponse->setStatusCode(401, 'Merci de vous connecter.');
+    return $reponse;
+})->bind('login');
 
 //$app->get('/acceuil', function () use ($app) {
 //    if (null === $user = $app['session']->get('user')) {
