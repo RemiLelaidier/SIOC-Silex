@@ -2,7 +2,6 @@
 
 use Symfony\Component\Debug\ErrorHandler;
 use Symfony\Component\Debug\ExceptionHandler;
-use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 
 /**
@@ -63,14 +62,6 @@ $app['security.access_rules'] = array(
     array('^/activite/', 'ROLE_ELEVE')
 //    array('^/login', 'IS_AUTHENTICATED_ANONYMOUSLY')
 );
-
-
-$app['security.encoder.digest'] = $app->share(function ($app) {
-    // use the sha1 algorithm
-    // don't base64 encode the password
-    // use only 1 iteration
-    return new MessageDigestPasswordEncoder('sha1', false, 1);
-});
 
 /**
  * Service de BDD

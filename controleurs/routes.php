@@ -36,9 +36,9 @@ $app->get('/login', function(Request $request) use ($app) {
  * TEST
  */
 $app->get('/test', function() use ($app){
-    echo $app['security.encoder.digest']->encodePassword('0000', '');
-//    var_dump($app['routes']->all('/login_check'));
-//    die();
+    echo $app['security.encoder.digest']->encodePassword('Admin', '');
+    var_dump($app['routes']->all('/login_check'));
+    die();
 });
 
 /**
@@ -192,12 +192,6 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
 /**
  * Route post login
  */
-//$app->post('/login', function (Request $request) use ($app) {
-//    $decoder =
-//    $utilisateur = $app['dao.utilisateur']->loadUserByUsername('_username');
-//    $utilisateur->setPassword($decoder->decodePassword($request->request->get('_password'),''));
-//    $utilisateur->setUsername($request->request->get('username'));
-//});
 //$app->get('/login', function () use ($app) {
 //    $username = $app['request']->server->get('PHP_AUTH_USER', false);
 //    $password = $app['request']->server->get('PHP_AUTH_PW');
