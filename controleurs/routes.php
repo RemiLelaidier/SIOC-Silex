@@ -47,8 +47,8 @@ $app->get('/login', function(Request $request) use ($app) {
  * TEST
  */
 $app->get('/test', function() use ($app){
-    echo $app['security.encoder.digest']->encodePassword('Admin', '');
-    var_dump($app['routes']->all('/test'));
+    //echo $app['security.encoder.digest']->encodePassword('Admin', '');
+    get_defined_vars();
     //var_dump($app['routes']->all('/login_check'));
     die();
 });
