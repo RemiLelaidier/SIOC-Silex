@@ -84,66 +84,42 @@ class Utilisateur implements UserInterface
 
     public function setId($id)
     {
-        if(is_int($id))
-        {
             $this->_id = $id;
-        }
     }
 
     public function setUsername($data)
     {
-        if(is_string($data))
-        {
             $this->_nom = $data;
-        }
     }
     
     public function setNom($data)
     {
-        if(is_string($data))
-        {
             $this->_username = $data;
-        }
     }
 
     public function setPrenom($data)
     {
-        if(is_string($data))
-        {
             $this->_prenom = $data;
-        }
     }
 
     public function setMail($data)
     {
-        if(is_string($data))
-        {
             $this->_mail = $data;
-        }
     }
 
     public function setPassword($data)
     {
-        if(is_string($data))
-        {
             $this->_password = $data;
-        }
     }
     
     public function setSalt($data)
     {
-        if(is_string($data))
-        {
             $this->_salt = $data;
-        }
     }
 
     public function setRole($data)
     {
-        if(is_string($data))
-        {
             $this->_role = $data;
-        }
     }
 
     // Methodes

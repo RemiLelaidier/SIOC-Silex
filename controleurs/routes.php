@@ -183,9 +183,6 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setPrenom($request->request->get('prenom'));
     $utilisateur->setMail($request->request->get('email'));
     $utilisateur->setPassword($encoder->encodePassword($request->request->get('password'),''));
-    var_dump($utilisateur->getPassword());
-    die();
-    $utilisateur->setSalt($request->request->get('salt'));
     $utilisateur->setRole($request->request->get('statut'));
     if($utilisateur->getRole() == 'ROLE_ELEVE'){
         $promotion-setId($request->request->get('promo'));
