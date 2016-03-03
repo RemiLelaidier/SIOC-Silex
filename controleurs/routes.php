@@ -103,10 +103,7 @@ $app->get('/promotion', function () use ($app) {
  */
 $app->get('/stats', function () use ($app) {
     $id = $app['security.token_storage']->getToken();
-    $id->getUsername();
-    var_dump($id);
-    die();
-    $stats = $app['dao.activite']->findAllbyUtilisateur($id);
+    //$stats = $app['dao.activite']->findAllbyUtilisateur($id);
     $competences = $app['dao.competence']->findAll();
     return $app['twig']->render('stats.html.twig', array('stats' => $stats, 'competences' => $competences));
 })->bind('stats');
@@ -182,7 +179,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setNom($request->request->get('nom'));
     $utilisateur->setPrenom($request->request->get('prenom'));
     $utilisateur->setMail($request->request->get('email'));
-    $utilisateur->setPassword($encoder->encodePassword($request->request->get('password'),''));
+    $utilisateur->setPassword($encoder->encodePassword($request->request->get('password'),$utilisateur->getSalt()));
     $utilisateur->setRole($request->request->get('statut'));
     if($utilisateur->getRole() == 'ROLE_ELEVE'){
         $promotion-setId($request->request->get('promo'));
