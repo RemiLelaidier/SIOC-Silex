@@ -148,7 +148,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
             throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));
         }
 
-        return new User($user['username'], $user['password'], explode(',', $user['roles']), true, true, true, true);
+        return new Utilisateur($user['username'], $user['password'], explode(',', $user['roles']), true, true, true, true);
     }
 
     /**
