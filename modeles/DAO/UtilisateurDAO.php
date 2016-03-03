@@ -172,7 +172,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      */
     public function supportsClass($class)
     {
-        return 'SIOC\donnees\UtilisateurDAO' === $class;
+        return 'SIOC\donnees' === $class;
     }
 
     /**
