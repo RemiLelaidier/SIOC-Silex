@@ -26,20 +26,6 @@ class Utilisateur implements UserInterface
     private $_salt;
     private $_role;
 
-    // Constantes
-
-    const TAILLE_NOM = 75;		// Les constantes de taille font references
-    const TAILLE_PRENOM = 45;	// a la taille des champs dans la BDD
-    const TAILLE_MAIL = 50;
-    const TAILLE_PASSWORD = 45;
-    const TAILLE_USERNAME = 35;
-    // Constructeur
-
-    public function __construct()
-    {
-        
-    }
-
     // Accesseurs
 
     public function getId()
