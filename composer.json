@@ -5,7 +5,8 @@
         "twig/twig" : "1.21.*",
         "twbs/bootstrap" : "3.3.*",
         "symfony/security" : "2.7",
-        "symfony/twig-bridge": "2.7.*"
+        "symfony/twig-bridge": "2.7.*",
+        "erivello/pdf-service-provider": "dev-develop"
     },
      "autoload": {
         "psr-4": {"SIOC\\": "modeles"}
