@@ -1,6 +1,5 @@
 <?php
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 /**
@@ -25,13 +24,13 @@ $app->get('/', function () use($app) {
 
 /**
  * Route page de connexion
- 
+ */
 $app->get('/login', function(Request $request) use ($app) {
     return $app['twig']->render('login.html.twig', array(
         'error'         => $app['security.last_error']($request),
         'last_username' => $app['session']->get('_security.last_username'),
     ));
-})->bind('login');*/
+})->bind('login');
 
 /**
  * TEST
@@ -192,7 +191,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
 
 /**
  * Route post login
- */
+ 
 $app->get('/login', function () use ($app) {
     $username = $app['request']->server->get('PHP_AUTH_USER', false);
     $password = $app['request']->server->get('PHP_AUTH_PW');
@@ -204,14 +203,14 @@ $app->get('/login', function () use ($app) {
     $reponse->headers->set('WWW-Authenticate', sprintf('Basic realm="%s"', 'site_login'));
     $reponse->setStatusCode(401, 'Merci de vous connecter.');
     return $reponse;
-})->bind('login');
+})->bind('login');*/
 
-$app->get('/acceuil', function () use ($app) {
+/*$app->get('/acceuil', function () use ($app) {
     if (null === $user = $app['session']->get('user')) {
         return $app->redirect('/login');
     }
     return "Welcome {$user['username']}!";
-});
+});*/
 
 /**
  * Route promotion
