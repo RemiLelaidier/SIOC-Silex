@@ -23,6 +23,17 @@ $app->get('/', function () use($app) {
 });
 
 /**
+ * Route export PDF
+ */
+$app->get('/exportpdf', function() use ($app) {
+    $PDF = $app['pdf.generator']->findAll();
+    $competences = $app['dao.competences']->findAll();
+    var_dump($PDF);
+//    die;
+    return $app['twig']->render('exportpdf.html.twig', array('competences' => $competences));
+})->bind('exportpdf');
+
+/**
  * Route page de connexion
  */
 $app->get('/login', function(Request $request) use ($app) {
@@ -37,7 +48,8 @@ $app->get('/login', function(Request $request) use ($app) {
  */
 $app->get('/test', function() use ($app){
     echo $app['security.encoder.digest']->encodePassword('Admin', '');
-    var_dump($app['routes']->all('/login_check'));
+    var_dump($app['routes']->all('/test'));
+    //var_dump($app['routes']->all('/login_check'));
     die();
 });
 
@@ -181,7 +193,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setPrenom($request->request->get('prenom'));
     $utilisateur->setMail($request->request->get('email'));
     $utilisateur->setSalt($salt);
-    $utilisateur->setPassword($encoder->encodePassword($request->request->get('password'),$utilisateur->getSalt()));
+    $utilisateur->setPassword($salt->encodePassword($request->request->get('password'),$utilisateur->getSalt()));
     $utilisateur->setRole($request->request->get('statut'));
     if($utilisateur->getRole() == 'ROLE_ELEVE'){
         $promotion-setId($request->request->get('promo'));
