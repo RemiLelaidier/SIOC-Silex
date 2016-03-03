@@ -172,7 +172,7 @@ $app->post('/activite', function (Request $request) use ($app) {
  * Route utilisateur
  */
 $app->post('/utilisateur', function (Request $request) use ($app) {
-    $salt = random_bytes(10);
+    $salt = "Zd87=udhgksH";
     $encoder = new MessageDigestPasswordEncoder();
     $utilisateur = new \SIOC\donnees\Utilisateur();
     $promotion = new \SIOC\donnees\Promotion();
