@@ -2,7 +2,7 @@
 
 use Symfony\Component\Debug\ErrorHandler;
 use Symfony\Component\Debug\ExceptionHandler;
-
+use Silex\PdfServiceProvider;
 
 /**
  * Register global error and exception handlers
