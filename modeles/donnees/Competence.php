@@ -28,17 +28,6 @@ class Competence
     const TAILLE_LIBELLE = 35;			// a la taille des champs dans la BDD
     const TAILLE_DESCRIPTION = 350;
 
-    // Constructeur
-
-    public function __construct()
-    {
-        $this->_id = NULL;
-        $this->_reference = NULL;
-        $this->_libelle = "Competence x";
-        $this->_description = "description";
-        $this->_obligatoire = FALSE;
-    }
-
     // Accesseurs
 
     public function getId()

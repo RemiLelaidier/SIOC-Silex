@@ -26,15 +26,6 @@ class Promotion
     const TAILLE_LIBELLE = 45;		// Les constantes de taille font references
     const MIN_ANNEE = 2013;			// a la taille des champs dans la BDD
 
-    // Constructeur
-
-    public function __construct()
-    {
-        $this->_id = NULL;
-        $this->_libelle = "Libelle vide";
-        $this->_annee = 0;
-    }
-
     // Accesseurs
 
     public function getId()
