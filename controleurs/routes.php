@@ -70,9 +70,9 @@ $app->get('/test', function() use ($app){
  * Route page activite
  * TOCHECK
  */
-$app->get('/activite', function () use ($app) {
-    $activites = $app['dao.activite']->findAll();
-//    $activitesEleve = $app['dao.activite']->findAllbyUtilisateur($id);
+$app->get('/activite/{id}', function ($id) use ($app) {
+    //$activites = $app['dao.activite']->findAll();
+    $activites = $app['dao.activite']->findAllbyUtilisateur($id);
     return $app['twig']->render('activite.html.twig', array(
         'activites' => $activites,
 //        'activiteEleve' => $activitesEleve
