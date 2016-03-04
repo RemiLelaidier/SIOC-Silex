@@ -89,3 +89,7 @@ $app['dao.promotion'] = $app->share(function ($app) {
 $app['dao.utilisateur'] = $app->share(function ($app) {
     return new SIOC\DAO\UtilisateurDAO($app['db']);
 });
+
+//$app['pdf.generator'] = $app->share(fucntion ($app)) {
+//    return new
+//}
