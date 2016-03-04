@@ -7,7 +7,7 @@
         "symfony/security" : "2.7",
         "symfony/twig-bridge": "2.7.*",
         "php": "> 5.3.3",
-        "erivello/pdf-service-provider": "dev-develop"
+        "erivello/pdf-service-provider": "master"
     },
      "autoload": {
         "psr-4": {"SIOC\\": "modeles"}
