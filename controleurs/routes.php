@@ -27,8 +27,8 @@ $app->get('/', function () use($app) {
  */
 $app->get('/exportpdf', function() use ($app) {
     $competences = $app['dao.competence']->findAll();
-//    var_dump($PDF);
-//    die;
+    var_dump($competences);
+    die;
     return $app['twig']->render('exportpdf.html.twig', array('competences' => $competences));
 })->bind('exportpdf');
 
