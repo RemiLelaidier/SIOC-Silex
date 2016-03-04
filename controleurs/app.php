@@ -16,7 +16,7 @@ ExceptionHandler::register();
 /**
  * Register service providers.
  */
-$app->register(new Silex\PdfServiceProviderInterface());
+$app->register(new Silex\PdfServiceProvider());
 $app->register(new Silex\PdfServiceProviderInterface());
 $app->register(new Silex\Provider\DoctrineServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
