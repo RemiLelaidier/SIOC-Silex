@@ -315,7 +315,7 @@ $app->error(function (\Exception $e, $code) use ($app) {
     return new Response($message, $code);
 });
 
-$app->get('/promotion/{id}', function () use ($app) {
+$app->match('/promotion/{id}', function () use ($app) {
     $promotion = $app['dao.promotion']->find($id);
     return $app['twig']->render('voir_promotion.html.twig', array(
         'promotions' => $promotion,
