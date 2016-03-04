@@ -77,7 +77,16 @@ $app->get('/activite/{id}', function ($id) use ($app) {
         'activites' => $activites,
 //        'activiteEleve' => $activitesEleve
     ));
-})->bind('activite');
+});
+
+$app->get('/activite', function () use ($app) {
+    $activites = $app['dao.activite']->findAll();
+    //$activites = $app['dao.activite']->findAllbyUtilisateur($id);
+    return $app['twig']->render('activite.html.twig', array(
+        'activites' => $activites,
+//        'activiteEleve' => $activitesEleve
+    ));
+});
 
 /**
  * Route page utilisateur
