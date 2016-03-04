@@ -2,7 +2,8 @@
 
 use Symfony\Component\Debug\ErrorHandler;
 use Symfony\Component\Debug\ExceptionHandler;
-//use Silex\PdfServiceProvider;
+use Silex\PdfServiceProviderInterface;
+use Silex\PdfServiceProvider;
 
 
 
@@ -15,6 +16,7 @@ ExceptionHandler::register();
 /**
  * Register service providers.
  */
+$app->register(new Silex\PdfServiceProviderInterface());
 $app->register(new Silex\PdfServiceProviderInterface());
 $app->register(new Silex\Provider\DoctrineServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
