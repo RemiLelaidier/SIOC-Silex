@@ -28,9 +28,9 @@ $app->get('/', function () use($app) {
  * Route export PDF
  */
 $app->get('/index', function() use ($app) {
-    $app['pdf.generator']->findAll();
+    //$app['pdf.generator']->findAll();
     $competences = $app['dao.competence']->findAll();
-    return $app['twig']->render('index.html.twig', array('competences' => $competences));
+    return $app['pdf.generator']->render('index.html.twig', array('competences' => $competences));
 })->bind('index');
 
 
