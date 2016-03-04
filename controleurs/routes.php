@@ -262,8 +262,7 @@ $app->post('/promotion', function (Request $request) use ($app) {
 $app->get('/swiftmailer', function () use($app) {
    // $professeurs = $app['dao.utilisateur']->findAllProfesseur();
 
-    return $app['twig']->render('SwiftMailer.html.twig', array(
-    ));
+    return $app['twig']->render('SwiftMailer.html.twig');
 });
 
 $app->match('/swiftmailer', function(Request $request) use ($app) {
