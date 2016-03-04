@@ -86,7 +86,7 @@ $app->get('/activite', function () use ($app) {
         'activites' => $activites,
 //        'activiteEleve' => $activitesEleve
     ));
-});
+})->bind('activite');
 
 /**
  * Route page utilisateur
