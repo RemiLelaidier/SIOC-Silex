@@ -72,7 +72,7 @@ class ActiviteDAO extends DAO
         $result = $this->getDb()->fetchAssoc($sql, array($utilisateurId));
         $activites = array();
         foreach($result as $row) {
-            $activiteId = $row['act_id'];
+            $activiteId = $row['A.act_id'];
             $utilisateur = new UtilisateurDAO($this->getDb());
             $row['act_eleve'] = $utilisateur->findbyActivite($activiteId);
             $competences = new CompetenceDAO($this->getDb());
