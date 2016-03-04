@@ -1,0 +1,72 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <section class="content-header">
+
+        <h1>
+            Compétences
+            <small>liste</small>
+            <a href="competence/new" type="button" style="float:right;margin:-2px;margin-right:10px;margin-left:10px" class="btn bg-orange btn-flat margin"><i class="fa fa-plus"></i><span style="margin:3px;">Ajouter</span></a>
+            <a href="exportpdf" target="_blank" type="button" style="float:right;margin:-2px;margin-right:10px;margin-left:10px" class="btn bg-orange btn-flat margin"><i class="fa fa-file-pdf-o"></i><span style="margin:3px;">export PDF</span></a>
+            <a href="" type="button" style="float:right;margin:-2px;margin-right:10px;margin-left:10px" class="btn bg-orange btn-flat margin"><i class="fa fa-clone"></i><span style="margin:3px;">export HTML</span></a>
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-warning">
+                    <div class="box-header">
+                        <h3 class="box-title">
+                            Voici les competences acquises :
+                        </h3>
+                    </div>
+                    <div class="box-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Numero</th>
+                                <th>Reference</th>
+                                <th>Libelle</th>
+                                <th>Description</th>
+                                <th>Obligatoire</th>
+                                <th style="width:60px;">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for competence in competences %}
+                                <tr>
+                                    <th>{{ competence.getId() }}</th>
+                                    <th>{{ competence.getReference() }}</th>
+                                    <th>{{ competence.getLibelle() }}</th>
+                                    <th>{{ competence.getDescription() }}</th>
+                                    {% if competence.getObligatoire() == TRUE %}
+                                        <th> X </th>
+                                    {% else %}
+                                        <th>   </th>
+                                    {% endif %}
+                                    <th style="width:60px; text-align:center;" >
+                                        <div class="btn-group">
+                                            <button type="button" title="Modifier" class="btn btn-warning btn-flat" style="margin-right:5px;"><i class="fa fa-pencil" style="width:10px;"></i></button>
+                                            <button type="button" title="Supprimer"  class="btn btn-danger btn-flat"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </th>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>Numero</th>
+                                <th>Reference</th>
+                                <th>Libelle</th>
+                                <th>Description</th>
+                                <th >Obligatoire</th>
+                                <th style="width:30px; text-align:center;">Action</th>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div> <!-- box-body -->
+                </div> <!-- box -->
+            </div> <!-- col -->
+        </div> <!-- row -->
+    </section> <!-- content -->
+{% endblock %}
