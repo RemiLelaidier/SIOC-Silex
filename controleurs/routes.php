@@ -1,5 +1,4 @@
 <?php
-use Silex\PdfServiceProvider();
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
