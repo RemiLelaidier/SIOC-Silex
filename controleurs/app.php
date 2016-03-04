@@ -40,9 +40,6 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
                 return new SIOC\DAO\UtilisateurDAO($app['db']);
                 //$app->share(function($app) { return $app['user.manager'];             user.manager COOL
                  }),
-                'admin' => $app->share(function () use ($app) {
-                    return new SIOC\DAO\UtilisateurDAO($app['db']);
-                }),
             ),
         ),
     ));
