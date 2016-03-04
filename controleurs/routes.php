@@ -44,6 +44,12 @@ $app->get('/login', function(Request $request) use ($app) {
 })->bind('login');
 
 /**
+ * TEST USER.MANAGER
+ * UN GET UTILISATEUR POUR LOGIN
+ * TOCHECK
+ */
+
+/**
  * TEST
  */
 $app->get('/test', function() use ($app){
@@ -192,7 +198,6 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setNom($request->request->get('nom'));
     $utilisateur->setPrenom($request->request->get('prenom'));
     $utilisateur->setMail($request->request->get('email'));
-
     $utilisateur->setSalt($salt);
     $utilisateur->setPassword($encoder->encodePassword($request->request->get('password'),$utilisateur->getSalt()));
     $utilisateur->setRole($request->request->get('statut'));
