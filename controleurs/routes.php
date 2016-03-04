@@ -4,6 +4,7 @@ use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 //use Silex\PdfServiceProviderInterface;
 //use Silex\PdfServiceProvider;
 
+
 /**
  * Route page d'acceuil //
  * TOCHECK
@@ -252,3 +253,65 @@ $app->post('/promotion', function (Request $request) use ($app) {
 
 
 //Prevoir route eleve ses activités
+
+
+/**
+ * SwiftMailer
+ */
+
+$app->get('/swiftmailer', function () use($app) {
+   // $professeurs = $app['dao.utilisateur']->findAllProfesseur();
+
+    return $app['twig']->render('SwiftMailer.html.twig', array(
+    ));
+});
+
+$app->match('/swiftmailer', function(Request $request) use ($app) {
+    $form = $app['form.factory']->createBuilder('form')
+        ->add('name', 'text')
+        ->add('message', 'textarea')
+        ->getForm();
+    $request = $app['request'];
+    if ($request->isMethod('POST'))
+    {
+        $form->bind($request);
+        if ($form->isValid())
+        {
+            $data = $form->getData();
+            $messagebody = $data['message'];
+            $name        = $data['name'];
+            $subject = "Message from ".$name;
+            $app['mailer']->send(\Swift_Message::newInstance()
+                ->setSubject($subject)
+                ->setFrom(array('silex.swiftmailer@gmail.com')) // replace with your own
+                ->setTo(array())   // replace with email recipient
+                ->setBody($app['twig']->render('email.html.twig',   // email template
+                    array('name'      => $name,
+                        'message'   => $messagebody,
+                    )),'text/html'));
+        }
+        return $app['twig']->render('acceuil.html.twig', array(
+            'message' => 'Message Sent',
+            'form' => $form->createView()
+        ));
+    }
+    return $app['twig']->render('acceuil.html.twig', array(
+            'message' => 'Send message to us',
+            'form' => $form->createView()
+        )
+    );
+}, "GET|POST");
+$app->error(function (\Exception $e, $code) use ($app) {
+    if ($app['debug']) {
+        return;
+    }
+    switch ($code) {
+        case 404:
+            $message = 'The requested page could not be found.';
+            break;
+        default:
+            $message = 'We are sorry, but something went terribly wrong.';
+    }
+    return new Response($message, $code);
+});
+

@@ -2,8 +2,7 @@
 
 use Symfony\Component\Debug\ErrorHandler;
 use Symfony\Component\Debug\ExceptionHandler;
-//use Silex\PdfServiceProviderInterface;
-//
+//use Silex\PdfServiceProvider;
 
 
 
@@ -16,9 +15,7 @@ ExceptionHandler::register();
 /**
  * Register service providers.
  */
-
-//$app->register(new Silex\PdfServiceProvider());
-//$app->register(new Silex\PdfServiceProviderInterface());
+$app->register(new Silex\PdfServiceProvider());
 $app->register(new Silex\Provider\DoctrineServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../vues',
@@ -90,7 +87,3 @@ $app['dao.promotion'] = $app->share(function ($app) {
 $app['dao.utilisateur'] = $app->share(function ($app) {
     return new SIOC\DAO\UtilisateurDAO($app['db']);
 });
-
-//$app['pdf.generator'] = $app->share(fucntion ($app)) {
-//    return new
-//}
