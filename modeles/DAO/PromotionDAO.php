@@ -25,7 +25,7 @@ class PromotionDAO extends DAO
         if ($row)
         {
             $eleves = new UtilisateurDAO($this->getDb());
-            $row['pro_eleves'] = $eleves->findbyPromotion($id);
+            $row['pro_eleves'] = $eleves->findAllbyPromotion($id);
             return $this->buildDomainObject($row);
         }
     }
