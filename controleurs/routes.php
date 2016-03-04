@@ -316,9 +316,9 @@ $app->error(function (\Exception $e, $code) use ($app) {
 });
 
 $app->get('/promotion/{id}', function () use ($app) {
-    $promotion = $app['dao.promotion']->find($id);
+    $promotions = $app['dao.promotion']->find($id);
     return $app['twig']->render('voir_promotion.html.twig', array(
-        'promotions' => $promotion,
+        'promotions' => $promotions,
     ));
 })->bind('promotion/{id}');
 
