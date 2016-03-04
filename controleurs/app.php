@@ -3,7 +3,6 @@
 use Symfony\Component\Debug\ErrorHandler;
 use Symfony\Component\Debug\ExceptionHandler;
 //use Silex\PdfServiceProviderInterface;
-use Silex\PdfServiceProvider;
 //
 
 

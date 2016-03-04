@@ -2,7 +2,7 @@
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 //use Silex\PdfServiceProviderInterface;
-use Silex\PdfServiceProvider;
+//use Silex\PdfServiceProvider;
 
 /**
  * Route page d'acceuil //
@@ -27,13 +27,11 @@ $app->get('/', function () use($app) {
 /**
  * Route export PDF
  */
-$app->get('/index', function() use ($app) {
-    $app['pdf.generator']->findAll();
-    var_dump($app);
-    die();
-    $competences = $app['dao.competence']->findAll();
-    return $app['pdf.generator']->render('index.html.twig', array('competences' => $competences));
-})->bind('index');
+//$app->get('/index', function() use ($app) {
+//    $app['pdf.generator']->findAll();
+//    $competences = $app['dao.competence']->findAll();
+//    return $app['pdf.generator']->render('index.html.twig', array('competences' => $competences));
+//})->bind('index');
 
 
 //$app->get('/competence', function () use ($app) {
