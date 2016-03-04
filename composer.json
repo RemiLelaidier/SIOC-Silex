@@ -6,6 +6,7 @@
         "twbs/bootstrap" : "3.3.*",
         "symfony/security" : "2.7",
         "symfony/twig-bridge": "2.7.*",
+        "php": "> 5.3.3",
         "erivello/pdf-service-provider": "dev-develop"
     },
      "autoload": {
