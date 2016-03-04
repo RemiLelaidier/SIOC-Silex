@@ -5,7 +5,7 @@ use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 //use Silex\PdfServiceProvider;
 
 /**
- * Route page d'acceuil
+ * Route page d'acceuil //
  * TOCHECK
  */
 $app->get('/', function () use($app) {
@@ -28,7 +28,6 @@ $app->get('/', function () use($app) {
  * Route export PDF
  */
 $app->get('/exportpdf', function() use ($app) {
-
     $app['pdf.generator']->findAll();
     $competences = $app['dao.competence']->findAll();
     return $app['twig']->render('exportpdf.html.twig', array('competences' => $competences));
