@@ -26,7 +26,7 @@ $app->get('/', function () use($app) {
  * Route export PDF
  */
 $app->get('/exportpdf', function() use ($app) {
-    $PDF = $app['dao.exportpdf']->findAll();
+    $PDF = $app['pdf.generator']->findAll();
     $competences = $app['dao.competence']->findAll();
     var_dump($PDF);
     die;
