@@ -1,8 +1,8 @@
 <?php
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
-use Silex\PdfServiceProviderInterface;
-use Silex\PdfServiceProvider;
+//use Silex\PdfServiceProviderInterface;
+//use Silex\PdfServiceProvider;
 
 /**
  * Route page d'acceuil
