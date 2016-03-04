@@ -300,6 +300,7 @@ $app->match('/swiftmailer', function(Request $request) use ($app) {
         )
     );
 }, "GET|POST");
+
 $app->error(function (\Exception $e, $code) use ($app) {
     if ($app['debug']) {
         return;
@@ -313,4 +314,11 @@ $app->error(function (\Exception $e, $code) use ($app) {
     }
     return new Response($message, $code);
 });
+
+$app->get('/promotion/{id}', function () use ($app) {
+    $promotions = $app['dao.promotion']->find($id);
+    return $app['twig']->render('voir_promotion.html.twig', array(
+        'promotions' => $promotions,
+    ));
+})->bind('promotion/{id}');
 
