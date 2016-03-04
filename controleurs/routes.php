@@ -29,6 +29,8 @@ $app->get('/', function () use($app) {
  */
 $app->get('/index', function() use ($app) {
     $app['pdf.generator']->findAll();
+    var_dump($app);
+    die();
     $competences = $app['dao.competence']->findAll();
     return $app['pdf.generator']->render('index.html.twig', array('competences' => $competences));
 })->bind('index');
