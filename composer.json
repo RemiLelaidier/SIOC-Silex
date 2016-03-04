@@ -6,7 +6,8 @@
         "twbs/bootstrap" : "3.3.*",
         "symfony/security" : "2.7",
         "symfony/twig-bridge": "2.7.*",
-        "erivello/pdf-service-provider": "dev-develop"
+        "erivello/pdf-service-provider": "dev-develop",
+        "swiftmailer/swiftmailer": "5.4.2"
     },
      "autoload": {
         "psr-4": {"SIOC\\": "modeles"}
