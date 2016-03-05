@@ -6,13 +6,7 @@
         "twbs/bootstrap" : "3.3.*",
         "symfony/security" : "2.7",
         "symfony/twig-bridge": "2.7.*",
-        "swiftmailer/swiftmailer": "5.4.2",
-        "mpdf/mpdf": "6.0.0",
-        "smalot/pdfparser": "0.9.25",
-        "mikehaertl/php-pdftk": "0.2.4",
-        "ucsdmath/functions": "1.6.0",
-        "knplabs/knp-snappy": "*",
-        "kdyby/wkhtmltopdf": "0.12.*"
+     //   "erivello/pdf-service-provider": "dev-develop",
     },
      "autoload": {
         "psr-4": {"SIOC\\": "modeles"}

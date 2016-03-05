@@ -69,7 +69,7 @@ class ActiviteDAO extends DAO
                 . " FROM Activite AS A, Utilisateur AS U"
                 . " WHERE A.act_eleve = U.uti_id"
                 . " AND U.uti_id = ?";
-        $result = $this->getDb()->fetchAssoc($sql, array($utilisateurId));
+        $result = $this->getDb()->fetchAll($sql, array($utilisateurId));
         $activites = array();
         foreach($result as $row) {
             $activiteId = $row['act_id'];
