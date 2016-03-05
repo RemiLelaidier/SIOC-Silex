@@ -7,6 +7,8 @@
         "symfony/security" : "2.7",
         "symfony/twig-bridge": "2.7.*",
      //   "erivello/pdf-service-provider": "dev-develop",
+        "kdyby/wkhtmltopdf": "0.12.*"
+        "knplabs/knp-snappy": "*"
     },
      "autoload": {
         "psr-4": {"SIOC\\": "modeles"}
