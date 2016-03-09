@@ -50,34 +50,22 @@ class Promotion
 
     public function setId($data)
     {
-        if(is_int($data))
-        {
             $this->_id = $data;
-        }
     }
 
     public function setLibelle($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_LIBELLE)
-        {
             $this->_libelle = $data;
-        }
     }
 
     public function setAnnee($data)
     {
-        if(is_int($data) && $data >= self::MIN_ANNEE)
-        {
             $this->_annee = $data;
-        }
     }
     
     public function setEleves($data)
     {
-        if(is_array($data))
-        {
             $this->_eleves = $data;
-        }
     }
 
     // Methodes
