@@ -24,7 +24,7 @@
                         <th>Annee</th>
                         <th>Libelle</th>
                         <th>Nb d'eleves</th>
-                        <th style="width:60px;">Action</th>
+                        <th style="width:118px;">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -34,11 +34,11 @@
                             <th>{{ promotion.getAnnee() }}</th>
                             <th>{{ promotion.getLibelle() }}</th>
                             <th>{{ promotion.getEleves|length }}</th>
-                            <th style="width:90px; text-align:center;" >
-                                  <div class="btn-group">
-                                      <button type="button" title="Modifier" class="btn btn-warning btn-flat" style="margin-right:5px;"><i class="fa fa-pencil" style="width:10px;"></i></button>
-                                      <button type="button" title="Supprimer"  class="btn btn-danger btn-flat"><i class="fa fa-times"></i></button>
-                                      <a href="promotion/1" type="button" style="margin:-2px" class="btn bg-orange btn-flat margin"><i class="fa fa-eye"></i><span style="margin:3px;">Voir</span></a>
+                            <th style="width:100px; text-align:center;" >
+                                  <div class="btn-group" style="width:118px;">
+                                      <a href="promotion/1" title="Voir" type="button" style="margin-right:2px; margin-top:0px;" class="btn btn-success btn-flat"><i class="fa fa-eye"></i></a>
+                                      <a href="#" title="Modifier" type="button" style="margin-right:2px;" class="btn btn-warning btn-flat"><i class="fa fa-pencil"></i></a>
+                                      <a href="#" title="Supprimer" type="button" ; style="margin-top:0px;" class="btn btn-danger btn-flat"><i class="fa fa-times"></i></a>
                                   </div>
                             </th>
                           </tr>
