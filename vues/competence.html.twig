@@ -29,7 +29,9 @@
                         <th>Libelle</th>
                         <th>Description</th>
                         <th>Obligatoire</th>
+                        {% if is_granted('ROLE_PROF') %}
                         <th style="width:60px;">Action</th>
+                        {% endif %}
                     </tr>
                 </thead>
                 <tbody>
@@ -45,10 +47,12 @@
                             <th>   </th>
                         {% endif %}
                         <th style="width:60px; text-align:center;" >
-                            <div class="btn-group">
-                                <button type="button" title="Modifier" class="btn btn-warning btn-flat" style="margin-right:5px;"><i class="fa fa-pencil" style="width:10px;"></i></button>
-                                <button type="button" title="Supprimer"  class="btn btn-danger btn-flat"><i class="fa fa-times"></i></button>
-                            </div>
+                            {% if is_granted('ROLE_PROF') %}
+                                <div class="btn-group">
+                                    <button type="button" title="Modifier" class="btn btn-warning btn-flat" style="margin-right:5px;"><i class="fa fa-pencil" style="width:10px;"></i></button>
+                                    <button type="button" title="Supprimer"  class="btn btn-danger btn-flat"><i class="fa fa-times"></i></button>
+                                </div>
+                            {% endif %}
                         </th>
                     </tr>
                     {% endfor %}
@@ -60,7 +64,9 @@
                         <th>Libelle</th>
                         <th>Description</th>
                         <th>Obligatoire</th>
+                        {% if is_granted('ROLE_PROF') %}
                         <th style="width:30px; text-align:center;">Action</th>
+                        {% endif %}
                     </tr>
                 </tfoot>
             </table>
