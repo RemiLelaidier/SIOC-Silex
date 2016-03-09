@@ -199,8 +199,7 @@ $app->post('/activite', function (Request $request) use ($app) {
  * Route utilisateur
  */
 $app->post('/utilisateur', function (Request $request) use ($app) {
-    $salt = "Zd 87=udhgksH";
-    $encoder = new MessageDigestPasswordEncoder();
+    $salt = substr(md5(time()), 0, 23);
     $utilisateur = new \SIOC\donnees\Utilisateur();
     $promotion = new \SIOC\donnees\Promotion();
     $utilisateur->setUsername($request->request->get('username'));
@@ -208,11 +207,12 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setPrenom($request->request->get('prenom'));
     $utilisateur->setMail($request->request->get('email'));
     $utilisateur->setSalt($salt);
+    $encoder = $app['security.encoder.digest'];
     $utilisateur->setPassword($encoder->encodePassword($request->request->get('password'),$utilisateur->getSalt()));
-    $utilisateur->setRole($request->request->get('statut'));
-    if($utilisateur->getRole() == 'ROLE_ELEVE'){
-        $promotion-setId($request->request->get('promo'));
-    }
+//    $utilisateur->setRole($request->request->get('statut'));
+//    if($utilisateur->getRole() == 'ROLE_ELEVE'){
+//        $promotion-setId($request->request->get('promo'));
+//    }
     $app['dao.utilisateur']->save($utilisateur, $promotion);
     $utilisateurs = $app['dao.utilisateur']->findAll();
     return $app['twig'] -> render('utilisateur.html.twig', array('utilisateurs' => $utilisateurs));
@@ -264,7 +264,7 @@ $app->get('/promotion/{id}', function () use ($app) {
     ));
 })->bind('promotion/{id}');
 
-$app->post('login_check', function (Request $request) use ($app) {
+$app->post('/login_check', function (Request $request) use ($app) {
     var_dump($request);
     die();
 })->bind('login_check');

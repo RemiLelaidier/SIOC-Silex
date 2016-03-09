@@ -25,6 +25,12 @@ $app->register(new Silex\Provider\SessionServiceProvider());
 /**
  * Sécurisation de l'application, identification et redirection login
  */
+
+$app->post('/login_check', function (Request $request) use ($app) {
+    var_dump($request);
+    die();
+})->bind('login_check');
+
 $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     'security.firewalls' => array(
         'login' => array(
@@ -32,8 +38,8 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         ),
         'secured' => array(
             'pattern' => '^.*$',
-            'anonymous' => false, // A modifier
-            'logout' => array('logout_path' => '/logout'),
+            'anonymous' => true, // A modifier
+            'logout' => true,
             'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
             'users' =>$app->share(function () use ($app) {
                 return new SIOC\DAO\UtilisateurDAO($app['db']);
@@ -46,9 +52,10 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 /**
  * Hierarchie des utilisateurs
  */
-$app['security.role_hierarchy'] = array(
-    'ROLE_ADMIN'    => array('ROLE_ELEVE')
-);
+//$app['security.role_hierarchy'] = array(
+//    'ROLE_ADMIN'    => array('ROLE_ELEVE')
+//);
+
 /**
  * Definition des rôles utilisateurs
  */
