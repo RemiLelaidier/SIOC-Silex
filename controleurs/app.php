@@ -26,10 +26,10 @@ $app->register(new Silex\Provider\SessionServiceProvider());
  * Sécurisation de l'application, identification et redirection login
  */
 
-$app->post('/login_check', function (Request $request) use ($app) {
-    var_dump($request);
-    die();
-})->bind('login_check');
+//$app->post('/login_check', function (Request $request) use ($app) {
+//    var_dump($request);
+//    die();
+//})->bind('login_check');
 
 $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     'security.firewalls' => array(
@@ -52,9 +52,9 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 /**
  * Hierarchie des utilisateurs
  */
-//$app['security.role_hierarchy'] = array(
-//    'ROLE_ADMIN'    => array('ROLE_ELEVE')
-//);
+$app['security.role_hierarchy'] = array(
+    'ROLE_ADMIN'    => array('ROLE_ELEVE')
+);
 
 /**
  * Definition des rôles utilisateurs
