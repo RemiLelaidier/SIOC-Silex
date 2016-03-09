@@ -83,12 +83,12 @@ $app->get('/activite/{id}', function ($id) use ($app) {
 
 $app->post('/activite', function (Request $request) use ($app) {
     $activite = new \SIOC\donnees\Activite();
-    $activite -> setDebut($request->get('debut'));
-    $activite -> setDuree($request->get('duree'));
-    $activite -> setLibelle($request->get('libelle'));
-    $activite -> setDescription($request->get('description'));
-    $activite -> setCompetences($request->get('competences'));
-    $activite -> setUtilisateur($request->get('utilisateur'));
+    $activite -> setDebut($request->request->get('debut'));
+    $activite -> setDuree($request->request->get('duree'));
+    $activite -> setLibelle($request->request->get('libelle'));
+    $activite -> setDescription($request->request->get('description'));
+    $activite -> setCompetences($request->request->get('competences'));
+    $activite -> setUtilisateur($request->request->get('utilisateur'));
     $app['dao.activite']->save($activite);
     $activites = $app['dao.activite']->findAll();
     return $app['twig'] -> render('activite.html.twig', array('activites' => $activites));
@@ -194,8 +194,8 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
  */
 $app->post('/promotion', function (Request $request) use ($app) {
     $promotion = new \SIOC\donnees\Promotion();
-    $promotion -> setLibelle($request->get('libelle'));
-    $promotion -> setAnnee($request -> get('annee'));
+    $promotion -> setLibelle($request->request->get('libelle'));
+    $promotion -> setAnnee($request->request->get('annee'));
     $app['dao.promotion']->save($promotion);
     $promotions = $app['dao.promotion']->findAll();
     return $app['twig'] -> render('promotion.html.twig', array('promotions' => $promotions));
