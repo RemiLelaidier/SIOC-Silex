@@ -51,6 +51,9 @@
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <li>
+                <span class="logo-lg"><b>{{ app.user.username }}</b></span>
+              </li>
+              <li>
               {% if app.user %}
                 <a href="{{ path('logout') }}" class="dropdown">
               {% else %}
@@ -105,7 +108,7 @@
             </li>
             {% endif %}
             <!-- Ajouter des membres -->
-            {% if is_granted('ROLE_ADMIN') %}
+            {% if is_granted('ROLE_NEXT_PROF') %}
             <li class="treeview">
                   <a href=""><i class="fa fa-user-secret"></i><span>Administration</span> <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
