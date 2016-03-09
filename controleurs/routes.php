@@ -18,8 +18,6 @@ $app->get('/', function () use($app) {
         $competences = $app['dao.competence']->findAll();
         $nbComp = $app['dao.competence']->findNbByEleve($id);
         $promotion = $app['dao.promotion']->findByEleve($id);
-        var_dump($professeurs);
-        die();
 
     return $app['twig']->render('acceuil.html.twig', array(
         'professeurs' => $professeurs,
