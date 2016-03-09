@@ -199,7 +199,7 @@ $app->post('/activite', function (Request $request) use ($app) {
  * Route utilisateur
  */
 $app->post('/utilisateur', function (Request $request) use ($app) {
-    $salt = substr(md5(time), 0, 23);
+    $salt = substr(md5(time()), 0, 23);
     $utilisateur = new \SIOC\donnees\Utilisateur();
     $promotion = new \SIOC\donnees\Promotion();
     $utilisateur->setUsername($request->request->get('username'));
