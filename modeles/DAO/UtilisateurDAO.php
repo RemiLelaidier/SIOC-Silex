@@ -103,7 +103,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      */
     public function findAllEleve()
     {
-        $sql = "SELECT U.uti_nom, U.uti_prenom, U.uti_mail, P.pro_libelle, P.pro_annee"
+        $sql = "SELECT U.uti_id, U.uti_nom, U.uti_prenom, U.uti_mail, P.pro_libelle, P.pro_annee"
                 . " FROM Utilisateur AS U, Promotion AS P, Faitpartie AS F"
                 . " WHERE uti_role = 'ROLE_ELEVE'"
                 . " AND F.fap_eleve = U.uti_id"
