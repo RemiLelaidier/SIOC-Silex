@@ -78,14 +78,6 @@ $app->get('/utilisateur', function () use($app) {
 })->bind('utilisateur');
 
 /**
- * Route page eleve
- */
-$app->get('/eleve', function () use($app) {
-    $eleves = $app['dao.utilisateur']->findAllEleve();
-    return $app['twig']->render('eleves.html.twig', array('eleves' => $eleves));
-})->bind('eleve');
-
-/**
  * Route page professeur
  */
 $app->get('/professeur', function () use($app) {
