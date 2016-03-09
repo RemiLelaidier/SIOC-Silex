@@ -130,13 +130,12 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
                 . " WHERE uti_role = 'ROLE_PROF'";
         $result = $this->getDb()->fetchAll($sql);
         $professeurs = array();
-        var_dump($professeurs);
-        die();
         foreach($result as $row)
         {
             $professeurId = $row['uti_id'];
             $professeurs[$professeurId] = $this->buildDomainObject($row);
         }
+        return $professeurs;
     }
     
     /**
