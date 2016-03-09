@@ -199,8 +199,6 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $encoder = $app['security.encoder.digest'];
     $utilisateur->setPassword($encoder->encodePassword($request->request->get('password'),$utilisateur->getSalt()));
     $utilisateur->setRole($request->request->get('role'));
-    var_dump('role');
-    die();
     if($utilisateur->getRole() == 'ROLE_ELEVE'){
         $promotion-setId($request->request->get('promo'));
     }
