@@ -69,17 +69,17 @@ $app->get('/activite', function () use ($app) {
     ));
 })->bind('activite');
 
+$app->get('/activite/new', function () use ($app) {
+    $competences = $app['dao.competence']->findAll();
+    return $app['twig']->render('ajout_activite.html.twig', array('competences' => $competences));
+})->bind('ajout_activite');
+
 $app->get('/activite/{id}', function ($id) use ($app) {
     $activites = $app['dao.activite']->findAllbyUtilisateur($id);
     return $app['twig']->render('activite.html.twig', array(
         'activites' => $activites,
     ));
-})->bind('activiteid');
-
-$app->get('/activite/new', function () use ($app) {
-    $competences = $app['dao.competence']->findAll();
-    return $app['twig']->render('ajout_activite.html.twig', array('competences' => $competences));
-})->bind('ajout_activite');
+})->bind('activite_');
 
 $app->post('/activite', function (Request $request) use ($app) {
     $activite = new \SIOC\donnees\Activite();
