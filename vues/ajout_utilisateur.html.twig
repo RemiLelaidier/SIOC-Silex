@@ -24,7 +24,7 @@
                                 <div class="box-body">
                                     <form role="form" method="POST" action={{ path('utilisateur') }}>
                                     <!-- text input --><div class="form-group">
-                                            <input type="hidden" value="ROLE_ELEVE" id="role">
+                                            <input type="hidden" id="role" name="role" class="form-control" value="ROLE_ELEVE" >
 
                                             <label>Pseudo</label>
                                             <input type="text" id="username" name="username" class="form-control" placeholder="Pseudo">
@@ -72,7 +72,7 @@
                             <form role="form" method="POST" action={{ path('utilisateur') }}>
                                 <!-- text input -->
                                 <div class="form-group">
-                                    <input type="hidden" value="ROLE_PROF" id="role">
+                                    <input type="hidden" id="role" name="role" class="form-control" value="ROLE_PROF" >
 
                                     <label>Pseudo</label>
                                     <input type="text" id="username" name="username" class="form-control" placeholder="Pseudo">
