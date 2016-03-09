@@ -135,6 +135,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
             $professeurId = $row['uti_id'];
             $professeurs[$professeurId] = $this->buildDomainObject($row);
         }
+        return $professeurs;
     }
     
     /**

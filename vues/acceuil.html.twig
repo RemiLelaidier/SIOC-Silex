@@ -2,7 +2,7 @@
 
 {% block content %}
     <section class="content-header">
-                <h1>Bienvenue,<small>Jeune Padawan !</small></h1>
+                <h1>Bienvenue,<small>{{ app.user.nom }} {{ app.user.prenom }}</small></h1>
     </section>
 
         <!-- Main content -->
@@ -28,7 +28,7 @@
                  <!-- Competences "%" -->
                  <div class="small-box bg-red">
                      <div class="inner">
-                        <h3>{{ nbComp }} / {{ competences|length }}<sup style="font-size: 20px"></sup></h3>
+                         <h3>{{ nbComp }} / {{ competences|length }}<sup style="font-size: 20px"></sup></h3>
                          <p>Competences acquises</p>
                      </div>
                      <div class="icon">
@@ -43,8 +43,8 @@
                   <!-- Promotion -->
                   <div class="small-box bg-blue">
                       <div class="inner">
-                          <h3>{#{{ promotion.getLibelle }}#}<sup style="font-size: 20px"></sup></h3>
-                          <p>2015-2016</p>
+                          <h3>{{ promotion.getLibelle }}<sup style="font-size: 20px"></sup></h3>
+                          <p>{{ promotion.getAnnee }}</p>
                       </div>
                       <div class="icon">
                           <i class="ion ion-document-text"></i>
@@ -72,7 +72,7 @@
                             <div class="form-group">
                                 <select class="form-control">
                                     {% for professeur in professeurs %}
-                                        <option value="{{ professeur.getMail }}">{{ professeur.getNom - professeur.getPrenom }}</option>
+                                        <option value="{{ professeur.getMail }}">{{ professeur.getNom }} {{ professeur.getPrenom }}</option>
                                     {% endfor %}
                                 </select>
                             </div>

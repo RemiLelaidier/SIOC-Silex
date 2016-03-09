@@ -188,8 +188,6 @@ $app->post('/activite', function (Request $request) use ($app) {
  * Route utilisateur
  */
 $app->post('/utilisateur', function (Request $request) use ($app) {
-    var_dump($request);
-    die();
     $salt = substr(md5(time()), 0, 23);
     $utilisateur = new \SIOC\donnees\Utilisateur();
     $promotion = new \SIOC\donnees\Promotion();
@@ -223,10 +221,10 @@ $app->post('/promotion', function (Request $request) use ($app) {
 
 //Prevoir route eleve ses activités
 
-$app->get('/promotion/{id}', function () use ($app) {
+$app->get('/promotion/{id}', function ($id) use ($app) {
     $promotion = $app['dao.promotion']->find($id);
     return $app['twig']->render('voir_promotion.html.twig', array(
-        'promotions' => $promotion,
+        'promotion' => $promotion,
     ));
 })->bind('promotion/{id}');
 

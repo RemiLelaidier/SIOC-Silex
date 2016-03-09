@@ -77,12 +77,12 @@ class CompetenceDAO extends DAO
      */
     public function findNbByEleve($id)
     {
-        $sql = "SELECT COUNT(DISTINCT ass.ass_competence)"
+        $sql = "SELECT COUNT(DISTINCT ass.ass_competence) AS nbComp"
                 . " FROM Associe AS ass, Activite AS act"
                 . " WHERE ass.ass_activite = act.act_id"
                 . " AND act.act_eleve = ?";
-        $nbComp = $this->getDb()-fetchAll($sql, array($id));
-        return $nbComp;
+        $nbComp = $this->getDb()->fetchAssoc($sql, array($id));
+        return $nbComp['nbComp'];
     }
     
     /**

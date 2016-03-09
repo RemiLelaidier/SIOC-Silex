@@ -63,7 +63,7 @@ class PromotionDAO extends DAO
                 . " FROM Promotion AS P, Faitpartie AS F"
                 . " WHERE F.fap_promo = P.pro_id"
                 . " AND F.fap_eleve = ?";
-        $row = $this->getDb()->fetchAll($sql, array($id));
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
         if ($row)
         {
             $promotionId = $row['pro_id'];
