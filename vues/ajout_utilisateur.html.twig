@@ -46,7 +46,7 @@
                                                 <select class="form-control">
 
                                                     {% for promotion in promotions %}
-                                                        <option> {{ promotion.getId }}</option>
+                                                        <option value={{ promotion.getId() }}> {{ promotion.getLibelle() }}</option>
                                                     {% endfor %}
 
                                                 </select>
