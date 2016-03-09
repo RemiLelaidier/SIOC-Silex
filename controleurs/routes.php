@@ -206,7 +206,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setNom($request->request->get('nom'));
     $utilisateur->setPrenom($request->request->get('prenom'));
     $utilisateur->setMail($request->request->get('email'));
-    $utilisateur->setSalt($salt);
+    $utilisateur->setSalt('0000');
     $encoder = $app['security.encoder.digest'];
     $utilisateur->setPassword($encoder->encodePassword($request->request->get('password'),$utilisateur->getSalt()));
 //    $utilisateur->setRole($request->request->get('statut'));
