@@ -82,7 +82,7 @@ class CompetenceDAO extends DAO
                 . " WHERE ass.ass_activite = act.act_id"
                 . " AND act.act_eleve = ?";
         $nbComp = $this->getDb()->fetchAssoc($sql, array($id));
-        return $nbComp;
+        return $nbComp['nbComp'];
     }
     
     /**
