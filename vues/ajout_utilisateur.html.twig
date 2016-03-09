@@ -43,10 +43,10 @@
 
                                             <div class="form-group">
                                                 <label>Promotion</label>
-                                                <select class="form-control" id="promo">
+                                                <select class="form-control" id="promo" name="promo">
 
                                                     {% for promotion in promotions %}
-                                                        <option value={{ promotion.getId() }}> {{ promotion.getLibelle() }}</option>
+                                                        <option value={{ promotion.getId }}> {{ promotion.getLibelle }}</option>
                                                     {% endfor %}
 
                                                 </select>
