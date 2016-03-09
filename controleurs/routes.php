@@ -222,7 +222,7 @@ $app->post('/promotion', function (Request $request) use ($app) {
 
 //Prevoir route eleve ses activités
 
-$app->get('/promotion/{id}', function () use ($app) {
+$app->get('/promotion/{id}', function ($id) use ($app) {
     $promotion = $app['dao.promotion']->find($id);
     return $app['twig']->render('voir_promotion.html.twig', array(
         'promotions' => $promotion,
