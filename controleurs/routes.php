@@ -11,19 +11,19 @@ use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
  * Route page d'acceuil //
  * TOCHECK
  */
-$app->get('/', function () use($app) {
+$app->get('/{id}', function ($id) use($app) {
     $professeurs = $app['dao.utilisateur']->findAllProfesseur();
-//    $activites = $app['dao.activite']->findAllbyUtilisateur($id);
+    $activites = $app['dao.activite']->findAllbyUtilisateur($id);
     $competences = $app['dao.competence']->findAll();
-//    $nbComp = $app['dao.competence']->findNbByEleve($id);
-//    $promotion = $app['dao.promotion']->findByEleve($id);
+    $nbComp = $app['dao.competence']->findNbByEleve($id);
+    $promotion = $app['dao.promotion']->findByEleve($id);
 
     return $app['twig']->render('acceuil.html.twig', array(
         'professeurs' => $professeurs,
-//        'activites' => $activites,
+        'activites' => $activites,
         'competences' => $competences,
-//        'nbComp' => $nbComp,
-//        'promotion' => $promotion
+        'nbComp' => $nbComp,
+        'promotion' => $promotion
     ));
 });
 
@@ -51,22 +51,6 @@ $app->get('/login', function(Request $request) use ($app) {
         'last_username' => $app['session']->get('_security.last_username'),
     ));
 })->bind('login');
-
-/**
- * TEST USER.MANAGER
- * UN GET UTILISATEUR POUR LOGIN
- * TOCHECK
- */
-
-/**
- * TEST
- */
-$app->get('/test', function() use ($app){
-    //echo $app['security.encoder.digest']->encodePassword('Admin', '');
-    get_defined_vars();
-    //var_dump($app['routes']->all('/login_check'));
-    die();
-});
 
 /**
  * Route page activite
@@ -206,40 +190,17 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setNom($request->request->get('nom'));
     $utilisateur->setPrenom($request->request->get('prenom'));
     $utilisateur->setMail($request->request->get('email'));
-    $utilisateur->setSalt('0000');
+    $utilisateur->setSalt($salt);
     $encoder = $app['security.encoder.digest'];
     $utilisateur->setPassword($encoder->encodePassword($request->request->get('password'),$utilisateur->getSalt()));
-//    $utilisateur->setRole($request->request->get('statut'));
-//    if($utilisateur->getRole() == 'ROLE_ELEVE'){
-//        $promotion-setId($request->request->get('promo'));
-//    }
+    $utilisateur->setRole($request->request->get('role'));
+    if($utilisateur->getRole() == 'ROLE_ELEVE'){
+        $promotion-setId($request->request->get('promo'));
+    }
     $app['dao.utilisateur']->save($utilisateur, $promotion);
     $utilisateurs = $app['dao.utilisateur']->findAll();
     return $app['twig'] -> render('utilisateur.html.twig', array('utilisateurs' => $utilisateurs));
 });
-
-/**
- * Route post login
- 
-$app->get('/login', function () use ($app) {
-    $username = $app['request']->server->get('PHP_AUTH_USER', false);
-    $password = $app['request']->server->get('PHP_AUTH_PW');
-    if ('_username' === $username && '_password' === $password) {
-        $app['session']->set('user', array('username' => $username));
-        return $app->redirect('/acceuil');
-    }
-    $reponse = new Response();
-    $reponse->headers->set('WWW-Authenticate', sprintf('Basic realm="%s"', 'site_login'));
-    $reponse->setStatusCode(401, 'Merci de vous connecter.');
-    return $reponse;
-})->bind('login');*/
-
-/*$app->get('/acceuil', function () use ($app) {
-    if (null === $user = $app['session']->get('user')) {
-        return $app->redirect('/login');
-    }
-    return "Welcome {$user['username']}!";
-});*/
 
 /**
  * Route promotion
@@ -253,9 +214,7 @@ $app->post('/promotion', function (Request $request) use ($app) {
     return $app['twig'] -> render('promotion.html.twig', array('promotions' => $promotions));
 });
 
-
 //Prevoir route eleve ses activités
-
 
 $app->get('/promotion/{id}', function () use ($app) {
     $promotion = $app['dao.promotion']->find($id);
@@ -263,9 +222,4 @@ $app->get('/promotion/{id}', function () use ($app) {
         'promotions' => $promotion,
     ));
 })->bind('promotion/{id}');
-
-$app->post('/login_check', function (Request $request) use ($app) {
-    var_dump($request);
-    die();
-})->bind('login_check');
 
