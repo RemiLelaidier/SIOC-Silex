@@ -20,7 +20,7 @@
                                 </a>
                             </h4>
                         </div>
-                            <div id="collapseOne" class="panel-collapse collapse" aria-expanded="true" style="height: 0px;">
+                            <div id="collapseOne" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                                 <div class="box-body">
                                     <form role="form" method="POST" action={{ path('utilisateur') }}>
                                     <!-- text input --><div class="form-group">
@@ -60,7 +60,7 @@
                             </div>
                     </div>
         {% if is_granted('ROLE_ADMIN') %}
-        <div class="panel box box-danger">
+                <div class="panel box box-danger">
                     <div class="box-header with-border">
                         <h4 class="box-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed" aria-expanded="false">
@@ -96,12 +96,12 @@
                             </form>
                         </div>
                     </div>
-                 </div>
+                </div>
             <div class="panel box box-success">
                 <div class="box-header with-border">
                     <h4 class="box-title">
-                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="" aria-expanded="false">
-                        Admin
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="" aria-expanded="false">
+                         Admin
                         </a>
                     </h4>
                 </div>
