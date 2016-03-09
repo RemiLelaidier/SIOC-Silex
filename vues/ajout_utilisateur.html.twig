@@ -59,7 +59,8 @@
                                 </div>
                             </div>
                     </div>
-                <div class="panel box box-danger">
+        {% if is_granted('ROLE_ADMIN') %}
+        <div class="panel box box-danger">
                     <div class="box-header with-border">
                         <h4 class="box-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed" aria-expanded="false">
@@ -95,7 +96,7 @@
                             </form>
                         </div>
                     </div>
-        </div>
+                 </div>
             <div class="panel box box-success">
                 <div class="box-header with-border">
                     <h4 class="box-title">
@@ -137,5 +138,6 @@
                     </div><!-- accordion -->
             </div><!-- col -->
         </div><!-- row -->
+        {% endif %}
     </section>
 {% endblock %}
