@@ -76,35 +76,48 @@
                       <i class="fa fa-home"></i> <span>Accueil</span></i>
                   </a>
               </li>
+            {% if is_granted('ROLE_ELEVE') %}
             <li class="treeview">
               <a href="{{ path('activite') }}">
                 <i class="fa fa-wrench"></i> <span>Activités</span></i>
               </a>
             </li>
+            {% endif %}
+            {% if is_granted('ROLE_ELEVE') %}
             <li class="treeview">
               <a href="{{ path('competence') }}">
                 <i class="fa fa-graduation-cap"></i> <span>Compétences</span></i>
               </a>
             </li>
+            {% endif %}
+            {% if is_granted('ROLE_PROF') %}
             <li class="treeview">
               <a href="{{ path('stats') }}">
                 <i class="fa fa-pie-chart"></i> <span>Statistiques</span></i>
               </a>
             </li>
+            {% endif %}
+            {% if is_granted('ROLE_PROF') %}
             <li class="treeview">
               <a href="{{ path('promotion') }}">
                 <i class="fa fa-users"></i> <span>Promotions</span>
               </a>
             </li>
-            <!--  Affiche Eleve (Prof)  -->
+            {% endif %}
 
             <!-- Ajouter des membres -->
               <li class="treeview">
                   <a href=""><i class="fa fa-user-secret"></i><span>Administration</span> <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
+                    {% if is_granted('ROLE_ELEVE') %}
                       <li><a href="utilisateur/new"><i class="fa fa-user-plus"></i>Ajouter</a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_PROF') %}
                       <li><a href=" {{ path ('eleve') }} "><i class="fa fa-group"></i>Eleves</a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
                       <li><a href=" {{ path ('professeur') }} "><i class="fa fa-user"></i>Professeurs</a></li>
+                    {% endif %}
                   </ul>
               </li>
           </ul>

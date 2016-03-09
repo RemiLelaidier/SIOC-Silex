@@ -144,7 +144,6 @@ $app->get('/activite/new', function () use ($app) {
  */
 $app->get('/utilisateur/new', function () use ($app) {
     $promotions = $app['dao.promotion']->findAll();
-
     return $app['twig']->render('ajout_utilisateur.html.twig', array('promotions' => $promotions));
 })->bind('ajout_utilisateur');
 
@@ -203,7 +202,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setPassword($encoder->encodePassword($request->request->get('password'),$utilisateur->getSalt()));
     $utilisateur->setRole($request->request->get('role'));
     if($utilisateur->getRole() == 'ROLE_ELEVE'){
-        $promotion-setId($request->request->get('promo'));
+        $promotion->setId($request->request->get('promo'));
     }
     $app['dao.utilisateur']->save($utilisateur, $promotion);
     $utilisateurs = $app['dao.utilisateur']->findAll();
