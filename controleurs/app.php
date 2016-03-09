@@ -53,7 +53,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
  * Hierarchie des utilisateurs
  */
 $app['security.role_hierarchy'] = array(
-    'ROLE_ADMIN'    => array('ROLE_ELEVE')
+    'ROLE_ADMIN'    => array('ROLE_PROF')
 );
 
 /**
