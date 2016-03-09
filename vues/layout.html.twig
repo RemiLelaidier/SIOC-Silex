@@ -51,6 +51,9 @@
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <li>
+                {{ app.user.username }}
+              </li>
+              <li>
               {% if app.user %}
                 <a href="{{ path('logout') }}" class="dropdown">
               {% else %}
