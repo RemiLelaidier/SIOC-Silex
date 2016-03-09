@@ -33,6 +33,16 @@ $app->get('/', function () use($app) {
 });
 
 /**
+ * Route page de connexion
+ */
+$app->get('/login', function(Request $request) use ($app) {
+    return $app['twig']->render('login.html.twig', array(
+        'error'         => $app['security.last_error']($request),
+        'last_username' => $app['session']->get('_security.last_username'),
+    ));
+})->bind('login');
+
+/**
  * Route export PDF
  */
 //$app->get('/index', function() use ($app) {
@@ -48,16 +58,6 @@ $app->get('/', function () use($app) {
 //})->bind('competence');
 
 /**
- * Route page de connexion
- */
-$app->get('/login', function(Request $request) use ($app) {
-    return $app['twig']->render('login.html.twig', array(
-        'error'         => $app['security.last_error']($request),
-        'last_username' => $app['session']->get('_security.last_username'),
-    ));
-})->bind('login');
-
-/**
  * Route page activite
  * TOCHECK
  */
@@ -68,6 +68,31 @@ $app->get('/activite', function () use ($app) {
         'activites' => $activites,
     ));
 })->bind('activite');
+
+$app->get('/activite/{id}', function ($id) use ($app) {
+    $activites = $app['dao.activite']->findAllbyUtilisateur($id);
+    return $app['twig']->render('activite.html.twig', array(
+        'activites' => $activites,
+    ));
+})->bind('activite_');
+
+$app->get('/activite/new', function () use ($app) {
+    $competences = $app['dao.competence']->findAll();
+    return $app['twig']->render('ajout_activite.html.twig', array('competences' => $competences));
+})->bind('ajout_activite');
+
+$app->post('/activite', function (Request $request) use ($app) {
+    $activite = new \SIOC\donnees\Activite();
+    $activite -> setDebut($request->get('debut'));
+    $activite -> setDuree($request->get('duree'));
+    $activite -> setLibelle($request->get('libelle'));
+    $activite -> setDescription($request->get('description'));
+    $activite -> setCompetences($request->get('competences'));
+    $activite -> setUtilisateur($request->get('utilisateur'));
+    $app['dao.activite']->save($activite);
+    $activites = $app['dao.activite']->findAll();
+    return $app['twig'] -> render('activite.html.twig', array('activites' => $activites));
+});
 
 /**
  * Route page utilisateur
@@ -106,29 +131,11 @@ $app->get('/promotion', function () use ($app) {
 })->bind('promotion');
 
 /**
- * Route page stats
- */
-$app->get('/stats', function () use ($app) {
-    $id = $app['security.token_storage']->getToken();
-    //$stats = $app['dao.activite']->findAllbyUtilisateur($id);
-    $competences = $app['dao.competence']->findAll();
-    return $app['twig']->render('stats.html.twig', array('stats' => $stats, 'competences' => $competences));
-})->bind('stats');
-
-/**
  * Route page ajout de competence
  */
 $app->get('/competence/new', function () use ($app) {
     return $app['twig']->render('ajout_competence.html.twig');
 })->bind('ajout_competence');
-
-/**
- * Route page ajout activite
- */
-$app->get('/activite/new', function () use ($app) {
-    $competences = $app['dao.competence']->findAll();
-    return $app['twig']->render('ajout_activite.html.twig', array('competences' => $competences));
-})->bind('ajout_activite');
 
 /**
  * Route page ajout utilisateur
@@ -157,22 +164,6 @@ $app->post('/competence', function (Request $request) use ($app) {
     $app['dao.competence']->save($competence);
     $competences = $app['dao.competence']->findAll();
     return $app['twig'] -> render('competence.html.twig', array('competences' => $competences));
-});
-
-/**
- * Route activite
- */
-$app->post('/activite', function (Request $request) use ($app) {
-    $activite = new \SIOC\donnees\Activite();
-    $activite -> setDebut($request->get('debut'));
-    $activite -> setDuree($request->get('duree'));
-    $activite -> setLibelle($request->get('libelle'));
-    $activite -> setDescription($request->get('description'));
-    $activite -> setCompetences($request->get('competences'));
-    $activite -> setUtilisateur($request->get('utilisateur'));
-    $app['dao.activite']->save($activite);
-    $activites = $app['dao.activite']->findAll();
-    return $app['twig'] -> render('activite.html.twig', array('activites' => $activites));
 });
 
 /**
