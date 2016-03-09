@@ -23,8 +23,9 @@
                             <div id="collapseOne" class="panel-collapse collapse" aria-expanded="true" style="height: 0px;">
                                 <div class="box-body">
                                     <form role="form" method="POST" action={{ path('utilisateur') }}>
-                                        <input type="hidden" value="ROLE_ELEVE" id="role">
                                     <!-- text input --><div class="form-group">
+                                            <input type="hidden" value="ROLE_ELEVE" id="role">
+
                                             <label>Pseudo</label>
                                             <input type="text" id="username" name="username" class="form-control" placeholder="Pseudo">
 
@@ -70,8 +71,9 @@
                         <div class="box-body">
                             <form role="form" method="POST" action={{ path('utilisateur') }}>
                                 <!-- text input -->
-                                <input type="hidden" value="ROLE_PROF" id="role">
                                 <div class="form-group">
+                                    <input type="hidden" value="ROLE_PROF" id="role">
+
                                     <label>Pseudo</label>
                                     <input type="text" id="username" name="username" class="form-control" placeholder="Pseudo">
 
@@ -107,8 +109,9 @@
 
                                     <form role="form" method="POST" action={{ path('utilisateur') }}>
                                     <!-- text input -->
-                                        <input type="hidden" value="ROLE_ADMIN" id="role">
                                         <div class="form-group">
+                                            <input type="hidden" value="ROLE_ADMIN" id="role">
+
                                             <label>Pseudo</label>
                                             <input type="text" id="username" name="username" class="form-control" placeholder="Pseudo">
 
