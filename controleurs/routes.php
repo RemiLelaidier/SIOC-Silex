@@ -28,7 +28,7 @@ $app->get('/', function () use($app) {
         ));
     }
  else {
-        // Vue Admin/Prof
+        return $app['twig']->render('acceuil_admin_prof.html.twig');
     }
 });
 
