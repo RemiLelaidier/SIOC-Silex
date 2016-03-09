@@ -95,13 +95,6 @@
             {% endif %}
             {% if is_granted('ROLE_PROF') %}
             <li class="treeview">
-              <a href="{{ path('stats') }}">
-                <i class="fa fa-pie-chart"></i> <span>Statistiques</span></i>
-              </a>
-            </li>
-            {% endif %}
-            {% if is_granted('ROLE_PROF') %}
-            <li class="treeview">
               <a href="{{ path('promotion') }}">
                 <i class="fa fa-users"></i> <span>Promotions</span>
               </a>
