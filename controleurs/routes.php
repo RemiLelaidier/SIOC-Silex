@@ -62,11 +62,10 @@ $app->get('/login', function(Request $request) use ($app) {
  * TOCHECK
  */
 $app->get('/activite', function () use ($app) {
-    $activites = $app['dao.activite']->findAll();
-//    $activitesEleve = $app['dao.activite']->findAllbyUtilisateur($id);
+    $id = $app['security.token_storage']->getToken()->getUser()->getId();
+    $activites = $app['dao.activite']->findAllbyUtilisateur($id);
     return $app['twig']->render('activite.html.twig', array(
         'activites' => $activites,
-//        'activiteEleve' => $activitesEleve
     ));
 })->bind('activite');
 
