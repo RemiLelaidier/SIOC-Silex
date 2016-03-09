@@ -64,7 +64,7 @@ class PromotionDAO extends DAO
                 . " WHERE F.fap_promo = P.pro_id"
                 . " AND F.fap_eleve = ?";
         $row = $this->getDb()->fetchAll($sql, array($id));
-        var_dump($row);
+        var_dump($this->getDb());
             die();
         if ($row)
         {
