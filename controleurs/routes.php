@@ -74,7 +74,7 @@ $app->get('/activite/{id}', function ($id) use ($app) {
     return $app['twig']->render('activite.html.twig', array(
         'activites' => $activites,
     ));
-})->bind('activite_');
+})->bind('activiteid');
 
 $app->get('/activite/new', function () use ($app) {
     $competences = $app['dao.competence']->findAll();
