@@ -48,8 +48,6 @@ class PromotionDAO extends DAO
             $row['pro_eleves'] = $eleves->findAllbyPromotion($promotionId);
             $promotions[$promotionId] = $this->buildDomainObject($row);
         }
-        var_dump($promotions);
-        die();
         return $promotions;
     }
 
