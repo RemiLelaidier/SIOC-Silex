@@ -22,12 +22,6 @@ class Competence
     private $_description;
     private $_obligatoire;
 
-    // Constantes
-
-    const TAILLE_REFERENCE = 10;		// Les constantes de taille font references
-    const TAILLE_LIBELLE = 35;			// a la taille des champs dans la BDD
-    const TAILLE_DESCRIPTION = 350;
-
     // Accesseurs
 
     public function getId()
@@ -57,42 +51,27 @@ class Competence
 
     public function setId($id)
     {
-        if(is_int($id))
-        {
             $this->_id = $id;
-        }
     }
 
     public function setReference($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_REFERENCE)
-        {
             $this->_reference = $data;
-        }
     }
 
     public function setLibelle($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_LIBELLE)
-        {
             $this->_libelle = $data;
-        }
     }
 
     public function setDescription($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_DESCRIPTION)
-        {
             $this->_description = $data;
-        }
     }
     
     public function setObligatoire($data)
     {
-        if(is_bool($data))
-        {
             $this->_obligatoire = $data;
-        }
     }
 
     // Methodes
