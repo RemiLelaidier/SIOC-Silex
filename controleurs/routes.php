@@ -267,5 +267,5 @@ $app->get('/promotion/{id}', function () use ($app) {
 $app->post('login_check', function (Request $request) use ($app) {
     var_dump($request);
     die();
-})->bind(login_check);
+})->bind('login_check');
 
