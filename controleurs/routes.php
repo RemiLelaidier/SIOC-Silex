@@ -208,10 +208,7 @@ $app->post('/utilisateur', function (Request $request) use ($app) {
     $utilisateur->setMail($request->request->get('email'));
     $utilisateur->setSalt('0000');
     $encoder = $app['security.encoder.digest'];
-    $utilisateur->setPassword($encoder->encodePassword('0000', '0000'));
-        //$request->request->get('password'),$utilisateur->getSalt()));
-    var_dump($utilisateur->getPassword());
-    die();
+    $utilisateur->setPassword($encoder->encodePassword($request->request->get('password'),$utilisateur->getSalt()));
 //    $utilisateur->setRole($request->request->get('statut'));
 //    if($utilisateur->getRole() == 'ROLE_ELEVE'){
 //        $promotion-setId($request->request->get('promo'));
