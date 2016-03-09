@@ -109,7 +109,7 @@
               <li class="treeview">
                   <a href=""><i class="fa fa-user-secret"></i><span>Administration</span> <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                    {% if is_granted('ROLE_ELEVE') %}
+                    {% if is_granted('ROLE_PROF') %}
                       <li><a href="utilisateur/new"><i class="fa fa-user-plus"></i>Ajouter</a></li>
                     {% endif %}
                     {% if is_granted('ROLE_PROF') %}
