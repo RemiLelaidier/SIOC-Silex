@@ -32,12 +32,12 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         ),
         'secured' => array(
             'pattern' => '^.*$',
-            'anonymous' => true, // A modifier
+            'anonymous' => false, // A modifier
             'logout' => array('logout_path' => '/logout'),
             'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
             'users' =>$app->share(function () use ($app) {
                 return new SIOC\DAO\UtilisateurDAO($app['db']);
-                //$app->share(function($app) { return $app['user.manager'];             user.manager COOL
+                //$app->share(function($app) { return $app['user.manager'];         return new UserProvider();   ?
                  }),
             ),
         ),

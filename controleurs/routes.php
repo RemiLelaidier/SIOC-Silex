@@ -4,6 +4,8 @@ use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 //use Silex\PdfServiceProviderInterface;
 //use Silex\PdfServiceProvider;
 
+//$app->get("/login", "SIOC-Silex\vues\login.html.twig::login");
+//$app->post("/login_check", "admin\controllers\AdminController::loginCheck");
 
 /**
  * Route page d'acceuil //
@@ -261,4 +263,9 @@ $app->get('/promotion/{id}', function () use ($app) {
         'promotions' => $promotion,
     ));
 })->bind('promotion/{id}');
+
+$app->post('login_check', function (Request $request) use ($app) {
+    var_dump($request);
+    die();
+})->bind(login_check);
 
