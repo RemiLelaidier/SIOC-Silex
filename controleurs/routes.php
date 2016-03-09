@@ -8,15 +8,16 @@ use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 //$app->post("/login_check", "admin\controllers\AdminController::loginCheck");
 
 /**
- * Route page d'acceuil //
- * TOCHECK
+ * Route page d'acceuil
  */
-$app->get('/{id}', function ($id) use($app) {
-    $professeurs = $app['dao.utilisateur']->findAllProfesseur();
-    $activites = $app['dao.activite']->findAllbyUtilisateur($id);
-    $competences = $app['dao.competence']->findAll();
-    $nbComp = $app['dao.competence']->findNbByEleve($id);
-    $promotion = $app['dao.promotion']->findByEleve($id);
+$app->get('/', function () use($app) {
+    if ($app['security.authorization_checker']->isGranted('ROLE_ELEVE')) {
+        $id = $app['security.token_storage']->getToken()->getUser()->getId();
+        $professeurs = $app['dao.utilisateur']->findAllProfesseur();
+        $activites = $app['dao.activite']->findAllbyUtilisateur($id);
+        $competences = $app['dao.competence']->findAll();
+        $nbComp = $app['dao.competence']->findNbByEleve($id);
+        $promotion = $app['dao.promotion']->findByEleve($id);
 
     return $app['twig']->render('acceuil.html.twig', array(
         'professeurs' => $professeurs,
@@ -24,7 +25,11 @@ $app->get('/{id}', function ($id) use($app) {
         'competences' => $competences,
         'nbComp' => $nbComp,
         'promotion' => $promotion
-    ));
+        ));
+    }
+ else {
+        // Vue Admin/Prof
+    }
 });
 
 /**
