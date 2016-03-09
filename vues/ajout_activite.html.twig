@@ -33,7 +33,7 @@
                             <select class="form-control">
 
                                 {% for competence in competences %}
-                                    <option>{{competence.getReference()}} - {{competence.getLibelle()}}</option>
+                                    <option value='{{ competence.getId() }}'> {{ competence.getReference()}} - {{competence.getLibelle()}}</option>
                                 {% endfor %}
 
                             </select>
