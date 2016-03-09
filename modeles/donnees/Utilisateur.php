@@ -146,7 +146,7 @@ class Utilisateur implements UserInterface
         }
     }
 
-    public function toString()
+    public function __toString()
     {
         $resu = "ID 	 -> ". $this->getId() ."\r";
         $resu .= "Nom     -> ". $this->getNom() ."\r";
