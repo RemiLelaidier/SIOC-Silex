@@ -225,7 +225,7 @@ $app->post('/promotion', function (Request $request) use ($app) {
 $app->get('/promotion/{id}', function ($id) use ($app) {
     $promotion = $app['dao.promotion']->find($id);
     return $app['twig']->render('voir_promotion.html.twig', array(
-        'promotions' => $promotion,
+        'promotion' => $promotion,
     ));
 })->bind('promotion/{id}');
 
