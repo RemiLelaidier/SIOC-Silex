@@ -66,6 +66,8 @@ class PromotionDAO extends DAO
         $row = $this->getDb()->fetchAll($sql, array($id));
         if ($row)
         {
+            var_dump($row);
+            die();
             $promotionId = $row['pro_id'];
             $eleves = new UtilisateurDAO($this->getDb());
             $row['pro_eleves'] = $eleves->findAllbyPromotion($promotionId);
