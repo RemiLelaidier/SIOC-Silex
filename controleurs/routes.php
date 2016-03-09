@@ -188,6 +188,8 @@ $app->post('/activite', function (Request $request) use ($app) {
  * Route utilisateur
  */
 $app->post('/utilisateur', function (Request $request) use ($app) {
+    var_dump($request);
+    die();
     $salt = substr(md5(time()), 0, 23);
     $utilisateur = new \SIOC\donnees\Utilisateur();
     $promotion = new \SIOC\donnees\Promotion();
