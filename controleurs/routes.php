@@ -144,8 +144,7 @@ $app->get('/activite/new', function () use ($app) {
  */
 $app->get('/utilisateur/new', function () use ($app) {
     $promotions = $app['dao.promotion']->findAll();
-    var_dump($promotions);
-    die;
+
     return $app['twig']->render('ajout_utilisateur.html.twig', array('promotions' => $promotions));
 })->bind('ajout_utilisateur');
 
