@@ -24,11 +24,6 @@ class Activite
     private $_competences;
     private $_utilisateur;
 
-    // Constantes
-    // Les constantes de taille font references
-    const TAILLE_LIBELLE = 35;			// a la taille des champs dans la BDD
-    const TAILLE_DESCRIPTION = 350;		//TODO
-
     // Accesseurs
 
     public function getId()
@@ -68,58 +63,37 @@ class Activite
 
     public function setId($id)
     {
-        if(is_int($id))
-        {
             $this->_id = $id;
-        }
     }
 
     public function setDebut($data)
     {
-        if(preg_match('!^(0?\d|[12]\d|3[01])-(0?\d|1[012])-((?:19|20)\d{2})$!', $data)) 
-        {
             $this->_debut = $data;
-        }
     }
     
     public function setDuree($data)
     {
-        if(is_int($data))
-        {
             $this->_duree = $data;
-        }
     }
 
     public function setLibelle($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_LIBELLE)
-        {
             $this->_libelle = $data;
-        }
     }
 
     public function setDescription($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_DESCRIPTION)
-        {
             $this->_description = $data;
-        }
     }
     
     public function setCompetences($data)
     {
-        if(is_array($data))
-        {
             $this->_competences = $data;
-        }
     }
     
     public function setUtilisateur($data)
     {
-        if(is_a($data, 'Utilisateur'))
-        {
             $this->_utilisateur = $data;
-        }
     }
 
     // Methodes

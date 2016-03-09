@@ -21,11 +21,6 @@ class Promotion
     private $_annee;
     private $_eleves;
 
-    // Constantes
-
-    const TAILLE_LIBELLE = 45;		// Les constantes de taille font references
-    const MIN_ANNEE = 2013;			// a la taille des champs dans la BDD
-
     // Accesseurs
 
     public function getId()
