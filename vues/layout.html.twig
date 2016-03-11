@@ -100,13 +100,14 @@
               </a>
             </li>
             {% endif %}
-            <!-- Ajouter des membres -->
+            <!-- Administration -->
             {% if is_granted('ROLE_PROF') %}
             <li class="treeview">
                   <a href=""><i class="fa fa-user-secret"></i><span>Administration</span> <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
                       <li><a href="{{ path ('ajout_utilisateur') }}"><i class="fa fa-user-plus"></i>Ajouter</a></li>
-                      <li><a href=" {{ path ('professeur') }} "><i class="fa fa-user"></i>Professeurs</a></li>
+                      <li><a href="{{ path ('professeur') }} "><i class="fa fa-user"></i>Professeurs</a></li>
+                      <li><a href="#"><i class="fa fa-user-secret"></i> Admin </a></li>
                   </ul>
               </li>
             {% endif %}
