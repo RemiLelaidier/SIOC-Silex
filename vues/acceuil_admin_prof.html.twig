@@ -1,4 +1,57 @@
 {% extends "layout.html.twig" %}
 {% block content %}
-    <h1>Works</h1>
+    <section class="content-header">
+        <h1>Bienvenue, <small>{{ app.user.nom }} {{ app.user.prenom }}</small></h1>
+    </section>
+
+    <section class="content">
+        <div class="box-body">
+            <div class="row">
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            ??
+                            <p> Eleves enregistrés </p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="{{ path ('ajout_utilisateur') }}" class="small-box-footer">
+                            Ajouter un utilisateur
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            ??
+                            <p> Professeurs enregistrés </p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="{{ path ('ajout_utilisateur') }}" class="small-box-footer">
+                            Ajouter un utilisateur
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            ??
+                            <p> Promotions enregistrés </p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="{{ path ('ajout_promotion') }}" class="small-box-footer">
+                            Ajouter un utilisateur
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
 {% endblock %}
