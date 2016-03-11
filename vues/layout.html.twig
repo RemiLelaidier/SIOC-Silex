@@ -51,17 +51,19 @@
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <li class="dropdown user user-menu">
-                <span class="hidden-xs"><b>{{ app.user.username }}</b></span>
+                <a href="#" class="dropdown-toggle" date-toggle="dropdown" aria-expanded="false">
+                  <span class="hidden-xs"><b>{{ app.user.username }}</b></span>
+                </a>
               </li>
               <li>
-              {% if app.user %}
-                <a href="{{ path('logout') }}" class="dropdown">
-              {% else %}
-                <a href="{{ path('login') }}" class="dropdown">
-              {% endif %}
+                {% if app.user %}
+                  <a href="{{ path('logout') }}" class="dropdown">
+                {% else %}
+                  <a href="{{ path('login') }}" class="dropdown">
+                {% endif %}
                 <i class="fa fa-power-off"></i>
-              </a>
-              </a>
+                  </a>
+                  </a>
              </li>
             </ul>
           </div>
