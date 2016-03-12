@@ -4,7 +4,8 @@
 <section class="content-header">
     <h1>
         Activites
-        <small>liste</small><a href="activite/new" type="button" style="float:right;margin:-2px" class="btn bg-orange btn-flat margin"><i class="fa fa-plus"></i><span style="margin:3px;">Ajouter</span></a>
+        <small>liste</small>
+        <a href="{{ path('ajout_activite') }}" type="button" style="float:right;margin:-2px" class="btn bg-orange btn-flat margin"><i class="fa fa-plus"></i><span style="margin:3px;">Ajouter</span></a>
     </h1>
         </section>
 
@@ -26,7 +27,9 @@
                         <th>Libelle</th>
                         <th>Description</th>
                         <th>Competences</th>
-                        <th style="width:60px;">Action</th>
+                        {% if is_granted('ROLE_ELEVE') %}
+                            <th style="width:60px;">Action</th>
+                        {% endif %}
                       </tr>
                     </thead>
                     <tbody>
@@ -41,12 +44,14 @@
                                  {{  competence.getReference() }}
                               {%  endfor %}
                             </th>
-                            <th style="width:60px; text-align:center;" >
-                              <div class="btn-group">
-                                <button type="button" title="Modifier" class="btn btn-warning btn-flat" style="margin-right:5px;"><i class="fa fa-pencil" style="width:10px;"></i></button>
-                                <button type="button" title="Supprimer"  class="btn btn-danger btn-flat"><i class="fa fa-times"></i></button>
-                              </div>
-                            </th>
+                            {% if is_granted('ROLE_ELEVE') %}
+                                <th style="width:60px; text-align:center;" >
+                                    <div class="btn-group">
+                                        <button type="button" title="Modifier" class="btn btn-warning btn-flat" style="margin-right:5px;"><i class="fa fa-pencil" style="width:10px;"></i></button>
+                                        <button type="button" title="Supprimer"  class="btn btn-danger btn-flat"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </th>
+                            {% endif %}
                           </tr>
                         {% endfor %}
                     </tbody>
@@ -58,7 +63,9 @@
                         <th>Libelle</th>
                         <th>Description</th>
                         <th>Competences</th>
-                        <th>Action</th>
+                        {% if is_granted('ROLE_ELEVE') %}
+                            <th>Action</th>
+                        {% endif %}
                       </tr>
                     </tfoot>
                   </table>

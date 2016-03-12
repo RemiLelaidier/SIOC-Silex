@@ -1,4 +1,75 @@
 {% extends "layout.html.twig" %}
+
 {% block content %}
-    <h1>Works</h1>
+    <section class="content-header">
+        <h1>Bienvenue, <small>{{ app.user.nom }} {{ app.user.prenom }}</small></h1>
+    </section>
+
+    <section class="content">
+        <div class="box-body">
+                <div class="row">
+                    <div class="col-lg-3 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-aqua">
+                            <div class="inner">
+                                <h3>12</h3>
+
+                                <p>Eleves</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="{{ path ('ajout_utilisateur') }}" class="small-box-footer">Ajouter Utilisateur <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-green">
+                            <div class="inner">
+                                <h3>12</h3>
+
+                                <p>Professeurs</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="{{ path ('ajout_utilisateur') }}" class="small-box-footer">Ajouter Utilisateur <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-yellow">
+                            <div class="inner">
+                                <h3>12</h3>
+
+                                <p>Promotions</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-university"></i>
+                            </div>
+                            <a href="{{ path ('promotion') }}" class="small-box-footer">Toutes les promotions <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-red">
+                            <div class="inner">
+                                <h3>Admin</h3>
+
+                                <p>Parte Administration</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-android-lock"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">Administration <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
