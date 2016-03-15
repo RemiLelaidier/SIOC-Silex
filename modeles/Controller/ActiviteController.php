@@ -70,4 +70,26 @@ class ActiviteController {
         $activites = $app['dao.activite']->findAll();
         return $app['twig'] -> render('activite.html.twig', array('activites' => $activites));
     }
+    
+    /**
+     * Suppression Activite
+     * 
+     * @param integer $id Id activite
+     * @param Application $app Silex Application
+     */
+    public function activiteSupAction($id, Application $app)
+    {
+        // TODO
+    }
+    
+    /**
+     * Edition Activite
+     * 
+     * @param integer $id Id activite
+     * @param Application $app Silex Application
+     */
+    public function activiteEditAction($id, Application $app)
+    {
+        // TODO
+    }
 }

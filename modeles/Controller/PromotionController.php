@@ -66,4 +66,26 @@ class PromotionController {
             'promotion' => $promotion,
         ));
     }
+    
+    /**
+     * Suppression Promotion
+     * 
+     * @param integer $id Id promotion
+     * @param Application $app Silex Application
+     */
+    public function promotionSupAction($id, Application $app)
+    {
+        // TODO
+    }
+    
+    /**
+     * Edition Promotion
+     * 
+     * @param integer $id Id Promotion
+     * @param Application $app Silex Application
+     */
+    public function promotionEditAction($id, Application $app)
+    {
+        // TODO
+    }
 }

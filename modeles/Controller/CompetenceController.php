@@ -50,4 +50,26 @@ class CompetenceController {
         $competences = $app['dao.competence']->findAll();
         return $app['twig'] -> render('competence.html.twig', array('competences' => $competences));
     }
+    
+    /**
+     * Suppression Competence
+     * 
+     * @param integer $id Id competence
+     * @param Application $app Silex Application
+     */
+    public function competenceSupAction($id, Application $app)
+    {
+        // TODO
+    }
+    
+    /**
+     * Edition Competence
+     * 
+     * @param integer $id Id competence
+     * @param Application $app Silex Application
+     */
+    public function competenceEditAction($id, Application $app)
+    {
+        // TODO
+    }
 }

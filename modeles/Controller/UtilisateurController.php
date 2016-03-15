@@ -71,4 +71,26 @@ class UtilisateurController {
         $utilisateurs = $app['dao.utilisateur']->findAll();
         return $app['twig'] -> render('utilisateur.html.twig', array('utilisateurs' => $utilisateurs));
     }
+    
+    /**
+     * Suppression Utilisateur
+     * 
+     * @param integer $id Id utilisateur
+     * @param Application $app Silex Application
+     */
+    public function utilisateurSupAction($id, Application $app)
+    {
+        // TODO
+    }
+    
+    /**
+     * Edition Utilisateur
+     * 
+     * @param integer $id Id utilisateur
+     * @param Application $app Silex Application
+     */
+    public function utilisateurEditAction($id, Application $app)
+    {
+        // TODO
+    }
 }
