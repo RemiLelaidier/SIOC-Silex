@@ -12,5 +12,5 @@ CREATE TABLE Activite
     act_description         VARCHAR(350),
     act_eleve               INTEGER,
     PRIMARY KEY(act_id),
-    FOREIGN KEY(act_eleve) REFERENCES Utilisateur(uti_id)
+    FOREIGN KEY(act_eleve) REFERENCES Utilisateur(uti_id) ON DELETE CASCADE
 );
