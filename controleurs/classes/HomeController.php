@@ -1,5 +1,4 @@
 <?php
-
 namespace SIOC\Controller;
 
 use Silex\Application;
