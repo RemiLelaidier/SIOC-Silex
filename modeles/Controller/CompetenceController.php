@@ -13,7 +13,9 @@ use Symfony\Component\HttpFoundation\Request;
 class CompetenceController {
     
     /**
+     * Affichage des competences
      * 
+     * @param Application $app Silex Application
      */
     public function competenceAction(Application $app)
     {
@@ -22,7 +24,9 @@ class CompetenceController {
     }
     
     /**
-     * 
+     * Formulaire Ajout Competence
+     *  
+     * @param Application $app Silex Application
      */
     public function competenceAjoutAction(Application $app)
     {
@@ -30,7 +34,10 @@ class CompetenceController {
     }
     
     /**
+     * Insertion Competence
      * 
+     * @param Application $app Silex Application
+     * @param Request $request Requete Entrante
      */
     public function competenceInsertAction(Request $request, Application $app)
     {

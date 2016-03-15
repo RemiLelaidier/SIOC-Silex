@@ -5,14 +5,16 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Description of UtilisateurDAO
+ * Description of HomeController
  *
  * @author Remi Lelaidier
  */
 class HomeController {
     
     /**
+     * Page d'acceuil
      * 
+     * @param Application $app Silex Application
      */
     public function homeAction(Application $app)
     {
@@ -46,7 +48,10 @@ class HomeController {
     }
     
     /**
+     * Page Login
      * 
+     * @param Request $request Requete Entrante
+     * @param Application $app Silex Application 
      */
     public function loginAction(Request $request, Application $app)
     {

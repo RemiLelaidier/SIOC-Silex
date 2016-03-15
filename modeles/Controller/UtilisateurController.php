@@ -13,7 +13,9 @@ use Symfony\Component\HttpFoundation\Request;
 class UtilisateurController {
     
     /**
+     * Affichage Utilisateurs
      * 
+     * @param Application $app Silex Application
      */
     public function utilisateurAction(Application $app)
     {
@@ -22,7 +24,9 @@ class UtilisateurController {
     }
     
     /**
+     * Affichage des professeurs
      * 
+     * @param Application $app Silex Application
      */
     public function professeurAction(Application $app)
     {
@@ -31,7 +35,9 @@ class UtilisateurController {
     }
     
     /**
+     * Formulaire ajout Utilisateur
      * 
+     * @param Application $app Silex Application
      */
     public function utilisateurAjoutAction(Application $app)
     {
@@ -40,7 +46,10 @@ class UtilisateurController {
     }
     
     /**
+     * Insertion Utilisateur
      * 
+     * @param Application $app Silex Application
+     * @param Request $request Requete Entrante
      */
     public function utilisateurInsertAction(Application $app, Request $request)
     {

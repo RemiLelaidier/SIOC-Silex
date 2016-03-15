@@ -13,7 +13,9 @@ use Symfony\Component\HttpFoundation\Request;
 class ActiviteController {
     
     /**
+     * Affichage des activites de l'eleve connecte
      * 
+     * @param Application $app Silex Application
      */
     public function activiteAction(Application $app)
     {
@@ -24,8 +26,10 @@ class ActiviteController {
         ));
     }
     
-    /*
+    /**
+     * Formualire ajout Activite
      * 
+     * @param Application $app Silex Application
      */
     public function activiteAjoutAction(Application $app)
     {
@@ -34,7 +38,10 @@ class ActiviteController {
     }
     
     /**
+     * Affichage Activites de l'utilisateur id
      * 
+     * @param Application $app Silex Application
+     * @param integer $id id Utilisateur
      */
     public function activiteIdAction($id, Application $app)
     {
@@ -45,7 +52,10 @@ class ActiviteController {
     }
     
     /**
+     * Insertion Activite
      * 
+     * @param Request $request Requete Entrante
+     * @param Application $app Silex Application
      */
     public function activiteInsertAction(Request $request, Application $app)
     {

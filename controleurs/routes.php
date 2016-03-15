@@ -1,11 +1,17 @@
 <?php
 
+/**
+ *  HomeController
+ */
 // Route page d'acceuil
 $app->get('/', "SIOC\Controller\HomeController::homeAction");
 
 // Route page de connexion
 $app->get('/login', "SIOC\Controller\HomeController::loginAction")->bind('login');
 
+/**
+ *  ActiviteController
+ */
 // Route page activite
 $app->get('/activite', "SIOC\Controller\ActiviteController::activiteAction")->bind('activite');
 
@@ -18,6 +24,9 @@ $app->get('/activite/{id}', "SIOC\Controller\ActiviteController::activiteIdActio
 // Route insertion Activite
 $app->post('/activite', "SIOC\Controller\ActiviteController::activiteInsertAction");
 
+/**
+ *  UtilisateurController
+ */
 // Route Utilisateur
 $app->get('/utilisateur', "SIOC\Controller\UtilisateurController::utilisateurAction")->bind('utilisateur');
 
@@ -30,6 +39,9 @@ $app->get('/utilisateur/new', "SIOC\Controller\UtilisateurController::utilisateu
 // Route Insertion Utilisateur
 $app->post('/utilisateur', "SIOC\Controller\UtilisateurController::utilisateurInserAction");
 
+/**
+ *  CompetenceController
+ */
 //Route Competence
 $app->get('/competence', "SIOC\Controller\CompetenceController::competenceAction")->bind('competence');
 
@@ -39,6 +51,9 @@ $app->get('/competence/new', "SIOC\Controller\CompetenceController::competenceAj
 // Route Insert Competence
 $app->post('/competence', "SIOC\Controller\CompetenceController::competenceInsertAction");
 
+/**
+ *  PromotionController
+ */
 // Route Promotion
 $app->get('/promotion', "SIOC\Controller\PromotionController::promotionAction")->bind('promotion');
 

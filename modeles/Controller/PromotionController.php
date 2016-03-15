@@ -13,7 +13,9 @@ use Symfony\Component\HttpFoundation\Request;
 class PromotionController {
     
     /**
+     * Affichage des promotions
      * 
+     * @param Application $app Silex Application
      */
     public function promotionAction(Application $app)
     {
@@ -26,7 +28,9 @@ class PromotionController {
     }
     
     /**
+     * Formualire Ajout Promotion
      * 
+     * @param Application $app Silex Application
      */
     public function promotionAjoutAction(Application $app)
     {
@@ -34,7 +38,10 @@ class PromotionController {
     }
     
     /**
+     * Insertion Promotion
      * 
+     * @param Application $app Silex Application
+     * @param Request $request Requete Entrante
      */
     public function promotionInsertAction(Application $app, Request $request)
     {
@@ -47,7 +54,10 @@ class PromotionController {
     }
     
     /**
+     * Affichage Promotion id
      * 
+     * @param Application $app Silex Application
+     * @param integer $id id promotion
      */
     public function promotionIdAction($id, Application $app)
     {
