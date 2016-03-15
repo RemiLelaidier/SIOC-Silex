@@ -47,6 +47,10 @@ $app->get('/utilisateur', "SIOC\Controller\UtilisateurController::utilisateurAct
 $app->get('/professeur', "SIOC\Controller\UtilisateurController::professeurAction")
         ->bind('professeur');
 
+// Route Eleve
+$app->get('/eleve', "SIOC\Controller\UtilisateurController::eleveAction")
+        ->bind('eleve');
+
 // Route Ajout Utilisateur
 $app->get('/utilisateur/new', "SIOC\Controller\UtilisateurController::utilisateurAjoutAction")
         ->bind('ajout_utilisateur');

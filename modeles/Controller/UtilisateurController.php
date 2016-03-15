@@ -35,6 +35,17 @@ class UtilisateurController {
     }
     
     /**
+     * Affichage des eleves
+     * 
+     * @param Application $app Silex Application
+     */
+    public function eleveAction(Application $app)
+    {
+        $eleves = $app['dao.utilisateur']->findAllEleve();
+        return $app['twig']->render('eleves.html.twig', array('eleves' => $eleves));
+    }
+    
+    /**
      * Formulaire ajout Utilisateur
      * 
      * @param Application $app Silex Application
