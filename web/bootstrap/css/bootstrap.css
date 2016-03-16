@@ -6789,8 +6789,20 @@ button.close {
 }
 /* JDL */
 .tableau-vertical{
-  transform: rotate(90deg);
-  float : right;
+  margin-left: -85px;
+  position: absolute;
+  width: 215px;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg); /* Safari/Chrome */
+  -moz-transform: rotate(-90deg); /* Firefox */
+  -o-transform: rotate(-90deg); /* Opera */
+  -ms-transform: rotate(-90deg); /* IE 9 */
+}
+.tableau-vertical-th{
+  height: 220px;
+  line-height: 14px;
+  padding-bottom: 20px;
+  text-align: left;
 }
 /* EndJDL */
 @media print {
