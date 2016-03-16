@@ -33,12 +33,9 @@
 
                             <div class="form-group">
                                 <label>Competence(s) Associé(s)</label>
-                                <select class="form-control" name="competences" id="competences">
-
                                     {% for competence in competences %}
-                                        <option value="{{ competence.getId() }}"> {{ competence.getReference()}} - {{competence.getLibelle()}}</option>
+                                        <input type="checkbox" name="competences[]" value="{{ competence.getId() }}" /> {{ competence.getReference()}} - {{competence.getLibelle()}}
                                     {% endfor %}
-
                                 </select>
                             </div>
 
