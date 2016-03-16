@@ -6802,6 +6802,10 @@ button.close {
   white-space:nowrap;
   width : 200px;
 }
+
+.tableau-width{
+  width: 400px !important;
+}
 /* EndJDL */
 @media print {
   .visible-print-inline-block {
