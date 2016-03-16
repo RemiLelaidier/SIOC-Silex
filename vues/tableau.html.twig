@@ -18,18 +18,20 @@
     </div>
 </section>
 <section class="content">
-    <table border="1">
-        <tr>
-            <th></th>
-            <th colspan="4" style="text-align: center;"> Situations Obligatoires </th>
-            <th colspan="50" style="text-align: center"> Competences mises en oeuvre </th>
-        </tr>
-        <tr>
-            <td style="text-align: center;"><strong>Situations professionnelle(intitulé et liste des documents et productions associés)</strong></td>
-        {% for competence in competences %}
-            <td class="tableau-vertical-th"><div class="tableau-vertical-div"> {{ competence.getReference()}} - {{  competence.getLibelle() }}</div></td>
-        {% endfor %}
-        </tr>
-    </table>
+    <div class="box-body">
+        <table border="1">
+            <tr>
+                <th></th>
+                <th colspan="4" style="text-align: center;"> Situations Obligatoires </th>
+                <th colspan="50" style="text-align: center"> Competences mises en oeuvre </th>
+            </tr>
+            <tr>
+                <td style="text-align: center;"><strong>Situations professionnelle(intitulé et liste des documents et productions associés)</strong></td>
+            {% for competence in competences %}
+                <td class="tableau-vertical-th"><div class="tableau-vertical-div"> {{ competence.getReference()}} - {{  competence.getLibelle() }}</div></td>
+            {% endfor %}
+            </tr>
+        </table>
+    </div>
 </section>
 {% endblock %}
