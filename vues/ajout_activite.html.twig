@@ -33,8 +33,15 @@
                             <div class="form-group">
                                 <label>Competence(s) Associé(s)</label><br/>
                                     {% for competence in competences %}
-                                        <input type="checkbox" name="competences[]" value="{{ competence.getId() }}" /> {{ competence.getReference()}} - {{competence.getLibelle()}}
-                                        <br/>
+                                        {% for compAct in activite.getCompetences() %}
+                                            {% if compAct == competence.getId() %}
+                                                <input type="checkbox" name="competences[]" value="{{ competence.getId() }}" checked/> {{ competence.getReference()}} - {{competence.getLibelle()}}
+                                                <br/>
+                                            {% else %}
+                                                <input type="checkbox" name="competences[]" value="{{ competence.getId() }}" /> {{ competence.getReference()}} - {{competence.getLibelle()}}
+                                                <br/>
+                                            {% endif %}
+                                        {% endfor %}
                                     {% endfor %}
                                 </select>
                             </div>
@@ -58,7 +65,7 @@
                                 <label>Competence(s) Associé(s)</label><br/>
 
                                     {% for competence in competences %}
-                                        <input type="checkbox" name="competences[]" value="{{ competence.getId() }}" /> {{ competence.getReference()}} - {{competence.getLibelle()}}
+                                        <input type="checkbox" name="competences[]" value="{{ competence.getId() }}" checked /> {{ competence.getReference()}} - {{competence.getLibelle()}}
                                         <br/>
                                     {% endfor %}
 
