@@ -60,4 +60,19 @@ class HomeController {
             'last_username' => $app['session']->get('_security.last_username'),
         ));
     }
+    
+    /**
+     * Page Tableau
+     * 
+     * @param Application $app
+     */
+    public function tableauAction(Application $app){
+
+        $competences = $app['dao.competence']->findAll();
+ //       $eleve = $app['dao.utilisateur']->find();
+        return $app['twig']->render('tableau.html.twig', array(
+            'competences' => $competences,
+ //           'eleve'       => $eleve,
+        ));
+    }
 }
