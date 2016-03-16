@@ -65,7 +65,7 @@
                                 <label>Competence(s) Associé(s)</label><br/>
 
                                     {% for competence in competences %}
-                                        <input type="checkbox" name="competences[]" value="{{ competence.getId() }}" checked /> {{ competence.getReference()}} - {{competence.getLibelle()}}
+                                        <input type="checkbox" name="competences[]" value="{{ competence.getId() }}" /> {{ competence.getReference()}} - {{competence.getLibelle()}}
                                         <br/>
                                     {% endfor %}
 
