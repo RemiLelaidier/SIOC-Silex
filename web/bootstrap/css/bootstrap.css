@@ -6789,9 +6789,7 @@ button.close {
 }
 /* JDL */
 .tableau-vertical-div{
-  margin-left: -85px;
-  position: absolute;
-  width: 400px;
+  width: 100px;
   transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg); /* Safari/Chrome */
   -moz-transform: rotate(-90deg); /* Firefox */
@@ -6800,8 +6798,6 @@ button.close {
 }
 .tableau-vertical-th{
   height: 1000px;
-  line-height: 14px;
-  padding-bottom: 20px;
   text-align: left;
   width : 300px;
 }
