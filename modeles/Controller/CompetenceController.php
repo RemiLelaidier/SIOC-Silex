@@ -48,7 +48,9 @@ class CompetenceController {
         $competence -> setObligatoire($request->request->get('obligatoire'));
         $app['dao.competence']->save($competence);
         $competences = $app['dao.competence']->findAll();
-        return $app['twig'] -> render('competence.html.twig', array('competences' => $competences));
+        return $app['twig'] -> render('competence.html.twig', array(
+            'competences' => $competences,
+        ));
     }
     
     /**
@@ -70,6 +72,9 @@ class CompetenceController {
      */
     public function competenceEditAction($id, Application $app)
     {
-        // TODO
+        $competence = $app['dao.competence']->find($id);
+        return $app['twig']->render('ajout_competence.html.twig', array(
+            'competence' => $competence,
+        ));
     }
 }
