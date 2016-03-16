@@ -50,8 +50,8 @@
                         {% if is_granted('ROLE_PROF') %}
                             <th style="width:60px; text-align:center;" >
                                 <div class="btn-group">
-                                    <button href="{{ path('compoetence_edit_', { 'id' : competence.getId() }) }}" type="button" title="Modifier" class="btn btn-warning btn-flat" style="margin-right:5px;"><i class="fa fa-pencil" style="width:10px;"></i></button>
-                                    <button href="{{ path('compoetence_sup_', { 'id' : competence.getId() }) }}"type="button" title="Supprimer"  class="btn btn-danger btn-flat"><i class="fa fa-times"></i></button>
+                                    <button href="{{ path('competence_edit_', { 'id' : competence.getId() }) }}" type="button" title="Modifier" class="btn btn-warning btn-flat" style="margin-right:5px;"><i class="fa fa-pencil" style="width:10px;"></i></button>
+                                    <button href="{{ path('competence_sup_', { 'id' : competence.getId() }) }}"type="button" title="Supprimer"  class="btn btn-danger btn-flat"><i class="fa fa-times"></i></button>
                                 </div>
                             </th>
                         {% endif %}
