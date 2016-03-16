@@ -10,12 +10,9 @@ $app->get('/', "SIOC\Controller\HomeController::homeAction");
 $app->get('/login', "SIOC\Controller\HomeController::loginAction")
         ->bind('login');
 
-/**
- *  TableauController
- */
-// Route tableau
-$app->get('/tableau', "SIOC\Controller\TableauController::tableauAffichage")
-        ->bind('tableau');//
+// Route Tableau
+$app->get('/tableau', "SIOC\Controller\HomeController::tableauAction")
+        ->bind('tableau');
 
 /**
  *  ActiviteController
