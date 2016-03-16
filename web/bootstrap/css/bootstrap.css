@@ -6788,7 +6788,7 @@ button.close {
   display: none !important;
 }
 /* JDL */
-.tableau-vertical{
+.tableau-vertical-div{
   margin-left: -85px;
   position: absolute;
   width: 215px;

@@ -16,7 +16,7 @@
         <tr>
             <td><strong>Situations professionnelle(intitulé et liste des documents et productions associés)</strong></td>
         {% for competence in competences %}
-            <td class="tableau-vertical"> {{ competence.getReference()}} - {{  competence.getLibelle() }} </td>
+            <td class="tableau-vertical-th"><div class="tableau-vertical-div"> {{ competence.getReference()}} - {{  competence.getLibelle() }} </div></td>
         {% endfor %}
         </tr>
     </table>
