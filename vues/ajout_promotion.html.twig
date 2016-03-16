@@ -16,14 +16,25 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <form role="form" method="POST" action={{ path('promotion') }}>
-                    <!-- text input -->
-                    <div class="form-group">
-                      <label>Annee Scolaire</label>
-                      <input type="text" id="annee" name="annee" class="form-control" placeholder="20xx-20xx">
+                    {% if promotion is defined %}
+                        <input type="hidden" id="id" name="id" class="form-control" value="{{ promotion.getId() }}" >
+                        <div class="form-group">
+                            <label>Annee Scolaire</label>
+                            <input type="text" id="annee" name="annee" class="form-control" value="{{ promotion.getAnnee() }}">
                       
-                      <label>Libelle</label>
-                      <input type="text" id="libelle" name="libelle" class="form-control" placeholder="Libelle">
-                    </div>
+                            <label>Libelle</label>
+                            <input type="text" id="libelle" name="libelle" class="form-control" value="{{ promotion.getLibelle() }}">
+                        </div>
+                    {% else %}
+                    <!-- text input -->
+                        <div class="form-group">
+                            <label>Annee Scolaire</label>
+                            <input type="text" id="annee" name="annee" class="form-control" placeholder="20xx-20xx">
+                      
+                            <label>Libelle</label>
+                            <input type="text" id="libelle" name="libelle" class="form-control" placeholder="Libelle">
+                        </div>
+                    {% endif %}
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
                     </div>
