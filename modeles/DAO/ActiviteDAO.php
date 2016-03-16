@@ -144,7 +144,7 @@ class ActiviteDAO extends DAO
     /**
      * Suppression de l'Activite
      *
-     * @params integer $id
+     * @param integer $id
      * @return none
      * 
      * TOTEST
