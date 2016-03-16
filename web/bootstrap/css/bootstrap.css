@@ -6790,7 +6790,7 @@ button.close {
 /* JDL */
 .tableau-vertical{
   transform: rotate(90deg);
-  float : left;
+  float : right;
 }
 /* EndJDL */
 @media print {
