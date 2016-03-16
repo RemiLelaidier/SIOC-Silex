@@ -12,8 +12,7 @@
                         <!-- small box -->
                         <div class="small-box bg-aqua">
                             <div class="inner">
-                                <h3>12</h3>
-
+                                <h3>{{ eleves|length }}</h3>
                                 <p>Eleves</p>
                             </div>
                             <div class="icon">
@@ -27,8 +26,7 @@
                         <!-- small box -->
                         <div class="small-box bg-green">
                             <div class="inner">
-                                <h3>12</h3>
-
+                                <h3>{{ professeurs|length }}</h3>
                                 <p>Professeurs</p>
                             </div>
                             <div class="icon">
@@ -42,7 +40,7 @@
                         <!-- small box -->
                         <div class="small-box bg-yellow">
                             <div class="inner">
-                                <h3>12</h3>
+                                <h3>{{ promotions|length }}</h3>
 
                                 <p>Promotions</p>
                             </div>
@@ -59,12 +57,12 @@
                             <div class="inner">
                                 <h3>Admin</h3>
 
-                                <p>Parte Administration</p>
+                                <p>Partie Administration</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-android-lock"></i>
                             </div>
-                            <a href="#" class="small-box-footer">Administration <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{ path ('ajout_utilisateur') }}" class="small-box-footer">Administration <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
