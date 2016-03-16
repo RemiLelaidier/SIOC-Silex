@@ -6787,6 +6787,25 @@ button.close {
 .visible-print-inline-block {
   display: none !important;
 }
+/* JDL */
+.tableau-vertical-div{
+  width : 70px;
+  margin-bottom: 50px !important;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg); /* Safari/Chrome */
+  -moz-transform: rotate(-90deg); /* Firefox */
+  -o-transform: rotate(-90deg); /* Opera */
+  -ms-transform: rotate(-90deg); /* IE 9 */
+}
+.tableau-vertical-th{
+  height: 900px;
+  vertical-align: bottom;
+  white-space:nowrap;
+  display: table-cell;
+  text-overflow:ellipsis;
+
+}
+/* EndJDL */
 @media print {
   .visible-print-inline-block {
     display: inline-block !important;

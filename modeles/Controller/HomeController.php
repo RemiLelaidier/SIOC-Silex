@@ -3,6 +3,7 @@ namespace SIOC\Controller;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
+use Knp\Snappy\Pdf;
 
 /**
  * Description of HomeController
@@ -74,5 +75,13 @@ class HomeController {
             'competences' => $competences,
  //           'eleve'       => $eleve,
         ));
+    }
+
+    public function newPDF(){
+
+        $snappy = new Pdf();
+        $snappy->setBinary('/usr/local/bin/wkhtmltopdf');
+        $competences = $app['dao.competence']->findAll();
+        return $app['twig'] -> render('competence.html.twig', array('competences' => $competences));
     }
 }
