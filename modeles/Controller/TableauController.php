@@ -20,9 +20,6 @@ class TableauController {
         $tableau = $app['dao.activite']->findAll();
         return $app['twig']->render('tableau.html.twig', array('tableau' => $tableau));
 
-
-
-
     }
 
 }
