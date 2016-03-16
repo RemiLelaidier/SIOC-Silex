@@ -34,7 +34,9 @@ class ActiviteController {
     public function activiteAjoutAction(Application $app)
     {
         $competences = $app['dao.competence']->findAll();
-        return $app['twig']->render('ajout_activite.html.twig', array('competences' => $competences));
+        return $app['twig']->render('ajout_activite.html.twig', array(
+            'competences' => $competences,
+        ));
     }
     
     /**
@@ -95,8 +97,10 @@ class ActiviteController {
     public function activiteEditAction($id, Application $app)
     {
         $activite = $app['dao.activite']->find($id);
+        $competences = $app['dao.competence']->findAll();
         return $app['twig']->render('ajout_activite.html.twig', array(
             'activite' => $activite,
+            'competences' => $competences,
         ));
     }
 }
