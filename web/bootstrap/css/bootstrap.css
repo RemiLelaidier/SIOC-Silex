@@ -6803,6 +6803,7 @@ button.close {
   line-height: 14px;
   padding-bottom: 20px;
   text-align: left;
+  width : 10px;
 }
 /* EndJDL */
 @media print {
