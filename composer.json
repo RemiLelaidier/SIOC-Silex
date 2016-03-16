@@ -7,7 +7,7 @@
         "symfony/security" : "2.7",
         "symfony/twig-bridge": "2.7.*",
         "kdyby/wkhtmltopdf": "0.12.*",
-        "knplabs/knp-snappy": "*"
+        "h4cc/wkhtmltopdf-i386": "0.12.*"
     },
      "autoload": {
         "psr-4": {"SIOC\\": "modeles"}
