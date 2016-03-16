@@ -12,7 +12,7 @@
             <th> Competences mises en oeuvre </th>
         </tr>
     </thead>
-    <tbody style="border : 5px;">
+    <tbody style="border:1px solid black; ">
         <td> Situations professionnelle(intitulé et liste des documents et productions associés)</td>
         {% for competence in competences %}
             <td> {{ competence.getReference - competence.getLibelle }} </td>
