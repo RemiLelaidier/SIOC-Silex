@@ -31,7 +31,7 @@
                             <input type="text"  id="libelle" name="libelle" class="form-control" value="{{ activite.getLibelle() }}">
 
                             <div class="form-group">
-                                <label>Competence(s) Associé(s)</label><br/>
+                                <label>Competence(s) Associée(s)</label><br/>
                                     {% for competence in competences %}
                                         {% for compAct in activite.getCompetences() %}
                                             {% if compAct.getId() == competence.getId() %}
@@ -62,7 +62,7 @@
                             <input type="text"  id="libelle" name="libelle" class="form-control" placeholder="libelle">
 
                             <div class="form-group">
-                                <label>Competence(s) Associé(s)</label><br/>
+                                <label>Competence(s) Associée(s)</label><br/>
 
                                     {% for competence in competences %}
                                         <input type="checkbox" name="competences[]" value="{{ competence.getId() }}" /> {{ competence.getReference()}} - {{competence.getLibelle()}}
