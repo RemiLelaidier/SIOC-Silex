@@ -34,7 +34,7 @@
                                 <label>Competence(s) Associé(s)</label><br/>
                                     {% for competence in competences %}
                                         {% for compAct in activite.getCompetences() %}
-                                            {% if compAct === competence.getId() %}
+                                            {% if compAct == competence.getId() %}
                                                 <input type="checkbox" name="competences[]" value="{{ competence.getId() }}" checked/> {{ competence.getReference()}} - {{competence.getLibelle()}}
                                                 <br/>
                                             {% else %}
