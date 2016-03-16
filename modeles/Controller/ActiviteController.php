@@ -60,6 +60,10 @@ class ActiviteController {
     public function activiteInsertAction(Request $request, Application $app)
     {
         $activite = new \SIOC\donnees\Activite();
+        if(null !== $request->request->get('id'))
+        {
+            $activite -> setId($request->request->get('id'));
+        }
         $activite -> setDebut($request->request->get('debut'));
         $activite -> setDuree($request->request->get('duree'));
         $activite -> setLibelle($request->request->get('libelle'));
@@ -90,6 +94,9 @@ class ActiviteController {
      */
     public function activiteEditAction($id, Application $app)
     {
-        // TODO
+        $activite = $app['dao.activite']->find($id);
+        return $app['twig']->render('ajout_activite.html.twig', array(
+            'activite' => $activite,
+        ));
     }
 }

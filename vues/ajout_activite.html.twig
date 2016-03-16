@@ -16,33 +16,66 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <form role="form" method="POST" action={{ path('activite') }}>
-                    <!-- text input -->
-                    <div class="form-group">    
-                      <label>Date de Debut</label>
-                      <input type="date"  id="debut" name="debut" class="form-control" placeholder="jj / mm / aa">
+                    {% if activite is defined %}
+                        <div class="form-group"> 
+                            
+                            <input type="hidden" id="id" name="id" class="form-control" value="{{ activite.getId() }}">
+                            
+                            <label>Date de Debut</label>
+                            <input type="date"  id="debut" name="debut" class="form-control" value="{{ activite.getDebut() }}">
                       
-                      <label style=" margin: 5px;">Duree</label>
-                      <input type="text"  id="duree" name="duree" class="form-control" placeholder=" j/s/m/a">
+                            <label style=" margin: 5px;">Duree</label>
+                            <input type="text"  id="duree" name="duree" class="form-control" value="{{ activite.getDuree() }}">
 
-                      <br />
-                      <label>Libelle</label>
-                      <input type="text"  id="libelle" name="libelle" class="form-control" placeholder="libelle">
+                            <br />
+                            <label>Libelle</label>
+                            <input type="text"  id="libelle" name="libelle" class="form-control" value="{{ activite.getLibelle() }}">
 
-                      <div class="form-group">
-                          <label>Competence(s) Associé(s)</label>
-                            <select class="form-control">
+                            <div class="form-group">
+                                <label>Competence(s) Associé(s)</label>
+                                <select class="form-control">
 
-                                {% for competence in competences %}
-                                    <option value='{{ competence.getId() }}'> {{ competence.getReference()}} - {{competence.getLibelle()}}</option>
-                                {% endfor %}
+                                    {% for competence in competences %}
+                                        <option value='{{ competence.getId() }}'> {{ competence.getReference()}} - {{competence.getLibelle()}}</option>
+                                    {% endfor %}
 
-                            </select>
-                      </div>
+                                </select>
+                            </div>
 
-                      <label>Description</label>
-                      {# TODO #}
+                            <label>Description</label>
+                            <input type="text"  id="description" name="description" class="form-control" value="{{ activite.getDescription() }}">
 
-                    </div>
+                        </div>
+                    {% else %}
+                        <div class="form-group">    
+                            <label>Date de Debut</label>
+                            <input type="date"  id="debut" name="debut" class="form-control" placeholder="jj / mm / aa">
+                      
+                            <label style=" margin: 5px;">Duree</label>
+                            <input type="text"  id="duree" name="duree" class="form-control" placeholder=" j/s/m/a">
+
+                            <br />
+                            <label>Libelle</label>
+                            <input type="text"  id="libelle" name="libelle" class="form-control" placeholder="libelle">
+
+                            <div class="form-group">
+                                <label>Competence(s) Associé(s)</label>
+                                <select class="form-control">
+
+                                    {% for competence in competences %}
+                                        <option value='{{ competence.getId() }}'> {{ competence.getReference()}} - {{competence.getLibelle()}}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </div>
+
+                            <label>Description</label>
+                            <input type="text"  id="description" name="description" class="form-control" placeholder="Description">
+
+                        </div>
+                    {% endif %}
+                    <!-- text input -->
+                    
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
                     </div>
