@@ -6791,7 +6791,6 @@ button.close {
 .tableau-vertical-div{
   height : 700px;
   position: absolute;
-  width: 170px;
   transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg); /* Safari/Chrome */
   -moz-transform: rotate(-90deg); /* Firefox */
