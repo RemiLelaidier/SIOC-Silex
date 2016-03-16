@@ -6789,7 +6789,7 @@ button.close {
 }
 /* JDL */
 .tableau-vertical-div{
-  width : 700px;
+  width : 70px;
   transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg); /* Safari/Chrome */
   -moz-transform: rotate(-90deg); /* Firefox */
@@ -6800,7 +6800,6 @@ button.close {
   height: 800px;
   text-align: left;
   white-space:nowrap;
-  width : 200px;
 }
 
 .tableau-width{
