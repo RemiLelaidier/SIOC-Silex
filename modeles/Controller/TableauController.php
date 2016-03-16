@@ -11,16 +11,17 @@ use Symfony\Component\HttpFoundation\Request;
  * Date: 16/03/2016
  * Time: 10:18
  */
+//
 
 class TableauController {
 
     public function tableauAffichage(Application $app){
 
         $competences = $app['dao.competence']->findAll();
-        $eleve = $app['dao.utilisateur']->find($id);
+ //       $eleve = $app['dao.utilisateur']->find();
         return $app['twig']->render('tableau.html.twig', array(
             'competences' => $competences,
-            'eleve'       => $eleve,
+ //           'eleve'       => $eleve,
         ));
     }
 
