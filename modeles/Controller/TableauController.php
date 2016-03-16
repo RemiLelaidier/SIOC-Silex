@@ -18,7 +18,7 @@ class TableauController {
     public function tableauAffichage(Application $app){
 
         $competences = $app['dao.competence']->findAll();
-        $eleve = $app['dao.utilisateur']->find($id);
+        $eleve = $app['dao.utilisateur']->find();
         return $app['twig']->render('tableau.html.twig', array(
             'competences' => $competences,
             'eleve'       => $eleve,
