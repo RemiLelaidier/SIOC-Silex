@@ -6800,6 +6800,7 @@ button.close {
   height: 900px;
   vertical-align: bottom;
   white-space:nowrap;
+  display: table-cell;
 }
 .tableau-width{
   width: 400px !important;
