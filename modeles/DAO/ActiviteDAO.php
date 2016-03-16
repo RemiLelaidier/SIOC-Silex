@@ -116,11 +116,11 @@ class ActiviteDAO extends DAO
             foreach ( $activite->getCompetences() as $key => $competence ) // Bug
             {
                 $competenceData = array(
-                    'ass_competence'    => $competence->getId(),
+                    'ass_competence'    => $competence,
                     'ass_activite'      => $activite->getId()
                 );
                 $this->getDb()->update('Associe', $competenceData, array(
-                    'ass_competence' => $competence->getId(),
+                    'ass_competence' => $competence,
                     'ass_activite'   => $activite->getId()
                         ));
             }
@@ -133,7 +133,7 @@ class ActiviteDAO extends DAO
             foreach ( $activite->getCompetences() as $key => $competence ) // Bug
             {
                 $competenceData = array(
-                    'ass_competence'    => $competence->getId(),
+                    'ass_competence'    => $competence,
                     'ass_activite'      => $activite->getId()
                 );
                 $this->getDb()->insert('Associe', $competenceData);
