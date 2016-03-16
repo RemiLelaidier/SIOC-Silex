@@ -6798,7 +6798,7 @@ button.close {
 }
 .tableau-vertical-th{
   height: 900px;
-  vertical-align: baseline;
+  vertical-align: text-bottom;
   white-space:nowrap;
 }
 .tableau-width{
