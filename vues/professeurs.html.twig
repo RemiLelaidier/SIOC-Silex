@@ -31,9 +31,9 @@
                     <tbody>
                         {% for professeur in professeurs %}
                           <tr>
-                            <th>{{ professeur.getNom }}</th>
-                            <th>{{ professeur.getPrenom }}</th>
-                            <th>{{ professeur.getMail }}</th>
+                            <th>{{ professeur.getNom() }}</th>
+                            <th>{{ professeur.getPrenom() }}</th>
+                            <th>{{ professeur.getMail() }}</th>
                             <th style="width:60px; text-align:center;" >
                                   <div class="btn-group">
                                       <a href="{{ path('utilisateur_edit_', { 'id': professeur.getId() }) }}" title="Modifier" type="button" style="margin-right:5px;" class="btn btn-warning btn-flat"><i class="fa fa-pencil"></i></a>
