@@ -46,7 +46,7 @@ class PromotionController {
     public function promotionInsertAction(Application $app, Request $request)
     {
         $promotion = new \SIOC\donnees\Promotion();
-        if(isset($request->request->get('id')))
+        if(null !== $request->request->get('id'))
         {
             $promotion -> setId($request->request->get('id'));
         }
