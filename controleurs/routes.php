@@ -14,7 +14,7 @@ $app->get('/login', "SIOC\Controller\HomeController::loginAction")
  *  TableauController
  */
 // Route tableau
-$app->get('/tableau', "SIOC\Controller\TableauController::AffichageTableau")
+$app->get('/tableau', "SIOC\Controller\TableauController::tableauAffichage")
         ->bind('tableau');//
 
 /**
