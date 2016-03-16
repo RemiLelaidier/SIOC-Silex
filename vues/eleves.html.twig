@@ -32,10 +32,9 @@
                     <tbody>
                         {% for eleve in eleves %}
                           <tr>
-                            <th>{{ eleve.getNom }}</th>
-                            <th>{{ eleve.getPrenom }}</th>
-                            <th>{{ eleve.getMail }}</th>
-                            <th>{{ eleve.getPromotion }}</th>
+                            <th>{{ eleve.getNom() }}</th>
+                            <th>{{ eleve.getPrenom() }}</th>
+                            <th>{{ eleve.getMail() }}</th>
                             <th style="width:60px; text-align:center;" >
                                   <div class="btn-group">
                                       <a href="{{ path('utilisateur_edit_', { 'id': eleve.getId() }) }}" title="Modifier" type="button" style="margin-right:5px;" class="btn btn-warning btn-flat"><i class="fa fa-pencil"></i></a>
