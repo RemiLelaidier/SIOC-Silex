@@ -113,7 +113,7 @@ class ActiviteDAO extends DAO
         
         if ($activite->getId()){
             $this->getDb()->update('Activite', $activiteData, array('act_id' => $activite->getId()));
-            foreach ( $activite->getCompetences() as $competence )
+            foreach ( $activite->getCompetences() as $key => $competence )
             {
                 $competenceData = array(
                     'ass_competence'    => $competence->getId(),
@@ -130,7 +130,7 @@ class ActiviteDAO extends DAO
             $this->getDb()->insert('Activite', $activiteData);
             $id = $this->getDb()->lastInsertId();
             $activite->setId($id);
-            foreach ( $activite->getCompetences() as $competence )
+            foreach ( $activite->getCompetences() as $key => $competence )
             {
                 $competenceData = array(
                     'ass_competence'    => $competence->getId(),
