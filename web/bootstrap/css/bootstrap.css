@@ -6789,7 +6789,7 @@ button.close {
 }
 /* JDL */
 .tableau-vertical-div{
-  width: 100px;
+  width: 170px;
   transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg); /* Safari/Chrome */
   -moz-transform: rotate(-90deg); /* Firefox */
