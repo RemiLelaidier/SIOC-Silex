@@ -6787,6 +6787,12 @@ button.close {
 .visible-print-inline-block {
   display: none !important;
 }
+/* JDL */
+.tableau-vertical{
+  transform: rotate(90deg);
+  transform-origin: left top 0;
+}
+/* EndJDL */
 @media print {
   .visible-print-inline-block {
     display: inline-block !important;
