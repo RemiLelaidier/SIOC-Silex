@@ -1,5 +1,11 @@
 {% extends "layout.html.twig" %}
 
+<?php
+
+$snappy = new Pdf();
+var_dump(get_class_methods($snappy));
+?>
+
 {% block content %}
 <section class="content-header">
     <h1>
