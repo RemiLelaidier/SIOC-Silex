@@ -6802,7 +6802,7 @@ button.close {
   vertical-align: bottom;
   white-space:nowrap;
   display: table-cell;
-  word-wrap: break-word;
+  text-overflow:ellipsis;
 
 }
 /* EndJDL */
