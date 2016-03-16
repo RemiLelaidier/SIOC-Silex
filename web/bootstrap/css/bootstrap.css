@@ -6799,6 +6799,7 @@ button.close {
 .tableau-vertical-th{
   height: 800px;
   text-align: left;
+  white-space:nowrap;
   width : 200px;
 }
 /* EndJDL */
