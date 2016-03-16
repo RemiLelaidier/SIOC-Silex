@@ -98,8 +98,6 @@ class ActiviteController {
     {
         $activite = $app['dao.activite']->find($id);
         $competences = $app['dao.competence']->findAll();
-        var_dump($activite);
-        die();
         return $app['twig']->render('ajout_activite.html.twig', array(
             'activite' => $activite,
             'competences' => $competences,
