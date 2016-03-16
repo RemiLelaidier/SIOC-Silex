@@ -42,6 +42,10 @@ class CompetenceController {
     public function competenceInsertAction(Request $request, Application $app)
     {
         $competence = new \SIOC\donnees\Competence();
+        if(null !== $request->request->get('id'))
+        {
+            $competence->setId($request->request->get('id'));
+        }
         $competence -> setReference($request->request->get('reference'));
         $competence -> setLibelle($request->request->get('libelle'));
         $competence -> setDescription($request->request->get('description'));
