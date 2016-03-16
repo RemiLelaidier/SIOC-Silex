@@ -17,13 +17,11 @@ class TableauController {
     public function tableauAffichage(Application $app){
 
         $competences = $app['dao.competence']->findAll();
-        $activites = $app['dao.activite']->findAll();
+        $eleve = $app['dao.utilisateur']->find($id);
         return $app['twig']->render('tableau.html.twig', array(
             'competences' => $competences,
-            'activites'   => $activites
-
+            'eleve'       => $eleve,
         ));
-
     }
 
 }
