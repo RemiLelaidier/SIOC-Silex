@@ -20,46 +20,46 @@
                                 </a>
                             </h4>
                         </div>
-                            <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="false">
-                                <div class="box-body">
-                                    <form role="form" method="POST" action={{ path('utilisateur') }}>
-                                    <!-- text input --><div class="form-group">
-                                            <input type="hidden" id="role" name="role" class="form-control" value="ROLE_ELEVE" >
+                             <div id="collapseOne" class="panel-collapse collapse " aria-expanded="false">
+                                 <div class="box-body">
+                                     <form role="form" method="POST" action={{ path('utilisateur') }}>
+                                     <!-- text input --><div class="form-group">
+                                             <input type="hidden" id="role" name="role" class="form-control" value="ROLE_ELEVE" >
 
-                                            <label>Pseudo</label>
-                                            <input type="text" id="username" name="username" class="form-control" placeholder="Pseudo">
+                                             <label>Pseudo</label>
+                                             <input type="text" id="username" name="username" class="form-control" placeholder="Pseudo">
 
-                                            <label>Mot de Passe</label>
-                                            <input type="password" id="password" name="password" class="form-control" placeholder="password">
+                                             <label>Mot de Passe</label>
+                                             <input type="password" id="password" name="password" class="form-control" placeholder="password">
 
-                                            <label>Nom</label>
-                                            <input type="text" id="nom" name="nom" class="form-control" placeholder="Nom">
+                                             <label>Nom</label>
+                                             <input type="text" id="nom" name="nom" class="form-control" placeholder="Nom">
 
-                                            <label>Prénom</label>
-                                            <input type="text" id="prenom" name="prenom" class="form-control" placeholder="Prénom">
+                                             <label>Prénom</label>
+                                             <input type="text" id="prenom" name="prenom" class="form-control" placeholder="Prénom">
 
-                                            <label>E-mail</label>
-                                            <input type="text" id="email" name="email" class="form-control" placeholder="exemple@email.com">
+                                             <label>E-mail</label>
+                                             <input type="text" id="email" name="email" class="form-control" placeholder="exemple@email.com">
 
-                                            <div class="form-group">
-                                                <label>Promotion</label>
-                                                <select class="form-control" id="promo" name="promo" value="1">
+                                             <div class="form-group">
+                                                 <label>Promotion</label>
+                                                 <select class="form-control" id="promo" name="promo" value="1">
 
-                                                    {% for promotion in promotions %}
-                                                        <option value={{ promotion.getId }}>{{ promotion.getLibelle }} - {{ promotion.getAnnee }}</option>
-                                                    {% endfor %}
+                                                     {% for promotion in promotions %}
+                                                         <option value={{ promotion.getId }}>{{ promotion.getLibelle }} - {{ promotion.getAnnee }}</option>
+                                                     {% endfor %}
 
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="box-footer">
-                                            <button type="submit" class="btn btn-primary">Enregistrer</button>
-                                        </div>
-                                    </form>
-                                </div>
+                                                 </select>
+                                             </div>
+                                         </div>
+                                         <div class="box-footer">
+                                             <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                         </div>
+                                     </form>
+                                 </div>
                             </div>
                     </div>
-        {% if is_granted('ROLE_ADMIN') %}
+             {% if is_granted('ROLE_ADMIN') %}
                 <div class="panel box box-danger">
                     <div class="box-header with-border">
                         <h4 class="box-title">
