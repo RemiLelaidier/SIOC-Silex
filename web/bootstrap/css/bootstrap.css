@@ -6799,6 +6799,7 @@ button.close {
   -ms-transform: rotate(-90deg); /* IE 9 */
 }
 .tableau-vertical-th{
+  height: 500px;
   line-height: 14px;
   padding-bottom: 20px;
   text-align: left;
