@@ -69,7 +69,7 @@ class ActiviteController {
         $activite -> setLibelle($request->request->get('libelle'));
         $activite -> setDescription($request->request->get('description'));
         $activite -> setCompetences($request->request->get('competences'));
-        $activite -> setUtilisateur($request->request->get('utilisateur'));
+        $activite -> setUtilisateur($app['security.token_storage']->getToken()->getUser()->getId());
         $app['dao.activite']->save($activite);
         $activites = $app['dao.activite']->findAll();
         return $app['twig'] -> render('activite.html.twig', array('activites' => $activites));
