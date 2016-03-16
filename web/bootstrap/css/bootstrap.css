@@ -6790,7 +6790,6 @@ button.close {
 /* JDL */
 .tableau-vertical-div{
   width : 70px;
-  height: 700px;
   margin-bottom: 20px !important;
   transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg); /* Safari/Chrome */
