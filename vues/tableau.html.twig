@@ -24,7 +24,7 @@
                 <th colspan="50" style="text-align: center"> Competences mises en oeuvre </th>
             </tr>
             <tr>
-                <td style="text-align: center;"><strong><br>Situations professionnelle</br><br>(intitulé et liste des documents et productions associés)</br> </strong></td>
+                <td style="text-align: center;"> <div style="margin-left:15px; margin-right:15px;"> <strong> <br>Situations professionnelle</br> <br>(intitulé et liste des documents et productions associés)</br> </strong> </div> </td>
             {% for competence in competences %}
                 <td class="tableau-vertical-th"><div class="tableau-vertical-div">{{ competence.getReference() }}-{{ competence.getLibelle() }}</div></td>
             {% endfor %}
