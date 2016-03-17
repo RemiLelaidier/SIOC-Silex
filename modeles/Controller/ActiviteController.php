@@ -62,8 +62,6 @@ class ActiviteController {
     public function activiteInsertAction(Request $request, Application $app)
     {
         $activite = new \SIOC\donnees\Activite();
-        var_dump($request->request);
-        die();
         if(null !== $request->request->get('id'))
         {
             $activite -> setId($request->request->get('id'));
