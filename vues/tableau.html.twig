@@ -53,7 +53,13 @@
                 <tr>
                     <td>{{ activite.getLibelle() }}</td>
                     {% for competence in competences %}
-                        <td></td>
+                        <td>
+                            {% for compAct in activite.getCompetences() %}
+                                {% if compAct.getId() == competence.getId() %}
+                                    <h1 style="margin-left:30px; color:darkred;">X</h1>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
                     {% endfor %}
                 </tr>
             {% endfor %}
@@ -64,7 +70,13 @@
                 <tr>
                     <td>{{ activite.getLibelle() }}</td>
                     {% for competence in competences %}
-                        <td></td>
+                        <td>
+                            {% for compAct in activite.getCompetences() %}
+                                {% if compAct.getId() == competence.getId() %}
+                                    <h1 style="margin-left:30px; color:darkred;">X</h1>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
                     {% endfor %}
                 </tr>
             {% endfor %}
