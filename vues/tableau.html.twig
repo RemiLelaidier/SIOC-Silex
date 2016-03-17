@@ -23,6 +23,18 @@
                 <td class="tableau-vertical-th"><div class="tableau-vertical-div">{{ competence.getReference() }}-{{ competence.getLibelle() }}</div></td>
             {% endfor %}
             </tr>
+            <tr>
+                <th colspan="55"><span> Situations vécues en Formation </span></th>
+            </tr>
+            <tr>
+            {% for activite in activites %}
+                <td>
+                    {% for competence in competences %}
+                        <td></td>
+                    {% endfor %}
+                </td>
+            {% endfor %}
+            </tr>
         </table>
     </div>
 </section>
