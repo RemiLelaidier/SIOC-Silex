@@ -113,16 +113,16 @@ class ActiviteDAO extends DAO
         
         if ($activite->getId()){
             $this->getDb()->update('Activite', $activiteData, array('act_id' => $activite->getId()));
+            $this->getDb()->delete('Associe', array(
+                    'ass_activite'  => $activite->getId()
+            ));
             foreach ( $activite->getCompetences() as $key => $competence )
             {
                 $competenceData = array(
                     'ass_competence'    => $competence->getId(),
                     'ass_activite'      => $activite->getId()
                 );
-                $this->getDb()->delete('Associe', array(
-                    'ass_activite'  => $activite->getId()
-                ));
-                //$this->getDb()->insert('Associe', $competenceData);
+                $this->getDb()->insert('Associe', $competenceData);
             }
             
         }
