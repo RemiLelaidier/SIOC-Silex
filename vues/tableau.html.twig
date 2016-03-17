@@ -1,15 +1,20 @@
+<!DOCTYPE html>
 <head>
+
 <link rel="stylesheet" href="{{ app.request.basepath }}/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="{{ app.request.basepath }}/bootstrap/css/bootstrap.min.css">
-</head>
-{% block content %}
-<div style="align-content: center;">
 
-    <h1 style="text-align: center;">BTS SERVICES INFORMATIQUES AUX ORGANISATIONS - SESSION _______ - TABLEAU DE COMPETENCES</h1>
-        <div>
-            <h3><span style="margin-right:1000px;">NOM et Prénom du candidat :</span><Strong><span style="text-align: center;">Parcours SLAM</span></Strong> <span style="float:right; margin-right:500px;">N° du candidat :</span></h3>
-        </div>
-</div>
+</head>
+
+{% block content %}
+  <div style="margin-left:15px;">
+    <div style="align-content: center;">
+
+        <h1 style="text-align: center;">BTS SERVICES INFORMATIQUES AUX ORGANISATIONS - SESSION _______ - TABLEAU DE COMPETENCES</h1>
+         <div>
+             <h3><span style="margin-right:1000px;">NOM et Prénom du candidat :</span><Strong><span style="text-align: center;">Parcours SLAM</span></Strong> <span style="float:right; margin-right:500px;">N° du candidat :</span></h3>
+         </div>
+    </div>
     <div style="align-content: center;">
         <table border="1">
             <tr>
@@ -58,5 +63,6 @@
             {% endfor %}
         </table>
     </div>
+  </div>
 </section>
 {% endblock %}
