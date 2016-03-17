@@ -39,8 +39,6 @@
                             {% for compAct in activite.getCompetences() %}
                                 {% if compAct.getId() == competence.getId() %}
                                     <td style="background-color: darkred;"></td>
-                                    {% else %}
-                                        <td></td>
                                 {% endif %}
                             {% endfor %}
                     {% endfor %}
@@ -71,14 +69,13 @@
                     <td>{{ activite.getLibelle() }}</td>
 
                         {% for competence in competences %}
-                                <td>
-                                    {% for compAct in activite.getCompetences() %}
-                                        {% if compAct.getId() == competence.getId() %}
-                                            <span style="background-color: darkred;"></span>
-                                        {% endif %}
-                                    {% endfor %}
-                                </td>
-
+                            <td></td>
+                            {% for compAct in activite.getCompetences() %}
+                                {% if compAct.getId() == competence.getId() %}
+                                    <td style="background-color: darkred;"></td>
+                                {% else %}
+                                {% endif %}
+                            {% endfor %}
                         {% endfor %}
                 </tr>
             {% endfor %}
