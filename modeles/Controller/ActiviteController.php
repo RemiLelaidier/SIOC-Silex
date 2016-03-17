@@ -64,6 +64,8 @@ class ActiviteController {
         $activite = new \SIOC\donnees\Activite();
         if(null !== $request->request->get('id'))
         {
+            var_dump($request->request->get('id'));
+            die();
             $activite -> setId($request->request->get('id'));
         }
         $activite -> setDebut($request->request->get('debut'));
