@@ -111,8 +111,6 @@ class UtilisateurController {
     public function utilisateurEditAction($id, Application $app)
     {
         $utilisateur = $app['dao.utilisateur']->find($id);
-        var_dump($utilisateur);
-        die();
         $promotions = $app['dao.promotion']->findAll();
         return $app['twig'] -> render('ajout_utilisateur.html.twig', array(
             'utilisateur' => $utilisateur,
