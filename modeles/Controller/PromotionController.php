@@ -79,7 +79,12 @@ class PromotionController {
      */
     public function promotionSupAction($id, Application $app)
     {
-        // TODO
+        $promotion = $app['dao.promotion']->find($id);
+        $app['dao.promotion']->erase($promotion);
+        $promotions = $app['dao.promotion']->findAll();
+        return $app['twig']->render('promotion.html.twig', array(
+            'promotions' => $promotions,
+        ));
     }
     
     /**
