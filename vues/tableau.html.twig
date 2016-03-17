@@ -13,7 +13,7 @@
     <div style="align-content: center;">
         <table border="1">
             <tr>
-                <th style="width:auto;"></th>
+                <th style="width:500px;"></th>
                 <th colspan="4" style="text-align: center;"> Situations Obligatoires </th>
                 <th colspan="50" style="text-align: center"> Competences mises en oeuvre </th>
             </tr>
@@ -28,7 +28,7 @@
             </tr>
             {% for activite in activites %}
                 <tr>
-                        <td style="padding:5px;">{{ activite.getLibelle() }}</td>
+                        <td><span style="padding: 5px;">{{ activite.getLibelle() }}</span></td>
                     {% for competence in competences %}
                         <td></td>
                     {% endfor %}
