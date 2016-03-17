@@ -36,16 +36,12 @@
                                         <input type="checkbox" name="competences[]" value="{{ competence.getId() }}" 
                                         {% for compAct in activite.getCompetences() %}
                                             {% if compAct.getId() == competence.getId() %}
-                                                checked /> 
-                                                <br/>
-                                            {% else %}
-                                                 />
+                                                checked
                                                 <br/>
                                             {% endif %}
                                         {% endfor %}
-                                        {{ competence.getReference()}} - {{ competence.getLibelle()}}
+                                        /> {{ competence.getReference()}} - {{ competence.getLibelle()}}
                                     {% endfor %}
-                                </select>
                             </div>
 
                             <label>Description</label>
