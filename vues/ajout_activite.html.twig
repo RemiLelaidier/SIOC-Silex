@@ -37,10 +37,10 @@
                                         {% for compAct in activite.getCompetences() %}
                                             {% if compAct.getId() == competence.getId() %}
                                                 checked
-                                                <br/>
                                             {% endif %}
                                         {% endfor %}
                                         /> {{ competence.getReference()}} - {{ competence.getLibelle()}}
+                                        <br/>
                                     {% endfor %}
                             </div>
 
