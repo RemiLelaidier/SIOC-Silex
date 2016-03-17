@@ -25,7 +25,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      */
     public function find($id) {
         $sql = "SELECT * FROM Utilisateur WHERE uti_id=?";
-        $row = $this->getDb()->fetchAll($sql, array($id));
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row)
         {
