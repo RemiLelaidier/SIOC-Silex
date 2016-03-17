@@ -64,15 +64,18 @@ class ActiviteController {
         $activite = new \SIOC\donnees\Activite();
         if(null !== $request->request->get('id'))
         {
-            var_dump($request->request->get('id'));
-            die();
             $activite -> setId($request->request->get('id'));
         }
         $activite -> setDebut($request->request->get('debut'));
         $activite -> setDuree($request->request->get('duree'));
         $activite -> setLibelle($request->request->get('libelle'));
         $activite -> setDescription($request->request->get('description'));
-        $activite -> setCompetences($request->request->get('competences'));
+        $competences = array();
+        foreach($request->request->get('competences') as $idCompetence )
+        {
+            $competences[$idCompetence] = $app['dao.competence']->find($idCompetence);
+        }
+        $activite -> setCompetences($competences);
         $activite -> setUtilisateur($app['security.token_storage']->getToken()->getUser()->getId());
         $app['dao.activite']->save($activite);
         $id = $app['security.token_storage']->getToken()->getUser()->getId();
