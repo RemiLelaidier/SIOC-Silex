@@ -1,0 +1,62 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+<section class="content-header">
+    <h1>
+        Utilisateurs
+        <small>liste</small>
+        <a href="{{ path('ajout_utilisateur') }}" type="button" style="float:right;margin:-2px" class="btn bg-orange btn-flat margin"><i class="fa fa-plus"></i><span style="margin:3px;">Ajouter</span></a>
+    </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box box-warning">
+                <div class="box-header">
+                  <h3 class="box-title"></h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th style="width:60px;">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for utilisateur in utilisateurs %}
+                          <tr>
+                            <th>{{ utilisateur.getNom() }}</th>
+                            <th>{{ utilisateur.getPrenom() }}</th>
+                            <th>{{ utilisateur.getMail() }}</th>
+                            <th>{{ utilisateur.getRole() }}</th>
+                            <th style="width:60px; text-align:center;" >
+                                  <div class="btn-group">
+                                      <a href="{{ path('utilisateur_edit_', { 'id': utilisateur.getId() }) }}" title="Modifier" type="button" style="margin-right:5px;" class="btn btn-warning btn-flat"><i class="fa fa-pencil"></i></a>
+                                      <a href="{{ path('utilisateur_sup_', { 'id': utilisateur.getId() }) }}" title="Supprimer" type="button" class="btn btn-danger btn-flat"><i class="fa fa-times"></i></a>
+                                  </div>
+                            </th>
+                          </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th style="width:60px;">Action</th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </section><!-- /.content -->
+{% endblock %}

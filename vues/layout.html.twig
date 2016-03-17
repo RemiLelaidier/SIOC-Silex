@@ -106,6 +106,9 @@
                   <a href=""><i class="fa fa-user-secret"></i><span>Administration</span> <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
                       <li><a href="{{ path ('ajout_utilisateur') }}"><i class="fa fa-user-plus"></i>Ajouter</a></li>
+                      {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path ('utilisateur') }} "><i class="fa fa-user"></i>Utilisateurs</a></li>
+                      {% endif %}
                       <li><a href="{{ path ('professeur') }} "><i class="fa fa-user"></i>Professeurs</a></li>
                       <li><a href="{{ path ('eleve') }} "><i class="fa fa-user"></i>Eleves</a></li>
                   </ul>

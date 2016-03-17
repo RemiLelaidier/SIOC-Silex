@@ -20,7 +20,9 @@ class UtilisateurController {
     public function utilisateurAction(Application $app)
     {
         $utilisateurs = $app['dao.utilisateur']->findAll();
-        return $app['twig']->render('utilisateur.html.twig', array('utilisateurs' => $utilisateurs));
+        return $app['twig']->render('utilisateur.html.twig', array(
+            'utilisateurs' => $utilisateurs
+        ));
     }
     
     /**
@@ -31,7 +33,9 @@ class UtilisateurController {
     public function professeurAction(Application $app)
     {
         $professeurs = $app['dao.utilisateur']->findAllProfesseur();
-        return $app['twig']->render('professeurs.html.twig', array('professeurs' => $professeurs));
+        return $app['twig']->render('professeurs.html.twig', array(
+            'professeurs' => $professeurs
+        ));
     }
     
     /**
@@ -42,7 +46,9 @@ class UtilisateurController {
     public function eleveAction(Application $app)
     {
         $eleves = $app['dao.utilisateur']->findAllEleve();
-        return $app['twig']->render('eleves.html.twig', array('eleves' => $eleves));
+        return $app['twig']->render('eleves.html.twig', array(
+            'eleves' => $eleves
+        ));
     }
     
     /**
@@ -53,7 +59,9 @@ class UtilisateurController {
     public function utilisateurAjoutAction(Application $app)
     {
         $promotions = $app['dao.promotion']->findAll();
-        return $app['twig']->render('ajout_utilisateur.html.twig', array('promotions' => $promotions));
+        return $app['twig']->render('ajout_utilisateur.html.twig', array(
+            'promotions' => $promotions
+        ));
     }
     
     /**
