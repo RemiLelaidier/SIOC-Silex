@@ -34,7 +34,9 @@ class ActiviteController {
     public function activiteAjoutAction(Application $app)
     {
         $competences = $app['dao.competence']->findAll();
-        return $app['twig']->render('ajout_activite.html.twig', array('competences' => $competences));
+        return $app['twig']->render('ajout_activite.html.twig', array(
+            'competences' => $competences,
+        ));
     }
     
     /**
@@ -60,15 +62,22 @@ class ActiviteController {
     public function activiteInsertAction(Request $request, Application $app)
     {
         $activite = new \SIOC\donnees\Activite();
+        if(null !== $request->request->get('id'))
+        {
+            $activite -> setId($request->request->get('id'));
+        }
         $activite -> setDebut($request->request->get('debut'));
         $activite -> setDuree($request->request->get('duree'));
         $activite -> setLibelle($request->request->get('libelle'));
         $activite -> setDescription($request->request->get('description'));
         $activite -> setCompetences($request->request->get('competences'));
-        $activite -> setUtilisateur($request->request->get('utilisateur'));
+        $activite -> setUtilisateur($app['security.token_storage']->getToken()->getUser()->getId());
         $app['dao.activite']->save($activite);
-        $activites = $app['dao.activite']->findAll();
-        return $app['twig'] -> render('activite.html.twig', array('activites' => $activites));
+        $id = $app['security.token_storage']->getToken()->getUser()->getId();
+        $activites = $app['dao.activite']->findAllbyUtilisateur($id);
+        return $app['twig']->render('activite.html.twig', array(
+            'activites' => $activites,
+        ));
     }
     
     /**
@@ -90,6 +99,11 @@ class ActiviteController {
      */
     public function activiteEditAction($id, Application $app)
     {
-        // TODO
+        $activite = $app['dao.activite']->find($id);
+        $competences = $app['dao.competence']->findAll();
+        return $app['twig']->render('ajout_activite.html.twig', array(
+            'activite' => $activite,
+            'competences' => $competences,
+        ));
     }
 }

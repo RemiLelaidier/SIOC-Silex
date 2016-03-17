@@ -42,13 +42,19 @@ class CompetenceController {
     public function competenceInsertAction(Request $request, Application $app)
     {
         $competence = new \SIOC\donnees\Competence();
+        if(null !== $request->request->get('id'))
+        {
+            $competence->setId($request->request->get('id'));
+        }
         $competence -> setReference($request->request->get('reference'));
         $competence -> setLibelle($request->request->get('libelle'));
         $competence -> setDescription($request->request->get('description'));
         $competence -> setObligatoire($request->request->get('obligatoire'));
         $app['dao.competence']->save($competence);
         $competences = $app['dao.competence']->findAll();
-        return $app['twig'] -> render('competence.html.twig', array('competences' => $competences));
+        return $app['twig'] -> render('competence.html.twig', array(
+            'competences' => $competences,
+        ));
     }
     
     /**
@@ -70,6 +76,9 @@ class CompetenceController {
      */
     public function competenceEditAction($id, Application $app)
     {
-        // TODO
+        $competence = $app['dao.competence']->find($id);
+        return $app['twig']->render('ajout_competence.html.twig', array(
+            'competence' => $competence,
+        ));
     }
 }

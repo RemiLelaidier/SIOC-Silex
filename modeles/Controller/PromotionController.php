@@ -46,6 +46,10 @@ class PromotionController {
     public function promotionInsertAction(Application $app, Request $request)
     {
         $promotion = new \SIOC\donnees\Promotion();
+        if(null !== $request->request->get('id'))
+        {
+            $promotion -> setId($request->request->get('id'));
+        }
         $promotion -> setLibelle($request->request->get('libelle'));
         $promotion -> setAnnee($request->request->get('annee'));
         $app['dao.promotion']->save($promotion);
@@ -86,6 +90,9 @@ class PromotionController {
      */
     public function promotionEditAction($id, Application $app)
     {
-        // TODO
+        $promotion = $app['dao.promotion']->find($id);
+        return $app['twig']->render('ajout_promotion.html.twig', array(
+            'promotion' => $promotion,
+        ));
     }
 }

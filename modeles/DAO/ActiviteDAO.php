@@ -113,16 +113,16 @@ class ActiviteDAO extends DAO
         
         if ($activite->getId()){
             $this->getDb()->update('Activite', $activiteData, array('act_id' => $activite->getId()));
-            foreach ( $activite->getCompetences() as $competence )
+            foreach ( $activite->getCompetences() as $key => $competence ) // Bug
             {
                 $competenceData = array(
-                    'ass_competence'    => $competence->getId(),
+                    'ass_competence'    => $competence,
                     'ass_activite'      => $activite->getId()
                 );
                 $this->getDb()->update('Associe', $competenceData, array(
-                    'ass_competence' => $competence->getId(),
+                    'ass_competence' => $competence,
                     'ass_activite'   => $activite->getId()
-                        ));
+                ));
             }
             
         }
@@ -130,10 +130,10 @@ class ActiviteDAO extends DAO
             $this->getDb()->insert('Activite', $activiteData);
             $id = $this->getDb()->lastInsertId();
             $activite->setId($id);
-            foreach ( $activite->getCompetences() as $competence )
+            foreach ( $activite->getCompetences() as $key => $competence ) // Bug
             {
                 $competenceData = array(
-                    'ass_competence'    => $competence->getId(),
+                    'ass_competence'    => $competence,
                     'ass_activite'      => $activite->getId()
                 );
                 $this->getDb()->insert('Associe', $competenceData);
@@ -144,7 +144,7 @@ class ActiviteDAO extends DAO
     /**
      * Suppression de l'Activite
      *
-     * @params integer $id
+     * @param integer $id
      * @return none
      * 
      * TOTEST

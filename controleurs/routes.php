@@ -108,7 +108,7 @@ $app->post('/promotion', "SIOC\Controller\PromotionController::promotionInsertAc
 
 // Route Promotion{id}
 $app->get('/promotion/{id}', "SIOC\Controller\PromotionController::promotionIdAction")
-        ->bind('promotion/{id}');
+        ->bind('promotion_');
 
 // Route Suppression Promotion
 $app->get('/promotion/sup/{id}', "SIOC\Controller\PromotionController::promotionSupAction")
