@@ -77,9 +77,7 @@ class ActiviteController {
         }
         $activite -> setCompetences($competences);
         $activite -> setUtilisateur($app['security.token_storage']->getToken()->getUser()->getId());
-        // Sauvegarde
         $app['dao.activite']->save($activite);
-        // Affichage
         $id = $app['security.token_storage']->getToken()->getUser()->getId();
         $activites = $app['dao.activite']->findAllbyUtilisateur($id);
         return $app['twig']->render('activite.html.twig', array(

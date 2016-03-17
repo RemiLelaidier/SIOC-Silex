@@ -75,6 +75,10 @@ class UtilisateurController {
         $salt = substr(md5(time()), 0, 23);
         $utilisateur = new \SIOC\donnees\Utilisateur();
         $promotion = new \SIOC\donnees\Promotion();
+        if(null !== $request->request->get('id'))
+        {
+            $utilisateur->setId($request->request->get('id'));
+        }
         $utilisateur->setUsername($request->request->get('username'));
         $utilisateur->setNom($request->request->get('nom'));
         $utilisateur->setPrenom($request->request->get('prenom'));

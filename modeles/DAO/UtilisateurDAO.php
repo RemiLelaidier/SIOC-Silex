@@ -212,14 +212,14 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
             $this->getDb()->update('Utilisateur', $utilisateurData, array('uti_id' => $utilisateur->getId()));
             if( $utilisateur->getRole() == 'ROLE_ELEVE')
             {
+                $this->getDb()->delete('Faitpartie', array(
+                    'fap_eleve'  => $utilisateur->getId()
+                ));
                 $promotionData = array(
                     'fap_eleve'     => $utilisateur->getId(),
                     'fap_promo'     => $promotion->getId()
                 );
-                $this->getDb()->update('Faitpartie', $promotionData, array(
-                    'fap_eleve'     => $utilisateur->getId(),
-                    'fap_promo'     => $promotion->getId()
-                ));
+                $this->getDb()->insert('Faitpartie', $promotionData);
             }
         }
         else {
