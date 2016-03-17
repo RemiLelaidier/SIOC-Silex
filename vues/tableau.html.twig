@@ -3,14 +3,14 @@
 <link rel="stylesheet" href="{{ app.request.basepath }}/bootstrap/css/bootstrap.min.css">
 </head>
 {% block content %}
-<section class="content-header">
+<div style="align-content: center;">
+
     <h1 style="text-align: center;">BTS SERVICES INFORMATIQUES AUX ORGANISATIONS - SESSION _______ - TABLEAU DE COMPETENCES</h1>
         <div>
             <h3><span style="margin-right:1000px;">NOM et Prénom du candidat :</span><Strong><span style="text-align: center;">Parcours SLAM</span></Strong> <span style="float:right; margin-right:500px;">N° du candidat :</span></h3>
         </div>
-</section>
-<section class="content">
-    <div class="box-body">
+</div>
+    <div style="align-content: center;">
         <table border="1">
             <tr>
                 <th></th>
@@ -27,7 +27,7 @@
                 <th colspan="55"><span style="text-align: center"><h3><strong>Situations vécues en Formation</strong></h3></span></th>
             </tr>
             <tr>
-                    <td> Activite 1 - La ou je me suis grave amusey posey, dans le ghetto ... dans le ghettooooo !</td>
+                    <td style="padding:"> Activite 1 - La ou je me suis grave amusey posey, dans le ghetto ... dans le ghettooooo !</td>
                 {% for competence in competences %}
                     <td></td>
                 {% endfor %}
