@@ -39,7 +39,7 @@
                         <td>
                             {% for compAct in activite.getCompetences() %}
                                 {% if compAct.getId() == competence.getId() %}
-                                    X
+                                    <span style="background-color:orangered;"></span>
                                 {% endif %}
                             {% endfor %}
                         </td>
