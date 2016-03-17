@@ -36,9 +36,10 @@
                 <tr>
                         <td><span style="padding: 5px;">{{ activite.getLibelle() }}</span></td>
                     {% for competence in competences %}
+                        <td></td>
                             {% for compAct in activite.getCompetences() %}
                                 {% if compAct.getId() == competence.getId() %}
-                                    <td style="background-color: darkred;"></td>
+                                    X
                                 {% endif %}
                             {% endfor %}
                     {% endfor %}
