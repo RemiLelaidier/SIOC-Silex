@@ -70,9 +70,11 @@ class HomeController {
     public function tableauAction(Application $app){
 
         $competences = $app['dao.competence']->findAll();
+        $activites = $app['dao.activite']->findAll();
  //       $eleve = $app['dao.utilisateur']->find();
         return $app['twig']->render('tableau.html.twig', array(
             'competences' => $competences,
+            'activites' => $activites,
  //           'eleve'       => $eleve,
         ));
     }
