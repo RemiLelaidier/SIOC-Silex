@@ -24,11 +24,33 @@
             {% endfor %}
             </tr>
             <tr>
-                <th colspan="55"><span style="text-align: center"><h3><strong>Situations vécues en Formation</strong></h3></span></th>
+                <th colspan="55"><span style="text-align: center;"><h3><strong>Situations vécues en Formation</strong></h3></span></th>
             </tr>
             {% for activite in activites %}
                 <tr>
                         <td><span style="padding: 5px;">{{ activite.getLibelle() }}</span></td>
+                    {% for competence in competences %}
+                        <td></td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            <tr>
+                <th colspan="55"><span style="text-align: center;"><h3><strong> 1er Stage </strong></h3></span></th>
+            </tr>
+            {% for activite in activites %}
+                <tr>
+                    <td>{{ activite.getLibelle() }}</td>
+                    {% for competence in competences %}
+                        <td></td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            <tr>
+                <th colspan="55"><span style="text-align: center;"> 2eme Stage</span></th>
+            </tr>
+            {% for activite in activites %}
+                <tr>
+                    <td>{{ activite.getLibelle() }}</td>
                     {% for competence in competences %}
                         <td></td>
                     {% endfor %}
