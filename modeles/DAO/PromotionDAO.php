@@ -110,13 +110,13 @@ class PromotionDAO extends DAO
     /**
      * Suppression de la Promotion
      *
-     * @params integer $id
+     * @param \SIOC\donnees\Promotion
      * @return none
-     * 
-     * TOTEST
      */
-    public function erase($id)
+    public function erase($promotion)
     {
-        $this->getDb()->delete('Promotion', $id);
+        $this->getDb()->delete('Promotion', array(
+            'pro_id'  => $promotion->getId()
+        ));
     }
 }

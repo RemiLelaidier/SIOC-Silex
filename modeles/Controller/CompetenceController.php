@@ -65,7 +65,12 @@ class CompetenceController {
      */
     public function competenceSupAction($id, Application $app)
     {
-        // TODO
+        $competence = $app['dao.competence']->find($id);
+        $app['dao.competence']->erase($competence);
+        $competences = $app['dao.competence']->findAll();
+        return $app['twig']->render('competence.html.twig', array(
+            'competences' => $competences,
+        ));
     }
     
     /**

@@ -124,13 +124,13 @@ class CompetenceDAO extends DAO
     /**
      * Suppression de la Competence
      *
-     * @params integer $id
+     * @param \SIOC\donnees\Competence
      * @return none
-     * 
-     * TOTEST
      */
-    public function erase($id)
+    public function erase($competence)
     {
-        
+        $this->getDb()->delete('Competence', array(
+            'com_id'  => $competence->getId()
+        ));
     }
 }
