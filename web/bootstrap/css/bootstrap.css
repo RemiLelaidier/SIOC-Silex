@@ -6803,7 +6803,6 @@ button.close {
   vertical-align: bottom;
   white-space:nowrap;
   display: table-cell;
-  text-overflow:ellipsis;
 }
 /* EndJDL */
 @media print {
