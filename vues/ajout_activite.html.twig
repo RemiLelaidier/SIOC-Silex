@@ -33,15 +33,17 @@
                             <div class="form-group">
                                 <label>Competence(s) Associée(s)</label><br/>
                                     {% for competence in competences %}
+                                        <input type="checkbox" name="competences[]" value="{{ competence.getId() }}" 
                                         {% for compAct in activite.getCompetences() %}
                                             {% if compAct.getId() == competence.getId() %}
-                                                <input type="checkbox" name="competences[]" value="{{ competence.getId() }}" checked/> {{ competence.getReference()}} - {{competence.getLibelle()}}
+                                                checked /> 
                                                 <br/>
                                             {% else %}
-                                                <input type="checkbox" name="competences[]" value="{{ competence.getId() }}" /> {{ competence.getReference()}} - {{competence.getLibelle()}}
+                                                 />
                                                 <br/>
                                             {% endif %}
                                         {% endfor %}
+                                        {{ competence.getReference()}} - {{ competence.getLibelle()}}
                                     {% endfor %}
                                 </select>
                             </div>
