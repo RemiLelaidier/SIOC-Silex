@@ -6789,7 +6789,7 @@ button.close {
 }
 /* JDL */
 .tableau-vertical-div{
-  width : 70px;
+  width : auto;
   margin-bottom: 50px !important;
   transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg); /* Safari/Chrome */
@@ -6803,7 +6803,6 @@ button.close {
   white-space:nowrap;
   display: table-cell;
   text-overflow:ellipsis;
-
 }
 /* EndJDL */
 @media print {
