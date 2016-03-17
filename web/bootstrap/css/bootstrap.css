@@ -6799,11 +6799,11 @@ button.close {
 }
 .tableau-vertical-th{
   height: 900px;
+  width: auto;
   vertical-align: bottom;
   white-space:nowrap;
   display: table-cell;
   text-overflow:ellipsis;
-
 }
 /* EndJDL */
 @media print {
