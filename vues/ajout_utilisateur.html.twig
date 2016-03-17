@@ -11,11 +11,132 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="box-group" id="accordion">
+                {% if utilisateur is defined %}
+                    {% if utilisateur.getRole() == 'ROLE_ELEVE' %}
+                        <div class="panel box box-primary">
+                        <div class="box-header with-border">
+                            <h4 class="box-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" class="collapsed">
+                                Eleve
+                                </a>
+                            </h4>
+                        </div>
+                             <div id="collapseOne" class="panel-collapse collapse " aria-expanded="true">
+                                 <div class="box-body">
+                                     <form role="form" method="POST" action={{ path('utilisateur') }}>
+                                     <!-- text input --><div class="form-group">
+                                             <input type="hidden" id="id" name="id" class="form-control" value="{{ utilisateur.getId() }}" >
+                                             <input type="hidden" id="role" name="role" class="form-control" value="ROLE_ELEVE" >
+
+                                             <label>Pseudo</label>
+                                             <input type="text" id="username" name="username" class="form-control" value="{{ utilisateur.getUsername() }}">
+
+                                             <label>Nom</label>
+                                             <input type="text" id="nom" name="nom" class="form-control" value="{{ utilisateur.getNom() }}">
+
+                                             <label>Prénom</label>
+                                             <input type="text" id="prenom" name="prenom" class="form-control" value="{{ utilisateur.getPrenom() }}">
+
+                                             <label>E-mail</label>
+                                             <input type="text" id="email" name="email" class="form-control" value="{{ utilisateur.getMail() }}">
+
+                                             <div class="form-group">
+                                                 <label>Promotion</label>
+                                                 <select class="form-control" id="promo" name="promo">
+
+                                                     {% for promotion in promotions %}
+                                                         <option value={{ promotion.getId }}>{{ promotion.getLibelle }} - {{ promotion.getAnnee }}</option>
+                                                     {% endfor %}
+
+                                                 </select>
+                                             </div>
+                                         </div>
+                                         <div class="box-footer">
+                                             <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                         </div>
+                                     </form>
+                                 </div>
+                            </div>
+                        </div>
+                    {% elseif utilisateur.getRole() == 'ROLE_PROF' %}
+                        <div class="panel box box-danger">
+                        <div class="box-header with-border">
+                        <h4 class="box-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed" aria-expanded="false">
+                                Professeur
+                            </a>
+                        </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="true" style="height: 0px;">
+                        <div class="box-body">
+                            <form role="form" method="POST" action={{ path('utilisateur') }}>
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <input type="hidden" id="id" name="id" class="form-control" value="{{ utilisateur.getId() }}">
+                                    <input type="hidden" id="role" name="role" class="form-control" value="ROLE_PROF" >
+
+                                    <label>Pseudo</label>
+                                    <input type="text" id="username" name="username" class="form-control" value="{{ utilisateur.getUsername() }}">
+
+                                    <label>Nom</label>
+                                    <input type="text" id="nom" name="nom" class="form-control" value="{{ utilisateur.getNom() }}">
+
+                                    <label>Prénom</label>
+                                    <input type="text" id="prenom" name="prenom" class="form-control" value="{{ utilisateur.getPrenom() }}">
+
+                                    <label>E-mail</label>
+                                    <input type="text" id="email" name="email" class="form-control" value="{{ utilisateur.getMail() }}">
+                                </div>
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                </div>
+                            </form>
+                        </div>
+                        </div>
+                        </div>
+                    {% else %}
+                        <div class="panel box box-danger">
+                        <div class="box-header with-border">
+                        <h4 class="box-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed" aria-expanded="false">
+                                Admin
+                            </a>
+                        </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="true" style="height: 0px;">
+                        <div class="box-body">
+                            <form role="form" method="POST" action={{ path('utilisateur') }}>
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <input type="hidden" id="id" name="id" class="form-control" value="{{ utilisateur.getId() }}">
+                                    <input type="hidden" id="role" name="role" class="form-control" value="ROLE_ADMIN" >
+
+                                    <label>Pseudo</label>
+                                    <input type="text" id="username" name="username" class="form-control" value="{{ utilisateur.getUsername() }}">
+
+                                    <label>Nom</label>
+                                    <input type="text" id="nom" name="nom" class="form-control" value="{{ utilisateur.getNom() }}">
+
+                                    <label>Prénom</label>
+                                    <input type="text" id="prenom" name="prenom" class="form-control" value="{{ utilisateur.getPrenom() }}">
+
+                                    <label>E-mail</label>
+                                    <input type="text" id="email" name="email" class="form-control" value="{{ utilisateur.getMail() }}">
+                                </div>
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                </div>
+                            </form>
+                        </div>
+                        </div>
+                        </div>
+                    {% endif %}
+                {% else %}
                     <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
                     <div class="panel box box-primary">
                         <div class="box-header with-border">
                             <h4 class="box-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" class="collapsed">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" class="collapsed">
                                 Eleve
                                 </a>
                             </h4>
@@ -69,7 +190,7 @@
                         </h4>
                     </div>
                     <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                        <div class="box-body">//
+                        <div class="box-body">
                             <form role="form" method="POST" action={{ path('utilisateur') }}>
                                 <!-- text input -->
                                 <div class="form-group">
@@ -135,9 +256,10 @@
                                 </div><!-- box -->
                             </div><!-- CollapseThree -->
                         </div><!-- panel.box -->
-                    </div><!-- accordion -->
-            </div><!-- col -->
-        </div><!-- row -->
+                {% endif %}
         {% endif %}
+        </div>
+        </div><!-- col -->
+        </div><!-- row -->
     </section>
 {% endblock %}
