@@ -60,7 +60,7 @@ $app->get('/utilisateur/new', "SIOC\Controller\UtilisateurController::utilisateu
         ->bind('ajout_utilisateur');
 
 // Route Insertion Utilisateur
-$app->post('/utilisateur', "SIOC\Controller\UtilisateurController::utilisateurInserAction");
+$app->post('/utilisateur', "SIOC\Controller\UtilisateurController::utilisateurInsertAction");
 
 // Route Suppression Utilisateur
 $app->get('/utilisateur/sup/{id}', "SIOC\Controller\UtilisateurController::utilisateurSupAction")

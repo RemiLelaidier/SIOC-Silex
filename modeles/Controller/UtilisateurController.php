@@ -92,7 +92,9 @@ class UtilisateurController {
         }
         $app['dao.utilisateur']->save($utilisateur, $promotion);
         $utilisateurs = $app['dao.utilisateur']->findAll();
-        return $app['twig'] -> render('utilisateur.html.twig', array('utilisateurs' => $utilisateurs));
+        return $app['twig'] -> render('utilisateur.html.twig', array(
+            'utilisateurs' => $utilisateurs
+        ));
     }
     
     /**
