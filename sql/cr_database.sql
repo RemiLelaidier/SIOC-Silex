@@ -29,7 +29,9 @@ CREATE TABLE Activite
     act_description         VARCHAR(350),
     act_eleve               INTEGER,
     PRIMARY KEY(act_id),
-    FOREIGN KEY(act_eleve) REFERENCES Utilisateur(uti_id) ON DELETE CASCADE
+    CONSTRAINT ActUser
+        FOREIGN KEY(act_eleve) REFERENCES Utilisateur(uti_id) 
+    ON DELETE CASCADE
 );
 
 ALTER TABLE Activite AUTO_INCREMENT = 1
@@ -76,8 +78,12 @@ CREATE TABLE Faitpartie
     fap_eleve       INTEGER,
     fap_promo       INTEGER,
     PRIMARY KEY(fap_eleve, fap_promo),
-    FOREIGN KEY(fap_eleve) REFERENCES Utilisateur(uti_id) ON DELETE CASCADE,
-    FOREIGN KEY(fap_promo) REFERENCES Promotion(pro_id) ON DELETE CASCADE
+    CONSTRAINT FapUser
+        FOREIGN KEY(fap_eleve) REFERENCES Utilisateur(uti_id) 
+    ON DELETE CASCADE,
+    CONSTRAINT FapPro
+        FOREIGN KEY(fap_promo) REFERENCES Promotion(pro_id) 
+    ON DELETE CASCADE
 );
 
 CREATE TABLE Associe
@@ -85,8 +91,12 @@ CREATE TABLE Associe
     ass_competence      INTEGER,
     ass_activite        INTEGER,
     PRIMARY KEY(ass_competence, ass_activite),
-    FOREIGN KEY(ass_competence) REFERENCES Competence(com_id) ON DELETE CASCADE,
-    FOREIGN KEY(ass_activite) REFERENCES Activite(act_id) ON DELETE CASCADE
+    CONSTRAINT AssComp
+        FOREIGN KEY(ass_competence) REFERENCES Competence(com_id) 
+    ON DELETE CASCADE,
+    CONSTRAINT AssAct
+        FOREIGN KEY(ass_activite) REFERENCES Activite(act_id) 
+    ON DELETE CASCADE
 );
 
 /*
