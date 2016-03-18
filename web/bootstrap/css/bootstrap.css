@@ -6789,6 +6789,7 @@ button.close {
 }
 /* JDL */
 .tableau-vertical-div{
+  overflow: hidden;
   transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg); /* Safari/Chrome */
   -moz-transform: rotate(-90deg); /* Firefox */
@@ -6799,7 +6800,6 @@ button.close {
   height: 900px;
   width: 70px;
   vertical-align: bottom;
-  white-space:nowrap;
   display: table-cell;
 }
 /* EndJDL */
