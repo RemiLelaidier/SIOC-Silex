@@ -3,38 +3,8 @@
  * Created: 4 févr. 2016
  */
 /**
- *  Nettoyage
- */
-DROP TABLE Associe
-
-DROP TABLE Faitpartie
-
-DROP TABLE Activite
-
-DROP TABLE Competence
-
-DROP TABLE Promotion
-
-DROP TABLE Utilisateur
-
-/**
  * Creation
  */
-CREATE TABLE Activite
-(
-    act_id                  INTEGER         auto_increment,
-    act_debut               INTEGER,
-    act_duree               INTEGER,
-    act_libelle             VARCHAR(35),
-    act_description         VARCHAR(350),
-    act_eleve               INTEGER,
-    PRIMARY KEY(act_id),
-    CONSTRAINT ActUser
-        FOREIGN KEY(act_eleve) REFERENCES Utilisateur(uti_id) 
-    ON DELETE CASCADE
-);
-
-ALTER TABLE Activite AUTO_INCREMENT = 1
 
 CREATE TABLE Competence
 (
@@ -44,7 +14,7 @@ CREATE TABLE Competence
     com_description         VARCHAR(350),
     com_obligatoire         BOOLEAN,
     PRIMARY KEY(com_id)
-);
+)ENGINE=INNODB;
 
 ALTER TABLE Competence AUTO_INCREMENT = 1
 
@@ -69,9 +39,25 @@ CREATE TABLE Utilisateur
     uti_salt        VARCHAR(25),
     uti_role        VARCHAR(20),
     PRIMARY KEY(uti_id)
-);
+)ENGINE=INNODB;
 
 ALTER TABLE Utilisateur AUTO_INCREMENT = 1
+
+CREATE TABLE Activite
+(
+    act_id                  INTEGER         auto_increment,
+    act_debut               INTEGER,
+    act_duree               INTEGER,
+    act_libelle             VARCHAR(35),
+    act_description         VARCHAR(350),
+    act_eleve               INTEGER,
+    PRIMARY KEY(act_id),
+    CONSTRAINT ActUser
+        FOREIGN KEY(act_eleve) REFERENCES Utilisateur(uti_id) 
+    ON DELETE CASCADE
+)ENGINE=INNODB;
+
+ALTER TABLE Activite AUTO_INCREMENT = 1
 
 CREATE TABLE Faitpartie
 (
@@ -84,7 +70,7 @@ CREATE TABLE Faitpartie
     CONSTRAINT FapPro
         FOREIGN KEY(fap_promo) REFERENCES Promotion(pro_id) 
     ON DELETE CASCADE
-);
+)ENGINE=INNODB;
 
 CREATE TABLE Associe
 (
@@ -97,7 +83,7 @@ CREATE TABLE Associe
     CONSTRAINT AssAct
         FOREIGN KEY(ass_activite) REFERENCES Activite(act_id) 
     ON DELETE CASCADE
-);
+)ENGINE=INNODB;
 
 /*
  *  Remplissage
