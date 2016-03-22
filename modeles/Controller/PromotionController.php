@@ -53,8 +53,7 @@ class PromotionController {
         $promotion -> setLibelle($request->request->get('libelle'));
         $promotion -> setAnnee($request->request->get('annee'));
         $app['dao.promotion']->save($promotion);
-        $promotions = $app['dao.promotion']->findAll();
-        return $app['twig'] -> render('promotion.html.twig', array('promotions' => $promotions));
+        return $app->redirect('/promotion');
     }
     
     /**
@@ -81,10 +80,7 @@ class PromotionController {
     {
         $promotion = $app['dao.promotion']->find($id);
         $app['dao.promotion']->erase($promotion);
-        $promotions = $app['dao.promotion']->findAll();
-        return $app['twig']->render('promotion.html.twig', array(
-            'promotions' => $promotions,
-        ));
+        return $app->redirect('/promotion');
     }
     
     /**

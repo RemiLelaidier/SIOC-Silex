@@ -91,10 +91,7 @@ class UtilisateurController {
             $promotion->setId($request->request->get('promo'));
         }
         $app['dao.utilisateur']->save($utilisateur, $promotion);
-        $utilisateurs = $app['dao.utilisateur']->findAll();
-        return $app['twig'] -> render('utilisateur.html.twig', array(
-            'utilisateurs' => $utilisateurs
-        ));
+        return $app->redirect('/utilisateur');
     }
     
     /**
@@ -105,7 +102,9 @@ class UtilisateurController {
      */
     public function utilisateurSupAction($id, Application $app)
     {
-        // TODO
+        $utilisateur = $app['dao.utilisateur']->find($id);
+        $app['dao.utilisateur']->erase($utilisateur);
+        return $app->redirect('/utilisateur');
     }
     
     /**

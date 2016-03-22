@@ -78,11 +78,7 @@ class ActiviteController {
         $activite -> setCompetences($competences);
         $activite -> setUtilisateur($app['security.token_storage']->getToken()->getUser()->getId());
         $app['dao.activite']->save($activite);
-        $id = $app['security.token_storage']->getToken()->getUser()->getId();
-        $activites = $app['dao.activite']->findAllbyUtilisateur($id);
-        return $app['twig']->render('activite.html.twig', array(
-            'activites' => $activites,
-        ));
+        return $app->redirect('/activite');
     }
     
     /**
@@ -93,7 +89,9 @@ class ActiviteController {
      */
     public function activiteSupAction($id, Application $app)
     {
-        // TODO
+        $activte = $app['dao.activite']->find($id);
+        $app['dao.activite']->erase($activte);
+        return $app->redirect('/activite');
     }
     
     /**
