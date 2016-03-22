@@ -240,13 +240,13 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
     /**
      * Suppression de l'Utilisateur
      *
-     * @params integer $id
+     * @params \SIOC\donnees\Utilisateur $utilisateur
      * @return none
-     * 
-     * TOTEST
      */
-    public function erase($id)
+    public function erase($utilisateur)
     {
-        
+        $this->getDb()->delete('Utilisateur', array(
+            'uti_id'  => $utilisateur->getId()
+        ));
     }
 }

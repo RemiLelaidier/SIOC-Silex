@@ -144,13 +144,13 @@ class ActiviteDAO extends DAO
     /**
      * Suppression de l'Activite
      *
-     * @param integer $id
+     * @param \SIOC\donnees\Activite $activite
      * @return none
-     * 
-     * TOTEST
      */
-    public function erase($id)
+    public function erase($activite)
     {
-        
+        $this->getDb()->delete('Activite', array(
+            'act_id'  => $activite->getId()
+        ));
     }
 }
