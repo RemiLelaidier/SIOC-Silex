@@ -1,4 +1,8 @@
 vendor/
 nbproject/
 composer.phar
+<<<<<<< HEAD
 .idea/
+=======
+.idea
+>>>>>>> 620f1df11cbbc67f2a8f556eb3f223f383cffbc4
