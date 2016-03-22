@@ -29,7 +29,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         ),
         'secured' => array(
             'pattern' => '^.*$',
-            'anonymous' => true, // A modifier
+            'anonymous' => false, // A modifier
             'logout' => true,
             'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
             'users' =>$app->share(function () use ($app) {
