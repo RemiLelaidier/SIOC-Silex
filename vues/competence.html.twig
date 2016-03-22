@@ -43,9 +43,9 @@
                         <th>{{ competence.getLibelle() }}</th>
                         <th>{{ competence.getDescription() }}</th>
                         {% if competence.getObligatoire() == TRUE %}
-                            <th> X </th>
+                            <th> Oui </th>
                         {% else %}
-                            <th>   </th>
+                            <th> Non </th>
                         {% endif %}
                         {% if is_granted('ROLE_PROF') %}
                             <th style="width:60px; text-align:center;" >
