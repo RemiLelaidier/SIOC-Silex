@@ -2,9 +2,6 @@
 
 use Symfony\Component\Debug\ErrorHandler;
 use Symfony\Component\Debug\ExceptionHandler;
-//use Silex\PdfServiceProvider;
-
-
 
 /**
  * Register global error and exception handlers
@@ -25,12 +22,6 @@ $app->register(new Silex\Provider\SessionServiceProvider());
 /**
  * Sécurisation de l'application, identification et redirection login
  */
-
-//$app->post('/login_check', function (Request $request) use ($app) {
-//    var_dump($request);
-//    die();
-//})->bind('login_check');
-
 $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     'security.firewalls' => array(
         'login' => array(
@@ -58,7 +49,6 @@ $app['security.role_hierarchy'] = array(
 /**
  * Definition des rôles utilisateurs
  */
-
 /*$app['security.access_rules'] = array(
     array('^/professeurs/.*$', 'ROLE_ADMIN'),
     array('^/promotion/.*$', 'ROLE_ADMIN'),
@@ -71,8 +61,6 @@ $app['security.role_hierarchy'] = array(
     array('^/activite/', 'ROLE_ELEVE')
     array('^/login', 'IS_AUTHENTICATED_ANONYMOUSLY')
 );*/
-
-
 
 /**
  * Service de BDD

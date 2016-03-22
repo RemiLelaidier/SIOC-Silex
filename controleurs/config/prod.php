@@ -6,7 +6,7 @@ $app['db.options'] = array(
     'charset'  => 'utf8',
     'host'     => 'localhost',
     'port'     => '3306',
-    'dbname'   => 'groupe_pt_SIOC',
+    'dbname'   => 'groupe_pt_SIOC2',
     'user'     => 'groupe_pt',
     'password' => 'groupe_pt',
 );
