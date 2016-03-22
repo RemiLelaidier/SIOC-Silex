@@ -35,7 +35,7 @@ CREATE TABLE Utilisateur
     uti_username    VARCHAR(35),
     uti_nom         VARCHAR(75),
     uti_prenom      VARCHAR(45),
-    uti_password    VARCHAR(45),
+    uti_password    VARCHAR(255),
     uti_salt        VARCHAR(25),
     uti_role        VARCHAR(20),
     PRIMARY KEY(uti_id)
