@@ -27,20 +27,17 @@
     <![endif]-->
   </head>
   <body class="hold-transition login-page">
-     <section class="content-header">
-        <h1>
-            Erreur {{ codeErreur }}
-        </h1>
-    </section>
-
         <!-- Main content -->
     <section class="content">
         <div class="error-page">
             <h2 class="headline text-yellow">Erreur {{ codeErreur }}</h2>
-            <br/>
             <div class="error-content">
-              <h3><i class="fa fa-warning text-yellow"></i>{{ MessageErreur }}</h3>
-               <a href="{{ path('acceuil') }}">Retour a l'acceuil</a>
+              <h3><i class="fa fa-warning text-yellow"></i></h3>
+              <p>
+                {{ MessageErreur }}
+                <br/>
+                <a href="{{ path('acceuil') }}">Retour a l'acceuil</a>
+              </p>
             </div><!-- /.error-content -->
           </div><!-- /.error-page -->
         </section><!-- /.content -->
