@@ -70,7 +70,8 @@ $app['security.access_rules'] = array(
     array('^/promotion/new$', 'ROLE_PROF'),
     array('^/promotion/(edit|sup)/[0-9]+$', 'ROLE_PROF'),
     // Home
-    array('^/login', 'IS_AUTHENTIFICATED_ANONYMOUSLY')
+    array('^/login', 'IS_AUTHENTIFICATED_ANONYMOUSLY'),
+    array('^/$', 'ROLE_ELEVE')
 );
 
 /**
