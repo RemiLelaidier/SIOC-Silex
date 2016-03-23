@@ -20,6 +20,29 @@ $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\SessionServiceProvider());
 
 /**
+ * Gestion des erreurs
+ */
+$app->error(function(\Exception $e, $code){
+    switch($code){
+        case 404:
+            $codeErreur = $code;
+            $MessageErreur = "La page est introuvable";
+            break;
+        case 403:
+            $codeErreur = $code;
+            $MessageErreur = "L'acces a cette page vous a ete refuse";
+            break;
+        default:
+            $codeErreur = "Erreur Inconnue";
+            $MessageErreur = "Une erreur inconnue est survenue";
+    }
+    return $app['twig']->render('error.html.twig', array(
+        'codeErreur'    => $codeErreur,
+        'MessageErreur' => $MessageErreur
+    ));
+});
+
+/**
  * Sécurisation de l'application, identification et redirection login
  */
 $app->register(new Silex\Provider\SecurityServiceProvider(), array(
