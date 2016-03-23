@@ -34,13 +34,23 @@
         <!-- Main content -->
         <section class="content">
             <center>
-            <h1 class="headline text-yellow">Erreur {{ codeErreur }}</h1>
-            <div class="error-content">
-              <h3><i class="fa fa-warning text-yellow"></i>{{ MessageErreur }}</h3>
-              <p>
-                <a href="{{ path('acceuil') }}">Retour a l'acceuil</a>
-              </p>
-            </div><!-- /.error-content -->
+            {% if codeErreur == 404 %}
+                <h1 class="headline text-red">Erreur {{ codeErreur }}</h1>
+                <div class="error-content">
+                    <h3><i class="fa fa-danger text-red"></i> {{ MessageErreur }}</h3>
+                    <p>
+                        <a href="{{ path('acceuil') }}">Retour a l'acceuil</a>
+                    </p>
+                </div><!-- /.error-content -->
+            {% else %}
+                <h1 class="headline text-yellow">Erreur {{ codeErreur }}</h1>
+                <div class="error-content">
+                    <h3><i class="fa fa-warning text-yellow"></i> {{ MessageErreur }}</h3>
+                    <p>
+                        <a href="{{ path('acceuil') }}">Retour a l'acceuil</a>
+                    </p>
+                </div><!-- /.error-content -->
+            {% endif %}
             </center>
         </section><!-- /.content -->
 
