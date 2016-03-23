@@ -32,7 +32,7 @@
             <tr>
                 <th colspan="62"><span style="text-align: center;"><h3><strong>Situations vécues en Formation</strong></h3></span></th>
             </tr>
-            {% for activite in activites if periode == formation %}
+            {% for activite in activites if activite.getPeriode == "formation" %}
 
                 <tr>
                     <td> {{ activite.getLibelle() }} </td>
@@ -51,7 +51,7 @@
             <tr>
                 <th colspan="62"><span style="text-align: center;"><h3><strong> 1er Stage </strong></h3></span></th>
             </tr>
-            {% for activite in activites if periode == stage1 %}
+            {% for activite in activites if activite.getPeriode == "stage1" %}
                 <tr>
                     <td> {{ activite.getLibelle() }} </td>
                     {% for competence in competences %}
@@ -69,7 +69,7 @@
             <tr>
                 <th colspan="62"><span style="text-align: center;"><h3><strong> 2eme Stage </strong></h3></span></th>
             </tr>
-            {% for activite in activites if periode == stage2 %}
+            {% for activite in activites if activite.getPeriode == "stage2" %}
                 <tr>
                     <td> {{ activite.getLibelle() }} </td>
                         {% for competence in competences %}
