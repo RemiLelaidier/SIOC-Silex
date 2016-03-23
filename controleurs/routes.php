@@ -4,7 +4,8 @@
  *  HomeController
  */
 // Route page d'acceuil
-$app->get('/', "SIOC\Controller\HomeController::homeAction");
+$app->get('/', "SIOC\Controller\HomeController::homeAction")
+        ->bind('acceuil');
 
 // Route page de connexion
 $app->get('/login', "SIOC\Controller\HomeController::loginAction")
