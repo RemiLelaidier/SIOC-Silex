@@ -65,7 +65,7 @@ class ActiviteDAO extends DAO
      */
     public function findAllbyUtilisateur($utilisateurId)
     {
-        $sql = "SELECT A.act_id, A.act_debut, A.act_duree, A.act_libelle, A.act_description"
+        $sql = "SELECT A.act_id, A.act_debut, A.act_duree, A.act_periode, A.act_libelle, A.act_description"
                 . " FROM Activite AS A, Utilisateur AS U"
                 . " WHERE A.act_eleve = U.uti_id"
                 . " AND U.uti_id = ?";
@@ -99,13 +99,12 @@ class ActiviteDAO extends DAO
      *
      * @param \SIOC\donnees\Activite
      * @return none
-     * 
-     * TOTEST
      */
     public function save(Activite $activite) {
         $activiteData = array(
             'act_debut'         => $activite->getDebut(),
             'act_duree'         => $activite->getDuree(),
+            'act_periode'       => $activite->getPeriode(),
             'act_libelle'       => $activite->getLibelle(),
             'act_description'   => $activite->getDescription(),
             'act_eleve'         => $activite->getUtilisateur()

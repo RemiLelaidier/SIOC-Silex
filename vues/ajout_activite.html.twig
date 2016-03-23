@@ -30,6 +30,28 @@
                             <label>Libelle</label>
                             <input type="text"  id="libelle" name="libelle" class="form-control" value="{{ activite.getLibelle() }}">
 
+                            <label>Periode</label>
+                            <select id="periode" name="periode" class="form-control">
+                                {% switch activite.getPeriode() %}
+                                    {% case "stage1" %}
+                                        <option value="stage1" selected >Stage 1
+                                        <option value="stage2">Stage 2
+                                        <option value="formation">Formation
+                                    {% case "stage2" %}
+                                        <option value="stage1">Stage 1
+                                        <option value="stage2" selected >Stage 2
+                                        <option value="formation">Formation
+                                    {% case "formation" %}
+                                        <option value="stage1">Stage 1
+                                        <option value="stage2">Stage 2
+                                        <option value="formation" selected >Formation
+                                    {% default %}
+                                        <option value="stage1">Stage 1
+                                        <option value="stage2">Stage 2
+                                        <option value="formation">Formation
+                                {% endswitch %}
+                            </select>
+                            
                             <div class="form-group">
                                 <label>Competence(s) Associée(s)</label><br/>
                                     {% for competence in competences %}
@@ -58,6 +80,13 @@
 
                             <label>Libelle</label>
                             <input type="text"  id="libelle" name="libelle" class="form-control" placeholder="libelle">
+                            
+                            <label>Periode</label>
+                            <select id="periode" name="periode" class="form-control">
+                                <option value="stage1">Stage 1
+                                <option value="stage2">Stage 2
+                                <option value="formation">Formation
+                            </select>
 
                             <div class="form-group">
                                 <label>Competence(s) Associée(s)</label><br/>
