@@ -20,17 +20,39 @@ $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\SessionServiceProvider());
 
 /**
+ * Gestion des erreurs
+ */
+$app->error(function(\Exception $e, $code) use($app){
+    switch($code){
+        case 404:
+            $codeErreur = $code;
+            $MessageErreur = "La page est introuvable";
+            break;
+        case 403:
+            $codeErreur = $code;
+            $MessageErreur = "L'acces a cette page vous a ete refuse";
+            break;
+        default:
+            $codeErreur = "Erreur Inconnue";
+            $MessageErreur = "Une erreur inconnue est survenue";
+    }
+    return $app['twig']->render('error.html.twig', array(
+        'codeErreur'    => $codeErreur,
+        'MessageErreur' => $MessageErreur
+    ));
+});
+
+/**
  * Sécurisation de l'application, identification et redirection login
  */
 $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     'security.firewalls' => array(
         'login' => array(
             'pattern' => '^/login$',
-            'anonymous' => true
         ),
         'secured' => array(
             'pattern' => '^.*$',
-            //'anonymous' => false,
+            'anonymous' => false,
             'logout' => true,
             'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
             'users' =>$app->share(function () use ($app) {
@@ -44,13 +66,12 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
  * Hierarchie des utilisateurs
  */
 $app['security.role_hierarchy'] = array(
-    'ROLE_ADMIN'    => array('ROLE_PROF'),
-    'ROLE_PROF'     => array('ROLE_ELEVE')
+    'ROLE_ADMIN'    => array('ROLE_PROF')
 );
 
 /**
  * Definition des rôles utilisateurs
-
+ */
 $app['security.access_rules'] = array(
     // Utilisateur
     array('^/utilisateur/new$', 'ROLE_PROF'),
@@ -71,7 +92,6 @@ $app['security.access_rules'] = array(
     array('^/promotion/new$', 'ROLE_PROF'),
     array('^/promotion/(edit|sup)/[0-9]+$', 'ROLE_PROF'),
 );
- * */
 
 /**
  * Service de BDD
