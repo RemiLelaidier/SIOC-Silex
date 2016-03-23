@@ -108,7 +108,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
                 . " WHERE uti_role = 'ROLE_ELEVE'"
                 . " AND F.fap_eleve = U.uti_id"
                 . " AND F.fap_promo = P.pro_id";
-        $result = $this->getDb()->fetchAssoc($sql);
+        $result = $this->getDb()->fetchAll($sql);
         $eleves = array();
         foreach($result as $row)
         {
