@@ -27,8 +27,11 @@
     <![endif]-->
   </head>
   <body class="hold-transition login-page">
-        <!-- Main content -->
-    <section class="content">
+    <div class="login-box">
+      <div class="login-logo">
+        <h1><b>SIOC</b></br>Gestion des competences</h1>
+      </div><!-- /.login-logo -->
+      <div class="login-box-body">
         <div class="error-page">
             <h2 class="headline text-yellow">Erreur {{ codeErreur }}</h2>
             <div class="error-content">
@@ -40,7 +43,8 @@
               </p>
             </div><!-- /.error-content -->
           </div><!-- /.error-page -->
-        </section><!-- /.content -->
+      </div><!-- /.login-box-body -->
+    </div><!-- /.login-box -->
 
     <!-- jQuery 2.1.4 -->
     <script src="{{ app.request.basepath }}/plugins/jQuery/jQuery-2.1.4.min.js"></script>
