@@ -51,6 +51,8 @@ $app['security.role_hierarchy'] = array(
  * Definition des rôles utilisateurs
  */
 $app['security.access_rules'] = array(
+    // Login
+    // array('^/login$', ''),
     // Utilisateur
     array('^/utilisateur/new$', 'ROLE_PROF'),
     array('^/utilisateur$', 'ROLE_ADMIN'),
@@ -58,16 +60,16 @@ $app['security.access_rules'] = array(
     array('^/professeur$', 'ROLE_ADMIN'),
     array('^/eleve$', 'ROLE_PROF'),
     // Activite
-    array('^/activite', 'ROLE_ELEVE'),
-    array('^/activite/new', 'ROLE_ELEVE'),
+    array('^/activite$', 'ROLE_ELEVE'),
+    array('^/activite/new$', 'ROLE_ELEVE'),
     array('^/activite/(edit|sup)/[0-9]*$', 'ROLE_ELEVE'),
     // Competence
-    array('^/competence', 'ROLE_ELEVE'),
-    array('^/competence/new', 'ROLE_PROF'),
+    array('^/competence$', 'ROLE_ELEVE'),
+    array('^/competence/new$', 'ROLE_PROF'),
     array('^/competence/(edit|sup)/[0-9]*$', 'ROLE_PROF'),
     // Promotion
-    array('^/promotion', 'ROLE_PROF'),
-    array('^/promotion/new', 'ROLE_PROF'),
+    array('^/promotion$', 'ROLE_PROF'),
+    array('^/promotion/new$', 'ROLE_PROF'),
     array('^/promotion/(edit|sup)/[0-9]*$', 'ROLE_PROF'),
 );
 
