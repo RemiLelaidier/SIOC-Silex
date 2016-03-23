@@ -43,8 +43,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
  * Hierarchie des utilisateurs
  */
 $app['security.role_hierarchy'] = array(
-    'ROLE_ADMIN'    => array('ROLE_PROF'),
-    'ROLE_PROF'     => array('ROLE_ELEVE')
+    'ROLE_ADMIN'    => array('ROLE_PROF')
 );
 
 /**
@@ -69,9 +68,6 @@ $app['security.access_rules'] = array(
     array('^/promotion$', 'ROLE_PROF'),
     array('^/promotion/new$', 'ROLE_PROF'),
     array('^/promotion/(edit|sup)/[0-9]+$', 'ROLE_PROF'),
-    // Home
-    array('^/login', 'IS_AUTHENTIFICATED_ANONYMOUSLY'),
-    array('^/$', 'ROLE_ELEVE')
 );
 
 /**
