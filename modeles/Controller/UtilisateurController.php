@@ -91,7 +91,15 @@ class UtilisateurController {
             $promotion->setId($request->request->get('promo'));
         }
         $app['dao.utilisateur']->save($utilisateur, $promotion);
-        return $app->redirect('/utilisateur');
+        $role = $app['security.token_storage']->getToken()->getUser()->getRole();
+        if($role == "ROLE_ADMIN")
+        {
+            return $app->redirect('/utilisateur');
+        }
+        else
+        {
+            return $app->redirect('/eleve');
+        }
     }
     
     /**
