@@ -28,7 +28,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'pattern' => '^/login$',
         ),
         'secured' => array(
-            'pattern' => '^/.*$',
+            'pattern' => '^.*$',
             'anonymous' => false,
             'logout' => true,
             'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
@@ -49,7 +49,7 @@ $app['security.role_hierarchy'] = array(
 
 /**
  * Definition des rôles utilisateurs
-
+ */
 $app['security.access_rules'] = array(
     // Utilisateur
     array('^/utilisateur/new$', 'ROLE_PROF'),
@@ -69,8 +69,9 @@ $app['security.access_rules'] = array(
     array('^/promotion$', 'ROLE_PROF'),
     array('^/promotion/new$', 'ROLE_PROF'),
     array('^/promotion/(edit|sup)/[0-9]+$', 'ROLE_PROF'),
+    // Home
+    array('^/login', 'IS_AUTHENTIFICATED_ANONYMOUSLY')
 );
- * */
 
 /**
  * Service de BDD
