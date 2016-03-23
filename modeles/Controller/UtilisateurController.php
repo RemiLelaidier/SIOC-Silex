@@ -112,7 +112,15 @@ class UtilisateurController {
     {
         $utilisateur = $app['dao.utilisateur']->find($id);
         $app['dao.utilisateur']->erase($utilisateur);
-        return $app->redirect('/utilisateur');
+        $role = $app['security.token_storage']->getToken()->getUser()->getRole();
+        if($role == "ROLE_ADMIN")
+        {
+            return $app->redirect('/utilisateur');
+        }
+        else
+        {
+            return $app->redirect('/eleve');
+        }
     }
     
     /**
