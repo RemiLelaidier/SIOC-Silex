@@ -46,6 +46,8 @@ class UtilisateurController {
     public function eleveAction(Application $app)
     {
         $eleves = $app['dao.utilisateur']->findAllEleve();
+        var_dump($eleves);
+        die();
         return $app['twig']->render('eleves.html.twig', array(
             'eleves' => $eleves
         ));
@@ -91,7 +93,15 @@ class UtilisateurController {
             $promotion->setId($request->request->get('promo'));
         }
         $app['dao.utilisateur']->save($utilisateur, $promotion);
-        return $app->redirect('/utilisateur');
+        $role = $app['security.token_storage']->getToken()->getUser()->getRole();
+        if($role == "ROLE_ADMIN")
+        {
+            return $app->redirect('/utilisateur');
+        }
+        else
+        {
+            return $app->redirect('/eleve');
+        }
     }
     
     /**
