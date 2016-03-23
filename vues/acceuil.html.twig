@@ -43,8 +43,8 @@
                   <!-- Promotion -->
                   <div class="small-box bg-blue">
                       <div class="inner">
-                          <h3>{{ promotion.getLibelle }}<sup style="font-size: 20px"></sup></h3>
-                          <p>{{ promotion.getAnnee }}</p>
+                          <h3>{{ promotion.getLibelle() }}<sup style="font-size: 20px"></sup></h3>
+                          <p>{{ promotion.getAnnee() }}</p>
                       </div>
                       <div class="icon">
                           <i class="ion ion-document-text"></i>
@@ -72,7 +72,7 @@
                             <div class="form-group">
                                 <select class="form-control">
                                     {% for professeur in professeurs %}
-                                        <option value="{{ professeur.getMail }}">{{ professeur.getNom }} {{ professeur.getPrenom }}</option>
+                                        <option value="{{ professeur.getMail() }}">{{ professeur.getNom() }} {{ professeur.getPrenom() }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
