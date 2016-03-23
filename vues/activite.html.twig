@@ -23,6 +23,7 @@
                     <thead>
                       <tr>
                         <th>Numero</th>
+                        <th>Periode</th>
                         <th>Date debut</th>
                         <th>Duree</th>
                         <th>Libelle</th>
@@ -37,6 +38,7 @@
                         {% for activite in activites %}
                           <tr>
                             <th>{{ activite.getId() }}</th>
+                            <th>{{ activite.getPeriode() }}</th>
                             <th>{{ activite.getDebut() }}</th>
                             <th>{{ activite.getDuree() }}</th>
                             <th>{{ activite.getLibelle() }}</th>
@@ -59,6 +61,7 @@
                     <tfoot>
                       <tr>
                         <th>Numero</th>
+                        <th>Periode</th>
                         <th>Date debut</th>
                         <th>Duree</th>
                         <th>Libelle</th>
