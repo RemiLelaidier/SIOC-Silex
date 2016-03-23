@@ -43,24 +43,33 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
  * Hierarchie des utilisateurs
  */
 $app['security.role_hierarchy'] = array(
-    'ROLE_ADMIN'    => array('ROLE_PROF')
+    'ROLE_ADMIN'    => array('ROLE_PROF'),
+    'ROLE_PROF'     => array('ROLE_ELEVE')
 );
 
 /**
  * Definition des rôles utilisateurs
  */
-/*$app['security.access_rules'] = array(
-    array('^/professeurs/.*$', 'ROLE_ADMIN'),
-    array('^/promotion/.*$', 'ROLE_ADMIN'),
-    array('^/eleves/.*$', 'ROLE_ADMIN'),
-    array('^/activite/.*$', 'ROLE_ADMIN'),
-    array('^/competence/.*$', 'ROLE_ADMIN'),
-    array('^/competence/new', 'ROLE_ELEVE'),
-    array('^/competence/', 'ROLE_ELEVE'),
+$app['security.access_rules'] = array(
+    // Utilisateur
+    array('^/utilisateur/new$', 'ROLE_PROF'),
+    array('^/utilisateur$', 'ROLE_ADMIN'),
+    array('^/utilisateur/(edit|sup)/[0-9]*$', 'ROLE_PROF'),
+    array('^/professeur$', 'ROLE_ADMIN'),
+    array('^/eleve$', 'ROLE_PROF'),
+    // Activite
+    array('^/activite', 'ROLE_ELEVE'),
     array('^/activite/new', 'ROLE_ELEVE'),
-    array('^/activite/', 'ROLE_ELEVE')
-    array('^/login', 'IS_AUTHENTICATED_ANONYMOUSLY')
-);*/
+    array('^/activite/(edit|sup)/[0-9]*$', 'ROLE_ELEVE'),
+    // Competence
+    array('^/competence', 'ROLE_ELEVE'),
+    array('^/competence/new', 'ROLE_PROF'),
+    array('^/competence/(edit|sup)/[0-9]*$', 'ROLE_PROF'),
+    // Promotion
+    array('^/promotion', 'ROLE_PROF'),
+    array('^/promotion/new', 'ROLE_PROF'),
+    array('^/promotion/(edit|sup)/[0-9]*$', 'ROLE_PROF'),
+);
 
 /**
  * Service de BDD

@@ -19,21 +19,22 @@ class HomeController {
      */
     public function homeAction(Application $app)
     {
-        if ($app['security.authorization_checker']->isGranted('ROLE_ELEVE')) {
-        $id = $app['security.token_storage']->getToken()->getUser()->getId();
-        $professeurs = $app['dao.utilisateur']->findAllProfesseur();
-        $activites = $app['dao.activite']->findAllbyUtilisateur($id);
-        $competences = $app['dao.competence']->findAll();
-        $nbComp = $app['dao.competence']->findNbByEleve($id);
-        $promotion = $app['dao.promotion']->findByEleve($id);
+        if ($app['security.authorization_checker']->isGranted('ROLE_ELEVE')) 
+        {
+            $id = $app['security.token_storage']->getToken()->getUser()->getId();
+            $professeurs = $app['dao.utilisateur']->findAllProfesseur();
+            $activites = $app['dao.activite']->findAllbyUtilisateur($id);
+            $competences = $app['dao.competence']->findAll();
+            $nbComp = $app['dao.competence']->findNbByEleve($id);
+            $promotion = $app['dao.promotion']->findByEleve($id);
 
-        return $app['twig']->render('acceuil.html.twig', array(
-            'professeurs' => $professeurs,
-            'activites' => $activites,
-            'competences' => $competences,
-            'nbComp' => $nbComp,
-            'promotion' => $promotion
-        ));
+            return $app['twig']->render('acceuil.html.twig', array(
+                'professeurs' => $professeurs,
+                'activites' => $activites,
+                'competences' => $competences,
+                'nbComp' => $nbComp,
+                'promotion' => $promotion
+            ));
         }
         else {
             $professeurs = $app['dao.utilisateur']->findAllProfesseur();
@@ -71,11 +72,9 @@ class HomeController {
 
         $competences = $app['dao.competence']->findAll();
         $activites = $app['dao.activite']->findAll();
- //       $eleve = $app['dao.utilisateur']->find();
         return $app['twig']->render('tableau.html.twig', array(
             'competences' => $competences,
             'activites' => $activites,
- //           'eleve'       => $eleve,
         ));
     }
 
