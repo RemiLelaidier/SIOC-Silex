@@ -22,7 +22,7 @@ $app->register(new Silex\Provider\SessionServiceProvider());
 /**
  * Gestion des erreurs
  */
-$app->error(function(\Exception $e, $code){
+$app->error(function(\Exception $e, $code) use($app){
     switch($code){
         case 404:
             $codeErreur = $code;
