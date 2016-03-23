@@ -28,7 +28,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'pattern' => '^/login$',
         ),
         'secured' => array(
-            'pattern' => '^.*$',
+            'pattern' => '^/.*$',
             //'anonymous' => false,
             'logout' => true,
             'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
