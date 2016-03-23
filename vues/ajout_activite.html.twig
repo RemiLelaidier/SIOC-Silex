@@ -32,24 +32,23 @@
 
                             <label>Periode</label>
                             <select id="periode" name="periode" class="form-control">
-                                {% switch activite.getPeriode() %}
-                                    {% case "stage1" %}
-                                        <option value="stage1" selected >Stage 1
-                                        <option value="stage2">Stage 2
-                                        <option value="formation">Formation
-                                    {% case "stage2" %}
-                                        <option value="stage1">Stage 1
-                                        <option value="stage2" selected >Stage 2
-                                        <option value="formation">Formation
-                                    {% case "formation" %}
-                                        <option value="stage1">Stage 1
-                                        <option value="stage2">Stage 2
-                                        <option value="formation" selected >Formation
-                                    {% default %}
-                                        <option value="stage1">Stage 1
-                                        <option value="stage2">Stage 2
-                                        <option value="formation">Formation
-                                {% endswitch %}
+                                {% if activite.getPeriode() == "stage1" %}
+                                    <option value="stage1" selected >Stage 1
+                                    <option value="stage2">Stage 2
+                                    <option value="formation">Formation
+                                {% elseif activite.getPeriode() == "stage2" %}
+                                    <option value="stage1">Stage 1
+                                    <option value="stage2" selected >Stage 2
+                                    <option value="formation">Formation
+                                {% elseif activite.getPeriode() == "formation" %}
+                                    <option value="stage1">Stage 1
+                                    <option value="stage2">Stage 2
+                                    <option value="formation" selected >Formation
+                                {% else %}
+                                    <option value="stage1">Stage 1
+                                    <option value="stage2">Stage 2
+                                    <option value="formation">Formation
+                                {% endif %}
                             </select>
                             
                             <div class="form-group">
