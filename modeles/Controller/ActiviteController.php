@@ -68,6 +68,7 @@ class ActiviteController {
         }
         $activite -> setDebut($request->request->get('debut'));
         $activite -> setDuree($request->request->get('duree'));
+        $activite -> setPeriode($request->request->get('periode'));
         $activite -> setLibelle($request->request->get('libelle'));
         $activite -> setDescription($request->request->get('description'));
         $competences = array();

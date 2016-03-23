@@ -19,6 +19,7 @@ class Activite
     private $_id;				// Les champs de la BDD sont modelises ici
     private $_debut;
     private $_duree;
+    private $_periode;
     private $_libelle;
     private $_description;
     private $_competences;
@@ -39,6 +40,11 @@ class Activite
     public function getDuree()
     {
         return $this->_duree;
+    }
+    
+    public function getPeriode()
+    {
+        return $this->_periode;
     }
 
     public function getLibelle()
@@ -74,6 +80,11 @@ class Activite
     public function setDuree($data)
     {
             $this->_duree = $data;
+    }
+    
+    public function setPeriode($data)
+    {
+            $this->_periode = $data;
     }
 
     public function setLibelle($data)
@@ -111,6 +122,10 @@ class Activite
         if(isset($datas['act_duree']))
         {
             $this->setDuree($datas['act_duree']);
+        }
+        if(isset($datas['act_periode']))
+        {
+            $this->setPeriode($datas['act_periode']);
         }
         if(isset($datas['act_libelle']))
         {
