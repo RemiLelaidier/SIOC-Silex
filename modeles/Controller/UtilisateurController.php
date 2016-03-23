@@ -46,8 +46,6 @@ class UtilisateurController {
     public function eleveAction(Application $app)
     {
         $eleves = $app['dao.utilisateur']->findAllEleve();
-        var_dump($eleves);
-        die();
         return $app['twig']->render('eleves.html.twig', array(
             'eleves' => $eleves
         ));
