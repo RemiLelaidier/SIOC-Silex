@@ -33,7 +33,7 @@ $app->error(function(\Exception $e, $code) use($app){
             $MessageErreur = "L'acces a cette page vous a ete refuse";
             break;
         default:
-            $codeErreur = "Erreur Inconnue";
+            $codeErreur = "Inconnue";
             $MessageErreur = "Une erreur inconnue est survenue";
     }
     return $app['twig']->render('error.html.twig', array(
