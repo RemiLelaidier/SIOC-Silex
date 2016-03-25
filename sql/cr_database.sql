@@ -136,7 +136,7 @@ INSERT INTO Competence(com_reference, com_libelle, com_description ,com_obligato
 ('A4.1.7', 'Développement, utilisation ou adaptation de composants logiciels','desc', 0),
 ('A4.1.8', 'Réalisation des tests nécessaires à la validation d''éléments adaptés ou développés ','desc', 0),
 ('A4.1.9', 'Rédaction d''une documentation technique ','desc', 0),
-('A4.1.1', ' Rédaction d''une documentation d''utilisation ','desc', 0),
+('A4.1.10', ' Rédaction d''une documentation d''utilisation ','desc', 0),
 ('A4.2.1', 'Analyse et correction d''un dysfonctionnement, d''un problème de qualité de …','desc', 0),
 ('A4.2.2', 'Adaptation d''une solution applicative aux évolutions de ses composants','desc', 0),
 ('A4.2.3', 'Réalisation des tests nécessaires à la mise en production d''éléments mis à jour','desc', 0),
