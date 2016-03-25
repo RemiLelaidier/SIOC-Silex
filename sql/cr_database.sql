@@ -90,10 +90,10 @@ CREATE TABLE Associe
  *  Remplissage
  */
 INSERT INTO Competence(com_reference, com_libelle, com_description ,com_obligatoire) VALUES
-('O1', 'Participation à un projet d’évolution d’un SI (solution applicative et d’infrastructure portant prioritairement sur le domaine de spécialité du candidat)', 'desc' ,1),
-('O2', 'Prise en charge d’incidents et de demandes d’assistance liés au domaine de spécialité du candidat', 'desc' ,1),
-('O3', 'Elaboration de documents relatifs à la production et à la fourniture de services', 'desc' ,1),
-('O4', 'Productions relatives à la mise en place d’un dispositif de veille technologique et à l’étude d’une technologie, d’un composant, d’un outil ou d’une méthode', 'desc' ,1),
+('SO1', 'Participation à un projet d’évolution d’un SI (solution applicative et d’infrastructure portant prioritairement sur le domaine de spécialité du candidat)', 'desc' ,1),
+('SO2', 'Prise en charge d’incidents et de demandes d’assistance liés au domaine de spécialité du candidat', 'desc' ,1),
+('SO3', 'Elaboration de documents relatifs à la production et à la fourniture de services', 'desc' ,1),
+('SO4', 'Productions relatives à la mise en place d’un dispositif de veille technologique et à l’étude d’une technologie, d’un composant, d’un outil ou d’une méthode', 'desc' ,1),
 ('A1.1.1', 'Analyse du cahier des charges d''un service à produire', 'desc' ,0),
 ('A1.1.2', 'Étude de l''impact de l''intégration d''un service sur le système informatique','desc',0),
 ('A1.1.3', 'Étude des exigences liées à la qualité attendue d''un service','desc',0),
