@@ -21,7 +21,7 @@ $app->register(new Silex\Provider\SessionServiceProvider());
 
 /**
  * Gestion des erreurs
- */
+
 $app->error(function(\Exception $e, $code) use($app){
     switch($code){
         case 404:
@@ -41,6 +41,7 @@ $app->error(function(\Exception $e, $code) use($app){
         'MessageErreur' => $MessageErreur
     ));
 });
+ */
 
 /**
  * Sécurisation de l'application, identification et redirection login
@@ -70,7 +71,7 @@ $app['security.role_hierarchy'] = array(
 );
 
 /**
- * Definition des rôles utilisateurs
+ * Definition des regles d'acces
  */
 $app['security.access_rules'] = array(
     // Utilisateur
