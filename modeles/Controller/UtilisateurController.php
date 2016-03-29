@@ -75,6 +75,7 @@ class UtilisateurController {
         $salt = substr(md5(time()), 0, 23);
         $utilisateur = new \SIOC\donnees\Utilisateur();
         $promotion = new \SIOC\donnees\Promotion();
+        $cursus = new \SIOC\donnees\Cursus();
         if(null !== $request->request->get('id'))
         {
             $utilisateur->setId($request->request->get('id'));
@@ -89,8 +90,9 @@ class UtilisateurController {
         $utilisateur->setRole($request->request->get('role'));
         if($utilisateur->getRole() == 'ROLE_ELEVE'){
             $promotion->setId($request->request->get('promo'));
+            $cursus->setId($request->request->get('cursus'));
         }
-        $app['dao.utilisateur']->save($utilisateur, $promotion);
+        $app['dao.utilisateur']->save($utilisateur, $promotion, $cursus);
         $role = $app['security.token_storage']->getToken()->getUser()->getRole();
         if($role == "ROLE_ADMIN")
         {

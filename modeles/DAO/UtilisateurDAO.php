@@ -10,6 +10,9 @@ use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use SIOC\donnees\Utilisateur;
 use SIOC\donnees\Promotion;
 
+use SIOC\DAO\PromotionDAO;
+use SIOC\DAO\CursusDAO;
+
 /**
  * Description of UtilisateurDAO
  *
@@ -29,6 +32,13 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
 
         if ($row)
         {
+            if($row['uti_role'] == 'ROLE_ELEVE')
+            {
+                $promotion = new PromotionDAO($this->getDb());
+                $cursus = new CursusDAO($this->getDb());
+                $row['uti_promotion'] = $promotion->findByEleve($row['uti_id']);
+                $row['uti_cursus'] = $cursus->findByEleve($row['uti_id']);
+            }
             return $this->buildDomainObject($row);
         }
     }
@@ -38,6 +48,8 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      *
      * @param none
      * @return array(\SIOC\donnees\Utilisateur)
+     * 
+     * TODO : Cursus et Promotion
      */
     public function findAll()
     {
@@ -47,6 +59,13 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         foreach($result as $row)
         {
             $utilisateurId = $row['uti_id'];
+            if($row['uti_role'] == 'ROLE_ELEVE')
+            {
+                $promotion = new PromotionDAO($this->getDb());
+                $cursus = new CursusDAO($this->getDb());
+                $row['uti_promotion'] = $promotion->findByEleve($utilisateurId);
+                $row['uti_cursus'] = $cursus->findByEleve($utilisateurId);
+            }
             $utilisateurs[$utilisateurId] = $this->buildDomainObject($row);
         }
         return $utilisateurs;
@@ -57,6 +76,8 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      *
      * @param integer $id
      * @return \SIOC\donnees\Utilisateur
+     * 
+     * TODO : Cursus et Promotion
      */
     public function findbyActivite($id)
     {
@@ -68,6 +89,13 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         $row = $this->getDb()->fetchAll($sql, array($id));
         if($row)
         {
+            if($row['uti_role'] == 'ROLE_ELEVE')
+            {
+                $promotion = new PromotionDAO($this->getDb());
+                $cursus = new CursusDAO($this->getDb());
+                $row['uti_promotion'] = $promotion->findByEleve($row['uti_id']);
+                $row['uti_cursus'] = $cursus->findByEleve($row['uti_id']);
+            }
             return $this->buildDomainObject($row);
         }
     }
@@ -77,6 +105,8 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      *
      * @param integer $id
      * @return array(\SIOC\donnees\Utilisateur)
+     * 
+     * TODO : Cursus et Promotion
      */
     public function findAllbyPromotion($id)
     {
@@ -90,6 +120,10 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         foreach($result as $row)
         {
             $eleveId = $row['uti_id'];
+            $promotion = new PromotionDAO($this->getDb());
+            $cursus = new CursusDAO($this->getDb());
+            $row['uti_promotion'] = $promotion->findByEleve($eleveId);
+            $row['uti_cursus'] = $cursus->findByEleve($eleveId);
             $eleves[$eleveId] = $this->buildDomainObject($row);
         }
         return $eleves;
@@ -100,6 +134,8 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      *
      * @param none
      * @return array(\SIOC\donnees\Utilisateur)
+     * 
+     * TODO : Cursus et Promotion
      */
     public function findAllEleve()
     {
@@ -110,6 +146,10 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         foreach($result as $row)
         {
             $eleveId = $row['uti_id'];
+            $promotion = new PromotionDAO($this->getDb());
+            $cursus = new CursusDAO($this->getDb());
+            $row['uti_promotion'] = $promotion->findByEleve($eleveId);
+            $row['uti_cursus'] = $cursus->findByEleve($eleveId);
             $eleves[$eleveId] = $this->buildDomainObject($row);
         }
         return $eleves;
@@ -192,9 +232,9 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      *         \SIOC\donnees\Promotion
      * @return none
      * 
-     * TOTEST
+     * TODO : SAUVEGARDE CURSUS
      */
-    public function save(Utilisateur $utilisateur, Promotion $promotion) {
+    public function save(Utilisateur $utilisateur, Promotion $promotion, Cursus $cursus) {
         $utilisateurData = array(
             'uti_username'  => $utilisateur->getUsername(),
             'uti_nom'       => $utilisateur->getNom(),
@@ -217,6 +257,15 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
                     'fap_promo'     => $promotion->getId()
                 );
                 $this->getDb()->insert('Faitpartie', $promotionData);
+                
+                $this->getDb()->delete('Suit', array(
+                    'sui_eleve'     => $utilisateur->getId()
+                ));
+                $cursusData = array(
+                    'sui_eleve'     => $utilisateur->getId(),
+                    'sui_cursus'    => $cursus->getId()
+                );
+                $this->getDb()->insert('Suit', $cursusData);
             }
         }
         else {
@@ -230,6 +279,12 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
                     'fap_promo'     => $promotion->getId()
                 );
                 $this->getDb()->insert('Faitpartie', $promotionData);
+                
+                $cursusData = array(
+                    'sui_eleve'     => $utilisateur->getId(),
+                    'sui_cursus'    => $cursus->getId()
+                );
+                $this->getDb()->insert('Suit', $cursusData);
             }
         }
     }

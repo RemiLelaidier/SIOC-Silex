@@ -25,6 +25,8 @@ class Utilisateur implements UserInterface
     private $_password;
     private $_salt;
     private $_role;
+    private $_promotion;
+    private $_cursus;
 
     // Accesseurs
 
@@ -67,45 +69,65 @@ class Utilisateur implements UserInterface
     {
         return $this->_role;
     }
+    
+    public function getPromotion()
+    {
+        return $this->_promotion;
+    }
+    
+    public function getCursus()
+    {
+        return $this->_cursus;
+    }
 
     public function setId($id)
     {
-            $this->_id = $id;
+        $this->_id = $id;
     }
 
     public function setUsername($data)
     {
-            $this->_nom = $data;
+        $this->_nom = $data;
     }
     
     public function setNom($data)
     {
-            $this->_username = $data;
+        $this->_username = $data;
     }
 
     public function setPrenom($data)
     {
-            $this->_prenom = $data;
+        $this->_prenom = $data;
     }
 
     public function setMail($data)
     {
-            $this->_mail = $data;
+        $this->_mail = $data;
     }
 
     public function setPassword($data)
     {
-            $this->_password = $data;
+        $this->_password = $data;
     }
     
     public function setSalt($data)
     {
-            $this->_salt = $data;
+        $this->_salt = $data;
     }
 
     public function setRole($data)
     {
-            $this->_role = $data;
+        $this->_role = $data;
+    }
+    
+    public function setPromotion($data)
+    {
+        $this->_promotion = $data;
+    }
+    
+    public function setCursus($data)
+    {
+        $this->_cursus = $data;
     }
 
     // Methodes
@@ -143,6 +165,14 @@ class Utilisateur implements UserInterface
         if(isset($datas['uti_role']))
         {
             $this->setRole($datas['uti_role']);
+        }
+        if(isset($datas['uti_promotion']))
+        {
+            $this->setPromotion($datas['uti_promotion']);
+        }
+        if(isset($datas['uti_cursus']))
+        {
+            $this->setCursus($datas['uti_cursus']);
         }
     }
 

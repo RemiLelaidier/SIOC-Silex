@@ -18,7 +18,26 @@ use SIOC\donnees\Cursus;
 class CursusDAO extends DAO
 {
     /**
-     * Creer une competence a partir d'un tuple
+     * Trouver le cursus de l'eleve
+     * 
+     * @param integer $id
+     * @return \SIOC\donnees\Cursus
+     */
+    public function findByEleve($id)
+    {
+        $sql = "SELECT C.cur_id, C.cur_libelle, C.cur_diminutif"
+                . "FROM Cursus AS C, Suit AS S"
+                . "WHERE C.cur_id = S.sui_cursus"
+                . "AND S.sui_eleve = ?";
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
+        if($row)
+        {
+            return $this->buildDomainObject($row);
+        }
+    }
+    
+    /**
+     * Creer un cursus a partir d'un tuple
      *
      * @param array $row
      * @return \SIOC\donnees\Cursus
