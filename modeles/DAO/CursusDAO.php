@@ -25,9 +25,9 @@ class CursusDAO extends DAO
      */
     public function findByEleve($id)
     {
-        $sql = "SELECT C.cur_id, C.cur_libelle, C.cur_diminutif"
-                . "FROM Cursus AS C, Suit AS S"
-                . "WHERE C.cur_id = S.sui_cursus"
+        $sql = "SELECT C.cur_id, C.cur_libelle, C.cur_diminutif "
+                . "FROM Cursus AS C, Suit AS S "
+                . "WHERE C.cur_id = S.sui_cursus "
                 . "AND S.sui_eleve = ?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
         if($row)
@@ -44,7 +44,15 @@ class CursusDAO extends DAO
      */
     public function findByCompetence($id)
     {
-        
+        $sql = "SELECT C.cur_id, C.cur_libelle, C.cur_diminutif "
+                . "FROM Cursus AS C, Estdans AS E "
+                . "WHERE C.cur_id = E.est_cursus "
+                . "AND E.est_competence = ?";
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
+        if($row)
+        {
+            return $this->buildDomainObject($row);
+        }
     }
     
     /**
