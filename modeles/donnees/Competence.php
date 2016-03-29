@@ -21,6 +21,7 @@ class Competence
     private $_libelle;
     private $_description;
     private $_obligatoire;
+    private $_cursus;
 
     // Accesseurs
 
@@ -48,6 +49,11 @@ class Competence
     {
         return $this->_obligatoire;
     }
+    
+    public function getCursus()
+    {
+        return $this->_cursus;
+    }
 
     public function setId($id)
     {
@@ -73,6 +79,11 @@ class Competence
     {
             $this->_obligatoire = $data;
     }
+    
+    public function setCursus($data)
+    {
+        $this->_cursus = $data;
+    }
 
     // Methodes
 
@@ -97,6 +108,10 @@ class Competence
         if(isset($datas['com_obligatoire']))
         {
             $this->setObligatoire($datas['com_obligatoire']);
+        }
+        if(isset($datas['com_cursus']))
+        {
+            $this->setCursus($datas['com_cursus']);
         }
     }
 

@@ -37,6 +37,17 @@ class CursusDAO extends DAO
     }
     
     /**
+     * Trouver le cursus associe a une competence
+     * 
+     * @param integer $id
+     * @return \SIOC\donnees\Cursus
+     */
+    public function findByCompetence($id)
+    {
+        
+    }
+    
+    /**
      * Creer un cursus a partir d'un tuple
      *
      * @param array $row
