@@ -22,6 +22,8 @@ class HomeController {
         if ($app['security.authorization_checker']->isGranted('ROLE_ELEVE')) 
         {
             $id = $app['security.token_storage']->getToken()->getUser()->getId();
+            var_dump($app['security.token_storage']->getToken()->getUser());
+            die();
             $professeurs = $app['dao.utilisateur']->findAllProfesseur();
             $activites = $app['dao.activite']->findAllbyUtilisateur($id);
             $competences = $app['dao.competence']->findAll();
