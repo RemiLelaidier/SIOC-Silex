@@ -1,2 +1,0 @@
-insert into Utilisateur values
-(1, 'mail@mail.com','username', 'nom', 'prenom', 'L2nNR5hIcinaJkKR+j4baYaZjcHS0c3WX2gjYF6Tmgl1Bs+C9Qbr+69X8eQwXDvw0vp73PrcSeT0bGEW5+T2hA==', 'YcM=A$nsYzkyeDVjEUa7W9K', 'ROLE_USER');

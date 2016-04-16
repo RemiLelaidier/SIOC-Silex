@@ -1,31 +1,120 @@
 <?php
 
-use Symfony\Component\HttpFoundation\Request;
+/**
+ *  HomeController
+ */
+// Route page d'acceuil
+$app->get('/', "SIOC\Controller\HomeController::homeAction")
+        ->bind('acceuil');
 
-// Login form
-$app->get('/login', function(Request $request) use ($app) {
-    return $app['twig']->render('login.html.twig', array(
-        'error'         => $app['security.last_error']($request),
-        'last_username' => $app['session']->get('_security.last_username'),
-    ));
-})->bind('login');
+// Route page de connexion
+$app->get('/login', "SIOC\Controller\HomeController::loginAction")
+        ->bind('login');
 
-// Home page
-$app->get('/activite', function () use ($app) {
-    $activites = $app['dao.activite']->findAll();
-    return $app['twig']->render('activite.html.twig', array('activites' => $activites));
-});
+// Route Tableau
+$app->get('/tableau', "SIOC\Controller\HomeController::tableauAction")
+        ->bind('tableau');
 
-$app->get('/competence', function () use ($app) {
-    $competences = $app['dao.competence']->findAll();
-    return $app['twig']->render('competence.html.twig', array('competences' => $competences));
-});
+/**
+ *  ActiviteController
+ */
+// Route page activite
+$app->get('/activite', "SIOC\Controller\ActiviteController::activiteAction")
+        ->bind('activite');
 
-$app->get('/promotion', function () use ($app) {
-    $promotions = $app['dao.activite']->findAll();
-    return $app['twig']->render('promotion.html.twig', array('promotions' => $promotions));
-});
+// Route Ajout Activite
+$app->get('/activite/new', "SIOC\Controller\ActiviteController::activiteAjoutAction")
+        ->bind('ajout_activite');
 
-$app->get('/', function () use($app) {
-    return $app['twig']->render('acceuil.html.twig');
-});
+// Route Activite{id}
+$app->get('/activite/{id}', "SIOC\Controller\ActiviteController::activiteIdAction")
+        ->bind('activite_');
+
+// Route insertion Activite
+$app->post('/activite', "SIOC\Controller\ActiviteController::activiteInsertAction");
+
+// Route Suppression Activite
+$app->get('/activite/sup/{id}', "SIOC\Controller\ActiviteController::activiteSupAction")
+        ->bind('activite_sup_');
+
+// Route Edition Activite
+$app->get('/activite/edit/{id}', "SIOC\Controller\ActiviteController::activiteEditAction")
+        ->bind('activite_edit_');
+
+/**
+ *  UtilisateurController
+ */
+// Route Utilisateur
+$app->get('/utilisateur', "SIOC\Controller\UtilisateurController::utilisateurAction")
+        ->bind('utilisateur');
+
+// Route Professeur
+$app->get('/professeur', "SIOC\Controller\UtilisateurController::professeurAction")
+        ->bind('professeur');
+
+// Route Eleve
+$app->get('/eleve', "SIOC\Controller\UtilisateurController::eleveAction")
+        ->bind('eleve');
+
+// Route Ajout Utilisateur
+$app->get('/utilisateur/new', "SIOC\Controller\UtilisateurController::utilisateurAjoutAction")
+        ->bind('ajout_utilisateur');
+
+// Route Insertion Utilisateur
+$app->post('/utilisateur', "SIOC\Controller\UtilisateurController::utilisateurInsertAction");
+
+// Route Suppression Utilisateur
+$app->get('/utilisateur/sup/{id}', "SIOC\Controller\UtilisateurController::utilisateurSupAction")
+        ->bind('utilisateur_sup_');
+
+// Route Edition Utilisateur
+$app->get('/utilisateur/edit/{id}', "SIOC\Controller\UtilisateurController::utilisateurEditAction")
+        ->bind('utilisateur_edit_');
+
+/**
+ *  CompetenceController
+ */
+//Route Competence
+$app->get('/competence', "SIOC\Controller\CompetenceController::competenceAction")
+        ->bind('competence');
+
+// Route Ajout Competence
+$app->get('/competence/new', "SIOC\Controller\CompetenceController::competenceAjoutAction")
+        ->bind('ajout_competence');
+
+// Route Insert Competence
+$app->post('/competence', "SIOC\Controller\CompetenceController::competenceInsertAction");
+
+// Route Suppression Competence
+$app->get('/competence/sup/{id}', "SIOC\Controller\CompetenceController::competenceSupAction")
+        ->bind('competence_sup_');
+
+// Route Edition Competence
+$app->get('/competence/edit/{id}', "SIOC\Controller\CompetenceController::competenceEditAction")
+        ->bind('competence_edit_');
+
+/**
+ *  PromotionController
+ */
+// Route Promotion
+$app->get('/promotion', "SIOC\Controller\PromotionController::promotionAction")
+        ->bind('promotion');
+
+// Route Ajout Promotion
+$app->get('/promotion/new', "SIOC\Controller\PromotionController::promotionAjoutAction")
+        ->bind('ajout_promotion');
+
+// Route Insert Promotion
+$app->post('/promotion', "SIOC\Controller\PromotionController::promotionInsertAction");
+
+// Route Promotion{id}
+$app->get('/promotion/{id}', "SIOC\Controller\PromotionController::promotionIdAction")
+        ->bind('promotion_');
+
+// Route Suppression Promotion
+$app->get('/promotion/sup/{id}', "SIOC\Controller\PromotionController::promotionSupAction")
+        ->bind('promotion_sup_');
+
+// Route Edition Promotion
+$app->get('/promotion/edit/{id}', "SIOC\Controller\PromotionController::promotionEditAction")
+        ->bind('promotion_edit_');

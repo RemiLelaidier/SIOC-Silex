@@ -1,6 +1,6 @@
 <?php
 
-namespace SIOC\modeles\donnees;
+namespace SIOC\donnees;
 
 /**
  * Created by PhpStorm.
@@ -12,27 +12,14 @@ namespace SIOC\modeles\donnees;
  *            -v1.2 : Gestion des exceptions
  * Projet : SIOC
  */
-class Promotion extends Exception
+class Promotion
 {
     // Attributs
 
     private $_id;				// Les champs de la BDD sont modelises ici
     private $_libelle;
     private $_annee;
-
-    // Constantes
-
-    const TAILLE_LIBELLE = 45;		// Les constantes de taille font references
-    const MIN_ANNEE = 2013;			// a la taille des champs dans la BDD
-
-    // Constructeur
-
-    public function __construct()
-    {
-        $this->_id = NULL;
-        $this->_libelle = "Libelle vide";
-        $this->_annee = 0;
-    }
+    private $_eleves;
 
     // Accesseurs
 
@@ -50,41 +37,30 @@ class Promotion extends Exception
     {
         return $this->_annee;
     }
+    
+    public function getEleves()
+    {
+        return $this->_eleves;
+    }
 
     public function setId($data)
     {
-        if(is_int($data))
-        {
             $this->_id = $data;
-        }
-        else
-        {
-            throw new Exception("Promotion -> setID -> mauvais type argument");
-        }
     }
 
     public function setLibelle($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_LIBELLE)
-        {
             $this->_libelle = $data;
-        }
-        else
-        {
-            throw new Exception("Promotion -> setLibelle -> mauvais type argument ou trop long");
-        }
     }
 
     public function setAnnee($data)
     {
-        if(is_int($data) && $data >= self::MIN_ANNEE)
-        {
             $this->_annee = $data;
-        }
-        else
-        {
-            throw new Exception("Promotion -> setAnnee -> mauvais type argument ou trop petit");
-        }
+    }
+    
+    public function setEleves($data)
+    {
+            $this->_eleves = $data;
     }
 
     // Methodes
@@ -103,13 +79,9 @@ class Promotion extends Exception
         {
             $this->setAnnee($datas['pro_annee']);
         }
-    }
-
-    public function toString()
-    {
-        $resu = "ID 	 -> ". $this->getId() ."\r";
-        $resu .= "Libelle -> ". $this->getLibelle() ."\r";
-        $resu .= "Annee   -> ". $this->getAnnee();
-        return $resu;
+        if(isset($datas['pro_eleves']))
+        {
+            $this->setEleves($datas['pro_eleves']);
+        }
     }
 }

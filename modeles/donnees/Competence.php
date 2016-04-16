@@ -1,6 +1,6 @@
 <?php
 
-namespace SIOC\modeles\donnees;
+namespace SIOC\donnees;
 
 /**
  * Created by PhpStorm.
@@ -12,7 +12,7 @@ namespace SIOC\modeles\donnees;
  *            -v1.2 : Gestion des exceptions
  * Projet : SIOC
  */
-class Competence extends Exception
+class Competence
 {
     // Attributs
 
@@ -21,23 +21,7 @@ class Competence extends Exception
     private $_libelle;
     private $_description;
     private $_obligatoire;
-
-    // Constantes
-
-    const TAILLE_REFERENCE = 10;		// Les constantes de taille font references
-    const TAILLE_LIBELLE = 35;			// a la taille des champs dans la BDD
-    const TAILLE_DESCRIPTION = 350;
-
-    // Constructeur
-
-    public function __construct()
-    {
-        $this->_id = NULL;
-        $this->_reference = NULL;
-        $this->_libelle = "Competence x";
-        $this->_description = "description";
-        $this->_obligatoire = FALSE;
-    }
+    private $_cursus;
 
     // Accesseurs
 
@@ -65,64 +49,40 @@ class Competence extends Exception
     {
         return $this->_obligatoire;
     }
+    
+    public function getCursus()
+    {
+        return $this->_cursus;
+    }
 
     public function setId($id)
     {
-        if(is_int($id))
-        {
             $this->_id = $id;
-        }
-        else
-        {
-            throw new Exception("Competence -> setID -> mauvais type argument");
-        }
     }
 
     public function setReference($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_REFERENCE)
-        {
             $this->_reference = $data;
-        }
-        else
-        {
-            throw new Exception("Competence -> setReference -> mauvais type argument ou trop long");
-        }
     }
 
     public function setLibelle($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_LIBELLE)
-        {
             $this->_libelle = $data;
-        }
-        else
-        {
-            throw new Exception("Competence -> setLibelle -> mauvais type argument ou trop long");
-        }
     }
 
     public function setDescription($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_DESCRIPTION)
-        {
             $this->_description = $data;
-        }
-        else
-        {
-            throw new Exception("Competence -> setDescription -> mauvais type argument ou trop long");
-        }
     }
+    
     public function setObligatoire($data)
     {
-        if(is_bool($data))
-        {
             $this->_obligatoire = $data;
-        }
-        else
-        {
-            throw new Exception("Competence -> setObligatoire -> mauvais type argument");
-        }
+    }
+    
+    public function setCursus($data)
+    {
+        $this->_cursus = $data;
     }
 
     // Methodes
@@ -148,6 +108,10 @@ class Competence extends Exception
         if(isset($datas['com_obligatoire']))
         {
             $this->setObligatoire($datas['com_obligatoire']);
+        }
+        if(isset($datas['com_cursus']))
+        {
+            $this->setCursus($datas['com_cursus']);
         }
     }
 

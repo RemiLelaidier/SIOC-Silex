@@ -1,20 +1,136 @@
-{# empty Twig template #}
 {% extends "layout.html.twig" %}
 
 {% block content %}
     <section class="content-header">
-    <h1>
-        Activites
-        <small>liste</small>
-    </h1>
-        </section>
+                <h1>Bienvenue,<small>{{ app.user.nom }} {{ app.user.prenom }}</small></h1>
+    </section>
 
         <!-- Main content -->
-        <section class="content">
+    <section class="content">
+        <div class="box-body">
           <div class="row">
-            <div class="col-xs-12">
-                <h1>Bienvenue</h1>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </section><!-- /.content -->
+             <div class="col-lg-4 col-xs-6">
+                 <!-- Nbre d'activités -->
+                 <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>{{ activites|length }}</h3>
+                        <p>Nombre d'activités enregistrées</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="{{ path('activite') }}" class="small-box-footer">
+                        Pour en savoir plus <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+             </div>
+             <div class="col-lg-4 col-xs-6">
+                 <!-- Competences "%" -->
+                 <div class="small-box bg-red">
+                     <div class="inner">
+                         <h3>{{ nbComp }} / {{ competences|length }}<sup style="font-size: 20px"></sup></h3>
+                         <p>Competences acquises</p>
+                     </div>
+                     <div class="icon">
+                         <i class="ion ion-pie-graph"></i>
+                     </div>
+                        <a href="{{ path('competence') }}" class="small-box-footer">
+                              Pour en savoir plus <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                 </div>
+             </div>
+             <div class="col-lg-4 col-xs-6">
+                  <!-- Promotion -->
+                  <div class="small-box bg-blue">
+                      <div class="inner">
+                          <h3>{{ promotion.getLibelle() }}<sup style="font-size: 20px"></sup></h3>
+                          <p>{{ promotion.getAnnee() }}</p>
+                      </div>
+                      <div class="icon">
+                          <i class="ion ion-document-text"></i>
+                      </div>
+                      <a class="small-box-footer">
+                          Services informatique aux organisations
+                      </a>
+                  </div>
+             </div>
+          </div>
+          <div class="row">
+                  <!-- Email -->
+                  <div class="col-md-6">
+                    <div class="box box-info" style="position: relative;">
+                    <div class="box-header ui-sortable-handle">
+                        <i class="fa fa-envelope"></i>
+
+                        <h3 class="box-title">Des questions ? Contactez votre professeur !</h3>
+                    </div>
+
+
+                    <div class="box-body">
+                        <form action="#" method="post">
+                            <!-- Destinataire -->
+                            <div class="form-group">
+                                <select class="form-control">
+                                    {% for professeur in professeurs %}
+                                        <option value="{{ professeur.getMail() }}">{{ professeur.getNom() }} {{ professeur.getPrenom() }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <!-- Objet -->
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="subject" placeholder="Sujet">
+                            </div>
+                            <!-- Editeur de texte -->
+                            <div>
+                                <ul class="wysihtml5-toolbar" >
+                                    <li class="dropdown">
+                                        <a class="btn btn-default dropdown-toggle " data-toggle="dropdown">
+
+                                            <span class="glyphicon glyphicon-font"></span>
+
+                                            <span class="current-font">Normal text</span>
+                                            <b class="caret"></b>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="p" tabindex="-1" href="javascript:;" unselectable="on">Normal text</a></li>
+                                            <li><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1" tabindex="-1" href="javascript:;" unselectable="on">Heading 1</a></li>
+                                            <li><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2" tabindex="-1" href="javascript:;" unselectable="on">Heading 2</a></li>
+                                            <li><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h3" tabindex="-1" href="javascript:;" unselectable="on">Heading 3</a></li>
+                                            <li><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h4" tabindex="-1" href="javascript:;" unselectable="on">Heading 4</a></li>
+                                            <li><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h5" tabindex="-1" href="javascript:;" unselectable="on">Heading 5</a></li>
+                                            <li><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h6" tabindex="-1" href="javascript:;" unselectable="on">Heading 6</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <div class="btn-group">
+                                            <a class="btn  btn-default" data-wysihtml5-command="bold" title="CTRL+B" tabindex="-1" href="javascript:;" unselectable="on">Bold</a>
+                                            <a class="btn  btn-default" data-wysihtml5-command="italic" title="CTRL+I" tabindex="-1" href="javascript:;" unselectable="on">Italic</a>
+                                            <a class="btn  btn-default" data-wysihtml5-command="underline" title="CTRL+U" tabindex="-1" href="javascript:;" unselectable="on">Underline</a>
+
+                                            <a class="btn  btn-default" data-wysihtml5-command="small" title="CTRL+S" tabindex="-1" href="javascript:;" unselectable="on">Small</a>
+
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="btn  btn-default" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="blockquote" data-wysihtml5-display-format-name="false" tabindex="-1" href="javascript:;" unselectable="on">
+
+                                            <span class="glyphicon glyphicon-quote"></span>
+
+                                        </a>
+                                    </li>
+                                </ul><textarea class="textarea" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid rgb(221, 221, 221); padding: 10px; display: none;" placeholder="Message"></textarea><input type="hidden" name="_wysihtml5_mode" value="1"><iframe class="wysihtml5-sandbox" security="restricted" allowtransparency="true" frameborder="0" width="0" height="0" marginwidth="0" marginheight="0" style="display: inline-block; border-collapse: separate; border: 1px solid rgb(221, 221, 221); clear: none; float: none; margin: 0px; outline: rgb(51, 51, 51) none 0px; outline-offset: 0px; padding: 10px; position: static; top: auto; left: auto; right: auto; bottom: auto; z-index: auto; vertical-align: baseline; text-align: start; box-sizing: border-box; box-shadow: none; border-radius: 0px; width: 100%; height: 125px; background-color: rgb(255, 255, 255);"></iframe>
+                            </div> <!-- Editeur de texte -->
+                        </form>
+                    </div>
+                    <div class="box-footer clearfix">
+                        <button type="button" class="pull-right btn btn-default" id="sendEmail">Envoyer
+                            <i class="fa fa-arrow-circle-right"></i></button>
+                    </div>
+                </div><!-- /div Email -->
+                  </div>
+          </div>
+
+          </div><!-- /.col -->
+        </div><!-- box-body -->
+    </section><!-- /.content -->
 {% endblock %}

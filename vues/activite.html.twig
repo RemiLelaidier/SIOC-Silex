@@ -1,8 +1,3 @@
-<!--
-    
-    Ici il faut afficher les activites
-
--->
 {% extends "layout.html.twig" %}
 
 {% block content %}
@@ -10,6 +5,8 @@
     <h1>
         Activites
         <small>liste</small>
+        <a href="{{ path('ajout_activite') }}" type="button" style="float:right;margin-left:10px" class="btn bg-orange btn-flat"><i class="fa fa-plus"></i><span style="margin:3px;">Ajouter</span></a>
+        <a href="{{ path('tableau') }}" type="button" style="float:right;" class="btn bg-green btn-flat"><i class="fa fa-plus"></i><span style="margin:3px;">Exporter</span></a>
     </h1>
         </section>
 
@@ -26,30 +23,53 @@
                     <thead>
                       <tr>
                         <th>Numero</th>
+                        <th>Periode</th>
                         <th>Date debut</th>
                         <th>Duree</th>
                         <th>Libelle</th>
                         <th>Description</th>
+                        <th>Competences</th>
+                        {% if is_granted('ROLE_ELEVE') %}
+                            <th style="width:60px;">Action</th>
+                        {% endif %}
                       </tr>
                     </thead>
                     <tbody>
                         {% for activite in activites %}
                           <tr>
-                            <th>{{ activite._id }}</th>
-                            <th>{{ activite._debut }}</th>
-                            <th>{{ activite._duree }}</th>
-                            <th>{{ activite._libelle }}</th>
-                            <th>{{ activite._description }}</th>
+                            <th>{{ activite.getId() }}</th>
+                            <th>{{ activite.getPeriode() }}</th>
+                            <th>{{ activite.getDebut() }}</th>
+                            <th>{{ activite.getDuree() }}</th>
+                            <th>{{ activite.getLibelle() }}</th>
+                            <th>{{ activite.getDescription() }}</th>
+                            <th>{% for competence in activite.getCompetences() %}
+                                 {{  competence.getReference() }}
+                              {%  endfor %}
+                            </th>
+                            {% if is_granted('ROLE_ELEVE') %}
+                                <th style="width:60px; text-align:center;" >
+                                    <div class="btn-group">
+                                        <a href="{{ path('activite_edit_', { 'id' : activite.getId() }) }}" type="button" title="Modifier" class="btn btn-warning btn-flat" style="margin-right:5px;"><i class="fa fa-pencil" style="width:10px;"></i></a>
+                                        <a href="{{ path('activite_sup_', { 'id' : activite.getId() }) }}" type="button" title="Supprimer"  class="btn btn-danger btn-flat"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </th>
+                            {% endif %}
                           </tr>
                         {% endfor %}
                     </tbody>
                     <tfoot>
                       <tr>
                         <th>Numero</th>
+                        <th>Periode</th>
                         <th>Date debut</th>
                         <th>Duree</th>
                         <th>Libelle</th>
                         <th>Description</th>
+                        <th>Competences</th>
+                        {% if is_granted('ROLE_ELEVE') %}
+                            <th>Action</th>
+                        {% endif %}
                       </tr>
                     </tfoot>
                   </table>

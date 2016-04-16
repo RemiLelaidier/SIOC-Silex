@@ -1,0 +1,60 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+<section class="content-header">
+    <h1>
+        Promotions
+        <small>Voir</small>
+    </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">Liste des eleves dans la promotion : <bold>{{ promotion.getLibelle() }}</bold></h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>Numero</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Username</th>
+                        <th style="width:60px;">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for eleve in promotion.getEleves() %}
+                          <tr>
+                            <th>{{ eleve.getId() }}</th>
+                            <th>{{ eleve.getNom() }}</th>
+                            <th>{{ eleve.getPrenom() }}</th>
+                            <th>{{ eleve.getUsername() }}</th>
+                            <th style="width:60px; text-align:center;" >
+                                  <div class="btn-group">
+                                      <a href="{{ path('activite_', { 'id': eleve.getId() }) }}" title="Voir" type="button" style="margin-right:2px; margin-top:0px;" class="btn btn-success btn-flat"><i class="fa fa-eye"></i></a>
+                                  </div>
+                            </th>
+                          </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>Numero</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Username</th>
+                        <th>Action</th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </section><!-- /.content -->
+{% endblock %}

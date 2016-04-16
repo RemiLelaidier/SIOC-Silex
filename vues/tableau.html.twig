@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+
+<link rel="stylesheet" href="{{ app.request.basepath }}/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="{{ app.request.basepath }}/bootstrap/css/bootstrap.min.css">
+
+</head>
+
+{% block content %}
+ <body style="width: 5300px;">
+  <div style="margin-left:15px; width:4800px; font-size: 15px;">
+    <div style="align-content: center;">
+
+        <strong><h1 style="text-align: center;">BTS SERVICES INFORMATIQUES AUX ORGANISATIONS - SESSION  - TABLEAU DE COMPETENCES</h1></strong>
+         <div>
+           <h1><span style="margin-right:15px;"> <strong>NOM et Prénom du candidat :</strong></span><i style="margin-right:1500px;">{{ app.user.nom }} {{ app.user.prenom }}</i><Strong><span>Parcours SLAM</span></Strong> <span style="margin-left: 1500px;">N° du candidat :</span></h1>
+         </div>
+    </div>
+    <div style="align-content: center;">
+        <table border="1">
+            <tr>
+                <th></th>
+                <th colspan="4" style="text-align: center;"> Situations Obligatoires </th>
+                <th colspan="58" style="text-align: center"> Competences mises en oeuvre </th>
+            </tr>
+            <tr>
+                <td style="text-align: center;"> <div style="margin-left:15px; margin-right:15px;"> <strong> <br>Situations professionnelle</br> <br>(intitulé et liste des documents et productions associés)</br> </strong> </div> </td>
+            {% for competence in competences %}
+                <td class="tableau-vertical-th" title="{{ competence.getLibelle() }}"><div class="tableau-vertical-div"><p style="text-overflow: ellipsis;">{{ competence.getReference() }}-{{ competence.getLibelle() }}</p></div></td>
+            {% endfor %}
+            </tr>
+            <tr>
+                <th colspan="62"><span style="text-align: center;"><h3><strong>Situations vécues en Formation</strong></h3></span></th>
+            </tr>
+            {% for activite in activites if activite.getPeriode == "formation" %}
+
+                <tr>
+                    <td> {{ activite.getLibelle() }} </td>
+                    {% for competence in competences %}
+                        <td>
+                            {% for compAct in activite.getCompetences() %}
+                                {% if compAct.getId() == competence.getId() %}
+                                    <h1 style="margin-left:23px;"><strong>X</strong></h1>
+                                {% else %}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            <tr>
+                <th colspan="62"><span style="text-align: center;"><h3><strong> 1er Stage </strong></h3></span></th>
+            </tr>
+            {% for activite in activites if activite.getPeriode == "stage1" %}
+                <tr>
+                    <td> {{ activite.getLibelle() }} </td>
+                    {% for competence in competences %}
+                        <td style="text-align: center;">
+                            {% for compAct in activite.getCompetences() %}
+                                {% if compAct.getId() == competence.getId() %}
+                                    <h1><strong>X</strong></h1>
+                                {% else %}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            <tr>
+                <th colspan="62"><span style="text-align: center;"><h3><strong> 2eme Stage </strong></h3></span></th>
+            </tr>
+            {% for activite in activites if activite.getPeriode == "stage2" %}
+                <tr>
+                    <td> {{ activite.getLibelle() }} </td>
+                        {% for competence in competences %}
+                        <td>
+                            {% for compAct in activite.getCompetences() %}
+                                {% if compAct.getId() == competence.getId() %}
+                                   <h1 style="margin-left:23px;"><strong>X</strong></h1>
+                                {% else %}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+  </div>
+</body>
+{% endblock %}

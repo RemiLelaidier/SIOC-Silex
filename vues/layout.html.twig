@@ -11,6 +11,8 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="{{ app.request.basepath }}/bootstrap/css/bootstrap.min.css">
+    <!-- Editors & Fonts [ Email ] -->
+    <link rel="stylesheet" href="{{ app.request.basepath }}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -32,11 +34,10 @@
   </head>
   <body class="hold-transition skin-yellow sidebar-mini">
     <div class="wrapper">
-    {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="#" class="logo">  {# Retour acceuil #}
+        <a href="{{ path('acceuil') }}" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>S</b>IOC</span>
           <!-- logo for regular state and mobile devices -->
@@ -49,10 +50,20 @@
           </a>
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a class="dropdown-toggle">
+                  <span class="hidden-xs"><b>{{ app.user.username }}</b></span>
+                </a>
+              </li>
               <li>
-              <a href="{{ path('logout') }}" class="dropdown">
+                {% if app.user %}
+                  <a href="{{ path('logout') }}" class="dropdown">
+                {% else %}
+                  <a href="{{ path('login') }}" class="dropdown">
+                {% endif %}
                 <i class="fa fa-power-off"></i>
-              </a>
+                  </a>
+                  </a>
              </li>
             </ul>
           </div>
@@ -65,66 +76,48 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MENU</li>
-            <li class="active treeview">
-              <a href="#">
-                <i class="fa fa-group"></i> <span>Clients</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li class="active"><a href="./clientsvue.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="./clientsadd.php"><i class="fa fa-plus-square-o"></i> Ajouter</a></li>
-		<!--<li><a href="./clientssup.php"><i class="fa fa-minus-square-o"></i> Supprimer</a></li>-->
-              </ul>
-            </li>
+              <li class="treeview">
+                  <a href="/">
+                      <i class="fa fa-home"></i> <span>Accueil</span></i>
+                  </a>
+              </li>
+            {% if is_granted('ROLE_ELEVE') %}
             <li class="treeview">
-              <a href="#">
-                  <i class="fa fa-usd"></i> <span>Achats</span> <i class="fa fa-angle-left pull-right"></i>
+              <a href="{{ path('activite') }}">
+                <i class="fa fa-wrench"></i> <span>Activités</span></i>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="../achats/achatsvue.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="../achats/achatsadd.php"><i class="fa fa-plus-square-o"></i> Ajouter</a></li>
-		<!--<li><a href="../achats/achatssup.php"><i class="fa fa-minus-square-o"></i> Supprimer</a></li>-->
-              </ul>
             </li>
+            {% endif %}
             <li class="treeview">
-              <a href="#">
-                <i class="fa fa-copyright"></i> <span>Produits</span> <i class="fa fa-angle-left pull-right"></i>
+              <a href="{{ path('competence') }}">
+                <i class="fa fa-graduation-cap"></i> <span>Compétences</span></i>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="../produits/produitsvue.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="../produits/produitsadd.php"><i class="fa fa-plus-square-o"></i> Ajouter</a></li>
-		<!--<li><a href="../produits/produitssup.php"><i class="fa fa-minus-square-o"></i> Supprimer</a></li>-->
-              </ul>
             </li>
+            {% if is_granted('ROLE_PROF') %}
             <li class="treeview">
-              <a href="#">
-                <i class="fa fa-trademark"></i> <span>Marques</span> <i class="fa fa-angle-left pull-right"></i>
+              <a href="{{ path('promotion') }}">
+                <i class="fa fa-users"></i> <span>Promotions</span>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="../marques/marquesvue.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="../marques/marquesadd.php"><i class="fa fa-plus-square-o"></i> Ajouter</a></li>
-		<!--<li><a href="../marques/marquessup.php"><i class="fa fa-minus-square-o"></i> Supprimer</a></li>-->
-              </ul>
             </li>
+            {% endif %}
+            <!-- Administration -->
+            {% if is_granted('ROLE_PROF') %}
             <li class="treeview">
-              <a href="#">
-                <i class="fa fa-calendar"></i> <span>Rendez Vous</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="../rdv/rdvvue.php"><i class="fa fa-eye"></i> Voir</a></li>
-                <li><a href="../rdv/rdvadd.php"><i class="fa fa-plus-square-o"></i> Ajouter</a></li>
-		<!--<li><a href="../rdv/rdvsup.php"><i class="fa fa-minus-square-o"></i> Supprimer</a></li>-->
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-signal"></i> <span>Statistiques</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-            </li>
+                  <a href=""><i class="fa fa-user-secret"></i><span>Administration</span> <i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
+                      <li><a href="{{ path ('ajout_utilisateur') }}"><i class="fa fa-user-plus"></i>Ajouter</a></li>
+                      {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path ('utilisateur') }} "><i class="fa fa-user"></i>Utilisateurs</a></li>
+                        <li><a href="{{ path ('professeur') }} "><i class="fa fa-user"></i>Professeurs</a></li>
+                      {% endif %}
+                      <li><a href="{{ path ('eleve') }} "><i class="fa fa-user"></i>Eleves</a></li>
+                  </ul>
+              </li>
+            {% endif %}
           </ul>
         </section>
         <!-- /.sidebar -->
       </aside>
-      {% endif %}
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->

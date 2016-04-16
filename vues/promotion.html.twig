@@ -1,1 +1,63 @@
-{# empty Twig template #}
+{% extends "layout.html.twig" %}
+
+
+{% block content %}
+<section class="content-header">
+    <h1>
+        Promotions
+        <small>ajout</small><a href="{{ path('ajout_promotion') }}" type="button" style="float:right;margin:-2px" class="btn bg-orange btn-flat margin"><i class="fa fa-plus"></i><span style="margin:3px;">Ajouter</span></a>
+    </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box box-warning">
+                <div class="box-header">
+                  <h3 class="box-title">Voici les differentes Promotions</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>Numero</th>
+                        <th>Annee</th>
+                        <th>Libelle</th>
+                        <th>Nb d'eleves</th>
+                        <th style="width:118px;">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for promotion in promotions %}
+                          <tr>
+                            <th>{{ promotion.getId() }}</th>
+                            <th>{{ promotion.getAnnee() }}</th>
+                            <th>{{ promotion.getLibelle() }}</th>
+                            <th>{{ promotion.getEleves|length }}</th>
+                            <th style="width:100px; text-align:center;" >
+                                  <div class="btn-group" style="width:118px;">
+                                      <a href="{{ path('promotion_', { 'id': promotion.getId() }) }}" title="Voir" type="button" style="margin-right:2px; margin-top:0px;" class="btn btn-success btn-flat"><i class="fa fa-eye"></i></a>
+                                      <a href="{{ path('promotion_edit_', { 'id': promotion.getId() }) }}" title="Modifier" type="button" style="margin-right:2px;" class="btn btn-warning btn-flat"><i class="fa fa-pencil"></i></a>
+                                      <a href="{{ path('promotion_sup_', { 'id': promotion.getId() }) }}" title="Supprimer" type="button" ; style="margin-top:0px;" class="btn btn-danger btn-flat"><i class="fa fa-times"></i></a>
+                                  </div>
+                            </th>
+                          </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>Numero</th>
+                        <th>Annee</th>
+                        <th>Libelle</th>
+                        <th>Nb d'eleves</th>
+                        <th>Action</th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </section><!-- /.content -->
+{% endblock %}

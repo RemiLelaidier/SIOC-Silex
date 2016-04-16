@@ -1,0 +1,117 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <section class="content-header">
+        <h1>
+            Formulaire d'ajout
+            <small>Activites</small>
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-warning">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Ajouter une nouvelle activité</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <form role="form" method="POST" action={{ path('activite') }}>
+                    {% if activite is defined %}
+                        <div class="form-group"> 
+                            
+                            <input type="hidden" id="id" name="id" class="form-control" value="{{ activite.getId() }}">
+                            
+                            <label>Date de Debut</label>
+                            <input type="date"  id="debut" name="debut" class="form-control" value="{{ activite.getDebut() }}">
+                      
+                            <label style=" margin: 5px;">Duree</label>
+                            <input type="text"  id="duree" name="duree" class="form-control" value="{{ activite.getDuree() }}">
+
+                            <label>Libelle</label>
+                            <input type="text"  id="libelle" name="libelle" class="form-control" value="{{ activite.getLibelle() }}">
+
+                            <label>Periode</label>
+                            <select id="periode" name="periode" class="form-control">
+                                {% if activite.getPeriode() == "stage1" %}
+                                    <option value="stage1" selected >Stage 1
+                                    <option value="stage2">Stage 2
+                                    <option value="formation">Formation
+                                {% elseif activite.getPeriode() == "stage2" %}
+                                    <option value="stage1">Stage 1
+                                    <option value="stage2" selected >Stage 2
+                                    <option value="formation">Formation
+                                {% elseif activite.getPeriode() == "formation" %}
+                                    <option value="stage1">Stage 1
+                                    <option value="stage2">Stage 2
+                                    <option value="formation" selected >Formation
+                                {% else %}
+                                    <option value="stage1">Stage 1
+                                    <option value="stage2">Stage 2
+                                    <option value="formation">Formation
+                                {% endif %}
+                            </select>
+                            
+                            <div class="form-group">
+                                <label>Competence(s) Associée(s)</label><br/>
+                                    {% for competence in competences %}
+                                        <input type="checkbox" name="competences[]" value="{{ competence.getId() }}" 
+                                        {% for compAct in activite.getCompetences() %}
+                                            {% if compAct.getId() == competence.getId() %}
+                                                checked
+                                            {% endif %}
+                                        {% endfor %}
+                                        /> {{ competence.getReference()}} - {{ competence.getLibelle()}}
+                                        <br/>
+                                    {% endfor %}
+                            </div>
+
+                            <label>Description</label>
+                            <input type="text"  id="description" name="description" class="form-control" value="{{ activite.getDescription() }}">
+
+                        </div>
+                    {% else %}
+                        <div class="form-group">    
+                            <label>Date de Debut</label>
+                            <input type="date"  id="debut" name="debut" class="form-control" placeholder="jj / mm / aa">
+                      
+                            <label style=" margin: 5px;">Duree</label>
+                            <input type="text"  id="duree" name="duree" class="form-control" placeholder=" j/s/m/a">
+
+                            <label>Libelle</label>
+                            <input type="text"  id="libelle" name="libelle" class="form-control" placeholder="libelle">
+                            
+                            <label>Periode</label>
+                            <select id="periode" name="periode" class="form-control">
+                                <option value="stage1">Stage 1
+                                <option value="stage2">Stage 2
+                                <option value="formation">Formation
+                            </select>
+
+                            <div class="form-group">
+                                <label>Competence(s) Associée(s)</label><br/>
+
+                                    {% for competence in competences %}
+                                        <input type="checkbox" name="competences[]" value="{{ competence.getId() }}" /> {{ competence.getReference()}} - {{competence.getLibelle()}}
+                                        <br/>
+                                    {% endfor %}
+
+                                </select>
+                            </div>
+
+                            <label>Description</label>
+                            <input type="text"  id="description" name="description" class="form-control" placeholder="Description">
+
+                        </div>
+                    {% endif %}
+                    <!-- text input -->
+                    
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+              </form>
+            </div><!-- /.box-body -->
+          </div>
+        </div>
+     </div>
+  </section>
+{% endblock %}

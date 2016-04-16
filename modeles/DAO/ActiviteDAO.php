@@ -1,36 +1,155 @@
 <?php
 
-namespace SIOC\modeles\DAO;
+namespace SIOC\DAO;
 
-use SIOC\modeles\donnees\Activite;
+use SIOC\donnees\Activite;
+use SIOC\DAO\CompetenceDAO;
+use SIOC\DAO\UtilisateurDAO;
 
 /**
  * Description of ActiviteDAO
  *
- * @author Remi Lelaidier
+ * @author SIO PTFQ
  */
 class ActiviteDAO extends DAO
 {
+    /**
+     * Trouve l'activite a l'id corrspondante
+     *
+     * @param integer $id
+     * @return \SIOC\donnees\Activite
+     */
     public function find($id) {
         $sql = "SELECT * FROM Activite WHERE act_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row)
+        {
+            $utilisateur = new UtilisateurDAO($this->getDb());
+            $row['act_eleve'] = $utilisateur->findbyActivite($id);
+            $competences = new CompetenceDAO($this->getDb());
+            $row['act_competences'] = $competences->findAllbyActivite($id);
             return $this->buildDomainObject($row);
-        else
-            throw new \Exception("Aucune activite avec l'id " . $id);
+        }
     }
 
+    /**
+     * Trouve toutes les activites
+     *
+     * @param none
+     * @return array(\SIOC\donnees\Activite)
+     */
+    public function findAll()
+    {
+        $sql = "SELECT * FROM Activite";
+        $result = $this->getDb()->fetchAll($sql);
+
+        // Convertit le resultat de la requete en tableau //
+        $activites = array();
+        foreach ($result as $row) {
+            $activiteId = $row['act_id'];
+            $utilisateur = new UtilisateurDAO($this->getDb());
+            $row['act_eleve'] = $utilisateur->findbyActivite($activiteId);
+            $competences = new CompetenceDAO($this->getDb());
+            $row['act_competences'] = $competences->findAllbyActivite($activiteId);
+            $activites[$activiteId] = $this->buildDomainObject($row);
+        }
+        return $activites;
+    }
+    
+    /**
+     * Trouve toutes les activites a l'utilisateur associe
+     *
+     * @param integer $utilisateurId
+     * @return array(\SIOC\donnees\Activite)
+     */
+    public function findAllbyUtilisateur($utilisateurId)
+    {
+        $sql = "SELECT A.act_id, A.act_debut, A.act_duree, A.act_periode, A.act_libelle, A.act_description"
+                . " FROM Activite AS A, Utilisateur AS U"
+                . " WHERE A.act_eleve = U.uti_id"
+                . " AND U.uti_id = ?";
+        $result = $this->getDb()->fetchAll($sql, array($utilisateurId));
+        $activites = array();
+        foreach($result as $row) {
+            $activiteId = $row['act_id'];
+            $utilisateur = new UtilisateurDAO($this->getDb());
+            $row['act_eleve'] = $utilisateur->findbyActivite($activiteId);
+            $competences = new CompetenceDAO($this->getDb());
+            $row['act_competences'] = $competences->findAllbyActivite($activiteId);
+            $activites[$activiteId] = $this->buildDomainObject($row);
+        }
+        return $activites;
+    }
 
     /**
-     * Creer un objet Activite a partir d'une liste
+     * Creer un objet Activite a partir d'un tuple
      *
      * @param array $row
-     * @return \SIOC\modeles\donnees\Activite
+     * @return \SIOC\donnees\Activite
      */
-    private function buildDomainObject(array $row) {
+   protected function buildDomainObject($row) {
         $activite = new Activite();
         $activite->hydrate($row);
         return $activite;
+    }
+    
+    /**
+     * Sauvegarde/MAJ d'une Activite
+     *
+     * @param \SIOC\donnees\Activite
+     * @return none
+     */
+    public function save(Activite $activite) {
+        $activiteData = array(
+            'act_debut'         => $activite->getDebut(),
+            'act_duree'         => $activite->getDuree(),
+            'act_periode'       => $activite->getPeriode(),
+            'act_libelle'       => $activite->getLibelle(),
+            'act_description'   => $activite->getDescription(),
+            'act_eleve'         => $activite->getUtilisateur()
+        );
+        
+        if ($activite->getId()){
+            $this->getDb()->update('Activite', $activiteData, array('act_id' => $activite->getId()));
+            $this->getDb()->delete('Associe', array(
+                    'ass_activite'  => $activite->getId()
+            ));
+            foreach ( $activite->getCompetences() as $key => $competence )
+            {
+                $competenceData = array(
+                    'ass_competence'    => $competence->getId(),
+                    'ass_activite'      => $activite->getId()
+                );
+                $this->getDb()->insert('Associe', $competenceData);
+            }
+            
+        }
+        else {
+            $this->getDb()->insert('Activite', $activiteData);
+            $id = $this->getDb()->lastInsertId();
+            $activite->setId($id);
+            foreach ( $activite->getCompetences() as $key => $competence )
+            {
+                $competenceData = array(
+                    'ass_competence'    => $competence->getId(),
+                    'ass_activite'      => $activite->getId()
+                );
+                $this->getDb()->insert('Associe', $competenceData);
+            }
+        }
+    }
+    
+    /**
+     * Suppression de l'Activite
+     *
+     * @param \SIOC\donnees\Activite $activite
+     * @return none
+     */
+    public function erase($activite)
+    {
+        $this->getDb()->delete('Activite', array(
+            'act_id'  => $activite->getId()
+        ));
     }
 }

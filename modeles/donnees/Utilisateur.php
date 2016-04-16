@@ -1,6 +1,6 @@
 <?php
 
-namespace SIOC\modeles\donnees;
+namespace SIOC\donnees;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 /**
@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *            -v1.2 : Gestion des exceptions
  * Projet : SIOC
  */
-class Utilisateur extends UserInterface
+class Utilisateur implements UserInterface
 {
     // Attributs
 
@@ -25,25 +25,8 @@ class Utilisateur extends UserInterface
     private $_password;
     private $_salt;
     private $_role;
-
-    // Constantes
-
-    const TAILLE_NOM = 75;		// Les constantes de taille font references
-    const TAILLE_PRENOM = 45;	// a la taille des champs dans la BDD
-    const TAILLE_MAIL = 50;
-    const TAILLE_PASSWORD = 45;
-    const TAILLE_USERNAME = 35;
-    // Constructeur
-
-    public function __construct()
-    {
-        $this->_id = NULL;
-        $this->_nom = "Nom";
-        $this->_prenom = "Prenom";
-        $this->_mail = "mail@mailbox.com";
-        $this->_password = "password";
-        $this->_statut = "";
-    }
+    private $_promotion;
+    private $_cursus;
 
     // Accesseurs
 
@@ -82,73 +65,69 @@ class Utilisateur extends UserInterface
         return $this->_salt;
     }
 
-    public function getStatut()
+    public function getRole()
     {
-        return $this->_statut;
+        return $this->_role;
+    }
+    
+    public function getPromotion()
+    {
+        return $this->_promotion;
+    }
+    
+    public function getCursus()
+    {
+        return $this->_cursus;
     }
 
     public function setId($id)
     {
-        if(is_int($id))
-        {
-            $this->_id = $id;
-        }
+        $this->_id = $id;
     }
 
     public function setUsername($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_NOM)
-        {
-            $this->_nom = $data;
-        }
+        $this->_nom = $data;
     }
     
     public function setNom($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_USERNAME)
-        {
-            $this->_username = $data;
-        }
+        $this->_username = $data;
     }
 
     public function setPrenom($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_PRENOM)
-        {
-            $this->_prenom = $data;
-        }
+        $this->_prenom = $data;
     }
 
     public function setMail($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_MAIL)
-        {
-            $this->_mail = $data;
-        }
+        $this->_mail = $data;
     }
 
     public function setPassword($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_PASSWORD)
-        {
-            $this->_password = $data;
-        }
+        $this->_password = $data;
     }
     
     public function setSalt($data)
     {
-        if(is_string($data))
-        {
-            $this->_salt = $data;
-        }
+        $this->_salt = $data;
     }
 
     public function setRole($data)
     {
-        if(is_string($data))
-        {
-            $this->_role = $data;
-        }
+        $this->_role = $data;
+    }
+    
+    public function setPromotion($data)
+    {
+        $this->_promotion = $data;
+    }
+    
+    public function setCursus($data)
+    {
+        $this->_cursus = $data;
     }
 
     // Methodes
@@ -187,9 +166,17 @@ class Utilisateur extends UserInterface
         {
             $this->setRole($datas['uti_role']);
         }
+        if(isset($datas['uti_promotion']))
+        {
+            $this->setPromotion($datas['uti_promotion']);
+        }
+        if(isset($datas['uti_cursus']))
+        {
+            $this->setCursus($datas['uti_cursus']);
+        }
     }
 
-    public function toString()
+    public function __toString()
     {
         $resu = "ID 	 -> ". $this->getId() ."\r";
         $resu .= "Nom     -> ". $this->getNom() ."\r";

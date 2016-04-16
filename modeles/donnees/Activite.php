@@ -1,6 +1,6 @@
 <?php
 
-namespace SIOC\modeles\donnees;
+namespace SIOC\donnees;
 
 /**
  * Created by PhpStorm.
@@ -12,30 +12,18 @@ namespace SIOC\modeles\donnees;
  *            -v1.2 : Gestion des exceptions
  * Projet : SIOC
  */
-class Activite extends Exception
+class Activite
 {
     // Attributs
 
     private $_id;				// Les champs de la BDD sont modelises ici
     private $_debut;
     private $_duree;
+    private $_periode;
     private $_libelle;
     private $_description;
-
-    // Constantes
-    // Les constantes de taille font references
-    const TAILLE_LIBELLE = 35;			// a la taille des champs dans la BDD
-    const TAILLE_DESCRIPTION = 350;		//TODO
-
-    // Constructeur
-
-    public function __construct()
-    {
-        $this->_id = NULL;
-        $this->_duree = NULL;
-        $this->_libelle = "Activites x";
-        $this->_description = "description";
-    }
+    private $_competences;
+    private $_utilisateur;
 
     // Accesseurs
 
@@ -53,6 +41,11 @@ class Activite extends Exception
     {
         return $this->_duree;
     }
+    
+    public function getPeriode()
+    {
+        return $this->_periode;
+    }
 
     public function getLibelle()
     {
@@ -63,65 +56,55 @@ class Activite extends Exception
     {
         return $this->_description;
     }
+    
+    public function getCompetences()
+    {
+        return $this->_competences;
+    }
+    
+    public function getUtilisateur()
+    {
+        return $this->_utilisateur;
+    }
 
     public function setId($id)
     {
-        if(is_int($id))
-        {
             $this->_id = $id;
-        }
-        else
-        {
-            throw new Exception("Activite -> setID -> mauvais type argument");
-        }
     }
 
     public function setDebut($data)
     {
-        if(preg_match('!^(0?\d|[12]\d|3[01])-(0?\d|1[012])-((?:19|20)\d{2})$!', $data)) 
-        {
             $this->_debut = $data;
-        }
-        else
-        {
-            throw new Exception("Activite -> setDebut -> mauvais type argument");
-        }
     }
     
     public function setDuree($data)
     {
-        if(is_int($data))
-        {
             $this->_duree = $data;
-        }
-        else
-        {
-            throw new Exception("Activite -> setDuree -> mauvais type argument");
-        }
+    }
+    
+    public function setPeriode($data)
+    {
+            $this->_periode = $data;
     }
 
     public function setLibelle($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_LIBELLE)
-        {
             $this->_libelle = $data;
-        }
-        else
-        {
-            throw new Exception("Activite -> setLibelle -> mauvais type argument ou trop long");
-        }
     }
 
     public function setDescription($data)
     {
-        if(is_string($data) && strlen($data) <= self::TAILLE_DESCRIPTION)
-        {
             $this->_description = $data;
-        }
-        else
-        {
-            throw new Exception("Activite -> setDescription -> mauvais type argument ou trop long");
-        }
+    }
+    
+    public function setCompetences($data)
+    {
+            $this->_competences = $data;
+    }
+    
+    public function setUtilisateur($data)
+    {
+            $this->_utilisateur = $data;
     }
 
     // Methodes
@@ -140,6 +123,10 @@ class Activite extends Exception
         {
             $this->setDuree($datas['act_duree']);
         }
+        if(isset($datas['act_periode']))
+        {
+            $this->setPeriode($datas['act_periode']);
+        }
         if(isset($datas['act_libelle']))
         {
             $this->setLibelle($datas['act_libelle']);
@@ -148,14 +135,13 @@ class Activite extends Exception
         {
             $this->setDescription($datas['act_description']);
         }
-    }
-
-    public function toString()
-    {
-        $resu = "ID 	 -> ". $this->getId() ."<br/>";
-        $resu .= "Duree   -> ". $this->getDuree() ."<br/>";
-        $resu .= "Libelle -> ". $this->getLibelle() ."<br/>";
-        $resu .= "Descri  -> ". $this->getDescription();
-        return $resu;
+        if(isset($datas['act_competences']))
+        {
+            $this->setCompetences($datas['act_competences']);
+        }
+        if(isset($datas['act_eleve']))
+        {
+            $this->setUtilisateur($datas['act_eleve']);
+        }
     }
 }
