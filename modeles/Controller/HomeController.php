@@ -19,8 +19,10 @@ class HomeController {
      */
     public function homeAction(Application $app)
     {
+        // TEST - A retirer
         var_dump($app['security.token_storage']->getToken()->getUser());
             die();
+        // Fin de test
         if ($app['security.authorization_checker']->isGranted('ROLE_ELEVE')) 
         {
             $id = $app['security.token_storage']->getToken()->getUser()->getId();
