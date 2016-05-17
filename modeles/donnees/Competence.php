@@ -85,9 +85,13 @@ class Competence
         $this->_cursus = $data;
     }
 
-    // Methodes
-
-    public function hydrate(array $datas)                               // Permet de remplir d'initialiser les attributs
+    /**
+     * Permet de charger un objet avec les donnees passees
+     * 
+     * @param array $datas
+     * @return none
+     */
+    public function hydrate(array $datas)
     {
         if(isset($datas['com_id']))
         {
@@ -113,15 +117,5 @@ class Competence
         {
             $this->setCursus($datas['com_cursus']);
         }
-    }
-
-    public function toString()                               // Renvoie les attributs sous forme de chaine de caractere
-    {
-        $resu = "ID 	 -> ". $this->getId() ."\r";
-        $resu .= "Ref     -> ". $this->getReference() ."\r";
-        $resu .= "Libelle -> ". $this->getLibelle() ."\r";
-        $resu .= "Descri  -> ". $this->getDescription() ."\r";
-        $resu .= "Oblige  -> ". $this->getObligatoire();
-        return $resu;
     }
 }

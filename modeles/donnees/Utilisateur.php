@@ -130,9 +130,13 @@ class Utilisateur implements UserInterface
         $this->_cursus = $data;
     }
 
-    // Methodes
-
-    public function hydrate(array $datas)  // Permet de remplir d'initialiser les attributs
+    /**
+     * Permet de charger un objet avec les donnees passees
+     * 
+     * @param array $datas
+     * @return none
+     */
+    public function hydrate(array $datas)
     {
         if(isset($datas['uti_id']))
         {

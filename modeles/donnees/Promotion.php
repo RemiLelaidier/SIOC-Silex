@@ -63,8 +63,12 @@ class Promotion
             $this->_eleves = $data;
     }
 
-    // Methodes
-
+    /**
+     * Permet de charger un objet avec les donnees passees
+     * 
+     * @param array $datas
+     * @return none
+     */
     public function hydrate(array $datas)
     {
         if(isset($datas['pro_id']))

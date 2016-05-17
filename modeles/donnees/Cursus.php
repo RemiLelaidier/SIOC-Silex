@@ -53,6 +53,12 @@ class Cursus
         $this->_diminutif = $data;
     }
     
+    /**
+     * Permet de charger un objet avec les donnees passees
+     * 
+     * @param array $datas
+     * @return none
+     */
     public function hydrate($datas)
     {
         if(isset($datas['cur_id']))

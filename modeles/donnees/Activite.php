@@ -8,15 +8,13 @@ namespace SIOC\donnees;
  * Date: 09/12/2015
  * Time: 10:14
  * Versions : -v1.0 : Version nominale
-              -v1.1 : Ajout de la fonction toString()
- *            -v1.2 : Gestion des exceptions
  * Projet : SIOC
  */
 class Activite
 {
     // Attributs
 
-    private $_id;				// Les champs de la BDD sont modelises ici
+    private $_id;				
     private $_debut;
     private $_duree;
     private $_periode;
@@ -107,9 +105,13 @@ class Activite
             $this->_utilisateur = $data;
     }
 
-    // Methodes
-
-    public function hydrate(array $datas)  // Permet de remplir d'initialiser les attributs
+    /**
+     * Permet de charger un objet avec les donnees passees
+     * 
+     * @param array $datas
+     * @return none
+     */
+    public function hydrate(array $datas)
     {
         if(isset($datas['act_id']))
         {

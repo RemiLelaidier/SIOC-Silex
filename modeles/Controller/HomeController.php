@@ -3,7 +3,6 @@ namespace SIOC\Controller;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use Knp\Snappy\Pdf;
 
 /**
  * Description of HomeController
@@ -19,8 +18,6 @@ class HomeController {
      */
     public function homeAction(Application $app)
     {
-        var_dump($app['security.token_storage']->getToken()->getUser());
-            die();
         if ($app['security.authorization_checker']->isGranted('ROLE_ELEVE')) 
         {
             $id = $app['security.token_storage']->getToken()->getUser()->getId();
@@ -80,6 +77,7 @@ class HomeController {
         ));
     }
 
+    /*
     public function newPDF(){
 
         $snappy = new Pdf();
@@ -87,4 +85,5 @@ class HomeController {
         $competences = $app['dao.competence']->findAll();
         return $app['twig'] -> render('competence.html.twig', array('competences' => $competences));
     }
+     */
 }
