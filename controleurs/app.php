@@ -73,7 +73,6 @@ $app['security.role_hierarchy'] = array(
  * Definition des regles d'acces
  */
 $app['security.access_rules'] = array(
-    array('^/$', ''),
     // Utilisateur
     array('^/utilisateur/new$', 'ROLE_PROF'),
     array('^/utilisateur$', 'ROLE_ADMIN'),
