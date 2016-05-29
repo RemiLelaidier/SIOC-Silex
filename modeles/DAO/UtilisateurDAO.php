@@ -182,12 +182,16 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
     {
         $sql = "SELECT * FROM Utilisateur WHERE uti_username=?";
         $row = $this->getDb()->fetchAssoc($sql, array($username));
-
-        var_dump($row);
-        die();
         
         if ($row)
         {
+            if($row[uti_role] == 'ROLE_ELEVE')
+            {
+                $promotion = new PromotionDAO($this->getDb());
+                $cursus = new CursusDAO($this->getDb());
+                $row['uti_promotion'] = $promotion->findByEleve($row['uti_id']);
+                $row['uti_cursus'] = $cursus->findByEleve($row['uti_id']);
+            }
             return $this->buildDomainObject($row);
         }
         else
