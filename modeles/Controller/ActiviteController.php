@@ -78,6 +78,7 @@ class ActiviteController {
         }
         $activite -> setCompetences($competences);
         $activite -> setUtilisateur($app['security.token_storage']->getToken()->getUser()->getId());
+        
         $app['dao.activite']->save($activite);
         return $app->redirect('/activite');
     }

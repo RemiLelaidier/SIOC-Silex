@@ -79,7 +79,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
                 . " FROM Utilisateur AS U, Activite AS A"
                 . " WHERE U.uti_id = A.act_eleve"
                 . " AND A.act_id = ?";
-        $row = $this->getDb()->fetchAll($sql, array($id));
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
         if($row)
         {
             if($row['uti_role'] == 'ROLE_ELEVE')
