@@ -194,8 +194,8 @@ INSERT INTO Promotion(pro_libelle, pro_annee) VALUES
 ('SIO 2', 2015);
 
 INSERT INTO Utilisateur(uti_mail, uti_username, uti_nom, uti_prenom, uti_password, uti_salt, uti_role) values
-('eleveSLAM@mail.com','EleveSlam', 'Eleve', 'SLAM', 'tJMjCsrGKt2wcuEXw2Ndzgp33plWs1zDBCni2VI1gUqOKk78jAB3lcQNgUNfbZ//VoeI8IxOa/tD2QZjtjSKpQ==', '3be39f6126c2298b8847811', 'ROLE_ELEVE'),
-('eleveSISR@mail.com','EleveSisr', 'Eleve', 'SISR', 'tJMjCsrGKt2wcuEXw2Ndzgp33plWs1zDBCni2VI1gUqOKk78jAB3lcQNgUNfbZ//VoeI8IxOa/tD2QZjtjSKpQ==', '3be39f6126c2298b8847811', 'ROLE_ELEVE'),
+('eleveSLAM@mail.com','EleveSLAM', 'Eleve', 'SLAM', 'tJMjCsrGKt2wcuEXw2Ndzgp33plWs1zDBCni2VI1gUqOKk78jAB3lcQNgUNfbZ//VoeI8IxOa/tD2QZjtjSKpQ==', '3be39f6126c2298b8847811', 'ROLE_ELEVE'),
+('eleveSISR@mail.com','EleveSISR', 'Eleve', 'SISR', 'tJMjCsrGKt2wcuEXw2Ndzgp33plWs1zDBCni2VI1gUqOKk78jAB3lcQNgUNfbZ//VoeI8IxOa/tD2QZjtjSKpQ==', '3be39f6126c2298b8847811', 'ROLE_ELEVE'),
 ('admin@mail.com','admin', 'Admin', 'X', 'EHU9k4B6s232Sw+pmdyJueS8lR9fyVqSAdPEfC6SYgVS9AKAOmes+3CSsSBB9elJJlwa8mwKSv5ENf7a3GsHig==', 'f1b548d2f6c7c21437d1dea', 'ROLE_ADMIN'),
 ('prof@mail.com','prof', 'Prof', 'Z', 't+8+7V2KCTYDG+ZVqy4aIL6b3QkIHK2NDkJG+GU7uWi6A87iJnT0qKqp/B1CKsUkzDNIp3znkw/UvCc/X6dcYA==', '1f5487ea04c124931c8a183', 'ROLE_PROF');
 
