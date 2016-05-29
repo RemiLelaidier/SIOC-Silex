@@ -50,7 +50,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         'login' => array(
             'pattern' => '^/login$',
         ),
-        'secured' => array(
+        //'secured' => array(
             'pattern' => '^.*$',
             'anonymous' => false,
             'logout' => true,
@@ -58,7 +58,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'users' =>$app->share(function () use ($app) {
                 return new SIOC\DAO\UtilisateurDAO($app['db']);
                  }),
-            ),
+            //),
         ),
     ));
 
