@@ -185,7 +185,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         
         if ($row)
         {
-            if($row[uti_role] == 'ROLE_ELEVE')
+            if($row['uti_role'] == 'ROLE_ELEVE')
             {
                 $promotion = new PromotionDAO($this->getDb());
                 $cursus = new CursusDAO($this->getDb());
