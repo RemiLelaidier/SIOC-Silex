@@ -72,7 +72,7 @@ $app['security.role_hierarchy'] = array(
 /**
  * Definition des regles d'acces
  */
-$app['security.access_rules'] = array(
+/*$app['security.access_rules'] = array(
     // Utilisateur
     array('^/utilisateur/new$', 'ROLE_PROF'),
     array('^/utilisateur$', 'ROLE_ADMIN'),
@@ -91,7 +91,7 @@ $app['security.access_rules'] = array(
     array('^/promotion$', 'ROLE_PROF'),
     array('^/promotion/new$', 'ROLE_PROF'),
     array('^/promotion/(edit|sup)/[0-9]+$', 'ROLE_PROF'),
-);
+);*/
 
 /**
  * Service de BDD
