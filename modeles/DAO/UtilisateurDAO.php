@@ -183,8 +183,8 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         $sql = "SELECT * FROM Utilisateur WHERE uti_username=?";
         $row = $this->getDb()->fetchAssoc($sql, array($username));
 
-        var_dump($row);
-        die();
+        //var_dump($row);
+        //die();
         
         if ($row)
         {
