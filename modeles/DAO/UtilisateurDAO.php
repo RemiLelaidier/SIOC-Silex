@@ -120,7 +120,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         foreach($result as $row)
         {
             $eleveId = $row['uti_id'];
-            $promotion = new PromotionDAO($this->getDb());
+            //$promotion = new PromotionDAO($this->getDb());
             $cursus = new CursusDAO($this->getDb());
             //$row['uti_promotion'] = $promotion->findByEleve($eleveId);
             $row['uti_cursus'] = $cursus->findByEleve($eleveId);
