@@ -52,7 +52,6 @@ class CompetenceController {
         $competence -> setLibelle($request->request->get('libelle'));
         $competence -> setDescription($request->request->get('description'));
         $competence -> setObligatoire($request->request->get('obligatoire'));
-        $competence ->setCursus($request->request->get('cursus'));
         $app['dao.competence']->save($competence);
         return $app->redirect('/competence');
     }

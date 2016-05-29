@@ -26,7 +26,6 @@ class Utilisateur implements UserInterface
     private $_salt;
     private $_role;
     private $_promotion;
-    private $_cursus;
 
     // Accesseurs
 
@@ -74,11 +73,6 @@ class Utilisateur implements UserInterface
     {
         return $this->_promotion;
     }
-    
-    public function getCursus()
-    {
-        return $this->_cursus;
-    }
 
     public function setId($id)
     {
@@ -124,11 +118,6 @@ class Utilisateur implements UserInterface
     {
         $this->_promotion = $data;
     }
-    
-    public function setCursus($data)
-    {
-        $this->_cursus = $data;
-    }
 
     /**
      * Permet de charger un objet avec les donnees passees
@@ -173,10 +162,6 @@ class Utilisateur implements UserInterface
         if(isset($datas['uti_promotion']))
         {
             $this->setPromotion($datas['uti_promotion']);
-        }
-        if(isset($datas['uti_cursus']))
-        {
-            $this->setCursus($datas['uti_cursus']);
         }
     }
 

@@ -6,16 +6,6 @@
  * Creation
  */
 
-CREATE TABLE Cursus
-(
-    cur_id                  INTEGER         auto_increment,
-    cur_libelle             VARCHAR(50),
-    cur_diminutif           VARCHAR(4),
-    PRIMARY KEY(cur_id)
-)ENGINE=INNODB;
-
-ALTER TABLE Cursus AUTO_INCREMENT = 1;
-
 CREATE TABLE Competence
 (
     com_id                  INTEGER         auto_increment,
@@ -96,32 +86,6 @@ CREATE TABLE Associe
     ON DELETE CASCADE
 )ENGINE=INNODB;
 
-CREATE TABLE Suit
-(
-    sui_eleve           INTEGER,
-    sui_cursus          INTEGER,
-    PRIMARY KEY(sui_eleve, sui_cursus),
-    CONSTRAINT SuiEleve
-        FOREIGN KEY(sui_eleve) REFERENCES Utilisateur(uti_id)
-    ON DELETE CASCADE,
-    CONSTRAINT SuiCursus
-        FOREIGN KEY(sui_cursus) REFERENCES Cursus(cur_id)
-    ON DELETE CASCADE
-)ENGINE=INNODB;
-
-CREATE TABLE Estdans
-(
-    est_competence      INTEGER,
-    est_cursus          INTEGER,
-    PRIMARY KEY(est_competence, est_cursus),
-    CONSTRAINT EstComp
-        FOREIGN KEY(est_competence) REFERENCES Competence(com_id)
-    ON DELETE CASCADE,
-    CONSTRAINT EstCursus
-        FOREIGN KEY(est_cursus) REFERENCES Cursus(cur_id)
-    ON DELETE CASCADE
-)ENGINE=INNODB;
-
 /*
  *  Remplissage
  */
@@ -198,17 +162,6 @@ INSERT INTO Utilisateur(uti_mail, uti_username, uti_nom, uti_prenom, uti_passwor
 ('eleveSISR@mail.com','EleveSISR', 'Eleve', 'SISR', 'tJMjCsrGKt2wcuEXw2Ndzgp33plWs1zDBCni2VI1gUqOKk78jAB3lcQNgUNfbZ//VoeI8IxOa/tD2QZjtjSKpQ==', '3be39f6126c2298b8847811', 'ROLE_ELEVE'),
 ('admin@mail.com','admin', 'Admin', 'X', 'EHU9k4B6s232Sw+pmdyJueS8lR9fyVqSAdPEfC6SYgVS9AKAOmes+3CSsSBB9elJJlwa8mwKSv5ENf7a3GsHig==', 'f1b548d2f6c7c21437d1dea', 'ROLE_ADMIN'),
 ('prof@mail.com','prof', 'Prof', 'Z', 't+8+7V2KCTYDG+ZVqy4aIL6b3QkIHK2NDkJG+GU7uWi6A87iJnT0qKqp/B1CKsUkzDNIp3znkw/UvCc/X6dcYA==', '1f5487ea04c124931c8a183', 'ROLE_PROF');
-
-INSERT INTO Cursus(cur_libelle, cur_diminutif) VALUES
-('', 'SLAM'),
-('', 'SISR');
-
-INSERT INTO Suit(sui_eleve, sui_cursus) VALUES
-(1, 1),
-(2, 2);
-
-/*INSERT INTO Estdans(est_competence, est_cursus) VALUES
-()*/
 
 INSERT INTO Faitpartie(fap_eleve, fap_promo) VALUES
 (1,3);

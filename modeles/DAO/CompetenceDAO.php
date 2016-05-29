@@ -3,9 +3,6 @@
 namespace SIOC\DAO;
 
 use SIOC\donnees\Competence;
-use SIOC\donnees\Cursus;
-
-use SIOC\DAO\CursusDAO;
 
 /**
  * Description de CompetenceDAO
@@ -26,8 +23,6 @@ class CompetenceDAO extends DAO
 
         if ($row)
         {
-            $cursus = new CursusDAO($this->getDb());
-            $row['com_cursus'] = $cursus->findByCompetence($row['com_id']);
             return $this->buildDomainObject($row);
         }
     }
@@ -47,8 +42,6 @@ class CompetenceDAO extends DAO
         $competences = array();
         foreach ($result as $row) {
             $competenceId = $row['com_id'];
-            $cursus = new CursusDAO($this->getDb());
-            $row['com_cursus'] = $cursus->findByCompetence($competenceId);
             $competences[$competenceId] = $this->buildDomainObject($row);
         }
         return $competences;
@@ -71,8 +64,6 @@ class CompetenceDAO extends DAO
         $competences = array();
         foreach ($result as $row) {
             $competenceId = $row['com_id'];
-            $cursus = new CursusDAO($this->getDb());
-            $row['com_cursus'] = $cursus->findByCompetence($competenceId);
             $competences[$competenceId] = $this->buildDomainObject($row);
         }
         return $competences;
@@ -112,7 +103,7 @@ class CompetenceDAO extends DAO
      * @param \SIOC\donnees\Competence
      * @return none
      */
-    public function save(Competence $competence, Cursus $cursus) {
+    public function save(Competence $competence) {
         $competenceData = array(
             'com_reference'   => $competence->getReference(),
             'com_libelle'     => $competence->getLibelle(),
@@ -124,25 +115,11 @@ class CompetenceDAO extends DAO
             $this->getDb()->update('Competence', $competenceData, array(
                 'com_id' => $competence->getId()
             ));
-            
-            $this->getDb()->delete('Estdans', array(
-                'est_competence'    => $competence->getId()
-            ));
-            $cursusData = array(
-                'est_competence'    => $competence->getId(),
-                'est_cursus'        => $cursus->getId()
-            );
-            $this->getDb()->insert('Estdans', $cursusData);
         }
         else {
             $this->getDb()->insert('Competence', $competenceData);
             $id = $this->getDb()->lastInsertId();
             $competence->setId($id);
-            $cursusData = array(
-                'est_competence'    => $competence->getId(),
-                'est_cursus'        => $cursus->getId()
-            );
-            $this->getDb()->insert('Estdans', $cursusData);
         }
     }
     
