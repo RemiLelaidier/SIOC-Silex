@@ -26,9 +26,6 @@ class HomeController {
             $competences = $app['dao.competence']->findAll();
             $nbComp = $app['dao.competence']->findNbByEleve($id);
             $promotion = $app['dao.promotion']->findByEleve($id);
-
-            var_dump($app['security.token_storage']->getToken()->getUser());
-            die();
             
             return $app['twig']->render('acceuil.html.twig', array(
                 'professeurs' => $professeurs,
