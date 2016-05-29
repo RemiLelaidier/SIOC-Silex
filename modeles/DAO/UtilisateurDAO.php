@@ -122,8 +122,8 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
             $eleveId = $row['uti_id'];
             $promotion = new PromotionDAO($this->getDb());
             $cursus = new CursusDAO($this->getDb());
-            //$row['uti_promotion'] = $promotion->findByEleve($eleveId);
-            //$row['uti_cursus'] = $cursus->findByEleve($eleveId);
+            $row['uti_promotion'] = $promotion->findByEleve($eleveId);
+            $row['uti_cursus'] = $cursus->findByEleve($eleveId);
             $eleves[$eleveId] = $this->buildDomainObject($row);
         }
         return $eleves;
