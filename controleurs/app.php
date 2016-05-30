@@ -84,7 +84,7 @@ $app['security.access_rules'] = array(
     array('^/activite/new$', 'ROLE_ELEVE'),
     array('^/activite/(edit|sup)/[0-9]+$', 'ROLE_ELEVE'),
     // Competence
-    array('^/competence$', 'ROLE_ELEVE'),
+    array('^/competence$', 'ROLE_ELEVE', 'ROLE_PROF'),
     array('^/competence/new$', 'ROLE_PROF'),
     array('^/competence/(edit|sup)/[0-9]+$', 'ROLE_PROF'),
     // Promotion
