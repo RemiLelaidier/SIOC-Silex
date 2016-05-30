@@ -7,9 +7,11 @@
     <h1>
         Compétences
         <small>liste</small>
-        <a href="{{ path('ajout_competence') }}" type="button" style="float:right;margin:-2px;margin-right:10px;margin-left:10px" class="btn bg-orange btn-flat margin"><i class="fa fa-plus"></i><span style="margin:3px;">Ajouter</span></a>
-        <!-- <a href="exportpdf" target="_blank" type="button" style="float:right;margin:-2px;margin-right:10px;margin-left:10px" class="btn bg-orange btn-flat margin"><i class="fa fa-file-pdf-o"></i><span style="margin:3px;">export PDF</span></a>-->
-        <a href="" type="button" style="float:right;margin:-2px;margin-right:10px;margin-left:10px" class="btn bg-orange btn-flat margin"><i class="fa fa-clone"></i><span style="margin:3px;">export HTML</span></a>
+        {% if is_granted('ROLE_PROF') %}
+            <a href="{{ path('ajout_competence') }}" type="button" style="float:right;margin:-2px;margin-right:10px;margin-left:10px" class="btn bg-orange btn-flat margin"><i class="fa fa-plus"></i><span style="margin:3px;">Ajouter</span></a>
+            <!-- <a href="exportpdf" target="_blank" type="button" style="float:right;margin:-2px;margin-right:10px;margin-left:10px" class="btn bg-orange btn-flat margin"><i class="fa fa-file-pdf-o"></i><span style="margin:3px;">export PDF</span></a>-->
+            <!-- <a href="" type="button" style="float:right;margin:-2px;margin-right:10px;margin-left:10px" class="btn bg-orange btn-flat margin"><i class="fa fa-clone"></i><span style="margin:3px;">export HTML</span></a>-->
+        {% endif %}
     </h1>
 </section>
     <section class="content">
