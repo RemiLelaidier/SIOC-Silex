@@ -23,8 +23,10 @@
                         </div>
                     </div>
                     <!-- ./col -->
+                    {% if is_granted('ROLE_ADMIN') %}
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
+                        {% if is_granted('ROLE_ADMIN') %}
                         <div class="small-box bg-green">
                             <div class="inner">
                                 <h3>{{ professeurs|length }}</h3>
@@ -37,6 +39,7 @@
                             <a href="{{ path ('professeur') }}" class="small-box-footer">Tous les Professeurs <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
+                    {% endif %}
                     <!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
