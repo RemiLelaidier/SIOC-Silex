@@ -24,7 +24,6 @@
                 </div>
                 <!-- ./col -->
                 {% if is_granted('ROLE_PROF') %}
-                    {% if  eleve.activites|length/65) * 100 < 25 %}</th>
                         <div class="col-lg-4 col-xs-6">
                             <!-- Competences "%" -->
                             <div class="small-box bg-red">
@@ -40,7 +39,6 @@
                                 </a>
                             </div>
                         </div>
-                    {% endif %}
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
                     <div class="col-lg-3 col-xs-6">
