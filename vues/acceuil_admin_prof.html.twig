@@ -23,23 +23,6 @@
                     </div>
                 </div>
                 <!-- ./col -->
-                {% if is_granted('ROLE_PROF') %}
-                        <div class="col-lg-4 col-xs-6">
-                            <!-- Competences "%" -->
-                            <div class="small-box bg-red">
-                                <div class="inner">
-                                    <h3>attention eleve(s) ayant</sup></h3>
-                                    <p>moins de 25% de compétences aqcuise</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-pie-graph"></i>
-                                </div>
-                                <a href="{{ path ('eleve') }}" class="small-box-footer">Liste Eleves <i class="fa fa-arrow-circle-right"></i></a>
-                                Pour en savoir plus <i class="fa fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
